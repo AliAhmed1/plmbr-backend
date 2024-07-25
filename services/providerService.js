@@ -4,7 +4,7 @@ const {validateProviderData} = require('../utils/validateProvider')
 
 const dynamoDB = require('../config/dbConfig');
 
-const TABLE_NAME = 'Provider-mpaeci5oxnderd6rkladokwhoq-staging';
+const TABLE_NAME = 'Providers';
 
 
 const ProviderService = {
