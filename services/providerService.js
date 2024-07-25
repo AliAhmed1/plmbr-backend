@@ -17,6 +17,9 @@ const ProviderService = {
     const provider = {
       ...providerData,
       id: uuidv4(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      _version: 1
     };
 
     const params = {

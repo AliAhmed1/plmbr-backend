@@ -1,8 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const validateProviderData = (data) => {
     const requiredFields = [
-        'email', 'password', 'firstName', 'lastName', 'createdAt', 'updatedAt', '_version'
+        'email', 'password', 'firstName', 'lastName',
     ];
     for (const field of requiredFields) {
         if (data[field] === undefined || data[field] === null) {
