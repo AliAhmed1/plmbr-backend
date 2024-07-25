@@ -1,0 +1,27 @@
+{
+  "name": "plmbr-booking-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./app.js",
+    "start:dev": "nodemon ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-amplify/datastore": "^5.0.42",
+    "@aws-sdk/client-dynamodb": "^3.614.0",
+    "@aws-sdk/credential-provider-env": "^3.609.0",
+    "@aws-sdk/lib-dynamodb": "^3.614.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

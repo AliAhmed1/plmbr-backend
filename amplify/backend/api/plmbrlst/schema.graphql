@@ -1,0 +1,737 @@
+type ServicePromotion @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  service: Service @belongsTo
+  description: String!
+  startDate: AWSDate!
+  endDate: AWSDate!
+  discountPercentage: Float!
+}
+
+type ProviderReport @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  description: String!
+  dateReported: AWSDateTime!
+}
+
+type UserReport @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  description: String!
+  dateReported: AWSDateTime!
+}
+
+type UserInvoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  amount: Float!
+  dateIssued: AWSDateTime!
+  dueDate: AWSDateTime!
+  status: InvoiceStatus
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  OVERDUE
+}
+
+type ProviderBookmark @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  user: User @belongsTo
+  dateBookmarked: AWSDateTime!
+}
+
+type UserBookmark @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  service: Service @belongsTo
+  dateBookmarked: AWSDateTime!
+}
+
+type ProviderNotification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  content: String!
+  dateSent: AWSDateTime!
+  status: NotificationStatus
+}
+
+type UserNotification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  content: String!
+  dateSent: AWSDateTime!
+  status: NotificationStatus
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+}
+
+type ServiceDiscount @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  service: Service @belongsTo
+  discountPercentage: Float!
+  startDate: AWSDate!
+  endDate: AWSDate!
+}
+
+type ProviderAvailability @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  startDate: AWSDateTime!
+  endDate: AWSDateTime!
+}
+
+type UserPreference @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  preferenceType: String!
+  preferenceValue: String!
+}
+
+type ProviderCertification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  certificationName: String!
+  issuedBy: String!
+  validFrom: AWSDate!
+  validUntil: AWSDate!
+}
+
+type ServiceVideo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  service: Service @belongsTo
+  videoURL: AWSURL!
+  description: String
+}
+
+type ServiceImage @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  service: Service @belongsTo
+  imageURL: AWSURL!
+  description: String
+}
+
+type ServiceReview @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  service: Service @belongsTo
+  user: User @belongsTo
+  rating: Int!
+  comment: String!
+  date: AWSDate!
+}
+
+type AIDiagnostics @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  aiChatBot: AIChatBot @belongsTo
+  diagnosticData: String!
+  date: AWSDateTime!
+}
+
+type Customization @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  customizationType: String!
+  customizationValue: String!
+}
+
+type Expense @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  amount: Float!
+  description: String!
+  date: AWSDateTime!
+}
+
+type FavoriteProvider @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  provider: Provider @belongsTo
+  dateAdded: AWSDateTime!
+}
+
+type UserHistory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  action: String!
+  date: AWSDateTime!
+}
+
+type ProviderAward @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  awardName: String!
+  awardedBy: String!
+  dateAwarded: AWSDate!
+}
+
+type Referral @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  referrer: User @belongsTo
+  referred: User @belongsTo
+  dateReferred: AWSDateTime!
+  reward: Reward @belongsTo
+}
+
+type Tip @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  provider: Provider @belongsTo
+  amount: Float!
+  date: AWSDateTime!
+}
+
+type PaymentMethod @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  cardNumber: String!
+  expiryDate: AWSDate!
+  cardType: CardType
+}
+
+enum CardType {
+  VISA
+  MASTERCARD
+  AMEX
+  DISCOVER
+}
+
+type Invoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  provider: Provider @belongsTo
+  amount: Float!
+  dateIssued: AWSDateTime!
+  dueDate: AWSDateTime!
+  status: InvoiceStatus
+  services: [Service] @hasMany
+}
+
+type Contract @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  provider: Provider @belongsTo
+  service: Service @belongsTo
+  startDate: AWSDateTime!
+  endDate: AWSDateTime!
+  terms: String!
+}
+
+type NicheService @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  serviceName: String!
+  description: String!
+  providers: [Provider] @hasMany
+}
+
+type ServicePackage @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  packageName: String!
+  services: [Service] @hasMany
+  discount: Float!
+}
+
+type Reward @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  rewardName: String!
+  description: String!
+  value: Float!
+  referrals: [Referral] @hasMany
+}
+
+type LoyaltyProgram @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  points: Int!
+  rewards: [Reward] @hasMany
+}
+
+type Verification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  verificationCode: String!
+  dateSent: AWSDateTime!
+  status: VerificationStatus
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+}
+
+type Analytics @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userCount: Int!
+  providerCount: Int!
+  serviceCount: Int!
+  date: AWSDateTime!
+}
+
+type PromoCode @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  code: String!
+  discount: Float!
+  validFrom: AWSDate!
+  validUntil: AWSDate!
+}
+
+type Report @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  reporter: User @belongsTo
+  reportedEntity: String!
+  description: String!
+  dateReported: AWSDateTime!
+}
+
+type JobTracking @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  provider: Provider @belongsTo
+  service: Service @belongsTo
+  status: JobStatus
+  startDate: AWSDateTime!
+  endDate: AWSDateTime!
+}
+
+enum JobStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+type AIChatLog @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: User @belongsTo
+  aiChatBot: AIChatBot @belongsTo
+  message: String!
+  response: String!
+  date: AWSDateTime!
+}
+
+type AIChatBot @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  version: String!
+  diagnostics: [AIDiagnostics] @hasMany
+  chatLogs: [AIChatLog] @hasMany
+}
+
+type MainCategory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  descrption: String
+  SubCategories: [SubCategory] @hasMany
+}
+
+type SubCategory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  description: String
+  MainCategory: MainCategory @belongsTo
+  Services: [Service] @hasMany
+}
+
+type PLMBRSubscription @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type UserSettings @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type ProviderSettings @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Portfolio @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type ServiceVariant @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type ServiceHighlight @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type ServiceTag @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type ServiceFAQ @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Feedback @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Equipment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  providerID: ID!
+  name: String!
+  description: String
+  category: EquipmentCategory
+  availabilityStatus: EquipmentAvailabilityStatus
+  purchaseDate: AWSDate
+  maintenanceDate: AWSDate
+  image: AWSURL
+}
+
+enum EquipmentCategory {
+  Electrical
+  Plumbing
+  Carpentry
+  Masonry
+  Painting
+  HVAC
+}
+
+enum EquipmentAvailabilityStatus {
+  Available
+  InUse
+  UnderMaintenance
+  Unavailable
+}
+
+type Wallet @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ownerID: ID!
+  balance: Float!
+  currency: String!
+  transactions: [Transaction] @hasMany
+  lastUpdated: AWSDateTime
+}
+
+type Transaction @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  wallet: Wallet @belongsTo
+  amount: Float!
+  type: TransactionType
+  description: String
+  date: AWSDateTime!
+}
+
+enum TransactionType {
+  Credit
+  Debit
+  Refund
+  Withdrawal
+}
+
+type Review @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Provider: Provider @belongsTo
+  user: User @belongsTo
+  service: Service @belongsTo
+  rating: Int!
+  comment: String
+  date: AWSDate!
+  response: ReviewResponse @hasOne
+}
+
+type ReviewResponse @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  review: Review @belongsTo
+  responseText: String!
+  responseDate: AWSDate!
+}
+
+type MessageThread @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  provider: Provider @belongsTo
+  user: User @belongsTo
+  messages: [MessageContent] @hasMany
+  lastMessageDate: AWSDateTime
+  lastMessageContent: String
+  status: MessageStatus
+}
+
+type MessageContent @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  thread: MessageThread @belongsTo
+  sender: String
+  content: String!
+  timestamp: AWSDateTime!
+}
+
+enum MessageStatus {
+  UNREAD
+  READ
+}
+
+type Booking @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate!
+  startTime: AWSTime!
+  endTime: AWSTime!
+  status: BookingStatus
+  service: Service @belongsTo
+  provider: Provider @belongsTo
+  user: User @belongsTo
+  location: String
+  notes: String
+  price: Float!
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+type TeamMember @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  role: String
+  currentLocation: Location @hasOne
+  jobSiteDuration: AWSDateTime
+  communicationLog: [Message] @hasMany
+  assignedJobs: [Job] @hasMany
+  providerID: ID!
+  Provider: Provider @belongsTo(fields: ["providerID"])
+}
+
+type Location @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  timestamp: AWSDateTime!
+}
+
+type Message @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  sender: String!
+  content: String!
+  timestamp: AWSDateTime!
+}
+
+type Job @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  description: String!
+  location: String!
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  status: JobStatus
+}
+
+type Service @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  description: String
+  price: Float!
+  Provider: Provider @belongsTo
+  reviews: [Review] @hasMany
+  bookings: [Booking] @hasMany
+  SubCategory: SubCategory @belongsTo
+  servicePromotions: [ServicePromotion] @hasMany
+  providerReports: [ProviderReport] @hasMany
+  userReports: [UserReport] @hasMany
+  userInvoices: [UserInvoice] @hasMany
+  providerBookmarks: [ProviderBookmark] @hasMany
+  userBookmarks: [UserBookmark] @hasMany
+  providerNotifications: [ProviderNotification] @hasMany
+  userNotifications: [UserNotification] @hasMany
+  serviceDiscounts: [ServiceDiscount] @hasMany
+  providerAvailabilities: [ProviderAvailability] @hasMany
+  userPreferences: [UserPreference] @hasMany
+  providerCertifications: [ProviderCertification] @hasMany
+  serviceVideos: [ServiceVideo] @hasMany
+  serviceImages: [ServiceImage] @hasMany
+  serviceReviews: [ServiceReview] @hasMany
+  aiDiagnostics: [AIDiagnostics] @hasMany
+  customizations: [Customization] @hasMany
+  expenses: [Expense] @hasMany
+  favoriteProviders: [FavoriteProvider] @hasMany
+  userHistories: [UserHistory] @hasMany
+  providerAwards: [ProviderAward] @hasMany
+  referrals: [Referral] @hasMany
+  contracts: [Contract] @hasMany
+  jobTrackings: [JobTracking] @hasMany
+  duration: AWSTime
+  Materials: String
+  MaterialCosts: Float
+  BookingRequirements: String
+}
+
+type Provider @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  email: AWSEmail!
+  password: String!
+  firstName: String!
+  lastName: String!
+  dob: AWSDate
+  gender: Gender
+  phone: AWSPhone
+  address: String
+  city: String
+  state: String
+  country: String
+  zipCode: String
+  profileImage: AWSURL
+  isActive: Boolean
+  isVerified: Boolean
+  lastLogin: AWSDateTime
+  accountType: AccountType
+  notificationPreference: NotificationPreference
+  languagePreference: String
+  currencyPreference: String
+  timezone: String
+  chatbotRequests: Int
+  servicesOffered: [Service] @hasMany
+  teamMembers: [TeamMember] @hasMany
+  availability: [Availability] @hasMany
+  reviews: [Review] @hasMany
+  certifications: [Certification] @hasMany
+  qualifications: [Qualification] @hasMany
+  specializations: [Specialization] @hasMany
+  providerBookings: [Booking] @hasMany
+  providerMessages: [MessageThread] @hasMany
+  providerContracts: [Contract] @hasMany
+  providerInvoices: [Invoice] @hasMany
+  providerTips: [Tip] @hasMany
+  providerReferrals: [Referral] @hasMany
+  providerHistories: [ProviderHistory] @hasMany
+  providerNotifications: [ProviderNotification] @hasMany
+  providerBookmarks: [ProviderBookmark] @hasMany
+  providerReports: [ProviderReport] @hasMany
+  providerAvailability: [ProviderAvailability] @hasMany
+  providerCertification: [ProviderCertification] @hasMany
+  favoriteProviders: [FavoriteProvider] @hasMany
+  providerAwards: [ProviderAward] @hasMany
+  jobTracking: [JobTracking] @hasMany
+  expenses: [Expense] @hasMany
+}
+
+type Availability @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  startTime: AWSTime!
+  endTime: AWSTime!
+  Provider: Provider @belongsTo
+  avalabilityDate: AWSDate!
+}
+
+type ProviderReview @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  providerID: ID!
+  userID: ID!
+  rating: Int!
+  comment: String
+}
+
+type Certification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  certificationName: String!
+  issuedBy: String
+  validFrom: AWSDate
+  validUntil: AWSDate
+  Provider: Provider @belongsTo
+}
+
+type Qualification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  qualificationName: String!
+  institution: String
+  yearObtained: Int
+  Provider: Provider @belongsTo
+}
+
+type Specialization @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  specializationName: String!
+  description: String
+  Provider: Provider @belongsTo
+}
+
+type ProviderHistory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  providerID: ID!
+  event: String!
+  date: AWSDate!
+  description: String
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  email: AWSEmail!
+  password: String!
+  firstName: String!
+  lastName: String!
+  dob: AWSDate
+  gender: Gender
+  phone: AWSPhone
+  address: String
+  city: String
+  state: String
+  country: String
+  zipCode: String
+  profileImage: AWSURL
+  isActive: Boolean
+  isVerified: Boolean
+  lastLogin: AWSDateTime
+  accountType: AccountType
+  notificationPreference: NotificationPreference
+  languagePreference: String
+  currencyPreference: String
+  timezone: String
+  chatbotRequests: Int
+  bookings: [Booking] @hasMany
+  messages: [MessageThread] @hasMany
+  reviews: [Review] @hasMany
+  wallet: Wallet @hasOne
+  transactions: [Transaction] @hasMany
+  feedbacks: [Feedback] @hasMany
+  subscriptions: [PLMBRSubscription] @hasMany
+  aiChatBots: [AIChatBot] @hasMany
+  aiChatLogs: [AIChatLog] @hasMany
+  jobTrackings: [JobTracking] @hasMany
+  reports: [Report] @hasMany
+  loyaltyPrograms: [LoyaltyProgram] @hasMany
+  rewards: [Reward] @hasMany
+  contracts: [Contract] @hasMany
+  invoices: [Invoice] @hasMany
+  paymentMethods: [PaymentMethod] @hasMany
+  tips: [Tip] @hasMany
+  referrals: [Referral] @hasMany
+  userHistories: [UserHistory] @hasMany
+  favoriteProviders: [FavoriteProvider] @hasMany
+  expenses: [Expense] @hasMany
+  customizations: [Customization] @hasMany
+  serviceReviews: [ServiceReview] @hasMany
+  userNotifications: [UserNotification] @hasMany
+  userBookmarks: [UserBookmark] @hasMany
+  userInvoices: [UserInvoice] @hasMany
+  userReports: [UserReport] @hasMany
+  providerBookmarks: [ProviderBookmark] @hasMany
+  userPreference: [UserPreference] @hasMany
+  verifications: [Verification] @hasMany
+  preferredContactTime: AWSTime
+  serviceInterestedIn: String
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+enum AccountType {
+  Basic
+  Premium
+  Platinum
+}
+
+enum NotificationPreference {
+  Email
+  SMS
+  Both
+}
+ 

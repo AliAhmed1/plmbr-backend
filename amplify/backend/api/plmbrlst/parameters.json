@@ -1,0 +1,8 @@
+{
+  "AppSyncApiName": "plmbrlst",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-09-28T15:50:52.780Z",
+  "CreateAPIKey": 0,
+  "APIKeyExpirationEpoch": -1
+}
