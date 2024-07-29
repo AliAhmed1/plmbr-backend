@@ -22,6 +22,7 @@ export const onCreateServicePromotion = /* GraphQL */ `subscription OnCreateServ
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -64,6 +65,7 @@ export const onUpdateServicePromotion = /* GraphQL */ `subscription OnUpdateServ
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -106,6 +108,7 @@ export const onDeleteServicePromotion = /* GraphQL */ `subscription OnDeleteServ
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -169,6 +172,7 @@ export const onCreateProviderReport = /* GraphQL */ `subscription OnCreateProvid
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -222,6 +226,7 @@ export const onUpdateProviderReport = /* GraphQL */ `subscription OnUpdateProvid
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -275,6 +280,7 @@ export const onDeleteProviderReport = /* GraphQL */ `subscription OnDeleteProvid
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -330,6 +336,7 @@ export const onCreateUserReport = /* GraphQL */ `subscription OnCreateUserReport
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -385,6 +392,7 @@ export const onUpdateUserReport = /* GraphQL */ `subscription OnUpdateUserReport
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -440,6 +448,7 @@ export const onDeleteUserReport = /* GraphQL */ `subscription OnDeleteUserReport
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -495,6 +504,7 @@ export const onCreateUserInvoice = /* GraphQL */ `subscription OnCreateUserInvoi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -552,6 +562,7 @@ export const onUpdateUserInvoice = /* GraphQL */ `subscription OnUpdateUserInvoi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -609,6 +620,7 @@ export const onDeleteUserInvoice = /* GraphQL */ `subscription OnDeleteUserInvoi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -664,6 +676,7 @@ export const onCreateProviderBookmark = /* GraphQL */ `subscription OnCreateProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -698,6 +711,7 @@ export const onCreateProviderBookmark = /* GraphQL */ `subscription OnCreateProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -751,6 +765,7 @@ export const onUpdateProviderBookmark = /* GraphQL */ `subscription OnUpdateProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -785,6 +800,7 @@ export const onUpdateProviderBookmark = /* GraphQL */ `subscription OnUpdateProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -838,6 +854,7 @@ export const onDeleteProviderBookmark = /* GraphQL */ `subscription OnDeleteProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -872,6 +889,7 @@ export const onDeleteProviderBookmark = /* GraphQL */ `subscription OnDeleteProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -927,6 +945,7 @@ export const onCreateUserBookmark = /* GraphQL */ `subscription OnCreateUserBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -938,6 +957,7 @@ export const onCreateUserBookmark = /* GraphQL */ `subscription OnCreateUserBook
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1001,6 +1021,7 @@ export const onUpdateUserBookmark = /* GraphQL */ `subscription OnUpdateUserBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1012,6 +1033,7 @@ export const onUpdateUserBookmark = /* GraphQL */ `subscription OnUpdateUserBook
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1075,6 +1097,7 @@ export const onDeleteUserBookmark = /* GraphQL */ `subscription OnDeleteUserBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1086,6 +1109,7 @@ export const onDeleteUserBookmark = /* GraphQL */ `subscription OnDeleteUserBook
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1147,6 +1171,7 @@ export const onCreateProviderNotification = /* GraphQL */ `subscription OnCreate
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1201,6 +1226,7 @@ export const onUpdateProviderNotification = /* GraphQL */ `subscription OnUpdate
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1255,6 +1281,7 @@ export const onDeleteProviderNotification = /* GraphQL */ `subscription OnDelete
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1311,6 +1338,7 @@ export const onCreateUserNotification = /* GraphQL */ `subscription OnCreateUser
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1367,6 +1395,7 @@ export const onUpdateUserNotification = /* GraphQL */ `subscription OnUpdateUser
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1423,6 +1452,7 @@ export const onDeleteUserNotification = /* GraphQL */ `subscription OnDeleteUser
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1456,6 +1486,7 @@ export const onCreateServiceDiscount = /* GraphQL */ `subscription OnCreateServi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1497,6 +1528,7 @@ export const onUpdateServiceDiscount = /* GraphQL */ `subscription OnUpdateServi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1538,6 +1570,7 @@ export const onDeleteServiceDiscount = /* GraphQL */ `subscription OnDeleteServi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1600,6 +1633,7 @@ export const onCreateProviderAvailability = /* GraphQL */ `subscription OnCreate
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1653,6 +1687,7 @@ export const onUpdateProviderAvailability = /* GraphQL */ `subscription OnUpdate
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1706,6 +1741,7 @@ export const onDeleteProviderAvailability = /* GraphQL */ `subscription OnDelete
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1761,6 +1797,7 @@ export const onCreateUserPreference = /* GraphQL */ `subscription OnCreateUserPr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1816,6 +1853,7 @@ export const onUpdateUserPreference = /* GraphQL */ `subscription OnUpdateUserPr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1871,6 +1909,7 @@ export const onDeleteUserPreference = /* GraphQL */ `subscription OnDeleteUserPr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1924,6 +1963,7 @@ export const onCreateProviderCertification = /* GraphQL */ `subscription OnCreat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1979,6 +2019,7 @@ export const onUpdateProviderCertification = /* GraphQL */ `subscription OnUpdat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -2034,6 +2075,7 @@ export const onDeleteProviderCertification = /* GraphQL */ `subscription OnDelet
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -2068,6 +2110,7 @@ export const onCreateServiceVideo = /* GraphQL */ `subscription OnCreateServiceV
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2108,6 +2151,7 @@ export const onUpdateServiceVideo = /* GraphQL */ `subscription OnUpdateServiceV
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2148,6 +2192,7 @@ export const onDeleteServiceVideo = /* GraphQL */ `subscription OnDeleteServiceV
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2188,6 +2233,7 @@ export const onCreateServiceImage = /* GraphQL */ `subscription OnCreateServiceI
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2228,6 +2274,7 @@ export const onUpdateServiceImage = /* GraphQL */ `subscription OnUpdateServiceI
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2268,6 +2315,7 @@ export const onDeleteServiceImage = /* GraphQL */ `subscription OnDeleteServiceI
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2308,6 +2356,7 @@ export const onCreateServiceReview = /* GraphQL */ `subscription OnCreateService
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2351,6 +2400,7 @@ export const onCreateServiceReview = /* GraphQL */ `subscription OnCreateService
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2384,6 +2434,7 @@ export const onUpdateServiceReview = /* GraphQL */ `subscription OnUpdateService
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2427,6 +2478,7 @@ export const onUpdateServiceReview = /* GraphQL */ `subscription OnUpdateService
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2460,6 +2512,7 @@ export const onDeleteServiceReview = /* GraphQL */ `subscription OnDeleteService
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2503,6 +2556,7 @@ export const onDeleteServiceReview = /* GraphQL */ `subscription OnDeleteService
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2658,6 +2712,7 @@ export const onCreateCustomization = /* GraphQL */ `subscription OnCreateCustomi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2713,6 +2768,7 @@ export const onUpdateCustomization = /* GraphQL */ `subscription OnUpdateCustomi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2768,6 +2824,7 @@ export const onDeleteCustomization = /* GraphQL */ `subscription OnDeleteCustomi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2819,6 +2876,7 @@ export const onCreateExpense = /* GraphQL */ `subscription OnCreateExpense($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2872,6 +2930,7 @@ export const onUpdateExpense = /* GraphQL */ `subscription OnUpdateExpense($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2925,6 +2984,7 @@ export const onDeleteExpense = /* GraphQL */ `subscription OnDeleteExpense($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2982,6 +3042,7 @@ export const onCreateFavoriteProvider = /* GraphQL */ `subscription OnCreateFavo
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3014,6 +3075,7 @@ export const onCreateFavoriteProvider = /* GraphQL */ `subscription OnCreateFavo
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3069,6 +3131,7 @@ export const onUpdateFavoriteProvider = /* GraphQL */ `subscription OnUpdateFavo
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3101,6 +3164,7 @@ export const onUpdateFavoriteProvider = /* GraphQL */ `subscription OnUpdateFavo
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3156,6 +3220,7 @@ export const onDeleteFavoriteProvider = /* GraphQL */ `subscription OnDeleteFavo
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3188,6 +3253,7 @@ export const onDeleteFavoriteProvider = /* GraphQL */ `subscription OnDeleteFavo
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3243,6 +3309,7 @@ export const onCreateUserHistory = /* GraphQL */ `subscription OnCreateUserHisto
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3298,6 +3365,7 @@ export const onUpdateUserHistory = /* GraphQL */ `subscription OnUpdateUserHisto
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3353,6 +3421,7 @@ export const onDeleteUserHistory = /* GraphQL */ `subscription OnDeleteUserHisto
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3406,6 +3475,7 @@ export const onCreateProviderAward = /* GraphQL */ `subscription OnCreateProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3460,6 +3530,7 @@ export const onUpdateProviderAward = /* GraphQL */ `subscription OnUpdateProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3514,6 +3585,7 @@ export const onDeleteProviderAward = /* GraphQL */ `subscription OnDeleteProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3568,6 +3640,7 @@ export const onCreateReferral = /* GraphQL */ `subscription OnCreateReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3602,6 +3675,7 @@ export const onCreateReferral = /* GraphQL */ `subscription OnCreateReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3670,6 +3744,7 @@ export const onUpdateReferral = /* GraphQL */ `subscription OnUpdateReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3704,6 +3779,7 @@ export const onUpdateReferral = /* GraphQL */ `subscription OnUpdateReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3772,6 +3848,7 @@ export const onDeleteReferral = /* GraphQL */ `subscription OnDeleteReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3806,6 +3883,7 @@ export const onDeleteReferral = /* GraphQL */ `subscription OnDeleteReferral($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3874,6 +3952,7 @@ export const onCreateTip = /* GraphQL */ `subscription OnCreateTip($filter: Mode
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3906,6 +3985,7 @@ export const onCreateTip = /* GraphQL */ `subscription OnCreateTip($filter: Mode
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3959,6 +4039,7 @@ export const onUpdateTip = /* GraphQL */ `subscription OnUpdateTip($filter: Mode
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3991,6 +4072,7 @@ export const onUpdateTip = /* GraphQL */ `subscription OnUpdateTip($filter: Mode
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4044,6 +4126,7 @@ export const onDeleteTip = /* GraphQL */ `subscription OnDeleteTip($filter: Mode
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4076,6 +4159,7 @@ export const onDeleteTip = /* GraphQL */ `subscription OnDeleteTip($filter: Mode
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4131,6 +4215,7 @@ export const onCreatePaymentMethod = /* GraphQL */ `subscription OnCreatePayment
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4186,6 +4271,7 @@ export const onUpdatePaymentMethod = /* GraphQL */ `subscription OnUpdatePayment
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4241,6 +4327,7 @@ export const onDeletePaymentMethod = /* GraphQL */ `subscription OnDeletePayment
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4294,6 +4381,7 @@ export const onCreateInvoice = /* GraphQL */ `subscription OnCreateInvoice($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4326,6 +4414,7 @@ export const onCreateInvoice = /* GraphQL */ `subscription OnCreateInvoice($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4386,6 +4475,7 @@ export const onUpdateInvoice = /* GraphQL */ `subscription OnUpdateInvoice($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4418,6 +4508,7 @@ export const onUpdateInvoice = /* GraphQL */ `subscription OnUpdateInvoice($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4478,6 +4569,7 @@ export const onDeleteInvoice = /* GraphQL */ `subscription OnDeleteInvoice($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4510,6 +4602,7 @@ export const onDeleteInvoice = /* GraphQL */ `subscription OnDeleteInvoice($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4570,6 +4663,7 @@ export const onCreateContract = /* GraphQL */ `subscription OnCreateContract($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4602,6 +4696,7 @@ export const onCreateContract = /* GraphQL */ `subscription OnCreateContract($fi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4613,6 +4708,7 @@ export const onCreateContract = /* GraphQL */ `subscription OnCreateContract($fi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4677,6 +4773,7 @@ export const onUpdateContract = /* GraphQL */ `subscription OnUpdateContract($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4709,6 +4806,7 @@ export const onUpdateContract = /* GraphQL */ `subscription OnUpdateContract($fi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4720,6 +4818,7 @@ export const onUpdateContract = /* GraphQL */ `subscription OnUpdateContract($fi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4784,6 +4883,7 @@ export const onDeleteContract = /* GraphQL */ `subscription OnDeleteContract($fi
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4816,6 +4916,7 @@ export const onDeleteContract = /* GraphQL */ `subscription OnDeleteContract($fi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4827,6 +4928,7 @@ export const onDeleteContract = /* GraphQL */ `subscription OnDeleteContract($fi
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5112,6 +5214,7 @@ export const onCreateLoyaltyProgram = /* GraphQL */ `subscription OnCreateLoyalt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5170,6 +5273,7 @@ export const onUpdateLoyaltyProgram = /* GraphQL */ `subscription OnUpdateLoyalt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5228,6 +5332,7 @@ export const onDeleteLoyaltyProgram = /* GraphQL */ `subscription OnDeleteLoyalt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5286,6 +5391,7 @@ export const onCreateVerification = /* GraphQL */ `subscription OnCreateVerifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5341,6 +5447,7 @@ export const onUpdateVerification = /* GraphQL */ `subscription OnUpdateVerifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5396,6 +5503,7 @@ export const onDeleteVerification = /* GraphQL */ `subscription OnDeleteVerifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5563,6 +5671,7 @@ export const onCreateReport = /* GraphQL */ `subscription OnCreateReport($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5616,6 +5725,7 @@ export const onUpdateReport = /* GraphQL */ `subscription OnUpdateReport($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5669,6 +5779,7 @@ export const onDeleteReport = /* GraphQL */ `subscription OnDeleteReport($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5724,6 +5835,7 @@ export const onCreateJobTracking = /* GraphQL */ `subscription OnCreateJobTracki
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5756,6 +5868,7 @@ export const onCreateJobTracking = /* GraphQL */ `subscription OnCreateJobTracki
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5767,6 +5880,7 @@ export const onCreateJobTracking = /* GraphQL */ `subscription OnCreateJobTracki
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5833,6 +5947,7 @@ export const onUpdateJobTracking = /* GraphQL */ `subscription OnUpdateJobTracki
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5865,6 +5980,7 @@ export const onUpdateJobTracking = /* GraphQL */ `subscription OnUpdateJobTracki
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5876,6 +5992,7 @@ export const onUpdateJobTracking = /* GraphQL */ `subscription OnUpdateJobTracki
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5942,6 +6059,7 @@ export const onDeleteJobTracking = /* GraphQL */ `subscription OnDeleteJobTracki
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5974,6 +6092,7 @@ export const onDeleteJobTracking = /* GraphQL */ `subscription OnDeleteJobTracki
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5985,6 +6104,7 @@ export const onDeleteJobTracking = /* GraphQL */ `subscription OnDeleteJobTracki
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6049,6 +6169,7 @@ export const onCreateAIChatLog = /* GraphQL */ `subscription OnCreateAIChatLog($
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6115,6 +6236,7 @@ export const onUpdateAIChatLog = /* GraphQL */ `subscription OnUpdateAIChatLog($
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6181,6 +6303,7 @@ export const onDeleteAIChatLog = /* GraphQL */ `subscription OnDeleteAIChatLog($
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -7211,6 +7334,7 @@ export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7245,6 +7369,7 @@ export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7256,6 +7381,7 @@ export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7331,6 +7457,7 @@ export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7365,6 +7492,7 @@ export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7376,6 +7504,7 @@ export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7451,6 +7580,7 @@ export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7485,6 +7615,7 @@ export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7496,6 +7627,7 @@ export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7681,6 +7813,7 @@ export const onCreateMessageThread = /* GraphQL */ `subscription OnCreateMessage
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7715,6 +7848,7 @@ export const onCreateMessageThread = /* GraphQL */ `subscription OnCreateMessage
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7774,6 +7908,7 @@ export const onUpdateMessageThread = /* GraphQL */ `subscription OnUpdateMessage
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7808,6 +7943,7 @@ export const onUpdateMessageThread = /* GraphQL */ `subscription OnUpdateMessage
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7867,6 +8003,7 @@ export const onDeleteMessageThread = /* GraphQL */ `subscription OnDeleteMessage
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7901,6 +8038,7 @@ export const onDeleteMessageThread = /* GraphQL */ `subscription OnDeleteMessage
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -8046,6 +8184,7 @@ export const onCreateBooking = /* GraphQL */ `subscription OnCreateBooking($filt
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8087,6 +8226,7 @@ export const onCreateBooking = /* GraphQL */ `subscription OnCreateBooking($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8121,6 +8261,7 @@ export const onCreateBooking = /* GraphQL */ `subscription OnCreateBooking($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8157,6 +8298,7 @@ export const onUpdateBooking = /* GraphQL */ `subscription OnUpdateBooking($filt
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8198,6 +8340,7 @@ export const onUpdateBooking = /* GraphQL */ `subscription OnUpdateBooking($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8232,6 +8375,7 @@ export const onUpdateBooking = /* GraphQL */ `subscription OnUpdateBooking($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8268,6 +8412,7 @@ export const onDeleteBooking = /* GraphQL */ `subscription OnDeleteBooking($filt
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8309,6 +8454,7 @@ export const onDeleteBooking = /* GraphQL */ `subscription OnDeleteBooking($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8343,6 +8489,7 @@ export const onDeleteBooking = /* GraphQL */ `subscription OnDeleteBooking($filt
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8424,6 +8571,7 @@ export const onCreateTeamMember = /* GraphQL */ `subscription OnCreateTeamMember
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8501,6 +8649,7 @@ export const onUpdateTeamMember = /* GraphQL */ `subscription OnUpdateTeamMember
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8578,6 +8727,7 @@ export const onDeleteTeamMember = /* GraphQL */ `subscription OnDeleteTeamMember
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8804,6 +8954,7 @@ export const onCreateService = /* GraphQL */ `subscription OnCreateService($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8952,6 +9103,7 @@ export const onCreateService = /* GraphQL */ `subscription OnCreateService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9004,6 +9156,7 @@ export const onUpdateService = /* GraphQL */ `subscription OnUpdateService($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9152,6 +9305,7 @@ export const onUpdateService = /* GraphQL */ `subscription OnUpdateService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9204,6 +9358,7 @@ export const onDeleteService = /* GraphQL */ `subscription OnDeleteService($filt
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9352,6 +9507,7 @@ export const onDeleteService = /* GraphQL */ `subscription OnDeleteService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9508,12 +9664,25 @@ export const onCreateProvider = /* GraphQL */ `subscription OnCreateProvider($fi
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9661,12 +9830,25 @@ export const onUpdateProvider = /* GraphQL */ `subscription OnUpdateProvider($fi
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9814,12 +9996,25 @@ export const onDeleteProvider = /* GraphQL */ `subscription OnDeleteProvider($fi
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9864,6 +10059,7 @@ export const onCreateAvailability = /* GraphQL */ `subscription OnCreateAvailabi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9917,6 +10113,7 @@ export const onUpdateAvailability = /* GraphQL */ `subscription OnUpdateAvailabi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9970,6 +10167,7 @@ export const onDeleteAvailability = /* GraphQL */ `subscription OnDeleteAvailabi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -10088,6 +10286,7 @@ export const onCreateCertification = /* GraphQL */ `subscription OnCreateCertifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10142,6 +10341,7 @@ export const onUpdateCertification = /* GraphQL */ `subscription OnUpdateCertifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10196,6 +10396,7 @@ export const onDeleteCertification = /* GraphQL */ `subscription OnDeleteCertifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10249,6 +10450,7 @@ export const onCreateQualification = /* GraphQL */ `subscription OnCreateQualifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10302,6 +10504,7 @@ export const onUpdateQualification = /* GraphQL */ `subscription OnUpdateQualifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10355,6 +10558,7 @@ export const onDeleteQualification = /* GraphQL */ `subscription OnDeleteQualifi
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10407,6 +10611,7 @@ export const onCreateSpecialization = /* GraphQL */ `subscription OnCreateSpecia
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10459,6 +10664,7 @@ export const onUpdateSpecialization = /* GraphQL */ `subscription OnUpdateSpecia
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10511,6 +10717,7 @@ export const onDeleteSpecialization = /* GraphQL */ `subscription OnDeleteSpecia
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10777,12 +10984,25 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -10975,12 +11195,25 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -11173,12 +11406,25 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }

@@ -1,3 +1,48 @@
+  scalar AWSPhone
+  scalar AWSURL
+  scalar AWSDate
+  scalar AWSDateTime
+  scalar AWSTime
+  scalar AWSEmail
+
+  directive @model on OBJECT | FIELD_DEFINITION
+  directive @auth(rules: [AuthRule!]) on OBJECT | FIELD_DEFINITION
+  directive @belongsTo(fields: [String!]) on FIELD_DEFINITION
+  directive @hasMany on FIELD_DEFINITION
+  directive @hasOne on FIELD_DEFINITION
+
+  input AuthRule {
+    allow: AuthStrategy!
+    provider: AuthProvider
+    ownerField: String
+    identityClaim: String
+    groupClaim: String
+    groups: [String]
+    groupsField: String
+    operations: [ModelOperation!]
+  }
+
+  enum AuthStrategy {
+    owner
+    groups
+    private
+    public
+  }
+
+  enum AuthProvider {
+    apiKey
+    iam
+    oidc
+    userPools
+  }
+
+  enum ModelOperation {
+    create
+    update
+    delete
+    read
+  }
+
 type ServicePromotion @model @auth(rules: [{allow: public}]) {
   id: ID!
   service: Service @belongsTo
@@ -560,6 +605,7 @@ type Service @model @auth(rules: [{allow: public}]) {
   Materials: String
   MaterialCosts: Float
   BookingRequirements: String
+  isInstantBookingAvailable: Boolean
 }
 
 type Provider @model @auth(rules: [{allow: public}]) {
@@ -609,6 +655,7 @@ type Provider @model @auth(rules: [{allow: public}]) {
   providerAwards: [ProviderAward] @hasMany
   jobTracking: [JobTracking] @hasMany
   expenses: [Expense] @hasMany
+  currentLocation: Location @hasOne
 }
 
 type Availability @model @auth(rules: [{allow: public}]) {
@@ -715,6 +762,7 @@ type User @model @auth(rules: [{allow: public}]) {
   verifications: [Verification] @hasMany
   preferredContactTime: AWSTime
   serviceInterestedIn: String
+  curentLocation: Location @hasOne
 }
 
 enum Gender {

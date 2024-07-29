@@ -23,6 +23,7 @@ exports.createServicePromotion = `mutation CreateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -63,6 +64,7 @@ exports.updateServicePromotion = `mutation UpdateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -103,6 +105,7 @@ exports.deleteServicePromotion = `mutation DeleteServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -164,6 +167,7 @@ exports.createProviderReport = `mutation CreateProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -215,6 +219,7 @@ exports.updateProviderReport = `mutation UpdateProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -266,6 +271,7 @@ exports.deleteProviderReport = `mutation DeleteProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -319,6 +325,7 @@ exports.createUserReport = `mutation CreateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -372,6 +379,7 @@ exports.updateUserReport = `mutation UpdateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -425,6 +433,7 @@ exports.deleteUserReport = `mutation DeleteUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -478,6 +487,7 @@ exports.createUserInvoice = `mutation CreateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -533,6 +543,7 @@ exports.updateUserInvoice = `mutation UpdateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -588,6 +599,7 @@ exports.deleteUserInvoice = `mutation DeleteUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -641,6 +653,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -675,6 +688,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -726,6 +740,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -760,6 +775,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -811,6 +827,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -845,6 +862,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -898,6 +916,7 @@ exports.createUserBookmark = `mutation CreateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -909,6 +928,7 @@ exports.createUserBookmark = `mutation CreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -970,6 +990,7 @@ exports.updateUserBookmark = `mutation UpdateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -981,6 +1002,7 @@ exports.updateUserBookmark = `mutation UpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1042,6 +1064,7 @@ exports.deleteUserBookmark = `mutation DeleteUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1053,6 +1076,7 @@ exports.deleteUserBookmark = `mutation DeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1112,6 +1136,7 @@ exports.createProviderNotification = `mutation CreateProviderNotification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1164,6 +1189,7 @@ exports.updateProviderNotification = `mutation UpdateProviderNotification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1216,6 +1242,7 @@ exports.deleteProviderNotification = `mutation DeleteProviderNotification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1270,6 +1297,7 @@ exports.createUserNotification = `mutation CreateUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1324,6 +1352,7 @@ exports.updateUserNotification = `mutation UpdateUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1378,6 +1407,7 @@ exports.deleteUserNotification = `mutation DeleteUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1409,6 +1439,7 @@ exports.createServiceDiscount = `mutation CreateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1448,6 +1479,7 @@ exports.updateServiceDiscount = `mutation UpdateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1487,6 +1519,7 @@ exports.deleteServiceDiscount = `mutation DeleteServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1547,6 +1580,7 @@ exports.createProviderAvailability = `mutation CreateProviderAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1598,6 +1632,7 @@ exports.updateProviderAvailability = `mutation UpdateProviderAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1649,6 +1684,7 @@ exports.deleteProviderAvailability = `mutation DeleteProviderAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1702,6 +1738,7 @@ exports.createUserPreference = `mutation CreateUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1755,6 +1792,7 @@ exports.updateUserPreference = `mutation UpdateUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1808,6 +1846,7 @@ exports.deleteUserPreference = `mutation DeleteUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1859,6 +1898,7 @@ exports.createProviderCertification = `mutation CreateProviderCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1912,6 +1952,7 @@ exports.updateProviderCertification = `mutation UpdateProviderCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1965,6 +2006,7 @@ exports.deleteProviderCertification = `mutation DeleteProviderCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1997,6 +2039,7 @@ exports.createServiceVideo = `mutation CreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2035,6 +2078,7 @@ exports.updateServiceVideo = `mutation UpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2073,6 +2117,7 @@ exports.deleteServiceVideo = `mutation DeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2111,6 +2156,7 @@ exports.createServiceImage = `mutation CreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2149,6 +2195,7 @@ exports.updateServiceImage = `mutation UpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2187,6 +2234,7 @@ exports.deleteServiceImage = `mutation DeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2225,6 +2273,7 @@ exports.createServiceReview = `mutation CreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2268,6 +2317,7 @@ exports.createServiceReview = `mutation CreateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2299,6 +2349,7 @@ exports.updateServiceReview = `mutation UpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2342,6 +2393,7 @@ exports.updateServiceReview = `mutation UpdateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2373,6 +2425,7 @@ exports.deleteServiceReview = `mutation DeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2416,6 +2469,7 @@ exports.deleteServiceReview = `mutation DeleteServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2563,6 +2617,7 @@ exports.createCustomization = `mutation CreateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2616,6 +2671,7 @@ exports.updateCustomization = `mutation UpdateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2669,6 +2725,7 @@ exports.deleteCustomization = `mutation DeleteCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2720,6 +2777,7 @@ exports.createExpense = `mutation CreateExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2773,6 +2831,7 @@ exports.updateExpense = `mutation UpdateExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2826,6 +2885,7 @@ exports.deleteExpense = `mutation DeleteExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2881,6 +2941,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2913,6 +2974,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -2966,6 +3028,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2998,6 +3061,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3051,6 +3115,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3083,6 +3148,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3136,6 +3202,7 @@ exports.createUserHistory = `mutation CreateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3189,6 +3256,7 @@ exports.updateUserHistory = `mutation UpdateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3242,6 +3310,7 @@ exports.deleteUserHistory = `mutation DeleteUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3293,6 +3362,7 @@ exports.createProviderAward = `mutation CreateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3345,6 +3415,7 @@ exports.updateProviderAward = `mutation UpdateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3397,6 +3468,7 @@ exports.deleteProviderAward = `mutation DeleteProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3451,6 +3523,7 @@ exports.createReferral = `mutation CreateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3485,6 +3558,7 @@ exports.createReferral = `mutation CreateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3553,6 +3627,7 @@ exports.updateReferral = `mutation UpdateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3587,6 +3662,7 @@ exports.updateReferral = `mutation UpdateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3655,6 +3731,7 @@ exports.deleteReferral = `mutation DeleteReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3689,6 +3766,7 @@ exports.deleteReferral = `mutation DeleteReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3757,6 +3835,7 @@ exports.createTip = `mutation CreateTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3789,6 +3868,7 @@ exports.createTip = `mutation CreateTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3842,6 +3922,7 @@ exports.updateTip = `mutation UpdateTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3874,6 +3955,7 @@ exports.updateTip = `mutation UpdateTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3927,6 +4009,7 @@ exports.deleteTip = `mutation DeleteTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3959,6 +4042,7 @@ exports.deleteTip = `mutation DeleteTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4012,6 +4096,7 @@ exports.createPaymentMethod = `mutation CreatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4065,6 +4150,7 @@ exports.updatePaymentMethod = `mutation UpdatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4118,6 +4204,7 @@ exports.deletePaymentMethod = `mutation DeletePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4171,6 +4258,7 @@ exports.createInvoice = `mutation CreateInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4203,6 +4291,7 @@ exports.createInvoice = `mutation CreateInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4263,6 +4352,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4295,6 +4385,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4355,6 +4446,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4387,6 +4479,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4447,6 +4540,7 @@ exports.createContract = `mutation CreateContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4479,6 +4573,7 @@ exports.createContract = `mutation CreateContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4490,6 +4585,7 @@ exports.createContract = `mutation CreateContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4554,6 +4650,7 @@ exports.updateContract = `mutation UpdateContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4586,6 +4683,7 @@ exports.updateContract = `mutation UpdateContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4597,6 +4695,7 @@ exports.updateContract = `mutation UpdateContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4661,6 +4760,7 @@ exports.deleteContract = `mutation DeleteContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4693,6 +4793,7 @@ exports.deleteContract = `mutation DeleteContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4704,6 +4805,7 @@ exports.deleteContract = `mutation DeleteContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4975,6 +5077,7 @@ exports.createLoyaltyProgram = `mutation CreateLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5031,6 +5134,7 @@ exports.updateLoyaltyProgram = `mutation UpdateLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5087,6 +5191,7 @@ exports.deleteLoyaltyProgram = `mutation DeleteLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5143,6 +5248,7 @@ exports.createVerification = `mutation CreateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5196,6 +5302,7 @@ exports.updateVerification = `mutation UpdateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5249,6 +5356,7 @@ exports.deleteVerification = `mutation DeleteVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5416,6 +5524,7 @@ exports.createReport = `mutation CreateReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5469,6 +5578,7 @@ exports.updateReport = `mutation UpdateReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5522,6 +5632,7 @@ exports.deleteReport = `mutation DeleteReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5575,6 +5686,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5607,6 +5719,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5618,6 +5731,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5682,6 +5796,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5714,6 +5829,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5725,6 +5841,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5789,6 +5906,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5821,6 +5939,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5832,6 +5951,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5896,6 +6016,7 @@ exports.createAIChatLog = `mutation CreateAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -5962,6 +6083,7 @@ exports.updateAIChatLog = `mutation UpdateAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6028,6 +6150,7 @@ exports.deleteAIChatLog = `mutation DeleteAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6998,6 +7121,7 @@ exports.createReview = `mutation CreateReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7032,6 +7156,7 @@ exports.createReview = `mutation CreateReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7043,6 +7168,7 @@ exports.createReview = `mutation CreateReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7118,6 +7244,7 @@ exports.updateReview = `mutation UpdateReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7152,6 +7279,7 @@ exports.updateReview = `mutation UpdateReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7163,6 +7291,7 @@ exports.updateReview = `mutation UpdateReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7238,6 +7367,7 @@ exports.deleteReview = `mutation DeleteReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7272,6 +7402,7 @@ exports.deleteReview = `mutation DeleteReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7283,6 +7414,7 @@ exports.deleteReview = `mutation DeleteReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7460,6 +7592,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7494,6 +7627,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7551,6 +7685,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7585,6 +7720,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7642,6 +7778,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7676,6 +7813,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7815,6 +7953,7 @@ exports.createBooking = `mutation CreateBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7856,6 +7995,7 @@ exports.createBooking = `mutation CreateBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7890,6 +8030,7 @@ exports.createBooking = `mutation CreateBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -7926,6 +8067,7 @@ exports.updateBooking = `mutation UpdateBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7967,6 +8109,7 @@ exports.updateBooking = `mutation UpdateBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8001,6 +8144,7 @@ exports.updateBooking = `mutation UpdateBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8037,6 +8181,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8078,6 +8223,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8112,6 +8258,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8191,6 +8338,7 @@ exports.createTeamMember = `mutation CreateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8266,6 +8414,7 @@ exports.updateTeamMember = `mutation UpdateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8341,6 +8490,7 @@ exports.deleteTeamMember = `mutation DeleteTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8567,6 +8717,7 @@ exports.createService = `mutation CreateService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8715,6 +8866,7 @@ exports.createService = `mutation CreateService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8767,6 +8919,7 @@ exports.updateService = `mutation UpdateService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8915,6 +9068,7 @@ exports.updateService = `mutation UpdateService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8967,6 +9121,7 @@ exports.deleteService = `mutation DeleteService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9115,6 +9270,7 @@ exports.deleteService = `mutation DeleteService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9271,12 +9427,25 @@ exports.createProvider = `mutation CreateProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9424,12 +9593,25 @@ exports.updateProvider = `mutation UpdateProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9577,12 +9759,25 @@ exports.deleteProvider = `mutation DeleteProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9625,6 +9820,7 @@ exports.createAvailability = `mutation CreateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9676,6 +9872,7 @@ exports.updateAvailability = `mutation UpdateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9727,6 +9924,7 @@ exports.deleteAvailability = `mutation DeleteAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9837,6 +10035,7 @@ exports.createCertification = `mutation CreateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9889,6 +10088,7 @@ exports.updateCertification = `mutation UpdateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9941,6 +10141,7 @@ exports.deleteCertification = `mutation DeleteCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9992,6 +10193,7 @@ exports.createQualification = `mutation CreateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10043,6 +10245,7 @@ exports.updateQualification = `mutation UpdateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10094,6 +10297,7 @@ exports.deleteQualification = `mutation DeleteQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10144,6 +10348,7 @@ exports.createSpecialization = `mutation CreateSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10194,6 +10399,7 @@ exports.updateSpecialization = `mutation UpdateSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10244,6 +10450,7 @@ exports.deleteSpecialization = `mutation DeleteSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10504,12 +10711,25 @@ exports.createUser = `mutation CreateUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -10702,12 +10922,25 @@ exports.updateUser = `mutation UpdateUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -10900,12 +11133,25 @@ exports.deleteUser = `mutation DeleteUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }

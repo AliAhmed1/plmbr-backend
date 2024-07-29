@@ -20,6 +20,7 @@ exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -136,6 +137,7 @@ exports.getProviderReport = `query GetProviderReport($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -242,6 +244,7 @@ exports.getUserReport = `query GetUserReport($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -348,6 +351,7 @@ exports.getUserInvoice = `query GetUserInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -458,6 +462,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -492,6 +497,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -598,6 +604,7 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -609,6 +616,7 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -719,6 +727,7 @@ exports.getProviderNotification = `query GetProviderNotification($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -832,6 +841,7 @@ exports.getUserNotification = `query GetUserNotification($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -918,6 +928,7 @@ exports.getServiceDiscount = `query GetServiceDiscount($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1031,6 +1042,7 @@ exports.getProviderAvailability = `query GetProviderAvailability($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1141,6 +1153,7 @@ exports.getUserPreference = `query GetUserPreference($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1245,6 +1258,7 @@ exports.getProviderCertification = `query GetProviderCertification($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1338,6 +1352,7 @@ exports.getServiceVideo = `query GetServiceVideo($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1427,6 +1442,7 @@ exports.getServiceImage = `query GetServiceImage($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1516,6 +1532,7 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1559,6 +1576,7 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -1752,6 +1770,7 @@ exports.getCustomization = `query GetCustomization($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -1856,6 +1875,7 @@ exports.getExpense = `query GetExpense($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -1968,6 +1988,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2000,6 +2021,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -2106,6 +2128,7 @@ exports.getUserHistory = `query GetUserHistory($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -2210,6 +2233,7 @@ exports.getProviderAward = `query GetProviderAward($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -2319,6 +2343,7 @@ exports.getReferral = `query GetReferral($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -2353,6 +2378,7 @@ exports.getReferral = `query GetReferral($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -2476,6 +2502,7 @@ exports.getTip = `query GetTip($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2508,6 +2535,7 @@ exports.getTip = `query GetTip($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2610,6 +2638,7 @@ exports.getPaymentMethod = `query GetPaymentMethod($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -2716,6 +2745,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2748,6 +2778,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2865,6 +2896,7 @@ exports.getContract = `query GetContract($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2897,6 +2929,7 @@ exports.getContract = `query GetContract($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -2908,6 +2941,7 @@ exports.getContract = `query GetContract($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3251,6 +3285,7 @@ exports.getLoyaltyProgram = `query GetLoyaltyProgram($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -3356,6 +3391,7 @@ exports.getVerification = `query GetVerification($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -3606,6 +3642,7 @@ exports.getReport = `query GetReport($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -3712,6 +3749,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3744,6 +3782,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -3755,6 +3794,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3876,6 +3916,7 @@ exports.getAIChatLog = `query GetAIChatLog($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -5032,6 +5073,7 @@ exports.getReview = `query GetReview($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -5066,6 +5108,7 @@ exports.getReview = `query GetReview($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -5077,6 +5120,7 @@ exports.getReview = `query GetReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5296,6 +5340,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -5330,6 +5375,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -5511,6 +5557,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5552,6 +5599,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -5586,6 +5634,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -5730,6 +5779,7 @@ exports.getTeamMember = `query GetTeamMember($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -6054,6 +6104,7 @@ exports.getService = `query GetService($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -6202,6 +6253,7 @@ exports.getService = `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -6230,6 +6282,7 @@ exports.listServices = `query ListServices(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6268,6 +6321,7 @@ exports.syncServices = `query SyncServices(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6425,12 +6479,25 @@ exports.getProvider = `query GetProvider($id: ID!) {
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -6471,6 +6538,7 @@ exports.listProviders = `query ListProviders(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     nextToken
@@ -6521,6 +6589,7 @@ exports.syncProviders = `query SyncProviders(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     nextToken
@@ -6564,6 +6633,7 @@ exports.getAvailability = `query GetAvailability($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -6742,6 +6812,7 @@ exports.getCertification = `query GetCertification($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -6848,6 +6919,7 @@ exports.getQualification = `query GetQualification($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -6951,6 +7023,7 @@ exports.getSpecialization = `query GetSpecialization($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -7277,12 +7350,25 @@ exports.getUser = `query GetUser($id: ID!) {
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -7325,6 +7411,7 @@ exports.listUsers = `query ListUsers(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     nextToken
@@ -7377,6 +7464,7 @@ exports.syncUsers = `query SyncUsers(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     nextToken

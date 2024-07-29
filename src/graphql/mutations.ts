@@ -23,6 +23,7 @@ export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromo
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -66,6 +67,7 @@ export const updateServicePromotion = /* GraphQL */ `mutation UpdateServicePromo
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -109,6 +111,7 @@ export const deleteServicePromotion = /* GraphQL */ `mutation DeleteServicePromo
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -173,6 +176,7 @@ export const createProviderReport = /* GraphQL */ `mutation CreateProviderReport
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -227,6 +231,7 @@ export const updateProviderReport = /* GraphQL */ `mutation UpdateProviderReport
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -281,6 +286,7 @@ export const deleteProviderReport = /* GraphQL */ `mutation DeleteProviderReport
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -337,6 +343,7 @@ export const createUserReport = /* GraphQL */ `mutation CreateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -393,6 +400,7 @@ export const updateUserReport = /* GraphQL */ `mutation UpdateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -449,6 +457,7 @@ export const deleteUserReport = /* GraphQL */ `mutation DeleteUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -505,6 +514,7 @@ export const createUserInvoice = /* GraphQL */ `mutation CreateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -563,6 +573,7 @@ export const updateUserInvoice = /* GraphQL */ `mutation UpdateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -621,6 +632,7 @@ export const deleteUserInvoice = /* GraphQL */ `mutation DeleteUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -677,6 +689,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -711,6 +724,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -765,6 +779,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -799,6 +814,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -853,6 +869,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -887,6 +904,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -943,6 +961,7 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -954,6 +973,7 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1018,6 +1038,7 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1029,6 +1050,7 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1093,6 +1115,7 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1104,6 +1127,7 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1166,6 +1190,7 @@ export const createProviderNotification = /* GraphQL */ `mutation CreateProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1221,6 +1246,7 @@ export const updateProviderNotification = /* GraphQL */ `mutation UpdateProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1276,6 +1302,7 @@ export const deleteProviderNotification = /* GraphQL */ `mutation DeleteProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1333,6 +1360,7 @@ export const createUserNotification = /* GraphQL */ `mutation CreateUserNotifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1390,6 +1418,7 @@ export const updateUserNotification = /* GraphQL */ `mutation UpdateUserNotifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1447,6 +1476,7 @@ export const deleteUserNotification = /* GraphQL */ `mutation DeleteUserNotifica
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1481,6 +1511,7 @@ export const createServiceDiscount = /* GraphQL */ `mutation CreateServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1523,6 +1554,7 @@ export const updateServiceDiscount = /* GraphQL */ `mutation UpdateServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1565,6 +1597,7 @@ export const deleteServiceDiscount = /* GraphQL */ `mutation DeleteServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1628,6 +1661,7 @@ export const createProviderAvailability = /* GraphQL */ `mutation CreateProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1682,6 +1716,7 @@ export const updateProviderAvailability = /* GraphQL */ `mutation UpdateProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1736,6 +1771,7 @@ export const deleteProviderAvailability = /* GraphQL */ `mutation DeleteProvider
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1792,6 +1828,7 @@ export const createUserPreference = /* GraphQL */ `mutation CreateUserPreference
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1848,6 +1885,7 @@ export const updateUserPreference = /* GraphQL */ `mutation UpdateUserPreference
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1904,6 +1942,7 @@ export const deleteUserPreference = /* GraphQL */ `mutation DeleteUserPreference
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1958,6 +1997,7 @@ export const createProviderCertification = /* GraphQL */ `mutation CreateProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -2014,6 +2054,7 @@ export const updateProviderCertification = /* GraphQL */ `mutation UpdateProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -2070,6 +2111,7 @@ export const deleteProviderCertification = /* GraphQL */ `mutation DeleteProvide
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -2105,6 +2147,7 @@ export const createServiceVideo = /* GraphQL */ `mutation CreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2146,6 +2189,7 @@ export const updateServiceVideo = /* GraphQL */ `mutation UpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2187,6 +2231,7 @@ export const deleteServiceVideo = /* GraphQL */ `mutation DeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2228,6 +2273,7 @@ export const createServiceImage = /* GraphQL */ `mutation CreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2269,6 +2315,7 @@ export const updateServiceImage = /* GraphQL */ `mutation UpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2310,6 +2357,7 @@ export const deleteServiceImage = /* GraphQL */ `mutation DeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2351,6 +2399,7 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2394,6 +2443,7 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2428,6 +2478,7 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2471,6 +2522,7 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2505,6 +2557,7 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2548,6 +2601,7 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2707,6 +2761,7 @@ export const createCustomization = /* GraphQL */ `mutation CreateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2763,6 +2818,7 @@ export const updateCustomization = /* GraphQL */ `mutation UpdateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2819,6 +2875,7 @@ export const deleteCustomization = /* GraphQL */ `mutation DeleteCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2873,6 +2930,7 @@ export const createExpense = /* GraphQL */ `mutation CreateExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2929,6 +2987,7 @@ export const updateExpense = /* GraphQL */ `mutation UpdateExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2985,6 +3044,7 @@ export const deleteExpense = /* GraphQL */ `mutation DeleteExpense(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3043,6 +3103,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3075,6 +3136,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3131,6 +3193,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3163,6 +3226,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3219,6 +3283,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3251,6 +3316,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3307,6 +3373,7 @@ export const createUserHistory = /* GraphQL */ `mutation CreateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3363,6 +3430,7 @@ export const updateUserHistory = /* GraphQL */ `mutation UpdateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3419,6 +3487,7 @@ export const deleteUserHistory = /* GraphQL */ `mutation DeleteUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3473,6 +3542,7 @@ export const createProviderAward = /* GraphQL */ `mutation CreateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3528,6 +3598,7 @@ export const updateProviderAward = /* GraphQL */ `mutation UpdateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3583,6 +3654,7 @@ export const deleteProviderAward = /* GraphQL */ `mutation DeleteProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3640,6 +3712,7 @@ export const createReferral = /* GraphQL */ `mutation CreateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3674,6 +3747,7 @@ export const createReferral = /* GraphQL */ `mutation CreateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3745,6 +3819,7 @@ export const updateReferral = /* GraphQL */ `mutation UpdateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3779,6 +3854,7 @@ export const updateReferral = /* GraphQL */ `mutation UpdateReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3850,6 +3926,7 @@ export const deleteReferral = /* GraphQL */ `mutation DeleteReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3884,6 +3961,7 @@ export const deleteReferral = /* GraphQL */ `mutation DeleteReferral(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3955,6 +4033,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3987,6 +4066,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4043,6 +4123,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4075,6 +4156,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4131,6 +4213,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4163,6 +4246,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4219,6 +4303,7 @@ export const createPaymentMethod = /* GraphQL */ `mutation CreatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4275,6 +4360,7 @@ export const updatePaymentMethod = /* GraphQL */ `mutation UpdatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4331,6 +4417,7 @@ export const deletePaymentMethod = /* GraphQL */ `mutation DeletePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4387,6 +4474,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4419,6 +4507,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4482,6 +4571,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4514,6 +4604,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4577,6 +4668,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4609,6 +4701,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4672,6 +4765,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4704,6 +4798,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4715,6 +4810,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4782,6 +4878,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4814,6 +4911,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4825,6 +4923,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4892,6 +4991,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4924,6 +5024,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4935,6 +5036,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5236,6 +5338,7 @@ export const createLoyaltyProgram = /* GraphQL */ `mutation CreateLoyaltyProgram
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5295,6 +5398,7 @@ export const updateLoyaltyProgram = /* GraphQL */ `mutation UpdateLoyaltyProgram
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5354,6 +5458,7 @@ export const deleteLoyaltyProgram = /* GraphQL */ `mutation DeleteLoyaltyProgram
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5413,6 +5518,7 @@ export const createVerification = /* GraphQL */ `mutation CreateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5469,6 +5575,7 @@ export const updateVerification = /* GraphQL */ `mutation UpdateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5525,6 +5632,7 @@ export const deleteVerification = /* GraphQL */ `mutation DeleteVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5713,6 +5821,7 @@ export const createReport = /* GraphQL */ `mutation CreateReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5769,6 +5878,7 @@ export const updateReport = /* GraphQL */ `mutation UpdateReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5825,6 +5935,7 @@ export const deleteReport = /* GraphQL */ `mutation DeleteReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5881,6 +5992,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5913,6 +6025,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5924,6 +6037,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5991,6 +6105,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -6023,6 +6138,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -6034,6 +6150,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6101,6 +6218,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -6133,6 +6251,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -6144,6 +6263,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6211,6 +6331,7 @@ export const createAIChatLog = /* GraphQL */ `mutation CreateAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6280,6 +6401,7 @@ export const updateAIChatLog = /* GraphQL */ `mutation UpdateAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6349,6 +6471,7 @@ export const deleteAIChatLog = /* GraphQL */ `mutation DeleteAIChatLog(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -7457,6 +7580,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7491,6 +7615,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7502,6 +7627,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7580,6 +7706,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7614,6 +7741,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7625,6 +7753,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7703,6 +7832,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7737,6 +7867,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7748,6 +7879,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7937,6 +8069,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7971,6 +8104,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -8031,6 +8165,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8065,6 +8200,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -8125,6 +8261,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8159,6 +8296,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -8310,6 +8448,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8351,6 +8490,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8385,6 +8525,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8424,6 +8565,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8465,6 +8607,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8499,6 +8642,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8538,6 +8682,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8579,6 +8724,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -8613,6 +8759,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -8695,6 +8842,7 @@ export const createTeamMember = /* GraphQL */ `mutation CreateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8773,6 +8921,7 @@ export const updateTeamMember = /* GraphQL */ `mutation UpdateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8851,6 +9000,7 @@ export const deleteTeamMember = /* GraphQL */ `mutation DeleteTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9107,6 +9257,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9255,6 +9406,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9310,6 +9462,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9458,6 +9611,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9513,6 +9667,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -9661,6 +9816,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9820,12 +9976,25 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9976,12 +10145,25 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -10132,12 +10314,25 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -10183,6 +10378,7 @@ export const createAvailability = /* GraphQL */ `mutation CreateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -10237,6 +10433,7 @@ export const updateAvailability = /* GraphQL */ `mutation UpdateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -10291,6 +10488,7 @@ export const deleteAvailability = /* GraphQL */ `mutation DeleteAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -10413,6 +10611,7 @@ export const createCertification = /* GraphQL */ `mutation CreateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10468,6 +10667,7 @@ export const updateCertification = /* GraphQL */ `mutation UpdateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10523,6 +10723,7 @@ export const deleteCertification = /* GraphQL */ `mutation DeleteCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10577,6 +10778,7 @@ export const createQualification = /* GraphQL */ `mutation CreateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10631,6 +10833,7 @@ export const updateQualification = /* GraphQL */ `mutation UpdateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10685,6 +10888,7 @@ export const deleteQualification = /* GraphQL */ `mutation DeleteQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10738,6 +10942,7 @@ export const createSpecialization = /* GraphQL */ `mutation CreateSpecialization
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10791,6 +10996,7 @@ export const updateSpecialization = /* GraphQL */ `mutation UpdateSpecialization
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10844,6 +11050,7 @@ export const deleteSpecialization = /* GraphQL */ `mutation DeleteSpecialization
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -11116,12 +11323,25 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -11317,12 +11537,25 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -11518,12 +11751,25 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }

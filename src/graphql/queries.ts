@@ -20,6 +20,7 @@ export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id:
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -145,6 +146,7 @@ export const getProviderReport = /* GraphQL */ `query GetProviderReport($id: ID!
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -260,6 +262,7 @@ export const getUserReport = /* GraphQL */ `query GetUserReport($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -375,6 +378,7 @@ export const getUserInvoice = /* GraphQL */ `query GetUserInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -494,6 +498,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -528,6 +533,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -643,6 +649,7 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -654,6 +661,7 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -773,6 +781,7 @@ export const getProviderNotification = /* GraphQL */ `query GetProviderNotificat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -895,6 +904,7 @@ export const getUserNotification = /* GraphQL */ `query GetUserNotification($id:
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -990,6 +1000,7 @@ export const getServiceDiscount = /* GraphQL */ `query GetServiceDiscount($id: I
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1112,6 +1123,7 @@ export const getProviderAvailability = /* GraphQL */ `query GetProviderAvailabil
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1231,6 +1243,7 @@ export const getUserPreference = /* GraphQL */ `query GetUserPreference($id: ID!
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1344,6 +1357,7 @@ export const getProviderCertification = /* GraphQL */ `query GetProviderCertific
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1446,6 +1460,7 @@ export const getServiceVideo = /* GraphQL */ `query GetServiceVideo($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1544,6 +1559,7 @@ export const getServiceImage = /* GraphQL */ `query GetServiceImage($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1642,6 +1658,7 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1685,6 +1702,7 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -1896,6 +1914,7 @@ export const getCustomization = /* GraphQL */ `query GetCustomization($id: ID!) 
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2009,6 +2028,7 @@ export const getExpense = /* GraphQL */ `query GetExpense($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2130,6 +2150,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2162,6 +2183,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -2277,6 +2299,7 @@ export const getUserHistory = /* GraphQL */ `query GetUserHistory($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -2390,6 +2413,7 @@ export const getProviderAward = /* GraphQL */ `query GetProviderAward($id: ID!) 
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -2508,6 +2532,7 @@ export const getReferral = /* GraphQL */ `query GetReferral($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -2542,6 +2567,7 @@ export const getReferral = /* GraphQL */ `query GetReferral($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -2674,6 +2700,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2706,6 +2733,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2808,6 +2836,7 @@ export const getPaymentMethod = /* GraphQL */ `query GetPaymentMethod($id: ID!) 
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -2923,6 +2952,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2955,6 +2985,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3081,6 +3112,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3113,6 +3145,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -3124,6 +3157,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3500,6 +3534,7 @@ export const getLoyaltyProgram = /* GraphQL */ `query GetLoyaltyProgram($id: ID!
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -3614,6 +3649,7 @@ export const getVerification = /* GraphQL */ `query GetVerification($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -3891,6 +3927,7 @@ export const getReport = /* GraphQL */ `query GetReport($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -4003,6 +4040,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4035,6 +4073,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4046,6 +4085,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4176,6 +4216,7 @@ export const getAIChatLog = /* GraphQL */ `query GetAIChatLog($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -5473,6 +5514,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -5507,6 +5549,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -5518,6 +5561,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5752,6 +5796,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -5786,6 +5831,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -5985,6 +6031,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6026,6 +6073,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -6060,6 +6108,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -6213,6 +6262,7 @@ export const getTeamMember = /* GraphQL */ `query GetTeamMember($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -6564,6 +6614,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -6712,6 +6763,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -6743,6 +6795,7 @@ export const listServices = /* GraphQL */ `query ListServices(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6784,6 +6837,7 @@ export const syncServices = /* GraphQL */ `query SyncServices(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6944,12 +6998,25 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -6993,6 +7060,7 @@ export const listProviders = /* GraphQL */ `query ListProviders(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     nextToken
@@ -7046,6 +7114,7 @@ export const syncProviders = /* GraphQL */ `query SyncProviders(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     nextToken
@@ -7092,6 +7161,7 @@ export const getAvailability = /* GraphQL */ `query GetAvailability($id: ID!) {
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -7288,6 +7358,7 @@ export const getCertification = /* GraphQL */ `query GetCertification($id: ID!) 
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -7403,6 +7474,7 @@ export const getQualification = /* GraphQL */ `query GetQualification($id: ID!) 
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -7515,6 +7587,7 @@ export const getSpecialization = /* GraphQL */ `query GetSpecialization($id: ID!
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -7859,12 +7932,25 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -7907,6 +7993,7 @@ export const listUsers = /* GraphQL */ `query ListUsers(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     nextToken
@@ -7959,6 +8046,7 @@ export const syncUsers = /* GraphQL */ `query SyncUsers(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     nextToken

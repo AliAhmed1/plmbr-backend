@@ -22,6 +22,7 @@ exports.onCreateServicePromotion = `subscription OnCreateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -61,6 +62,7 @@ exports.onUpdateServicePromotion = `subscription OnUpdateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -100,6 +102,7 @@ exports.onDeleteServicePromotion = `subscription OnDeleteServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -160,6 +163,7 @@ exports.onCreateProviderReport = `subscription OnCreateProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -210,6 +214,7 @@ exports.onUpdateProviderReport = `subscription OnUpdateProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -260,6 +265,7 @@ exports.onDeleteProviderReport = `subscription OnDeleteProviderReport(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     description
@@ -312,6 +318,7 @@ exports.onCreateUserReport = `subscription OnCreateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -364,6 +371,7 @@ exports.onUpdateUserReport = `subscription OnUpdateUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -416,6 +424,7 @@ exports.onDeleteUserReport = `subscription OnDeleteUserReport(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     description
@@ -468,6 +477,7 @@ exports.onCreateUserInvoice = `subscription OnCreateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -522,6 +532,7 @@ exports.onUpdateUserInvoice = `subscription OnUpdateUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -576,6 +587,7 @@ exports.onDeleteUserInvoice = `subscription OnDeleteUserInvoice(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     amount
@@ -628,6 +640,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -662,6 +675,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -712,6 +726,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -746,6 +761,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -796,6 +812,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -830,6 +847,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateBookmarked
@@ -882,6 +900,7 @@ exports.onCreateUserBookmark = `subscription OnCreateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -893,6 +912,7 @@ exports.onCreateUserBookmark = `subscription OnCreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -953,6 +973,7 @@ exports.onUpdateUserBookmark = `subscription OnUpdateUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -964,6 +985,7 @@ exports.onUpdateUserBookmark = `subscription OnUpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1024,6 +1046,7 @@ exports.onDeleteUserBookmark = `subscription OnDeleteUserBookmark(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -1035,6 +1058,7 @@ exports.onDeleteUserBookmark = `subscription OnDeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1093,6 +1117,7 @@ exports.onCreateProviderNotification = `subscription OnCreateProviderNotificatio
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1144,6 +1169,7 @@ exports.onUpdateProviderNotification = `subscription OnUpdateProviderNotificatio
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1195,6 +1221,7 @@ exports.onDeleteProviderNotification = `subscription OnDeleteProviderNotificatio
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     content
@@ -1248,6 +1275,7 @@ exports.onCreateUserNotification = `subscription OnCreateUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1301,6 +1329,7 @@ exports.onUpdateUserNotification = `subscription OnUpdateUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1354,6 +1383,7 @@ exports.onDeleteUserNotification = `subscription OnDeleteUserNotification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     content
@@ -1384,6 +1414,7 @@ exports.onCreateServiceDiscount = `subscription OnCreateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1422,6 +1453,7 @@ exports.onUpdateServiceDiscount = `subscription OnUpdateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1460,6 +1492,7 @@ exports.onDeleteServiceDiscount = `subscription OnDeleteServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1519,6 +1552,7 @@ exports.onCreateProviderAvailability = `subscription OnCreateProviderAvailabilit
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1569,6 +1603,7 @@ exports.onUpdateProviderAvailability = `subscription OnUpdateProviderAvailabilit
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1619,6 +1654,7 @@ exports.onDeleteProviderAvailability = `subscription OnDeleteProviderAvailabilit
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     startDate
@@ -1671,6 +1707,7 @@ exports.onCreateUserPreference = `subscription OnCreateUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1723,6 +1760,7 @@ exports.onUpdateUserPreference = `subscription OnUpdateUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1775,6 +1813,7 @@ exports.onDeleteUserPreference = `subscription OnDeleteUserPreference(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     preferenceType
@@ -1825,6 +1864,7 @@ exports.onCreateProviderCertification = `subscription OnCreateProviderCertificat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1877,6 +1917,7 @@ exports.onUpdateProviderCertification = `subscription OnUpdateProviderCertificat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1929,6 +1970,7 @@ exports.onDeleteProviderCertification = `subscription OnDeleteProviderCertificat
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     certificationName
@@ -1960,6 +2002,7 @@ exports.onCreateServiceVideo = `subscription OnCreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1997,6 +2040,7 @@ exports.onUpdateServiceVideo = `subscription OnUpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2034,6 +2078,7 @@ exports.onDeleteServiceVideo = `subscription OnDeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2071,6 +2116,7 @@ exports.onCreateServiceImage = `subscription OnCreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2108,6 +2154,7 @@ exports.onUpdateServiceImage = `subscription OnUpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2145,6 +2192,7 @@ exports.onDeleteServiceImage = `subscription OnDeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2182,6 +2230,7 @@ exports.onCreateServiceReview = `subscription OnCreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2225,6 +2274,7 @@ exports.onCreateServiceReview = `subscription OnCreateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2255,6 +2305,7 @@ exports.onUpdateServiceReview = `subscription OnUpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2298,6 +2349,7 @@ exports.onUpdateServiceReview = `subscription OnUpdateServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2328,6 +2380,7 @@ exports.onDeleteServiceReview = `subscription OnDeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2371,6 +2424,7 @@ exports.onDeleteServiceReview = `subscription OnDeleteServiceReview(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     rating
@@ -2514,6 +2568,7 @@ exports.onCreateCustomization = `subscription OnCreateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2566,6 +2621,7 @@ exports.onUpdateCustomization = `subscription OnUpdateCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2618,6 +2674,7 @@ exports.onDeleteCustomization = `subscription OnDeleteCustomization(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     customizationType
@@ -2666,6 +2723,7 @@ exports.onCreateExpense = `subscription OnCreateExpense($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2716,6 +2774,7 @@ exports.onUpdateExpense = `subscription OnUpdateExpense($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2766,6 +2825,7 @@ exports.onDeleteExpense = `subscription OnDeleteExpense($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -2820,6 +2880,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2852,6 +2913,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -2904,6 +2966,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -2936,6 +2999,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -2988,6 +3052,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3020,6 +3085,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     dateAdded
@@ -3072,6 +3138,7 @@ exports.onCreateUserHistory = `subscription OnCreateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3124,6 +3191,7 @@ exports.onUpdateUserHistory = `subscription OnUpdateUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3176,6 +3244,7 @@ exports.onDeleteUserHistory = `subscription OnDeleteUserHistory(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     action
@@ -3226,6 +3295,7 @@ exports.onCreateProviderAward = `subscription OnCreateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3277,6 +3347,7 @@ exports.onUpdateProviderAward = `subscription OnUpdateProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3328,6 +3399,7 @@ exports.onDeleteProviderAward = `subscription OnDeleteProviderAward(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     awardName
@@ -3379,6 +3451,7 @@ exports.onCreateReferral = `subscription OnCreateReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3413,6 +3486,7 @@ exports.onCreateReferral = `subscription OnCreateReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3478,6 +3552,7 @@ exports.onUpdateReferral = `subscription OnUpdateReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3512,6 +3587,7 @@ exports.onUpdateReferral = `subscription OnUpdateReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3577,6 +3653,7 @@ exports.onDeleteReferral = `subscription OnDeleteReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     referred {
@@ -3611,6 +3688,7 @@ exports.onDeleteReferral = `subscription OnDeleteReferral($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     dateReferred
@@ -3676,6 +3754,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3708,6 +3787,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3758,6 +3838,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3790,6 +3871,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3840,6 +3922,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -3872,6 +3955,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -3924,6 +4008,7 @@ exports.onCreatePaymentMethod = `subscription OnCreatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -3976,6 +4061,7 @@ exports.onUpdatePaymentMethod = `subscription OnUpdatePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4028,6 +4114,7 @@ exports.onDeletePaymentMethod = `subscription OnDeletePaymentMethod(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     cardNumber
@@ -4078,6 +4165,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4110,6 +4198,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4167,6 +4256,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4199,6 +4289,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4256,6 +4347,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4288,6 +4380,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     amount
@@ -4345,6 +4438,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4377,6 +4471,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4388,6 +4483,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4449,6 +4545,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4481,6 +4578,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4492,6 +4590,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4553,6 +4652,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -4585,6 +4685,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -4596,6 +4697,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4851,6 +4953,7 @@ exports.onCreateLoyaltyProgram = `subscription OnCreateLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -4906,6 +5009,7 @@ exports.onUpdateLoyaltyProgram = `subscription OnUpdateLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -4961,6 +5065,7 @@ exports.onDeleteLoyaltyProgram = `subscription OnDeleteLoyaltyProgram(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     points
@@ -5016,6 +5121,7 @@ exports.onCreateVerification = `subscription OnCreateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5068,6 +5174,7 @@ exports.onUpdateVerification = `subscription OnUpdateVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5120,6 +5227,7 @@ exports.onDeleteVerification = `subscription OnDeleteVerification(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     verificationCode
@@ -5266,6 +5374,7 @@ exports.onCreateReport = `subscription OnCreateReport($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5316,6 +5425,7 @@ exports.onUpdateReport = `subscription OnUpdateReport($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5366,6 +5476,7 @@ exports.onDeleteReport = `subscription OnDeleteReport($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     reportedEntity
@@ -5418,6 +5529,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5450,6 +5562,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5461,6 +5574,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5524,6 +5638,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5556,6 +5671,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5567,6 +5683,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5630,6 +5747,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     provider {
@@ -5662,6 +5780,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     service {
@@ -5673,6 +5792,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5734,6 +5854,7 @@ exports.onCreateAIChatLog = `subscription OnCreateAIChatLog($filter: ModelSubscr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -5797,6 +5918,7 @@ exports.onUpdateAIChatLog = `subscription OnUpdateAIChatLog($filter: ModelSubscr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -5860,6 +5982,7 @@ exports.onDeleteAIChatLog = `subscription OnDeleteAIChatLog($filter: ModelSubscr
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     aiChatBot {
@@ -6752,6 +6875,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -6786,6 +6910,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -6797,6 +6922,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6869,6 +6995,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -6903,6 +7030,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -6914,6 +7042,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6986,6 +7115,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7020,6 +7150,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     service {
@@ -7031,6 +7162,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7204,6 +7336,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7238,6 +7371,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7294,6 +7428,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7328,6 +7463,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7384,6 +7520,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7418,6 +7555,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     messages {
@@ -7551,6 +7689,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7592,6 +7731,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7626,6 +7766,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -7659,6 +7800,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7700,6 +7842,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7734,6 +7877,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -7767,6 +7911,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7808,6 +7953,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     user {
@@ -7842,6 +7988,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       userWalletId
+      userCurentLocationId
       __typename
     }
     location
@@ -7920,6 +8067,7 @@ exports.onCreateTeamMember = `subscription OnCreateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -7994,6 +8142,7 @@ exports.onUpdateTeamMember = `subscription OnUpdateTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8068,6 +8217,7 @@ exports.onDeleteTeamMember = `subscription OnDeleteTeamMember(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -8264,6 +8414,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8412,6 +8563,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8461,6 +8613,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8609,6 +8762,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8658,6 +8812,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     reviews {
@@ -8806,6 +8961,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8959,12 +9115,25 @@ exports.onCreateProvider = `subscription OnCreateProvider($filter: ModelSubscrip
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9109,12 +9278,25 @@ exports.onUpdateProvider = `subscription OnUpdateProvider($filter: ModelSubscrip
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9259,12 +9441,25 @@ exports.onDeleteProvider = `subscription OnDeleteProvider($filter: ModelSubscrip
       startedAt
       __typename
     }
+    currentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     nicheServiceProvidersId
+    providerCurrentLocationId
     __typename
   }
 }
@@ -9306,6 +9501,7 @@ exports.onCreateAvailability = `subscription OnCreateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9356,6 +9552,7 @@ exports.onUpdateAvailability = `subscription OnUpdateAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9406,6 +9603,7 @@ exports.onDeleteAvailability = `subscription OnDeleteAvailability(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     avalabilityDate
@@ -9512,6 +9710,7 @@ exports.onCreateCertification = `subscription OnCreateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9563,6 +9762,7 @@ exports.onUpdateCertification = `subscription OnUpdateCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9614,6 +9814,7 @@ exports.onDeleteCertification = `subscription OnDeleteCertification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9664,6 +9865,7 @@ exports.onCreateQualification = `subscription OnCreateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9714,6 +9916,7 @@ exports.onUpdateQualification = `subscription OnUpdateQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9764,6 +9967,7 @@ exports.onDeleteQualification = `subscription OnDeleteQualification(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9813,6 +10017,7 @@ exports.onCreateSpecialization = `subscription OnCreateSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9862,6 +10067,7 @@ exports.onUpdateSpecialization = `subscription OnUpdateSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -9911,6 +10117,7 @@ exports.onDeleteSpecialization = `subscription OnDeleteSpecialization(
       _deleted
       _lastChangedAt
       nicheServiceProvidersId
+      providerCurrentLocationId
       __typename
     }
     createdAt
@@ -10165,12 +10372,25 @@ exports.onCreateUser = `subscription OnCreateUser($filter: ModelSubscriptionUser
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -10360,12 +10580,25 @@ exports.onUpdateUser = `subscription OnUpdateUser($filter: ModelSubscriptionUser
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
@@ -10555,12 +10788,25 @@ exports.onDeleteUser = `subscription OnDeleteUser($filter: ModelSubscriptionUser
     }
     preferredContactTime
     serviceInterestedIn
+    curentLocation {
+      id
+      latitude
+      longitude
+      timestamp
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
     userWalletId
+    userCurentLocationId
     __typename
   }
 }
