@@ -1,59 +1,44 @@
-const ServiceService = require('../services/ServiceService');
+const ServiceService = require('../services/serviceService');
 
-const createService = async (req, res) => {
-  try {
-    const serviceData = req.body;
-    const service = await ServiceService.createService(serviceData);
-    res.status(201).json(service);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+const ServiceController = {
+  createService: async (req, res) => {
+    try {
+      const service = await ServiceService.createService(req.body);
+      res.status(201).json(service);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  getServiceById: async (req, res) => {
+    try {
+      const service = await ServiceService.getServiceById(req.params.serviceId);
+      if (!service) {
+        return res.status(404).json({ error: 'Service not found' });
+      }
+      res.status(200).json(service);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  getAllServices: async (req, res) => {
+    try {
+      const services = await ServiceService.getAllServices();
+      res.status(200).json(services);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  updateService: async (req, res) => {
+    try {
+      const service = await ServiceService.updateService(req.params.serviceId, req.body);
+      res.status(200).json(service);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 };
 
-const getServiceById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const service = await ServiceService.getServiceById(id);
-    res.status(200).json(service);
-  } catch (error) {
-    res.status(404).json({ error: error.message });
-  }
-};
-
-const getAllServices = async (req, res) => {
-  try {
-    const services = await ServiceService.getAllServices();
-    res.status(200).json(services);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const updateService = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updateData = req.body;
-    const service = await ServiceService.updateService(id, updateData);
-    res.status(200).json(service);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const deleteService = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const service = await ServiceService.deleteService(id);
-    res.status(200).json(service);
-  } catch (error) {
-    res.status(404).json({ error: error.message });
-  }
-};
-
-module.exports = {
-  createService,
-  getServiceById,
-  getAllServices,
-  updateService,
-  deleteService,
-};
+module.exports = ServiceController;

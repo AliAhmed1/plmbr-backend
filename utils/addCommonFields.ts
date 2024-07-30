@@ -1,4 +1,4 @@
-import { z, ZodObject, ZodSchema, ZodOptional, ZodNullable, ZodLiteral, ZodLazy } from "zod";
+import { z, ZodObject, ZodSchema, ZodOptional, ZodNullable } from "zod";
 import { v4 as uuidv4 } from "uuid";
 
 // Define the CommonFields type
@@ -30,47 +30,35 @@ export const addCommonFields = <T extends Partial<CommonFields>>(data: T, typena
   return newData;
 };
 
-// Function to traverse schema and set default or null values
-const traverseSchema = <T>(schema: ZodSchema<T>, data: any): T => {
-  if (schema instanceof ZodObject) {
-    const shape = schema.shape;
-    const result: any = {};
-
-    for (const key in shape) {
-      const fieldSchema = shape[key];
-      if (data[key] !== undefined) {
-        result[key] = traverseSchema(fieldSchema, data[key]);
-      } else {
-        // Handle optional fields by setting to null
-        if (fieldSchema instanceof ZodOptional || fieldSchema instanceof ZodNullable) {
-          result[key] = null;
-        } else if (fieldSchema instanceof ZodObject) {
-          result[key] = traverseSchema(fieldSchema, {}); // Recursively handle nested objects
-        } else if (fieldSchema instanceof ZodLazy) {
-          result[key] = traverseSchema(fieldSchema._def.factory(), {}); // Handle lazy-loaded schemas
-        } else {
-          // Handle default values if available
-          result[key] = fieldSchema._def.defaultValue ?? undefined;
-        }
-      }
-    }
-
-    return result;
-  } else if (schema instanceof ZodLazy) {
-    return traverseSchema(schema._def.factory(), data); // Handle lazy-loaded schemas
-  } else if (schema instanceof ZodLiteral) {
-    return data;
-  } else {
-    // For non-object schemas, return data as-is
-    return data;
-  }
-};
-
 // Function to process schema and data
 export const processSchemaAndData = <T>(schema: ZodSchema<T>, data: Partial<T>, typename: string): T & CommonFields => {
   // Add common fields
   const dataWithCommonFields = addCommonFields(data as T & Partial<CommonFields>, typename);
 
   // Traverse schema and set missing optional fields to null
+  const traverseSchema = (schema: ZodSchema<any>, data: any): any => {
+    if (schema instanceof ZodObject) {
+      const shape = schema.shape;
+      const result: any = {};
+
+      for (const key in shape) {
+        const fieldSchema = shape[key];
+        if (data[key] !== undefined) {
+          result[key] = traverseSchema(fieldSchema, data[key]);
+        } else {
+          // Set to null if field is optional, or use default value if provided
+          result[key] = fieldSchema instanceof ZodOptional || fieldSchema instanceof ZodNullable
+            ? null
+            : fieldSchema._def.defaultValue ?? undefined;
+        }
+      }
+
+      return result;
+    } else {
+      // For non-object schemas, just return data
+      return data;
+    }
+  };
+
   return traverseSchema(schema, dataWithCommonFields);
 };

@@ -3,6 +3,7 @@ require('dotenv').config();
 const providerRoutes = require('./routes/providerRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use('/api', providerRoutes);
 app.use('/api', serviceRoutes);
 app.use('/api', bookingRoutes);
+app.use('/api', userRoutes);
 app.use('/', (req, res) => {
     res.status(200).json('hello world');
 })

@@ -27,7 +27,9 @@ const processSchemaAndData = (schema, data, typename) => {
                 }
                 else {
                     // Set to null if field is optional, or use default value if provided
-                    result[key] = fieldSchema.isOptional() ? null : (_a = fieldSchema._def.defaultValue) !== null && _a !== void 0 ? _a : undefined;
+                    result[key] = fieldSchema instanceof zod_1.ZodOptional || fieldSchema instanceof zod_1.ZodNullable
+                        ? null
+                        : (_a = fieldSchema._def.defaultValue) !== null && _a !== void 0 ? _a : undefined;
                 }
             }
             return result;

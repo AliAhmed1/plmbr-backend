@@ -1,68 +1,42 @@
-import { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
-import { v4 as uuidv4 } from 'uuid';
+const { PutCommand, GetCommand, ScanCommand, UpdateCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
-import { Service } from '../src/API';
-const { validateServiceData } = require('../utils/validateService');
+import { Service, Provider } from '../src/API';
+import { serviceSchema, providerSchema } from '../schema/generatedZodSchema';
+import { processSchemaAndData } from '../utils/addCommonFields';
+import ProviderService from './providerService';
 
 const TABLE_NAME = 'Services';
 
 const ServiceService = {
   createService: async (serviceData: Partial<Service>) => {
-    // Validate service data
-    if (!validateServiceData(serviceData)) {
-      throw new Error('Service data is invalid');
+    const extendedServiceData = processSchemaAndData(serviceSchema, serviceData, "Service");
+
+    const validationResult = serviceSchema.safeParse(extendedServiceData);
+
+    if (!validationResult.success) {
+      const errors = validationResult.error.errors.map(e => e.message).join(', ');
+      throw new Error(`Service data is invalid: ${errors}`);
     }
 
-    // Filter serviceData to only include fields defined in the Service interface
-    const service: Service = {
-      __typename: "Service",
-      id: uuidv4(),
-      name: serviceData.name!,
-      description: serviceData.description ?? null,
-      price: serviceData.price!,
-      Provider: serviceData.Provider ?? null,
-      reviews: serviceData.reviews ?? null,
-      bookings: serviceData.bookings ?? null,
-      SubCategory: serviceData.SubCategory ?? null,
-      servicePromotions: serviceData.servicePromotions ?? null,
-      providerReports: serviceData.providerReports ?? null,
-      userReports: serviceData.userReports ?? null,
-      userInvoices: serviceData.userInvoices ?? null,
-      providerBookmarks: serviceData.providerBookmarks ?? null,
-      userBookmarks: serviceData.userBookmarks ?? null,
-      providerNotifications: serviceData.providerNotifications ?? null,
-      userNotifications: serviceData.userNotifications ?? null,
-      serviceDiscounts: serviceData.serviceDiscounts ?? null,
-      providerAvailabilities: serviceData.providerAvailabilities ?? null,
-      userPreferences: serviceData.userPreferences ?? null,
-      providerCertifications: serviceData.providerCertifications ?? null,
-      serviceVideos: serviceData.serviceVideos ?? null,
-      serviceImages: serviceData.serviceImages ?? null,
-      serviceReviews: serviceData.serviceReviews ?? null,
-      aiDiagnostics: serviceData.aiDiagnostics ?? null,
-      customizations: serviceData.customizations ?? null,
-      expenses: serviceData.expenses ?? null,
-      favoriteProviders: serviceData.favoriteProviders ?? null,
-      userHistories: serviceData.userHistories ?? null,
-      providerAwards: serviceData.providerAwards ?? null,
-      referrals: serviceData.referrals ?? null,
-      contracts: serviceData.contracts ?? null,
-      jobTrackings: serviceData.jobTrackings ?? null,
-      duration: serviceData.duration ?? null,
-      Materials: serviceData.Materials ?? null,
-      MaterialCosts: serviceData.MaterialCosts ?? null,
-      BookingRequirements: serviceData.BookingRequirements ?? null,
-      isInstantBookingAvailable: serviceData.isInstantBookingAvailable ?? null,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      _version: 1,
-      _lastChangedAt: Date.now(),
-      _deleted: null,
-      invoiceServicesId: serviceData.invoiceServicesId ?? null,
-      servicePackageServicesId: serviceData.servicePackageServicesId ?? null,
-      subCategoryServicesId: serviceData.subCategoryServicesId ?? null,
-      providerServicesOfferedId: serviceData.providerServicesOfferedId ?? null,
-    };
+    const service: Service = validationResult.data;
+
+    // Validate provider information
+    if (service.Provider) {
+      const providerValidationResult = providerSchema.safeParse(service.Provider);
+
+      if (!providerValidationResult.success) {
+        const errors = providerValidationResult.error.errors.map(e => e.message).join(', ');
+        throw new Error(`Provider information is invalid: ${errors}`);
+      }
+
+      const providerExists = await ProviderService.getProviderById(service.Provider.id);
+
+      if (!providerExists) {
+        throw new Error(`Provider information is incorrect: Provider not found`);
+      }
+    } else {
+      throw new Error(`Provider information is required`);
+    }
 
     const params = {
       TableName: TABLE_NAME,
@@ -98,10 +72,33 @@ const ServiceService = {
   },
 
   updateService: async (serviceId: string, updateData: Partial<Service>) => {
-    const fieldsToExclude = ['id', 'createdAt', 'updatedAt']; // Fields that should not be updated
+    const extendedUpdateData = processSchemaAndData(serviceSchema, updateData, "Service");
 
-    const filteredUpdateData = Object.entries(updateData)
-      .filter(([key]) => !fieldsToExclude.includes(key))
+    const validationResult = serviceSchema.safeParse(extendedUpdateData);
+
+    if (!validationResult.success) {
+      const errors = validationResult.error.errors.map(e => e.message).join(', ');
+      throw new Error(`Service update data is invalid: ${errors}`);
+    }
+
+    // Validate provider information if present
+    if (validationResult.data.Provider) {
+      const providerValidationResult = providerSchema.safeParse(validationResult.data.Provider);
+
+      if (!providerValidationResult.success) {
+        const errors = providerValidationResult.error.errors.map(e => e.message).join(', ');
+        throw new Error(`Provider information is invalid: ${errors}`);
+      }
+
+      const providerExists = await ProviderService.getProviderById(validationResult.data.Provider.id);
+
+      if (!providerExists) {
+        throw new Error(`Provider information is incorrect: Provider not found`);
+      }
+    }
+
+    const filteredUpdateData = Object.entries(validationResult.data)
+      .filter(([key]) => !['id', 'createdAt', 'updatedAt'].includes(key))
       .reduce((obj, [key, value]) => {
         obj[key] = value;
         return obj;
@@ -126,19 +123,7 @@ const ServiceService = {
       ReturnValues: 'ALL_NEW',
     };
 
-    const result = await dynamoDB.send(new UpdateCommand(params as any));
-    return result.Attributes as Service;
-  },
-
-  deleteService: async (serviceId: string) => {
-    const params = {
-      TableName: TABLE_NAME,
-      Key: {
-        id: serviceId,
-      },
-    };
-
-    const result = await dynamoDB.send(new DeleteCommand(params));
+    const result = await dynamoDB.send(new UpdateCommand(params));
     return result.Attributes as Service;
   },
 };
