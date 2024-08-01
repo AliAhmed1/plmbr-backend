@@ -44760,6 +44760,7 @@ export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
   z.object({
     __typename: z.literal("Service"),
     id: z.string(),
+    providerId: z.string(),
     name: z.string(),
     description: z.string().optional().nullable(),
     price: z.number(),

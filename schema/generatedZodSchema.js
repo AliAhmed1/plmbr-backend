@@ -41811,6 +41811,7 @@ exports.servicePromotionSchema = zod_1.z.lazy(() => zod_1.z.object({
 exports.serviceSchema = zod_1.z.lazy(() => zod_1.z.object({
     __typename: zod_1.z.literal("Service"),
     id: zod_1.z.string(),
+    providerId: zod_1.z.string(),
     name: zod_1.z.string(),
     description: zod_1.z.string().optional().nullable(),
     price: zod_1.z.number(),

@@ -18,18 +18,11 @@ const ServiceService = {
       throw new Error(`Service data is invalid: ${errors}`);
     }
 
-    const service: Service = validationResult.data;
+    const service: Service | any = validationResult.data;
 
-    // Validate provider information
-    if (service.Provider) {
-      const providerValidationResult = providerSchema.safeParse(service.Provider);
-
-      if (!providerValidationResult.success) {
-        const errors = providerValidationResult.error.errors.map(e => e.message).join(', ');
-        throw new Error(`Provider information is invalid: ${errors}`);
-      }
-
-      const providerExists = await ProviderService.getProviderById(service.Provider.id);
+    // Validate providerId
+    if (service.providerId) {
+      const providerExists = await ProviderService.getProviderById(service.providerId);
 
       if (!providerExists) {
         throw new Error(`Provider information is incorrect: Provider not found`);
@@ -81,24 +74,9 @@ const ServiceService = {
       throw new Error(`Service update data is invalid: ${errors}`);
     }
 
-    // Validate provider information if present
-    if (validationResult.data.Provider) {
-      const providerValidationResult = providerSchema.safeParse(validationResult.data.Provider);
-
-      if (!providerValidationResult.success) {
-        const errors = providerValidationResult.error.errors.map(e => e.message).join(', ');
-        throw new Error(`Provider information is invalid: ${errors}`);
-      }
-
-      const providerExists = await ProviderService.getProviderById(validationResult.data.Provider.id);
-
-      if (!providerExists) {
-        throw new Error(`Provider information is incorrect: Provider not found`);
-      }
-    }
 
     const filteredUpdateData = Object.entries(validationResult.data)
-      .filter(([key]) => !['id', 'createdAt', 'updatedAt'].includes(key))
+      .filter(([key]) => !['id', 'providerId', 'createdAt', 'updatedAt'].includes(key))
       .reduce((obj, [key, value]) => {
         obj[key] = value;
         return obj;

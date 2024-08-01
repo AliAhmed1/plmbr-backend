@@ -1,8 +1,8 @@
 const express = require('express');
-const setLocationController = require('../controllers/locationController');
+const LocationController = require('../controllers/locationController');
 
 const router = express.Router();
 
-router.post('/setLocation', setLocationController);
+router.post('/setLocation', LocationController.setLocation);
 
 module.exports = router;

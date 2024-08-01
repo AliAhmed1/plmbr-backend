@@ -6,6 +6,7 @@ const ServiceController = {
       const service = await ServiceService.createService(req.body);
       res.status(201).json(service);
     } catch (error) {
+      console.log(error);
       res.status(500).json({ error: error.message });
     }
   },
