@@ -23,7 +23,6 @@ exports.createServicePromotion = `mutation CreateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -64,7 +63,6 @@ exports.updateServicePromotion = `mutation UpdateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -105,7 +103,6 @@ exports.deleteServicePromotion = `mutation DeleteServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -161,6 +158,7 @@ exports.createProviderReport = `mutation CreateProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -213,6 +211,7 @@ exports.updateProviderReport = `mutation UpdateProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -265,6 +264,7 @@ exports.deleteProviderReport = `mutation DeleteProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -647,6 +647,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -734,6 +735,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -821,6 +823,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -928,7 +931,6 @@ exports.createUserBookmark = `mutation CreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1002,7 +1004,6 @@ exports.updateUserBookmark = `mutation UpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1076,7 +1077,6 @@ exports.deleteUserBookmark = `mutation DeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1130,6 +1130,7 @@ exports.createProviderNotification = `mutation CreateProviderNotification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1183,6 +1184,7 @@ exports.updateProviderNotification = `mutation UpdateProviderNotification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1236,6 +1238,7 @@ exports.deleteProviderNotification = `mutation DeleteProviderNotification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1439,7 +1442,6 @@ exports.createServiceDiscount = `mutation CreateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1479,7 +1481,6 @@ exports.updateServiceDiscount = `mutation UpdateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1519,7 +1520,6 @@ exports.deleteServiceDiscount = `mutation DeleteServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1574,6 +1574,7 @@ exports.createProviderAvailability = `mutation CreateProviderAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1626,6 +1627,7 @@ exports.updateProviderAvailability = `mutation UpdateProviderAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1678,6 +1680,7 @@ exports.deleteProviderAvailability = `mutation DeleteProviderAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1892,6 +1895,7 @@ exports.createProviderCertification = `mutation CreateProviderCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1946,6 +1950,7 @@ exports.updateProviderCertification = `mutation UpdateProviderCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2000,6 +2005,7 @@ exports.deleteProviderCertification = `mutation DeleteProviderCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2039,7 +2045,6 @@ exports.createServiceVideo = `mutation CreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2078,7 +2083,6 @@ exports.updateServiceVideo = `mutation UpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2117,7 +2121,6 @@ exports.deleteServiceVideo = `mutation DeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2156,7 +2159,6 @@ exports.createServiceImage = `mutation CreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2195,7 +2197,6 @@ exports.updateServiceImage = `mutation UpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2234,7 +2235,6 @@ exports.deleteServiceImage = `mutation DeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2273,7 +2273,6 @@ exports.createServiceReview = `mutation CreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2349,7 +2348,6 @@ exports.updateServiceReview = `mutation UpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2425,7 +2423,6 @@ exports.deleteServiceReview = `mutation DeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2771,6 +2768,7 @@ exports.createExpense = `mutation CreateExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2825,6 +2823,7 @@ exports.updateExpense = `mutation UpdateExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2879,6 +2878,7 @@ exports.deleteExpense = `mutation DeleteExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2968,6 +2968,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3055,6 +3056,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3142,6 +3144,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3356,6 +3359,7 @@ exports.createProviderAward = `mutation CreateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3409,6 +3413,7 @@ exports.updateProviderAward = `mutation UpdateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3462,6 +3467,7 @@ exports.deleteProviderAward = `mutation DeleteProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3862,6 +3868,7 @@ exports.createTip = `mutation CreateTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3949,6 +3956,7 @@ exports.updateTip = `mutation UpdateTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4036,6 +4044,7 @@ exports.deleteTip = `mutation DeleteTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4285,6 +4294,7 @@ exports.createInvoice = `mutation CreateInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4379,6 +4389,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4473,6 +4484,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4567,6 +4579,7 @@ exports.createContract = `mutation CreateContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4585,7 +4598,6 @@ exports.createContract = `mutation CreateContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4677,6 +4689,7 @@ exports.updateContract = `mutation UpdateContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4695,7 +4708,6 @@ exports.updateContract = `mutation UpdateContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4787,6 +4799,7 @@ exports.deleteContract = `mutation DeleteContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4805,7 +4818,6 @@ exports.deleteContract = `mutation DeleteContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5713,6 +5725,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5731,7 +5744,6 @@ exports.createJobTracking = `mutation CreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5823,6 +5835,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5841,7 +5854,6 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5933,6 +5945,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5951,7 +5964,6 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7115,6 +7127,7 @@ exports.createReview = `mutation CreateReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7168,7 +7181,6 @@ exports.createReview = `mutation CreateReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7238,6 +7250,7 @@ exports.updateReview = `mutation UpdateReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7291,7 +7304,6 @@ exports.updateReview = `mutation UpdateReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7361,6 +7373,7 @@ exports.deleteReview = `mutation DeleteReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7414,7 +7427,6 @@ exports.deleteReview = `mutation DeleteReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7586,6 +7598,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7679,6 +7692,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7772,6 +7786,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7953,7 +7968,6 @@ exports.createBooking = `mutation CreateBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7989,6 +8003,7 @@ exports.createBooking = `mutation CreateBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8067,7 +8082,6 @@ exports.updateBooking = `mutation UpdateBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8103,6 +8117,7 @@ exports.updateBooking = `mutation UpdateBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8181,7 +8196,6 @@ exports.deleteBooking = `mutation DeleteBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8217,6 +8231,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8332,6 +8347,7 @@ exports.createTeamMember = `mutation CreateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8408,6 +8424,7 @@ exports.updateTeamMember = `mutation UpdateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8484,6 +8501,7 @@ exports.deleteTeamMember = `mutation DeleteTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8711,6 +8729,7 @@ exports.createService = `mutation CreateService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8866,7 +8885,6 @@ exports.createService = `mutation CreateService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8913,6 +8931,7 @@ exports.updateService = `mutation UpdateService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9068,7 +9087,6 @@ exports.updateService = `mutation UpdateService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9115,6 +9133,7 @@ exports.deleteService = `mutation DeleteService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9270,7 +9289,6 @@ exports.deleteService = `mutation DeleteService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9439,6 +9457,7 @@ exports.createProvider = `mutation CreateProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9605,6 +9624,7 @@ exports.updateProvider = `mutation UpdateProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9771,6 +9791,7 @@ exports.deleteProvider = `mutation DeleteProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9814,6 +9835,7 @@ exports.createAvailability = `mutation CreateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9866,6 +9888,7 @@ exports.updateAvailability = `mutation UpdateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9918,6 +9941,7 @@ exports.deleteAvailability = `mutation DeleteAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10029,6 +10053,7 @@ exports.createCertification = `mutation CreateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10082,6 +10107,7 @@ exports.updateCertification = `mutation UpdateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10135,6 +10161,7 @@ exports.deleteCertification = `mutation DeleteCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10187,6 +10214,7 @@ exports.createQualification = `mutation CreateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10239,6 +10267,7 @@ exports.updateQualification = `mutation UpdateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10291,6 +10320,7 @@ exports.deleteQualification = `mutation DeleteQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10342,6 +10372,7 @@ exports.createSpecialization = `mutation CreateSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10393,6 +10424,7 @@ exports.updateSpecialization = `mutation UpdateSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10444,6 +10476,7 @@ exports.deleteSpecialization = `mutation DeleteSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version

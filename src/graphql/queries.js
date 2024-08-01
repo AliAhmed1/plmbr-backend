@@ -20,7 +20,6 @@ exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -131,6 +130,7 @@ exports.getProviderReport = `query GetProviderReport($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -456,6 +456,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -616,7 +617,6 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -721,6 +721,7 @@ exports.getProviderNotification = `query GetProviderNotification($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -928,7 +929,6 @@ exports.getServiceDiscount = `query GetServiceDiscount($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1036,6 +1036,7 @@ exports.getProviderAvailability = `query GetProviderAvailability($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1252,6 +1253,7 @@ exports.getProviderCertification = `query GetProviderCertification($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1352,7 +1354,6 @@ exports.getServiceVideo = `query GetServiceVideo($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1442,7 +1443,6 @@ exports.getServiceImage = `query GetServiceImage($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1532,7 +1532,6 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1869,6 +1868,7 @@ exports.getExpense = `query GetExpense($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2015,6 +2015,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2227,6 +2228,7 @@ exports.getProviderAward = `query GetProviderAward($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2529,6 +2531,7 @@ exports.getTip = `query GetTip($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2772,6 +2775,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2923,6 +2927,7 @@ exports.getContract = `query GetContract($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2941,7 +2946,6 @@ exports.getContract = `query GetContract($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3776,6 +3780,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3794,7 +3799,6 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5067,6 +5071,7 @@ exports.getReview = `query GetReview($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5120,7 +5125,6 @@ exports.getReview = `query GetReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5334,6 +5338,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5557,7 +5562,6 @@ exports.getBooking = `query GetBooking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5593,6 +5597,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5773,6 +5778,7 @@ exports.getTeamMember = `query GetTeamMember($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6098,6 +6104,7 @@ exports.getService = `query GetService($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6253,7 +6260,6 @@ exports.getService = `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -6282,7 +6288,6 @@ exports.listServices = `query ListServices(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6321,7 +6326,6 @@ exports.syncServices = `query SyncServices(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6491,6 +6495,7 @@ exports.getProvider = `query GetProvider($id: ID!) {
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -6532,6 +6537,7 @@ exports.listProviders = `query ListProviders(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6583,6 +6589,7 @@ exports.syncProviders = `query SyncProviders(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6627,6 +6634,7 @@ exports.getAvailability = `query GetAvailability($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6806,6 +6814,7 @@ exports.getCertification = `query GetCertification($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6913,6 +6922,7 @@ exports.getQualification = `query GetQualification($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7017,6 +7027,7 @@ exports.getSpecialization = `query GetSpecialization($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version

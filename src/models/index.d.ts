@@ -2295,7 +2295,6 @@ type EagerService = {
   readonly Materials?: string | null;
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
-  readonly isInstantBookingAvailable?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
@@ -2345,7 +2344,6 @@ type LazyService = {
   readonly Materials?: string | null;
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
-  readonly isInstantBookingAvailable?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
@@ -2412,6 +2410,7 @@ type EagerProvider = {
   readonly jobTracking?: (JobTracking | null)[] | null;
   readonly expenses?: (Expense | null)[] | null;
   readonly currentLocation?: Location | null;
+  readonly isInstantBookingAvailable?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;
@@ -2470,6 +2469,7 @@ type LazyProvider = {
   readonly jobTracking: AsyncCollection<JobTracking>;
   readonly expenses: AsyncCollection<Expense>;
   readonly currentLocation: AsyncItem<Location | undefined>;
+  readonly isInstantBookingAvailable?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;

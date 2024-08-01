@@ -23,7 +23,6 @@ export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromo
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -67,7 +66,6 @@ export const updateServicePromotion = /* GraphQL */ `mutation UpdateServicePromo
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -111,7 +109,6 @@ export const deleteServicePromotion = /* GraphQL */ `mutation DeleteServicePromo
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -170,6 +167,7 @@ export const createProviderReport = /* GraphQL */ `mutation CreateProviderReport
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -225,6 +223,7 @@ export const updateProviderReport = /* GraphQL */ `mutation UpdateProviderReport
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -280,6 +279,7 @@ export const deleteProviderReport = /* GraphQL */ `mutation DeleteProviderReport
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -683,6 +683,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -773,6 +774,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -863,6 +865,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -973,7 +976,6 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1050,7 +1052,6 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1127,7 +1128,6 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1184,6 +1184,7 @@ export const createProviderNotification = /* GraphQL */ `mutation CreateProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1240,6 +1241,7 @@ export const updateProviderNotification = /* GraphQL */ `mutation UpdateProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1296,6 +1298,7 @@ export const deleteProviderNotification = /* GraphQL */ `mutation DeleteProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1511,7 +1514,6 @@ export const createServiceDiscount = /* GraphQL */ `mutation CreateServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1554,7 +1556,6 @@ export const updateServiceDiscount = /* GraphQL */ `mutation UpdateServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1597,7 +1598,6 @@ export const deleteServiceDiscount = /* GraphQL */ `mutation DeleteServiceDiscou
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1655,6 +1655,7 @@ export const createProviderAvailability = /* GraphQL */ `mutation CreateProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1710,6 +1711,7 @@ export const updateProviderAvailability = /* GraphQL */ `mutation UpdateProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1765,6 +1767,7 @@ export const deleteProviderAvailability = /* GraphQL */ `mutation DeleteProvider
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1991,6 +1994,7 @@ export const createProviderCertification = /* GraphQL */ `mutation CreateProvide
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2048,6 +2052,7 @@ export const updateProviderCertification = /* GraphQL */ `mutation UpdateProvide
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2105,6 +2110,7 @@ export const deleteProviderCertification = /* GraphQL */ `mutation DeleteProvide
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2147,7 +2153,6 @@ export const createServiceVideo = /* GraphQL */ `mutation CreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2189,7 +2194,6 @@ export const updateServiceVideo = /* GraphQL */ `mutation UpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2231,7 +2235,6 @@ export const deleteServiceVideo = /* GraphQL */ `mutation DeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2273,7 +2276,6 @@ export const createServiceImage = /* GraphQL */ `mutation CreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2315,7 +2317,6 @@ export const updateServiceImage = /* GraphQL */ `mutation UpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2357,7 +2358,6 @@ export const deleteServiceImage = /* GraphQL */ `mutation DeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2399,7 +2399,6 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2478,7 +2477,6 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2557,7 +2555,6 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2924,6 +2921,7 @@ export const createExpense = /* GraphQL */ `mutation CreateExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2981,6 +2979,7 @@ export const updateExpense = /* GraphQL */ `mutation UpdateExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3038,6 +3037,7 @@ export const deleteExpense = /* GraphQL */ `mutation DeleteExpense(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3130,6 +3130,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3220,6 +3221,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3310,6 +3312,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3536,6 +3539,7 @@ export const createProviderAward = /* GraphQL */ `mutation CreateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3592,6 +3596,7 @@ export const updateProviderAward = /* GraphQL */ `mutation UpdateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3648,6 +3653,7 @@ export const deleteProviderAward = /* GraphQL */ `mutation DeleteProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4060,6 +4066,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4150,6 +4157,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4240,6 +4248,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4501,6 +4510,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4598,6 +4608,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4695,6 +4706,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4792,6 +4804,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4810,7 +4823,6 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4905,6 +4917,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4923,7 +4936,6 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5018,6 +5030,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5036,7 +5049,6 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6019,6 +6031,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6037,7 +6050,6 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6132,6 +6144,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6150,7 +6163,6 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6245,6 +6257,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6263,7 +6276,6 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7574,6 +7586,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7627,7 +7640,6 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7700,6 +7712,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7753,7 +7766,6 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7826,6 +7838,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7879,7 +7892,6 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8063,6 +8075,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8159,6 +8172,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8255,6 +8269,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8448,7 +8463,6 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8484,6 +8498,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8565,7 +8580,6 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8601,6 +8615,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8682,7 +8697,6 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8718,6 +8732,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8836,6 +8851,7 @@ export const createTeamMember = /* GraphQL */ `mutation CreateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8915,6 +8931,7 @@ export const updateTeamMember = /* GraphQL */ `mutation UpdateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8994,6 +9011,7 @@ export const deleteTeamMember = /* GraphQL */ `mutation DeleteTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9251,6 +9269,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9406,7 +9425,6 @@ export const createService = /* GraphQL */ `mutation CreateService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9456,6 +9474,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9611,7 +9630,6 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9661,6 +9679,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9816,7 +9835,6 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9988,6 +10006,7 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -10157,6 +10176,7 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -10326,6 +10346,7 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -10372,6 +10393,7 @@ export const createAvailability = /* GraphQL */ `mutation CreateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10427,6 +10449,7 @@ export const updateAvailability = /* GraphQL */ `mutation UpdateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10482,6 +10505,7 @@ export const deleteAvailability = /* GraphQL */ `mutation DeleteAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10605,6 +10629,7 @@ export const createCertification = /* GraphQL */ `mutation CreateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10661,6 +10686,7 @@ export const updateCertification = /* GraphQL */ `mutation UpdateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10717,6 +10743,7 @@ export const deleteCertification = /* GraphQL */ `mutation DeleteCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10772,6 +10799,7 @@ export const createQualification = /* GraphQL */ `mutation CreateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10827,6 +10855,7 @@ export const updateQualification = /* GraphQL */ `mutation UpdateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10882,6 +10911,7 @@ export const deleteQualification = /* GraphQL */ `mutation DeleteQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10936,6 +10966,7 @@ export const createSpecialization = /* GraphQL */ `mutation CreateSpecialization
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10990,6 +11021,7 @@ export const updateSpecialization = /* GraphQL */ `mutation UpdateSpecialization
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -11044,6 +11076,7 @@ export const deleteSpecialization = /* GraphQL */ `mutation DeleteSpecialization
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version

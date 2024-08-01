@@ -20,7 +20,6 @@ export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id:
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -140,6 +139,7 @@ export const getProviderReport = /* GraphQL */ `query GetProviderReport($id: ID!
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -492,6 +492,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -661,7 +662,6 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -775,6 +775,7 @@ export const getProviderNotification = /* GraphQL */ `query GetProviderNotificat
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1000,7 +1001,6 @@ export const getServiceDiscount = /* GraphQL */ `query GetServiceDiscount($id: I
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1117,6 +1117,7 @@ export const getProviderAvailability = /* GraphQL */ `query GetProviderAvailabil
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1351,6 +1352,7 @@ export const getProviderCertification = /* GraphQL */ `query GetProviderCertific
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1460,7 +1462,6 @@ export const getServiceVideo = /* GraphQL */ `query GetServiceVideo($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1559,7 +1560,6 @@ export const getServiceImage = /* GraphQL */ `query GetServiceImage($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1658,7 +1658,6 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2022,6 +2021,7 @@ export const getExpense = /* GraphQL */ `query GetExpense($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2177,6 +2177,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2407,6 +2408,7 @@ export const getProviderAward = /* GraphQL */ `query GetProviderAward($id: ID!) 
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2727,6 +2729,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2979,6 +2982,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3139,6 +3143,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3157,7 +3162,6 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4067,6 +4071,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4085,7 +4090,6 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5508,6 +5512,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5561,7 +5566,6 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5790,6 +5794,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6031,7 +6036,6 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6067,6 +6071,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6256,6 +6261,7 @@ export const getTeamMember = /* GraphQL */ `query GetTeamMember($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6608,6 +6614,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6763,7 +6770,6 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -6795,7 +6801,6 @@ export const listServices = /* GraphQL */ `query ListServices(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6837,7 +6842,6 @@ export const syncServices = /* GraphQL */ `query SyncServices(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7010,6 +7014,7 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -7054,6 +7059,7 @@ export const listProviders = /* GraphQL */ `query ListProviders(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7108,6 +7114,7 @@ export const syncProviders = /* GraphQL */ `query SyncProviders(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7155,6 +7162,7 @@ export const getAvailability = /* GraphQL */ `query GetAvailability($id: ID!) {
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7352,6 +7360,7 @@ export const getCertification = /* GraphQL */ `query GetCertification($id: ID!) 
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7468,6 +7477,7 @@ export const getQualification = /* GraphQL */ `query GetQualification($id: ID!) 
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7581,6 +7591,7 @@ export const getSpecialization = /* GraphQL */ `query GetSpecialization($id: ID!
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version

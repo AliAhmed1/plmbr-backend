@@ -3,9 +3,11 @@ const dynamoDB = require('../config/dbConfig');
 import { Provider } from '../src/API';
 import { providerSchema, locationSchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
+import { GetItemCommand } from '@aws-sdk/client-dynamodb';
+const haversineDistance = require('../utils/distance')
 
-const TABLE_NAME = 'Providers';
-
+const TABLE_NAME_PROVIDERS = 'Providers';
+const TABLE_NAME_LOCATIONS = 'Locations'
 const ProviderService = {
   createProvider: async (providerData: Partial<Provider>) => {
     // Use the processSchemaAndData utility to add common fields and handle optional fields
@@ -21,7 +23,7 @@ const ProviderService = {
     const provider: Provider = validationResult.data;
 
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
       Item: provider,
     };
 
@@ -31,7 +33,7 @@ const ProviderService = {
 
   getProviderById: async (providerId: string) => {
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
       Key: {
         id: providerId,
       },
@@ -46,7 +48,7 @@ const ProviderService = {
 
   getAllProviders: async () => {
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
     };
 
     const result = await dynamoDB.send(new ScanCommand(params));
@@ -82,7 +84,7 @@ const ProviderService = {
     }
 
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
       Key: { id: providerId },
       UpdateExpression: `SET ${updateExpression.join(', ')}`,
       ExpressionAttributeNames: expressionAttributeNames,
@@ -96,7 +98,7 @@ const ProviderService = {
 
   deleteProvider: async (providerId: string) => {
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
       Key: {
         id: providerId,
       },
@@ -133,7 +135,7 @@ const ProviderService = {
     }
 
     const params = {
-      TableName: TABLE_NAME,
+      TableName: TABLE_NAME_PROVIDERS,
       Key: { id: providerId },
       UpdateExpression: 'SET currentLocation = :currentLocation, updatedAt = :updatedAt',
       ExpressionAttributeValues: {
@@ -146,6 +148,49 @@ const ProviderService = {
     const result = await dynamoDB.send(new UpdateCommand(params));
     return result.Attributes as Provider;
   },
+
+  getProvidersWithinRange: async (lat: number, lon: number, range: number, checkInstantBooking: boolean) => {
+    const params = {
+      TableName: TABLE_NAME_PROVIDERS,
+    };
+  
+    const result = await dynamoDB.send(new ScanCommand(params));
+  
+    if (!result.Items) {
+      throw new Error('No providers found');
+    }
+  
+    const providers = await Promise.all(result.Items.map(async (provider: Provider | any) => {
+      if (provider.locationId) {
+        const locationParams = {
+          TableName: TABLE_NAME_LOCATIONS,
+          Key: {
+            id: { S: provider.locationId },
+          },
+        };
+        const locationResult = await dynamoDB.send(new GetItemCommand(locationParams));
+        const location = locationResult.Item;
+  
+        if (location) {
+          const distance = haversineDistance(
+            lat,
+            lon,
+            parseFloat(location.latitude.N),
+            parseFloat(location.longitude.N)
+          );
+          if (distance <= range) {
+            if (checkInstantBooking) {
+              return provider.isInstantBookingAvailable ? provider : null;
+            }
+            return provider;
+          }
+        }
+      }
+      return null;
+    }));
+  
+    return providers.filter(provider => provider !== null);
+  }
 };
 
 export = ProviderService;

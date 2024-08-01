@@ -48,6 +48,47 @@ const ProviderController = {
       res.status(500).json({ error: error.message });
     }
   },
+
+  getInstantProviders: async (req, res) => {
+    const { latitude, longitude } = req.body;
+
+    if (!latitude || !longitude) {
+      return res.status(400).json({ error: 'Latitude and longitude are required' });
+    }
+
+    try {
+      const providers = await ProviderService.getProvidersWithinRange(
+        Number(latitude),
+        Number(longitude),
+        30,
+        true
+      );
+      res.status(200).json(providers);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  getAllProviders: async (req, res) => {
+    const { latitude, longitude } = req.body;
+
+    if (!latitude || !longitude) {
+      return res.status(400).json({ error: 'Latitude and longitude are required' });
+    }
+
+    try {
+      const providers = await ProviderService.getProvidersWithinRange(
+        Number(latitude),
+        Number(longitude),
+        150,
+        false
+      );
+      res.status(200).json(providers);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
 };
 
 module.exports = ProviderController;

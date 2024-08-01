@@ -22,7 +22,6 @@ exports.onCreateServicePromotion = `subscription OnCreateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -62,7 +61,6 @@ exports.onUpdateServicePromotion = `subscription OnUpdateServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -102,7 +100,6 @@ exports.onDeleteServicePromotion = `subscription OnDeleteServicePromotion(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -157,6 +154,7 @@ exports.onCreateProviderReport = `subscription OnCreateProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -208,6 +206,7 @@ exports.onUpdateProviderReport = `subscription OnUpdateProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -259,6 +258,7 @@ exports.onDeleteProviderReport = `subscription OnDeleteProviderReport(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -634,6 +634,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -720,6 +721,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -806,6 +808,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -912,7 +915,6 @@ exports.onCreateUserBookmark = `subscription OnCreateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -985,7 +987,6 @@ exports.onUpdateUserBookmark = `subscription OnUpdateUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1058,7 +1059,6 @@ exports.onDeleteUserBookmark = `subscription OnDeleteUserBookmark(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1111,6 +1111,7 @@ exports.onCreateProviderNotification = `subscription OnCreateProviderNotificatio
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1163,6 +1164,7 @@ exports.onUpdateProviderNotification = `subscription OnUpdateProviderNotificatio
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1215,6 +1217,7 @@ exports.onDeleteProviderNotification = `subscription OnDeleteProviderNotificatio
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1414,7 +1417,6 @@ exports.onCreateServiceDiscount = `subscription OnCreateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1453,7 +1455,6 @@ exports.onUpdateServiceDiscount = `subscription OnUpdateServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1492,7 +1493,6 @@ exports.onDeleteServiceDiscount = `subscription OnDeleteServiceDiscount(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1546,6 +1546,7 @@ exports.onCreateProviderAvailability = `subscription OnCreateProviderAvailabilit
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1597,6 +1598,7 @@ exports.onUpdateProviderAvailability = `subscription OnUpdateProviderAvailabilit
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1648,6 +1650,7 @@ exports.onDeleteProviderAvailability = `subscription OnDeleteProviderAvailabilit
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1858,6 +1861,7 @@ exports.onCreateProviderCertification = `subscription OnCreateProviderCertificat
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1911,6 +1915,7 @@ exports.onUpdateProviderCertification = `subscription OnUpdateProviderCertificat
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -1964,6 +1969,7 @@ exports.onDeleteProviderCertification = `subscription OnDeleteProviderCertificat
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2002,7 +2008,6 @@ exports.onCreateServiceVideo = `subscription OnCreateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2040,7 +2045,6 @@ exports.onUpdateServiceVideo = `subscription OnUpdateServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2078,7 +2082,6 @@ exports.onDeleteServiceVideo = `subscription OnDeleteServiceVideo(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2116,7 +2119,6 @@ exports.onCreateServiceImage = `subscription OnCreateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2154,7 +2156,6 @@ exports.onUpdateServiceImage = `subscription OnUpdateServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2192,7 +2193,6 @@ exports.onDeleteServiceImage = `subscription OnDeleteServiceImage(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2230,7 +2230,6 @@ exports.onCreateServiceReview = `subscription OnCreateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2305,7 +2304,6 @@ exports.onUpdateServiceReview = `subscription OnUpdateServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2380,7 +2378,6 @@ exports.onDeleteServiceReview = `subscription OnDeleteServiceReview(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2717,6 +2714,7 @@ exports.onCreateExpense = `subscription OnCreateExpense($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2768,6 +2766,7 @@ exports.onUpdateExpense = `subscription OnUpdateExpense($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2819,6 +2818,7 @@ exports.onDeleteExpense = `subscription OnDeleteExpense($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2907,6 +2907,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -2993,6 +2994,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3079,6 +3081,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3289,6 +3292,7 @@ exports.onCreateProviderAward = `subscription OnCreateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3341,6 +3345,7 @@ exports.onUpdateProviderAward = `subscription OnUpdateProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3393,6 +3398,7 @@ exports.onDeleteProviderAward = `subscription OnDeleteProviderAward(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3781,6 +3787,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3865,6 +3872,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -3949,6 +3957,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4192,6 +4201,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4283,6 +4293,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4374,6 +4385,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4465,6 +4477,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4483,7 +4496,6 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4572,6 +4584,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4590,7 +4603,6 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4679,6 +4691,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -4697,7 +4710,6 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5556,6 +5568,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5574,7 +5587,6 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5665,6 +5677,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5683,7 +5696,6 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5774,6 +5786,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -5792,7 +5805,6 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6869,6 +6881,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6922,7 +6935,6 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -6989,6 +7001,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7042,7 +7055,6 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7109,6 +7121,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7162,7 +7175,6 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7330,6 +7342,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7422,6 +7435,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7514,6 +7528,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7689,7 +7704,6 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7725,6 +7739,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7800,7 +7815,6 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7836,6 +7850,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7911,7 +7926,6 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       Materials
       MaterialCosts
       BookingRequirements
-      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -7947,6 +7961,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8061,6 +8076,7 @@ exports.onCreateTeamMember = `subscription OnCreateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8136,6 +8152,7 @@ exports.onUpdateTeamMember = `subscription OnUpdateTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8211,6 +8228,7 @@ exports.onDeleteTeamMember = `subscription OnDeleteTeamMember(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8408,6 +8426,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8563,7 +8582,6 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8607,6 +8625,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8762,7 +8781,6 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -8806,6 +8824,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -8961,7 +8980,6 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
     Materials
     MaterialCosts
     BookingRequirements
-    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9127,6 +9145,7 @@ exports.onCreateProvider = `subscription OnCreateProvider($filter: ModelSubscrip
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9290,6 +9309,7 @@ exports.onUpdateProvider = `subscription OnUpdateProvider($filter: ModelSubscrip
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9453,6 +9473,7 @@ exports.onDeleteProvider = `subscription OnDeleteProvider($filter: ModelSubscrip
       _lastChangedAt
       __typename
     }
+    isInstantBookingAvailable
     createdAt
     updatedAt
     _version
@@ -9495,6 +9516,7 @@ exports.onCreateAvailability = `subscription OnCreateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9546,6 +9568,7 @@ exports.onUpdateAvailability = `subscription OnUpdateAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9597,6 +9620,7 @@ exports.onDeleteAvailability = `subscription OnDeleteAvailability(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9704,6 +9728,7 @@ exports.onCreateCertification = `subscription OnCreateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9756,6 +9781,7 @@ exports.onUpdateCertification = `subscription OnUpdateCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9808,6 +9834,7 @@ exports.onDeleteCertification = `subscription OnDeleteCertification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9859,6 +9886,7 @@ exports.onCreateQualification = `subscription OnCreateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9910,6 +9938,7 @@ exports.onUpdateQualification = `subscription OnUpdateQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -9961,6 +9990,7 @@ exports.onDeleteQualification = `subscription OnDeleteQualification(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10011,6 +10041,7 @@ exports.onCreateSpecialization = `subscription OnCreateSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10061,6 +10092,7 @@ exports.onUpdateSpecialization = `subscription OnUpdateSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version
@@ -10111,6 +10143,7 @@ exports.onDeleteSpecialization = `subscription OnDeleteSpecialization(
       currencyPreference
       timezone
       chatbotRequests
+      isInstantBookingAvailable
       createdAt
       updatedAt
       _version

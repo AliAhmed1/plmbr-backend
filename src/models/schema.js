@@ -6601,13 +6601,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "isInstantBookingAvailable": {
-                    "name": "isInstantBookingAvailable",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -7251,6 +7244,13 @@ export const schema = {
                             "providerCurrentLocationId"
                         ]
                     }
+                },
+                "isInstantBookingAvailable": {
+                    "name": "isInstantBookingAvailable",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -8728,5 +8728,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "a17a6d3fca3d37269ea100b20fe9605f"
+    "version": "b04aac40273741ed933809bf294926ce"
 };

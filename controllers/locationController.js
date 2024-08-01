@@ -1,0 +1,12 @@
+import setLocation from '../services/locationService';
+
+export const setLocationController = async (req, res) => {
+  const { userId, providerId, locationData } = req.body;
+
+  try {
+    const result = await setLocation(userId, providerId, locationData);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};

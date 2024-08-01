@@ -12,6 +12,7 @@ const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = re
 const dynamoDB = require('../config/dbConfig');
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
+const haversineDistance = require('../utils/distance');
 const TABLE_NAME = 'Providers';
 const ProviderService = {
     createProvider: (providerData) => __awaiter(void 0, void 0, void 0, function* () {
@@ -121,6 +122,30 @@ const ProviderService = {
         };
         const result = yield dynamoDB.send(new UpdateCommand(params));
         return result.Attributes;
+    }),
+    getProvidersWithinRange: (lat, lon, range, checkInstantBooking) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+        };
+        const result = yield dynamoDB.send(new ScanCommand(params));
+        if (!result.Items) {
+            throw new Error('No providers found');
+        }
+        const providers = result.Items.filter((provider) => {
+            if (provider.currentLocation &&
+                provider.currentLocation.latitude &&
+                provider.currentLocation.longitude) {
+                const distance = haversineDistance(lat, lon, provider.currentLocation.latitude, provider.currentLocation.longitude);
+                if (distance <= range) {
+                    if (checkInstantBooking) {
+                        return provider.isInstantBookingAvailable;
+                    }
+                    return true;
+                }
+            }
+            return false;
+        });
+        return providers;
     }),
 };
 module.exports = ProviderService;
