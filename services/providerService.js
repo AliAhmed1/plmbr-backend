@@ -12,8 +12,10 @@ const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = re
 const dynamoDB = require('../config/dbConfig');
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
+const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
 const haversineDistance = require('../utils/distance');
-const TABLE_NAME = 'Providers';
+const TABLE_NAME_PROVIDERS = 'Providers';
+const TABLE_NAME_LOCATIONS = 'Locations';
 const ProviderService = {
     createProvider: (providerData) => __awaiter(void 0, void 0, void 0, function* () {
         // Use the processSchemaAndData utility to add common fields and handle optional fields
@@ -25,7 +27,7 @@ const ProviderService = {
         }
         const provider = validationResult.data;
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
             Item: provider,
         };
         yield dynamoDB.send(new PutCommand(params));
@@ -33,7 +35,7 @@ const ProviderService = {
     }),
     getProviderById: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
             Key: {
                 id: providerId,
             },
@@ -46,7 +48,7 @@ const ProviderService = {
     }),
     getAllProviders: () => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
         };
         const result = yield dynamoDB.send(new ScanCommand(params));
         return result.Items;
@@ -74,7 +76,7 @@ const ProviderService = {
             expressionAttributeValues[`:${key}`] = value;
         }
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
             Key: { id: providerId },
             UpdateExpression: `SET ${updateExpression.join(', ')}`,
             ExpressionAttributeNames: expressionAttributeNames,
@@ -86,7 +88,7 @@ const ProviderService = {
     }),
     deleteProvider: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
             Key: {
                 id: providerId,
             },
@@ -111,7 +113,7 @@ const ProviderService = {
             throw new Error(`Updated provider data is invalid: ${errors}`);
         }
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
             Key: { id: providerId },
             UpdateExpression: 'SET currentLocation = :currentLocation, updatedAt = :updatedAt',
             ExpressionAttributeValues: {
@@ -125,27 +127,35 @@ const ProviderService = {
     }),
     getProvidersWithinRange: (lat, lon, range, checkInstantBooking) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
-            TableName: TABLE_NAME,
+            TableName: TABLE_NAME_PROVIDERS,
         };
         const result = yield dynamoDB.send(new ScanCommand(params));
         if (!result.Items) {
             throw new Error('No providers found');
         }
-        const providers = result.Items.filter((provider) => {
-            if (provider.currentLocation &&
-                provider.currentLocation.latitude &&
-                provider.currentLocation.longitude) {
-                const distance = haversineDistance(lat, lon, provider.currentLocation.latitude, provider.currentLocation.longitude);
-                if (distance <= range) {
-                    if (checkInstantBooking) {
-                        return provider.isInstantBookingAvailable;
+        const providers = yield Promise.all(result.Items.map((provider) => __awaiter(void 0, void 0, void 0, function* () {
+            if (provider.locationId) {
+                const locationParams = {
+                    TableName: TABLE_NAME_LOCATIONS,
+                    Key: {
+                        id: { S: provider.locationId },
+                    },
+                };
+                const locationResult = yield dynamoDB.send(new client_dynamodb_1.GetItemCommand(locationParams));
+                const location = locationResult.Item;
+                if (location) {
+                    const distance = haversineDistance(lat, lon, parseFloat(location.latitude.N), parseFloat(location.longitude.N));
+                    if (distance <= range) {
+                        if (checkInstantBooking) {
+                            return provider.isInstantBookingAvailable ? provider : null;
+                        }
+                        return provider;
                     }
-                    return true;
                 }
             }
-            return false;
-        });
-        return providers;
-    }),
+            return null;
+        })));
+        return providers.filter(provider => provider !== null);
+    })
 };
 module.exports = ProviderService;

@@ -1,6 +1,6 @@
-import setLocation from '../services/locationService';
+const setLocation = require('../services/locationService');
 
-export const setLocationController = async (req, res) => {
+const setLocationController = async (req, res) => {
   const { userId, providerId, locationData } = req.body;
 
   try {
@@ -10,3 +10,5 @@ export const setLocationController = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+module.exports = setLocationController;
