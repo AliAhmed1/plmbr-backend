@@ -10,5 +10,6 @@ router.put('/services/:serviceId', ServiceController.updateService);
 // User routes
 router.get('/services/:serviceId', ServiceController.getServiceById);
 router.get('/services', ServiceController.getAllServices);
+router.get('/services/provider/:providerId', ServiceController.getAllServicesByProviderId);
 
 module.exports = router;

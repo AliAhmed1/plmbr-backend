@@ -3,11 +3,65 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onUpdateCustomization = exports.onCreateCustomization = exports.onDeleteAIDiagnostics = exports.onUpdateAIDiagnostics = exports.onCreateAIDiagnostics = exports.onDeleteServiceReview = exports.onUpdateServiceReview = exports.onCreateServiceReview = exports.onDeleteServiceImage = exports.onUpdateServiceImage = exports.onCreateServiceImage = exports.onDeleteServiceVideo = exports.onUpdateServiceVideo = exports.onCreateServiceVideo = exports.onDeleteProviderCertification = exports.onUpdateProviderCertification = exports.onCreateProviderCertification = exports.onDeleteUserPreference = exports.onUpdateUserPreference = exports.onCreateUserPreference = exports.onDeleteProviderAvailability = exports.onUpdateProviderAvailability = exports.onCreateProviderAvailability = exports.onDeleteServiceDiscount = exports.onUpdateServiceDiscount = exports.onCreateServiceDiscount = exports.onDeleteUserNotification = exports.onUpdateUserNotification = exports.onCreateUserNotification = exports.onDeleteProviderNotification = exports.onUpdateProviderNotification = exports.onCreateProviderNotification = exports.onDeleteUserBookmark = exports.onUpdateUserBookmark = exports.onCreateUserBookmark = exports.onDeleteProviderBookmark = exports.onUpdateProviderBookmark = exports.onCreateProviderBookmark = exports.onDeleteUserInvoice = exports.onUpdateUserInvoice = exports.onCreateUserInvoice = exports.onDeleteUserReport = exports.onUpdateUserReport = exports.onCreateUserReport = exports.onDeleteProviderReport = exports.onUpdateProviderReport = exports.onCreateProviderReport = exports.onDeleteServicePromotion = exports.onUpdateServicePromotion = exports.onCreateServicePromotion = void 0;
-exports.onCreateReport = exports.onDeletePromoCode = exports.onUpdatePromoCode = exports.onCreatePromoCode = exports.onDeleteAnalytics = exports.onUpdateAnalytics = exports.onCreateAnalytics = exports.onDeleteVerification = exports.onUpdateVerification = exports.onCreateVerification = exports.onDeleteLoyaltyProgram = exports.onUpdateLoyaltyProgram = exports.onCreateLoyaltyProgram = exports.onDeleteReward = exports.onUpdateReward = exports.onCreateReward = exports.onDeleteServicePackage = exports.onUpdateServicePackage = exports.onCreateServicePackage = exports.onDeleteNicheService = exports.onUpdateNicheService = exports.onCreateNicheService = exports.onDeleteContract = exports.onUpdateContract = exports.onCreateContract = exports.onDeleteInvoice = exports.onUpdateInvoice = exports.onCreateInvoice = exports.onDeletePaymentMethod = exports.onUpdatePaymentMethod = exports.onCreatePaymentMethod = exports.onDeleteTip = exports.onUpdateTip = exports.onCreateTip = exports.onDeleteReferral = exports.onUpdateReferral = exports.onCreateReferral = exports.onDeleteProviderAward = exports.onUpdateProviderAward = exports.onCreateProviderAward = exports.onDeleteUserHistory = exports.onUpdateUserHistory = exports.onCreateUserHistory = exports.onDeleteFavoriteProvider = exports.onUpdateFavoriteProvider = exports.onCreateFavoriteProvider = exports.onDeleteExpense = exports.onUpdateExpense = exports.onCreateExpense = exports.onDeleteCustomization = void 0;
-exports.onDeleteWallet = exports.onUpdateWallet = exports.onCreateWallet = exports.onDeleteEquipment = exports.onUpdateEquipment = exports.onCreateEquipment = exports.onDeleteFeedback = exports.onUpdateFeedback = exports.onCreateFeedback = exports.onDeleteServiceFAQ = exports.onUpdateServiceFAQ = exports.onCreateServiceFAQ = exports.onDeleteServiceTag = exports.onUpdateServiceTag = exports.onCreateServiceTag = exports.onDeleteServiceHighlight = exports.onUpdateServiceHighlight = exports.onCreateServiceHighlight = exports.onDeleteServiceVariant = exports.onUpdateServiceVariant = exports.onCreateServiceVariant = exports.onDeletePortfolio = exports.onUpdatePortfolio = exports.onCreatePortfolio = exports.onDeleteProviderSettings = exports.onUpdateProviderSettings = exports.onCreateProviderSettings = exports.onDeleteUserSettings = exports.onUpdateUserSettings = exports.onCreateUserSettings = exports.onDeletePLMBRSubscription = exports.onUpdatePLMBRSubscription = exports.onCreatePLMBRSubscription = exports.onDeleteSubCategory = exports.onUpdateSubCategory = exports.onCreateSubCategory = exports.onDeleteMainCategory = exports.onUpdateMainCategory = exports.onCreateMainCategory = exports.onDeleteAIChatBot = exports.onUpdateAIChatBot = exports.onCreateAIChatBot = exports.onDeleteAIChatLog = exports.onUpdateAIChatLog = exports.onCreateAIChatLog = exports.onDeleteJobTracking = exports.onUpdateJobTracking = exports.onCreateJobTracking = exports.onDeleteReport = exports.onUpdateReport = void 0;
-exports.onUpdateSpecialization = exports.onCreateSpecialization = exports.onDeleteQualification = exports.onUpdateQualification = exports.onCreateQualification = exports.onDeleteCertification = exports.onUpdateCertification = exports.onCreateCertification = exports.onDeleteProviderReview = exports.onUpdateProviderReview = exports.onCreateProviderReview = exports.onDeleteAvailability = exports.onUpdateAvailability = exports.onCreateAvailability = exports.onDeleteProvider = exports.onUpdateProvider = exports.onCreateProvider = exports.onDeleteService = exports.onUpdateService = exports.onCreateService = exports.onDeleteJob = exports.onUpdateJob = exports.onCreateJob = exports.onDeleteMessage = exports.onUpdateMessage = exports.onCreateMessage = exports.onDeleteLocation = exports.onUpdateLocation = exports.onCreateLocation = exports.onDeleteTeamMember = exports.onUpdateTeamMember = exports.onCreateTeamMember = exports.onDeleteBooking = exports.onUpdateBooking = exports.onCreateBooking = exports.onDeleteMessageContent = exports.onUpdateMessageContent = exports.onCreateMessageContent = exports.onDeleteMessageThread = exports.onUpdateMessageThread = exports.onCreateMessageThread = exports.onDeleteReviewResponse = exports.onUpdateReviewResponse = exports.onCreateReviewResponse = exports.onDeleteReview = exports.onUpdateReview = exports.onCreateReview = exports.onDeleteTransaction = exports.onUpdateTransaction = exports.onCreateTransaction = void 0;
-exports.onDeleteUser = exports.onUpdateUser = exports.onCreateUser = exports.onDeleteProviderHistory = exports.onUpdateProviderHistory = exports.onCreateProviderHistory = exports.onDeleteSpecialization = void 0;
+exports.onUpdateAIDiagnostics = exports.onCreateAIDiagnostics = exports.onDeleteServiceReview = exports.onUpdateServiceReview = exports.onCreateServiceReview = exports.onDeleteServiceImage = exports.onUpdateServiceImage = exports.onCreateServiceImage = exports.onDeleteServiceVideo = exports.onUpdateServiceVideo = exports.onCreateServiceVideo = exports.onDeleteProviderCertification = exports.onUpdateProviderCertification = exports.onCreateProviderCertification = exports.onDeleteUserPreference = exports.onUpdateUserPreference = exports.onCreateUserPreference = exports.onDeleteProviderAvailability = exports.onUpdateProviderAvailability = exports.onCreateProviderAvailability = exports.onDeleteServiceDiscount = exports.onUpdateServiceDiscount = exports.onCreateServiceDiscount = exports.onDeleteUserNotification = exports.onUpdateUserNotification = exports.onCreateUserNotification = exports.onDeleteProviderNotification = exports.onUpdateProviderNotification = exports.onCreateProviderNotification = exports.onDeleteUserBookmark = exports.onUpdateUserBookmark = exports.onCreateUserBookmark = exports.onDeleteProviderBookmark = exports.onUpdateProviderBookmark = exports.onCreateProviderBookmark = exports.onDeleteUserInvoice = exports.onUpdateUserInvoice = exports.onCreateUserInvoice = exports.onDeleteUserReport = exports.onUpdateUserReport = exports.onCreateUserReport = exports.onDeleteProviderReport = exports.onUpdateProviderReport = exports.onCreateProviderReport = exports.onDeleteServicePromotion = exports.onUpdateServicePromotion = exports.onCreateServicePromotion = exports.onDeleteProviderSchedule = exports.onUpdateProviderSchedule = exports.onCreateProviderSchedule = void 0;
+exports.onCreatePromoCode = exports.onDeleteAnalytics = exports.onUpdateAnalytics = exports.onCreateAnalytics = exports.onDeleteVerification = exports.onUpdateVerification = exports.onCreateVerification = exports.onDeleteLoyaltyProgram = exports.onUpdateLoyaltyProgram = exports.onCreateLoyaltyProgram = exports.onDeleteReward = exports.onUpdateReward = exports.onCreateReward = exports.onDeleteServicePackage = exports.onUpdateServicePackage = exports.onCreateServicePackage = exports.onDeleteNicheService = exports.onUpdateNicheService = exports.onCreateNicheService = exports.onDeleteContract = exports.onUpdateContract = exports.onCreateContract = exports.onDeleteInvoice = exports.onUpdateInvoice = exports.onCreateInvoice = exports.onDeletePaymentMethod = exports.onUpdatePaymentMethod = exports.onCreatePaymentMethod = exports.onDeleteTip = exports.onUpdateTip = exports.onCreateTip = exports.onDeleteReferral = exports.onUpdateReferral = exports.onCreateReferral = exports.onDeleteProviderAward = exports.onUpdateProviderAward = exports.onCreateProviderAward = exports.onDeleteUserHistory = exports.onUpdateUserHistory = exports.onCreateUserHistory = exports.onDeleteFavoriteProvider = exports.onUpdateFavoriteProvider = exports.onCreateFavoriteProvider = exports.onDeleteExpense = exports.onUpdateExpense = exports.onCreateExpense = exports.onDeleteCustomization = exports.onUpdateCustomization = exports.onCreateCustomization = exports.onDeleteAIDiagnostics = void 0;
+exports.onDeleteEquipment = exports.onUpdateEquipment = exports.onCreateEquipment = exports.onDeleteFeedback = exports.onUpdateFeedback = exports.onCreateFeedback = exports.onDeleteServiceFAQ = exports.onUpdateServiceFAQ = exports.onCreateServiceFAQ = exports.onDeleteServiceTag = exports.onUpdateServiceTag = exports.onCreateServiceTag = exports.onDeleteServiceHighlight = exports.onUpdateServiceHighlight = exports.onCreateServiceHighlight = exports.onDeleteServiceVariant = exports.onUpdateServiceVariant = exports.onCreateServiceVariant = exports.onDeletePortfolio = exports.onUpdatePortfolio = exports.onCreatePortfolio = exports.onDeleteProviderSettings = exports.onUpdateProviderSettings = exports.onCreateProviderSettings = exports.onDeleteUserSettings = exports.onUpdateUserSettings = exports.onCreateUserSettings = exports.onDeletePLMBRSubscription = exports.onUpdatePLMBRSubscription = exports.onCreatePLMBRSubscription = exports.onDeleteSubCategory = exports.onUpdateSubCategory = exports.onCreateSubCategory = exports.onDeleteMainCategory = exports.onUpdateMainCategory = exports.onCreateMainCategory = exports.onDeleteAIChatBot = exports.onUpdateAIChatBot = exports.onCreateAIChatBot = exports.onDeleteAIChatLog = exports.onUpdateAIChatLog = exports.onCreateAIChatLog = exports.onDeleteJobTracking = exports.onUpdateJobTracking = exports.onCreateJobTracking = exports.onDeleteReport = exports.onUpdateReport = exports.onCreateReport = exports.onDeletePromoCode = exports.onUpdatePromoCode = void 0;
+exports.onUpdateQualification = exports.onCreateQualification = exports.onDeleteCertification = exports.onUpdateCertification = exports.onCreateCertification = exports.onDeleteProviderReview = exports.onUpdateProviderReview = exports.onCreateProviderReview = exports.onDeleteAvailability = exports.onUpdateAvailability = exports.onCreateAvailability = exports.onDeleteProvider = exports.onUpdateProvider = exports.onCreateProvider = exports.onDeleteService = exports.onUpdateService = exports.onCreateService = exports.onDeleteJob = exports.onUpdateJob = exports.onCreateJob = exports.onDeleteMessage = exports.onUpdateMessage = exports.onCreateMessage = exports.onDeleteLocation = exports.onUpdateLocation = exports.onCreateLocation = exports.onDeleteTeamMember = exports.onUpdateTeamMember = exports.onCreateTeamMember = exports.onDeleteBooking = exports.onUpdateBooking = exports.onCreateBooking = exports.onDeleteMessageContent = exports.onUpdateMessageContent = exports.onCreateMessageContent = exports.onDeleteMessageThread = exports.onUpdateMessageThread = exports.onCreateMessageThread = exports.onDeleteReviewResponse = exports.onUpdateReviewResponse = exports.onCreateReviewResponse = exports.onDeleteReview = exports.onUpdateReview = exports.onCreateReview = exports.onDeleteTransaction = exports.onUpdateTransaction = exports.onCreateTransaction = exports.onDeleteWallet = exports.onUpdateWallet = exports.onCreateWallet = void 0;
+exports.onDeleteUser = exports.onUpdateUser = exports.onCreateUser = exports.onDeleteProviderHistory = exports.onUpdateProviderHistory = exports.onCreateProviderHistory = exports.onDeleteSpecialization = exports.onUpdateSpecialization = exports.onCreateSpecialization = exports.onDeleteQualification = void 0;
+exports.onCreateProviderSchedule = `subscription OnCreateProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onCreateProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
+exports.onUpdateProviderSchedule = `subscription OnUpdateProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onUpdateProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
+exports.onDeleteProviderSchedule = `subscription OnDeleteProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onDeleteProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
 exports.onCreateServicePromotion = `subscription OnCreateServicePromotion(
   $filter: ModelSubscriptionServicePromotionFilterInput
 ) {
@@ -7787,6 +7841,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -7898,6 +7953,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8009,6 +8065,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -9146,6 +9203,11 @@ exports.onCreateProvider = `subscription OnCreateProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9310,6 +9372,11 @@ exports.onUpdateProvider = `subscription OnUpdateProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9474,6 +9541,11 @@ exports.onDeleteProvider = `subscription OnDeleteProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version

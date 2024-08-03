@@ -8,6 +8,123 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const getProviderSchedule = /* GraphQL */ `query GetProviderSchedule($id: ID!) {
+  getProviderSchedule(id: $id) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetProviderScheduleQueryVariables,
+  APITypes.GetProviderScheduleQuery
+>;
+export const listProviderSchedules = /* GraphQL */ `query ListProviderSchedules(
+  $filter: ModelProviderScheduleFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProviderSchedules(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      providerID
+      startTime
+      endTime
+      date
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListProviderSchedulesQueryVariables,
+  APITypes.ListProviderSchedulesQuery
+>;
+export const syncProviderSchedules = /* GraphQL */ `query SyncProviderSchedules(
+  $filter: ModelProviderScheduleFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncProviderSchedules(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      providerID
+      startTime
+      endTime
+      date
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.SyncProviderSchedulesQueryVariables,
+  APITypes.SyncProviderSchedulesQuery
+>;
+export const providerSchedulesByProviderID = /* GraphQL */ `query ProviderSchedulesByProviderID(
+  $providerID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelProviderScheduleFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  providerSchedulesByProviderID(
+    providerID: $providerID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      providerID
+      startTime
+      endTime
+      date
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ProviderSchedulesByProviderIDQueryVariables,
+  APITypes.ProviderSchedulesByProviderIDQuery
+>;
 export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id: ID!) {
   getServicePromotion(id: $id) {
     id
@@ -6119,6 +6236,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -6149,6 +6267,7 @@ export const listBookings = /* GraphQL */ `query ListBookings(
       location
       notes
       price
+      isInstantBooking
       createdAt
       updatedAt
       _version
@@ -6189,6 +6308,7 @@ export const syncBookings = /* GraphQL */ `query SyncBookings(
       location
       notes
       price
+      isInstantBooking
       createdAt
       updatedAt
       _version
@@ -7015,6 +7135,11 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version

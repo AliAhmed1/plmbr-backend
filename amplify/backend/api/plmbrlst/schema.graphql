@@ -1,3 +1,11 @@
+type ProviderSchedule @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  providerID: ID! @index(name: "byProvider")
+  startTime: AWSTime!
+  endTime: AWSTime!
+  date: AWSDate
+}
+
 type ServicePromotion @model @auth(rules: [{allow: public}]) {
   id: ID!
   service: Service @belongsTo
@@ -478,6 +486,7 @@ type Booking @model @auth(rules: [{allow: public}]) {
   location: String
   notes: String
   price: Float!
+  isInstantBooking: Boolean
 }
 
 enum BookingStatus {
@@ -611,6 +620,7 @@ type Provider @model @auth(rules: [{allow: public}]) {
   expenses: [Expense] @hasMany
   currentLocation: Location @hasOne
   isInstantBookingAvailable: Boolean
+  ProviderSchedules: [ProviderSchedule] @hasMany(indexName: "byProvider", fields: ["id"])
 }
 
 type Availability @model @auth(rules: [{allow: public}]) {

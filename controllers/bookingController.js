@@ -1,4 +1,5 @@
 const BookingService = require('../services/bookingService');
+const { BookingStatus } = require('../src/API');
 
 const BookingController = {
   createBooking: async (req, res) => {
@@ -19,6 +20,19 @@ const BookingController = {
       res.status(200).json(booking);
     } catch (error) {
       res.status(500).json({ error: error.message });
+    }
+  },
+  updateBookingStatus: async (req, res) => {
+    const { bookingId } = req.params;
+    const { status, userId, providerId } = req.body;
+
+    try {
+      const newStatus = BookingStatus[status];
+      console.log(newStatus, status);
+      const result = await BookingService.updateBookingStatus(bookingId, newStatus, userId, providerId);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
   },
 };

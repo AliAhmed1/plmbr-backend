@@ -11,7 +11,17 @@ const LocationController = {
         } catch (error) {
             res.status(400).json({ message: error.message });
         }
-    }
+    },
+    getLocationById: async (req, res) => {
+        const { locationId } = req.params;
+    
+        try {
+          const result = await LocationService.getLocationById(locationId);
+          res.status(200).json(result);
+        } catch (error) {
+          res.status(400).json({ message: error.message });
+        }
+      },
 }
 
 module.exports = LocationController;

@@ -54,7 +54,6 @@ const UserService = {
 
   updateUser: async (userId: string, updateData: Partial<User>) => {
     const extendedUpdateData = processSchemaAndData(userSchema, updateData, "User");
-
     const validationResult = userSchema.safeParse(extendedUpdateData);
 
     if (!validationResult.success) {

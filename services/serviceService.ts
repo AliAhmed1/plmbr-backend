@@ -4,6 +4,7 @@ import { Service, Provider } from '../src/API';
 import { serviceSchema, providerSchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
 import ProviderService from './providerService';
+import { QueryCommand } from '@aws-sdk/lib-dynamodb';
 
 const TABLE_NAME = 'Services';
 
@@ -18,11 +19,11 @@ const ServiceService = {
       throw new Error(`Service data is invalid: ${errors}`);
     }
 
-    const service: Service | any = validationResult.data;
+    const service: Service = validationResult.data;
 
     // Validate providerId
-    if (service.providerId) {
-      const providerExists = await ProviderService.getProviderById(service.providerId);
+    if (service.providerServicesOfferedId) {
+      const providerExists = await ProviderService.getProviderById(service.providerServicesOfferedId);
 
       if (!providerExists) {
         throw new Error(`Provider information is incorrect: Provider not found`);
@@ -103,6 +104,22 @@ const ServiceService = {
 
     const result = await dynamoDB.send(new UpdateCommand(params));
     return result.Attributes as Service;
+  },
+  getAllServicesByProviderId: async (providerId: string) => {
+    const params = {
+      TableName: TABLE_NAME,
+      IndexName: 'ProviderIdIndex', // Ensure you have a GSI on providerId
+      KeyConditionExpression: 'providerId = :providerId',
+      ExpressionAttributeValues: {
+        ':providerId': providerId,
+      },
+    };
+
+    const result = await dynamoDB.send(new QueryCommand(params));
+    if (!result.Items) {
+      throw new Error('No services found for the provided provider ID');
+    }
+    return result.Items;
   },
 };
 

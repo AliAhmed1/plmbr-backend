@@ -5,6 +5,7 @@ const serviceRoutes = require('./routes/serviceRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const userRoutes = require('./routes/userRoutes');
 const locationRoutes = require('./routes/locationRoutes');
+const providerScheduleRoutes = require('./routes/providerScheduleRoutes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use('/api', serviceRoutes);
 app.use('/api', bookingRoutes);
 app.use('/api', userRoutes);
 app.use('/api', locationRoutes);
+app.use('/api', providerScheduleRoutes);
 
 app.use('/', (req, res) => {
     res.status(200).json('hello world');

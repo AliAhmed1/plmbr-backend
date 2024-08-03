@@ -8,6 +8,69 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
+export const onCreateProviderSchedule = /* GraphQL */ `subscription OnCreateProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onCreateProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateProviderScheduleSubscriptionVariables,
+  APITypes.OnCreateProviderScheduleSubscription
+>;
+export const onUpdateProviderSchedule = /* GraphQL */ `subscription OnUpdateProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onUpdateProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateProviderScheduleSubscriptionVariables,
+  APITypes.OnUpdateProviderScheduleSubscription
+>;
+export const onDeleteProviderSchedule = /* GraphQL */ `subscription OnDeleteProviderSchedule(
+  $filter: ModelSubscriptionProviderScheduleFilterInput
+) {
+  onDeleteProviderSchedule(filter: $filter) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteProviderScheduleSubscriptionVariables,
+  APITypes.OnDeleteProviderScheduleSubscription
+>;
 export const onCreateServicePromotion = /* GraphQL */ `subscription OnCreateServicePromotion(
   $filter: ModelSubscriptionServicePromotionFilterInput
 ) {
@@ -8282,6 +8345,7 @@ export const onCreateBooking = /* GraphQL */ `subscription OnCreateBooking($filt
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8396,6 +8460,7 @@ export const onUpdateBooking = /* GraphQL */ `subscription OnUpdateBooking($filt
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8510,6 +8575,7 @@ export const onDeleteBooking = /* GraphQL */ `subscription OnDeleteBooking($filt
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -9695,6 +9761,11 @@ export const onCreateProvider = /* GraphQL */ `subscription OnCreateProvider($fi
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9862,6 +9933,11 @@ export const onUpdateProvider = /* GraphQL */ `subscription OnUpdateProvider($fi
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -10029,6 +10105,11 @@ export const onDeleteProvider = /* GraphQL */ `subscription OnDeleteProvider($fi
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version

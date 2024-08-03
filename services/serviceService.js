@@ -16,6 +16,7 @@ const dynamoDB = require('../config/dbConfig');
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
 const providerService_1 = __importDefault(require("./providerService"));
+const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const TABLE_NAME = 'Services';
 const ServiceService = {
     createService: (serviceData) => __awaiter(void 0, void 0, void 0, function* () {
@@ -27,8 +28,8 @@ const ServiceService = {
         }
         const service = validationResult.data;
         // Validate providerId
-        if (service.providerId) {
-            const providerExists = yield providerService_1.default.getProviderById(service.providerId);
+        if (service.providerServicesOfferedId) {
+            const providerExists = yield providerService_1.default.getProviderById(service.providerServicesOfferedId);
             if (!providerExists) {
                 throw new Error(`Provider information is incorrect: Provider not found`);
             }
@@ -94,6 +95,21 @@ const ServiceService = {
         };
         const result = yield dynamoDB.send(new UpdateCommand(params));
         return result.Attributes;
+    }),
+    getAllServicesByProviderId: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+            IndexName: 'ProviderIdIndex', // Ensure you have a GSI on providerId
+            KeyConditionExpression: 'providerId = :providerId',
+            ExpressionAttributeValues: {
+                ':providerId': providerId,
+            },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+        if (!result.Items) {
+            throw new Error('No services found for the provided provider ID');
+        }
+        return result.Items;
     }),
 };
 module.exports = ServiceService;

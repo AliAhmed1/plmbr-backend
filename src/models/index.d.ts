@@ -88,6 +88,40 @@ export enum NotificationPreference {
 
 
 
+type EagerProviderSchedule = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ProviderSchedule, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly providerID: string;
+  readonly startTime: string;
+  readonly endTime: string;
+  readonly date?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyProviderSchedule = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ProviderSchedule, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly providerID: string;
+  readonly startTime: string;
+  readonly endTime: string;
+  readonly date?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type ProviderSchedule = LazyLoading extends LazyLoadingDisabled ? EagerProviderSchedule : LazyProviderSchedule
+
+export declare const ProviderSchedule: (new (init: ModelInit<ProviderSchedule>) => ProviderSchedule) & {
+  copyOf(source: ProviderSchedule, mutator: (draft: MutableModel<ProviderSchedule>) => MutableModel<ProviderSchedule> | void): ProviderSchedule;
+}
+
 type EagerServicePromotion = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<ServicePromotion, 'id'>;
@@ -2068,6 +2102,7 @@ type EagerBooking = {
   readonly location?: string | null;
   readonly notes?: string | null;
   readonly price: number;
+  readonly isInstantBooking?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly serviceBookingsId?: string | null;
@@ -2091,6 +2126,7 @@ type LazyBooking = {
   readonly location?: string | null;
   readonly notes?: string | null;
   readonly price: number;
+  readonly isInstantBooking?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly serviceBookingsId?: string | null;
@@ -2411,6 +2447,7 @@ type EagerProvider = {
   readonly expenses?: (Expense | null)[] | null;
   readonly currentLocation?: Location | null;
   readonly isInstantBookingAvailable?: boolean | null;
+  readonly ProviderSchedules?: (ProviderSchedule | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;
@@ -2470,6 +2507,7 @@ type LazyProvider = {
   readonly expenses: AsyncCollection<Expense>;
   readonly currentLocation: AsyncItem<Location | undefined>;
   readonly isInstantBookingAvailable?: boolean | null;
+  readonly ProviderSchedules: AsyncCollection<ProviderSchedule>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;

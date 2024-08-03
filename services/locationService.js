@@ -18,16 +18,34 @@ const PROVIDER_TABLE_NAME = 'Providers';
 const USER_TABLE_NAME = 'Users';
 const LocationService = {
     setLocation: (userId, providerId, locationData) => __awaiter(void 0, void 0, void 0, function* () {
+        var _a, _b;
         // Validate location data
         const extendedLocationData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.locationSchema, Object.assign(Object.assign({}, locationData), { timestamp: Date.now().toString() }), "Location");
-        console.log('Extended Location Data:', extendedLocationData); // Log for debugging
         const locationValidationResult = generatedZodSchema_1.locationSchema.safeParse(Object.assign({}, extendedLocationData));
         if (!locationValidationResult.success) {
             console.error(locationValidationResult.error); // Log validation errors
             throw new Error('Invalid location data');
         }
-        // Insert or update the location in the Location table
-        const locationId = (extendedLocationData === null || extendedLocationData === void 0 ? void 0 : extendedLocationData.id) || (0, uuid_1.v4)();
+        let locationId = null;
+        // Fetch existing locationId from user or provider
+        if (userId) {
+            const userParams = {
+                TableName: USER_TABLE_NAME,
+                Key: { id: userId },
+            };
+            const userResult = yield dynamoDB.send(new lib_dynamodb_1.GetCommand(userParams));
+            locationId = ((_a = userResult.Item) === null || _a === void 0 ? void 0 : _a.userCurentLocationId) || null;
+        }
+        if (providerId) {
+            const providerParams = {
+                TableName: PROVIDER_TABLE_NAME,
+                Key: { id: providerId },
+            };
+            const providerResult = yield dynamoDB.send(new lib_dynamodb_1.GetCommand(providerParams));
+            locationId = ((_b = providerResult.Item) === null || _b === void 0 ? void 0 : _b.providerCurrentLocationId) || null;
+        }
+        // Use the existing locationId or create a new one
+        locationId = locationId || (0, uuid_1.v4)();
         const locationParams = {
             TableName: LOCATION_TABLE_NAME,
             Item: Object.assign(Object.assign({}, extendedLocationData), { id: locationId }),
@@ -38,7 +56,7 @@ const LocationService = {
             const userParams = {
                 TableName: USER_TABLE_NAME,
                 Key: { id: userId },
-                UpdateExpression: 'set locationId = :locationId',
+                UpdateExpression: 'set userCurentLocationId = :locationId',
                 ExpressionAttributeValues: {
                     ':locationId': locationId,
                 },
@@ -49,7 +67,7 @@ const LocationService = {
             const providerParams = {
                 TableName: PROVIDER_TABLE_NAME,
                 Key: { id: providerId },
-                UpdateExpression: 'set locationId = :locationId',
+                UpdateExpression: 'set providerCurrentLocationId = :locationId',
                 ExpressionAttributeValues: {
                     ':locationId': locationId,
                 },
@@ -57,6 +75,21 @@ const LocationService = {
             yield dynamoDB.send(new lib_dynamodb_1.UpdateCommand(providerParams));
         }
         return locationParams.Item;
-    })
+    }),
+    getLocationById: (locationId) => __awaiter(void 0, void 0, void 0, function* () {
+        const locationParams = {
+            TableName: LOCATION_TABLE_NAME,
+            Key: { id: locationId },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.GetCommand(locationParams));
+        if (!result.Item) {
+            throw new Error('Location not found');
+        }
+        const locationValidationResult = generatedZodSchema_1.locationSchema.safeParse(result.Item);
+        if (!locationValidationResult.success) {
+            throw new Error('Invalid location data');
+        }
+        return result.Item;
+    }),
 };
 module.exports = LocationService;

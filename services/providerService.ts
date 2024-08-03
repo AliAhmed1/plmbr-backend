@@ -160,12 +160,12 @@ const ProviderService = {
       throw new Error('No providers found');
     }
   
-    const providers = await Promise.all(result.Items.map(async (provider: Provider | any) => {
-      if (provider.locationId) {
+    const providers = await Promise.all(result.Items.map(async (provider: Provider) => {
+      if (provider.providerCurrentLocationId) {
         const locationParams = {
           TableName: TABLE_NAME_LOCATIONS,
           Key: {
-            id: { S: provider.locationId },
+            id: { S: provider.providerCurrentLocationId },
           },
         };
         const locationResult = await dynamoDB.send(new GetItemCommand(locationParams));
@@ -190,7 +190,22 @@ const ProviderService = {
     }));
   
     return providers.filter(provider => provider !== null);
-  }
+  },
+  toggleInstantBooking: async (providerId: string, isInstantBookingAvailable: boolean) => {
+    
+    // Update the provider's isInstantBookingAvailable field
+    const providerParams = {
+      TableName: TABLE_NAME_PROVIDERS,
+      Key: { id: providerId },
+      UpdateExpression: 'set isInstantBookingAvailable = :isInstantBookingAvailable',
+      ExpressionAttributeValues: {
+        ':isInstantBookingAvailable': isInstantBookingAvailable,
+      },
+    };
+
+    await dynamoDB.send(new UpdateCommand(providerParams));
+    return { providerId, isInstantBookingAvailable };
+  },
 };
 
 export = ProviderService;

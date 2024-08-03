@@ -22,7 +22,7 @@ const ProviderController = {
     }
   },
 
-  getAllProviders: async (req, res) => {
+  getAllProvidersWithoutFilter: async (req, res) => {
     try {
       const providers = await ProviderService.getAllProviders();
       res.status(200).json(providers);
@@ -86,6 +86,17 @@ const ProviderController = {
       res.status(200).json(providers);
     } catch (error) {
       res.status(500).json({ error: error.message });
+    }
+  },
+  toggleInstantBooking: async (req, res) => {
+    const { providerId } = req.params;
+    const { isInstantBookingAvailable } = req.body;
+
+    try {
+      const result = await ProviderService.toggleInstantBooking(providerId, isInstantBookingAvailable);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
   },
 

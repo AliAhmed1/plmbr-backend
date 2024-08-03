@@ -134,11 +134,11 @@ const ProviderService = {
             throw new Error('No providers found');
         }
         const providers = yield Promise.all(result.Items.map((provider) => __awaiter(void 0, void 0, void 0, function* () {
-            if (provider.locationId) {
+            if (provider.providerCurrentLocationId) {
                 const locationParams = {
                     TableName: TABLE_NAME_LOCATIONS,
                     Key: {
-                        id: { S: provider.locationId },
+                        id: { S: provider.providerCurrentLocationId },
                     },
                 };
                 const locationResult = yield dynamoDB.send(new client_dynamodb_1.GetItemCommand(locationParams));
@@ -156,6 +156,19 @@ const ProviderService = {
             return null;
         })));
         return providers.filter(provider => provider !== null);
-    })
+    }),
+    toggleInstantBooking: (providerId, isInstantBookingAvailable) => __awaiter(void 0, void 0, void 0, function* () {
+        // Update the provider's isInstantBookingAvailable field
+        const providerParams = {
+            TableName: TABLE_NAME_PROVIDERS,
+            Key: { id: providerId },
+            UpdateExpression: 'set isInstantBookingAvailable = :isInstantBookingAvailable',
+            ExpressionAttributeValues: {
+                ':isInstantBookingAvailable': isInstantBookingAvailable,
+            },
+        };
+        yield dynamoDB.send(new UpdateCommand(providerParams));
+        return { providerId, isInstantBookingAvailable };
+    }),
 };
 module.exports = ProviderService;

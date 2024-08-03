@@ -40,6 +40,16 @@ const ServiceController = {
       res.status(500).json({ error: error.message });
     }
   },
+  getAllServicesByProviderId: async (req, res) => {
+    const { providerId } = req.params;
+
+    try {
+      const result = await ServiceService.getAllServicesByProviderId(providerId);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = ServiceController;

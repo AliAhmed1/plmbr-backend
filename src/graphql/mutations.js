@@ -3,11 +3,68 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateCustomization = exports.createCustomization = exports.deleteAIDiagnostics = exports.updateAIDiagnostics = exports.createAIDiagnostics = exports.deleteServiceReview = exports.updateServiceReview = exports.createServiceReview = exports.deleteServiceImage = exports.updateServiceImage = exports.createServiceImage = exports.deleteServiceVideo = exports.updateServiceVideo = exports.createServiceVideo = exports.deleteProviderCertification = exports.updateProviderCertification = exports.createProviderCertification = exports.deleteUserPreference = exports.updateUserPreference = exports.createUserPreference = exports.deleteProviderAvailability = exports.updateProviderAvailability = exports.createProviderAvailability = exports.deleteServiceDiscount = exports.updateServiceDiscount = exports.createServiceDiscount = exports.deleteUserNotification = exports.updateUserNotification = exports.createUserNotification = exports.deleteProviderNotification = exports.updateProviderNotification = exports.createProviderNotification = exports.deleteUserBookmark = exports.updateUserBookmark = exports.createUserBookmark = exports.deleteProviderBookmark = exports.updateProviderBookmark = exports.createProviderBookmark = exports.deleteUserInvoice = exports.updateUserInvoice = exports.createUserInvoice = exports.deleteUserReport = exports.updateUserReport = exports.createUserReport = exports.deleteProviderReport = exports.updateProviderReport = exports.createProviderReport = exports.deleteServicePromotion = exports.updateServicePromotion = exports.createServicePromotion = void 0;
-exports.createReport = exports.deletePromoCode = exports.updatePromoCode = exports.createPromoCode = exports.deleteAnalytics = exports.updateAnalytics = exports.createAnalytics = exports.deleteVerification = exports.updateVerification = exports.createVerification = exports.deleteLoyaltyProgram = exports.updateLoyaltyProgram = exports.createLoyaltyProgram = exports.deleteReward = exports.updateReward = exports.createReward = exports.deleteServicePackage = exports.updateServicePackage = exports.createServicePackage = exports.deleteNicheService = exports.updateNicheService = exports.createNicheService = exports.deleteContract = exports.updateContract = exports.createContract = exports.deleteInvoice = exports.updateInvoice = exports.createInvoice = exports.deletePaymentMethod = exports.updatePaymentMethod = exports.createPaymentMethod = exports.deleteTip = exports.updateTip = exports.createTip = exports.deleteReferral = exports.updateReferral = exports.createReferral = exports.deleteProviderAward = exports.updateProviderAward = exports.createProviderAward = exports.deleteUserHistory = exports.updateUserHistory = exports.createUserHistory = exports.deleteFavoriteProvider = exports.updateFavoriteProvider = exports.createFavoriteProvider = exports.deleteExpense = exports.updateExpense = exports.createExpense = exports.deleteCustomization = void 0;
-exports.deleteWallet = exports.updateWallet = exports.createWallet = exports.deleteEquipment = exports.updateEquipment = exports.createEquipment = exports.deleteFeedback = exports.updateFeedback = exports.createFeedback = exports.deleteServiceFAQ = exports.updateServiceFAQ = exports.createServiceFAQ = exports.deleteServiceTag = exports.updateServiceTag = exports.createServiceTag = exports.deleteServiceHighlight = exports.updateServiceHighlight = exports.createServiceHighlight = exports.deleteServiceVariant = exports.updateServiceVariant = exports.createServiceVariant = exports.deletePortfolio = exports.updatePortfolio = exports.createPortfolio = exports.deleteProviderSettings = exports.updateProviderSettings = exports.createProviderSettings = exports.deleteUserSettings = exports.updateUserSettings = exports.createUserSettings = exports.deletePLMBRSubscription = exports.updatePLMBRSubscription = exports.createPLMBRSubscription = exports.deleteSubCategory = exports.updateSubCategory = exports.createSubCategory = exports.deleteMainCategory = exports.updateMainCategory = exports.createMainCategory = exports.deleteAIChatBot = exports.updateAIChatBot = exports.createAIChatBot = exports.deleteAIChatLog = exports.updateAIChatLog = exports.createAIChatLog = exports.deleteJobTracking = exports.updateJobTracking = exports.createJobTracking = exports.deleteReport = exports.updateReport = void 0;
-exports.updateSpecialization = exports.createSpecialization = exports.deleteQualification = exports.updateQualification = exports.createQualification = exports.deleteCertification = exports.updateCertification = exports.createCertification = exports.deleteProviderReview = exports.updateProviderReview = exports.createProviderReview = exports.deleteAvailability = exports.updateAvailability = exports.createAvailability = exports.deleteProvider = exports.updateProvider = exports.createProvider = exports.deleteService = exports.updateService = exports.createService = exports.deleteJob = exports.updateJob = exports.createJob = exports.deleteMessage = exports.updateMessage = exports.createMessage = exports.deleteLocation = exports.updateLocation = exports.createLocation = exports.deleteTeamMember = exports.updateTeamMember = exports.createTeamMember = exports.deleteBooking = exports.updateBooking = exports.createBooking = exports.deleteMessageContent = exports.updateMessageContent = exports.createMessageContent = exports.deleteMessageThread = exports.updateMessageThread = exports.createMessageThread = exports.deleteReviewResponse = exports.updateReviewResponse = exports.createReviewResponse = exports.deleteReview = exports.updateReview = exports.createReview = exports.deleteTransaction = exports.updateTransaction = exports.createTransaction = void 0;
-exports.deleteUser = exports.updateUser = exports.createUser = exports.deleteProviderHistory = exports.updateProviderHistory = exports.createProviderHistory = exports.deleteSpecialization = void 0;
+exports.updateAIDiagnostics = exports.createAIDiagnostics = exports.deleteServiceReview = exports.updateServiceReview = exports.createServiceReview = exports.deleteServiceImage = exports.updateServiceImage = exports.createServiceImage = exports.deleteServiceVideo = exports.updateServiceVideo = exports.createServiceVideo = exports.deleteProviderCertification = exports.updateProviderCertification = exports.createProviderCertification = exports.deleteUserPreference = exports.updateUserPreference = exports.createUserPreference = exports.deleteProviderAvailability = exports.updateProviderAvailability = exports.createProviderAvailability = exports.deleteServiceDiscount = exports.updateServiceDiscount = exports.createServiceDiscount = exports.deleteUserNotification = exports.updateUserNotification = exports.createUserNotification = exports.deleteProviderNotification = exports.updateProviderNotification = exports.createProviderNotification = exports.deleteUserBookmark = exports.updateUserBookmark = exports.createUserBookmark = exports.deleteProviderBookmark = exports.updateProviderBookmark = exports.createProviderBookmark = exports.deleteUserInvoice = exports.updateUserInvoice = exports.createUserInvoice = exports.deleteUserReport = exports.updateUserReport = exports.createUserReport = exports.deleteProviderReport = exports.updateProviderReport = exports.createProviderReport = exports.deleteServicePromotion = exports.updateServicePromotion = exports.createServicePromotion = exports.deleteProviderSchedule = exports.updateProviderSchedule = exports.createProviderSchedule = void 0;
+exports.createPromoCode = exports.deleteAnalytics = exports.updateAnalytics = exports.createAnalytics = exports.deleteVerification = exports.updateVerification = exports.createVerification = exports.deleteLoyaltyProgram = exports.updateLoyaltyProgram = exports.createLoyaltyProgram = exports.deleteReward = exports.updateReward = exports.createReward = exports.deleteServicePackage = exports.updateServicePackage = exports.createServicePackage = exports.deleteNicheService = exports.updateNicheService = exports.createNicheService = exports.deleteContract = exports.updateContract = exports.createContract = exports.deleteInvoice = exports.updateInvoice = exports.createInvoice = exports.deletePaymentMethod = exports.updatePaymentMethod = exports.createPaymentMethod = exports.deleteTip = exports.updateTip = exports.createTip = exports.deleteReferral = exports.updateReferral = exports.createReferral = exports.deleteProviderAward = exports.updateProviderAward = exports.createProviderAward = exports.deleteUserHistory = exports.updateUserHistory = exports.createUserHistory = exports.deleteFavoriteProvider = exports.updateFavoriteProvider = exports.createFavoriteProvider = exports.deleteExpense = exports.updateExpense = exports.createExpense = exports.deleteCustomization = exports.updateCustomization = exports.createCustomization = exports.deleteAIDiagnostics = void 0;
+exports.deleteEquipment = exports.updateEquipment = exports.createEquipment = exports.deleteFeedback = exports.updateFeedback = exports.createFeedback = exports.deleteServiceFAQ = exports.updateServiceFAQ = exports.createServiceFAQ = exports.deleteServiceTag = exports.updateServiceTag = exports.createServiceTag = exports.deleteServiceHighlight = exports.updateServiceHighlight = exports.createServiceHighlight = exports.deleteServiceVariant = exports.updateServiceVariant = exports.createServiceVariant = exports.deletePortfolio = exports.updatePortfolio = exports.createPortfolio = exports.deleteProviderSettings = exports.updateProviderSettings = exports.createProviderSettings = exports.deleteUserSettings = exports.updateUserSettings = exports.createUserSettings = exports.deletePLMBRSubscription = exports.updatePLMBRSubscription = exports.createPLMBRSubscription = exports.deleteSubCategory = exports.updateSubCategory = exports.createSubCategory = exports.deleteMainCategory = exports.updateMainCategory = exports.createMainCategory = exports.deleteAIChatBot = exports.updateAIChatBot = exports.createAIChatBot = exports.deleteAIChatLog = exports.updateAIChatLog = exports.createAIChatLog = exports.deleteJobTracking = exports.updateJobTracking = exports.createJobTracking = exports.deleteReport = exports.updateReport = exports.createReport = exports.deletePromoCode = exports.updatePromoCode = void 0;
+exports.updateQualification = exports.createQualification = exports.deleteCertification = exports.updateCertification = exports.createCertification = exports.deleteProviderReview = exports.updateProviderReview = exports.createProviderReview = exports.deleteAvailability = exports.updateAvailability = exports.createAvailability = exports.deleteProvider = exports.updateProvider = exports.createProvider = exports.deleteService = exports.updateService = exports.createService = exports.deleteJob = exports.updateJob = exports.createJob = exports.deleteMessage = exports.updateMessage = exports.createMessage = exports.deleteLocation = exports.updateLocation = exports.createLocation = exports.deleteTeamMember = exports.updateTeamMember = exports.createTeamMember = exports.deleteBooking = exports.updateBooking = exports.createBooking = exports.deleteMessageContent = exports.updateMessageContent = exports.createMessageContent = exports.deleteMessageThread = exports.updateMessageThread = exports.createMessageThread = exports.deleteReviewResponse = exports.updateReviewResponse = exports.createReviewResponse = exports.deleteReview = exports.updateReview = exports.createReview = exports.deleteTransaction = exports.updateTransaction = exports.createTransaction = exports.deleteWallet = exports.updateWallet = exports.createWallet = void 0;
+exports.deleteUser = exports.updateUser = exports.createUser = exports.deleteProviderHistory = exports.updateProviderHistory = exports.createProviderHistory = exports.deleteSpecialization = exports.updateSpecialization = exports.createSpecialization = exports.deleteQualification = void 0;
+exports.createProviderSchedule = `mutation CreateProviderSchedule(
+  $input: CreateProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  createProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
+exports.updateProviderSchedule = `mutation UpdateProviderSchedule(
+  $input: UpdateProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  updateProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
+exports.deleteProviderSchedule = `mutation DeleteProviderSchedule(
+  $input: DeleteProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  deleteProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+`;
 exports.createServicePromotion = `mutation CreateServicePromotion(
   $input: CreateServicePromotionInput!
   $condition: ModelServicePromotionConditionInput
@@ -8051,6 +8108,7 @@ exports.createBooking = `mutation CreateBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8165,6 +8223,7 @@ exports.updateBooking = `mutation UpdateBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8279,6 +8338,7 @@ exports.deleteBooking = `mutation DeleteBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -9458,6 +9518,11 @@ exports.createProvider = `mutation CreateProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9625,6 +9690,11 @@ exports.updateProvider = `mutation UpdateProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9792,6 +9862,11 @@ exports.deleteProvider = `mutation DeleteProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version

@@ -2,31 +2,29 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateServicePromotionInput = {
+export type CreateProviderScheduleInput = {
   id?: string | null,
-  description: string,
-  startDate: string,
-  endDate: string,
-  discountPercentage: number,
+  providerID: string,
+  startTime: string,
+  endTime: string,
+  date?: string | null,
   _version?: number | null,
-  serviceServicePromotionsId?: string | null,
 };
 
-export type ModelServicePromotionConditionInput = {
-  description?: ModelStringInput | null,
-  startDate?: ModelStringInput | null,
-  endDate?: ModelStringInput | null,
-  discountPercentage?: ModelFloatInput | null,
-  and?: Array< ModelServicePromotionConditionInput | null > | null,
-  or?: Array< ModelServicePromotionConditionInput | null > | null,
-  not?: ModelServicePromotionConditionInput | null,
+export type ModelProviderScheduleConditionInput = {
+  providerID?: ModelIDInput | null,
+  startTime?: ModelStringInput | null,
+  endTime?: ModelStringInput | null,
+  date?: ModelStringInput | null,
+  and?: Array< ModelProviderScheduleConditionInput | null > | null,
+  or?: Array< ModelProviderScheduleConditionInput | null > | null,
+  not?: ModelProviderScheduleConditionInput | null,
   _deleted?: ModelBooleanInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  serviceServicePromotionsId?: ModelIDInput | null,
 };
 
-export type ModelStringInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -66,26 +64,7 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelFloatInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -99,6 +78,77 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type ProviderSchedule = {
+  __typename: "ProviderSchedule",
+  id: string,
+  providerID: string,
+  startTime: string,
+  endTime: string,
+  date?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdateProviderScheduleInput = {
+  id: string,
+  providerID?: string | null,
+  startTime?: string | null,
+  endTime?: string | null,
+  date?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteProviderScheduleInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateServicePromotionInput = {
+  id?: string | null,
+  description: string,
+  startDate: string,
+  endDate: string,
+  discountPercentage: number,
+  _version?: number | null,
+  serviceServicePromotionsId?: string | null,
+};
+
+export type ModelServicePromotionConditionInput = {
+  description?: ModelStringInput | null,
+  startDate?: ModelStringInput | null,
+  endDate?: ModelStringInput | null,
+  discountPercentage?: ModelFloatInput | null,
+  and?: Array< ModelServicePromotionConditionInput | null > | null,
+  or?: Array< ModelServicePromotionConditionInput | null > | null,
+  not?: ModelServicePromotionConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  serviceServicePromotionsId?: ModelIDInput | null,
+};
+
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ServicePromotion = {
@@ -216,6 +266,7 @@ export type Provider = {
   expenses?: ModelExpenseConnection | null,
   currentLocation?: Location | null,
   isInstantBookingAvailable?: boolean | null,
+  ProviderSchedules?: ModelProviderScheduleConnection | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -482,6 +533,7 @@ export type Booking = {
   location?: string | null,
   notes?: string | null,
   price: number,
+  isInstantBooking?: boolean | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -1433,6 +1485,13 @@ export type ProviderAward = {
   _lastChangedAt: number,
   serviceProviderAwardsId?: string | null,
   providerProviderAwardsId?: string | null,
+};
+
+export type ModelProviderScheduleConnection = {
+  __typename: "ModelProviderScheduleConnection",
+  items:  Array<ProviderSchedule | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type SubCategory = {
@@ -3676,6 +3735,7 @@ export type CreateBookingInput = {
   location?: string | null,
   notes?: string | null,
   price: number,
+  isInstantBooking?: boolean | null,
   _version?: number | null,
   serviceBookingsId?: string | null,
   providerProviderBookingsId?: string | null,
@@ -3690,6 +3750,7 @@ export type ModelBookingConditionInput = {
   location?: ModelStringInput | null,
   notes?: ModelStringInput | null,
   price?: ModelFloatInput | null,
+  isInstantBooking?: ModelBooleanInput | null,
   and?: Array< ModelBookingConditionInput | null > | null,
   or?: Array< ModelBookingConditionInput | null > | null,
   not?: ModelBookingConditionInput | null,
@@ -3715,6 +3776,7 @@ export type UpdateBookingInput = {
   location?: string | null,
   notes?: string | null,
   price?: number | null,
+  isInstantBooking?: boolean | null,
   _version?: number | null,
   serviceBookingsId?: string | null,
   providerProviderBookingsId?: string | null,
@@ -4384,6 +4446,26 @@ export type DeleteUserInput = {
   id: string,
   _version?: number | null,
 };
+
+export type ModelProviderScheduleFilterInput = {
+  id?: ModelIDInput | null,
+  providerID?: ModelIDInput | null,
+  startTime?: ModelStringInput | null,
+  endTime?: ModelStringInput | null,
+  date?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelProviderScheduleFilterInput | null > | null,
+  or?: Array< ModelProviderScheduleFilterInput | null > | null,
+  not?: ModelProviderScheduleFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
 
 export type ModelServicePromotionFilterInput = {
   id?: ModelIDInput | null,
@@ -5251,6 +5333,7 @@ export type ModelBookingFilterInput = {
   location?: ModelStringInput | null,
   notes?: ModelStringInput | null,
   price?: ModelFloatInput | null,
+  isInstantBooking?: ModelBooleanInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelBookingFilterInput | null > | null,
@@ -5519,16 +5602,16 @@ export type ModelUserConnection = {
   startedAt?: number | null,
 };
 
-export type ModelSubscriptionServicePromotionFilterInput = {
+export type ModelSubscriptionProviderScheduleFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  startDate?: ModelSubscriptionStringInput | null,
-  endDate?: ModelSubscriptionStringInput | null,
-  discountPercentage?: ModelSubscriptionFloatInput | null,
+  providerID?: ModelSubscriptionIDInput | null,
+  startTime?: ModelSubscriptionStringInput | null,
+  endTime?: ModelSubscriptionStringInput | null,
+  date?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionServicePromotionFilterInput | null > | null,
-  or?: Array< ModelSubscriptionServicePromotionFilterInput | null > | null,
+  and?: Array< ModelSubscriptionProviderScheduleFilterInput | null > | null,
+  or?: Array< ModelSubscriptionProviderScheduleFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
 };
 
@@ -5560,6 +5643,19 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionServicePromotionFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  startDate?: ModelSubscriptionStringInput | null,
+  endDate?: ModelSubscriptionStringInput | null,
+  discountPercentage?: ModelSubscriptionFloatInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionServicePromotionFilterInput | null > | null,
+  or?: Array< ModelSubscriptionServicePromotionFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelSubscriptionFloatInput = {
@@ -6215,11 +6311,17 @@ export type ModelSubscriptionBookingFilterInput = {
   location?: ModelSubscriptionStringInput | null,
   notes?: ModelSubscriptionStringInput | null,
   price?: ModelSubscriptionFloatInput | null,
+  isInstantBooking?: ModelSubscriptionBooleanInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionBookingFilterInput | null > | null,
   or?: Array< ModelSubscriptionBookingFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type ModelSubscriptionTeamMemberFilterInput = {
@@ -6374,11 +6476,6 @@ export type ModelSubscriptionProviderFilterInput = {
   providerCurrentLocationId?: ModelSubscriptionIDInput | null,
 };
 
-export type ModelSubscriptionBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-};
-
 export type ModelSubscriptionAvailabilityFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   startTime?: ModelSubscriptionStringInput | null,
@@ -6515,6 +6612,69 @@ export type ModelSubscriptionUserFilterInput = {
   userVerificationsId?: ModelSubscriptionIDInput | null,
   userWalletId?: ModelSubscriptionIDInput | null,
   userCurentLocationId?: ModelSubscriptionIDInput | null,
+};
+
+export type CreateProviderScheduleMutationVariables = {
+  input: CreateProviderScheduleInput,
+  condition?: ModelProviderScheduleConditionInput | null,
+};
+
+export type CreateProviderScheduleMutation = {
+  createProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdateProviderScheduleMutationVariables = {
+  input: UpdateProviderScheduleInput,
+  condition?: ModelProviderScheduleConditionInput | null,
+};
+
+export type UpdateProviderScheduleMutation = {
+  updateProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeleteProviderScheduleMutationVariables = {
+  input: DeleteProviderScheduleInput,
+  condition?: ModelProviderScheduleConditionInput | null,
+};
+
+export type DeleteProviderScheduleMutation = {
+  deleteProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
 };
 
 export type CreateServicePromotionMutationVariables = {
@@ -14893,6 +15053,7 @@ export type CreateBookingMutation = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -15009,6 +15170,7 @@ export type UpdateBookingMutation = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -15125,6 +15287,7 @@ export type DeleteBookingMutation = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -16336,6 +16499,11 @@ export type CreateProviderMutation = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -16505,6 +16673,11 @@ export type UpdateProviderMutation = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -16674,6 +16847,11 @@ export type DeleteProviderMutation = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -18109,6 +18287,110 @@ export type DeleteUserMutation = {
     _lastChangedAt: number,
     userWalletId?: string | null,
     userCurentLocationId?: string | null,
+  } | null,
+};
+
+export type GetProviderScheduleQueryVariables = {
+  id: string,
+};
+
+export type GetProviderScheduleQuery = {
+  getProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type ListProviderSchedulesQueryVariables = {
+  filter?: ModelProviderScheduleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListProviderSchedulesQuery = {
+  listProviderSchedules?:  {
+    __typename: "ModelProviderScheduleConnection",
+    items:  Array< {
+      __typename: "ProviderSchedule",
+      id: string,
+      providerID: string,
+      startTime: string,
+      endTime: string,
+      date?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncProviderSchedulesQueryVariables = {
+  filter?: ModelProviderScheduleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncProviderSchedulesQuery = {
+  syncProviderSchedules?:  {
+    __typename: "ModelProviderScheduleConnection",
+    items:  Array< {
+      __typename: "ProviderSchedule",
+      id: string,
+      providerID: string,
+      startTime: string,
+      endTime: string,
+      date?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type ProviderSchedulesByProviderIDQueryVariables = {
+  providerID: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelProviderScheduleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ProviderSchedulesByProviderIDQuery = {
+  providerSchedulesByProviderID?:  {
+    __typename: "ModelProviderScheduleConnection",
+    items:  Array< {
+      __typename: "ProviderSchedule",
+      id: string,
+      providerID: string,
+      startTime: string,
+      endTime: string,
+      date?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -23907,6 +24189,7 @@ export type GetBookingQuery = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -23937,6 +24220,7 @@ export type ListBookingsQuery = {
       location?: string | null,
       notes?: string | null,
       price: number,
+      isInstantBooking?: boolean | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -23971,6 +24255,7 @@ export type SyncBookingsQuery = {
       location?: string | null,
       notes?: string | null,
       price: number,
+      isInstantBooking?: boolean | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -24780,6 +25065,11 @@ export type GetProviderQuery = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -25784,6 +26074,66 @@ export type SyncUsersQuery = {
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
+  } | null,
+};
+
+export type OnCreateProviderScheduleSubscriptionVariables = {
+  filter?: ModelSubscriptionProviderScheduleFilterInput | null,
+};
+
+export type OnCreateProviderScheduleSubscription = {
+  onCreateProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdateProviderScheduleSubscriptionVariables = {
+  filter?: ModelSubscriptionProviderScheduleFilterInput | null,
+};
+
+export type OnUpdateProviderScheduleSubscription = {
+  onUpdateProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeleteProviderScheduleSubscriptionVariables = {
+  filter?: ModelSubscriptionProviderScheduleFilterInput | null,
+};
+
+export type OnDeleteProviderScheduleSubscription = {
+  onDeleteProviderSchedule?:  {
+    __typename: "ProviderSchedule",
+    id: string,
+    providerID: string,
+    startTime: string,
+    endTime: string,
+    date?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -33997,6 +34347,7 @@ export type OnCreateBookingSubscription = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -34112,6 +34463,7 @@ export type OnUpdateBookingSubscription = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -34227,6 +34579,7 @@ export type OnDeleteBookingSubscription = {
     location?: string | null,
     notes?: string | null,
     price: number,
+    isInstantBooking?: boolean | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -35422,6 +35775,11 @@ export type OnCreateProviderSubscription = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -35590,6 +35948,11 @@ export type OnUpdateProviderSubscription = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -35758,6 +36121,11 @@ export type OnDeleteProviderSubscription = {
       _lastChangedAt: number,
     } | null,
     isInstantBookingAvailable?: boolean | null,
+    ProviderSchedules?:  {
+      __typename: "ModelProviderScheduleConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,

@@ -3,7 +3,7 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EquipmentAvailabilityStatus = exports.EquipmentCategory = exports.VerificationStatus = exports.NotificationStatus = exports.CardType = exports.InvoiceStatus = exports.TransactionType = exports.MessageStatus = exports.BookingStatus = exports.JobStatus = exports.NotificationPreference = exports.AccountType = exports.Gender = exports.ModelAttributeTypes = void 0;
+exports.ModelSortDirection = exports.EquipmentAvailabilityStatus = exports.EquipmentCategory = exports.VerificationStatus = exports.NotificationStatus = exports.CardType = exports.InvoiceStatus = exports.TransactionType = exports.MessageStatus = exports.BookingStatus = exports.JobStatus = exports.NotificationPreference = exports.AccountType = exports.Gender = exports.ModelAttributeTypes = void 0;
 var ModelAttributeTypes;
 (function (ModelAttributeTypes) {
     ModelAttributeTypes["binary"] = "binary";
@@ -101,3 +101,8 @@ var EquipmentAvailabilityStatus;
     EquipmentAvailabilityStatus["UnderMaintenance"] = "UnderMaintenance";
     EquipmentAvailabilityStatus["Unavailable"] = "Unavailable";
 })(EquipmentAvailabilityStatus || (exports.EquipmentAvailabilityStatus = EquipmentAvailabilityStatus = {}));
+var ModelSortDirection;
+(function (ModelSortDirection) {
+    ModelSortDirection["ASC"] = "ASC";
+    ModelSortDirection["DESC"] = "DESC";
+})(ModelSortDirection || (exports.ModelSortDirection = ModelSortDirection = {}));

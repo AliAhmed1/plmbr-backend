@@ -8,6 +8,72 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
+export const createProviderSchedule = /* GraphQL */ `mutation CreateProviderSchedule(
+  $input: CreateProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  createProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateProviderScheduleMutationVariables,
+  APITypes.CreateProviderScheduleMutation
+>;
+export const updateProviderSchedule = /* GraphQL */ `mutation UpdateProviderSchedule(
+  $input: UpdateProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  updateProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateProviderScheduleMutationVariables,
+  APITypes.UpdateProviderScheduleMutation
+>;
+export const deleteProviderSchedule = /* GraphQL */ `mutation DeleteProviderSchedule(
+  $input: DeleteProviderScheduleInput!
+  $condition: ModelProviderScheduleConditionInput
+) {
+  deleteProviderSchedule(input: $input, condition: $condition) {
+    id
+    providerID
+    startTime
+    endTime
+    date
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteProviderScheduleMutationVariables,
+  APITypes.DeleteProviderScheduleMutation
+>;
 export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromotion(
   $input: CreateServicePromotionInput!
   $condition: ModelServicePromotionConditionInput
@@ -8546,6 +8612,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8663,6 +8730,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -8780,6 +8848,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
     location
     notes
     price
+    isInstantBooking
     createdAt
     updatedAt
     _version
@@ -10007,6 +10076,11 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -10177,6 +10251,11 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -10347,6 +10426,11 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
       __typename
     }
     isInstantBookingAvailable
+    ProviderSchedules {
+      nextToken
+      startedAt
+      __typename
+    }
     createdAt
     updatedAt
     _version
