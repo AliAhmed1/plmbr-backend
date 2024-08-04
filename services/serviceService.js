@@ -17,7 +17,8 @@ const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
 const providerService_1 = __importDefault(require("./providerService"));
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
-const TABLE_NAME = 'Services';
+const SubCategoryService = require("./subCategoryService");
+const TABLE_NAME = process.env.TABLE_SERVICE;
 const ServiceService = {
     createService: (serviceData) => __awaiter(void 0, void 0, void 0, function* () {
         const extendedServiceData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.serviceSchema, serviceData, "Service");
@@ -37,10 +38,21 @@ const ServiceService = {
         else {
             throw new Error(`Provider information is required`);
         }
+        // Validate subCategoryId
+        if (service.subCategoryServicesId) {
+            const subCategoryExists = yield SubCategoryService.getBySubCategoryId(service.subCategoryServicesId);
+            if (!subCategoryExists) {
+                throw new Error(`SubCategory information is incorrect: SubCategory not found`);
+            }
+        }
+        else {
+            throw new Error(`SubCategory information is required`);
+        }
         const params = {
             TableName: TABLE_NAME,
             Item: service,
         };
+        service.subCategoryServicesId;
         yield dynamoDB.send(new PutCommand(params));
         return service;
     }),

@@ -14,8 +14,8 @@ const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
 const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
 const haversineDistance = require('../utils/distance');
-const TABLE_NAME_PROVIDERS = 'Providers';
-const TABLE_NAME_LOCATIONS = 'Locations';
+const TABLE_NAME_PROVIDERS = process.env.TABLE_PROVIDER;
+const TABLE_NAME_LOCATIONS = process.env.TABLE_LOCATION;
 const ProviderService = {
     createProvider: (providerData) => __awaiter(void 0, void 0, void 0, function* () {
         // Use the processSchemaAndData utility to add common fields and handle optional fields

@@ -13,9 +13,9 @@ const addCommonFields_1 = require("../utils/addCommonFields");
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const uuid_1 = require("uuid");
 const dynamoDB = require('../config/dbConfig');
-const LOCATION_TABLE_NAME = 'Locations';
-const PROVIDER_TABLE_NAME = 'Providers';
-const USER_TABLE_NAME = 'Users';
+const LOCATION_TABLE_NAME = process.env.TABLE_LOCATION;
+const PROVIDER_TABLE_NAME = process.env.TABLE_PROVIDER;
+const USER_TABLE_NAME = process.env.TABLE_USER;
 const LocationService = {
     setLocation: (userId, providerId, locationData) => __awaiter(void 0, void 0, void 0, function* () {
         var _a, _b;

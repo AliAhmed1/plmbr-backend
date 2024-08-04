@@ -4,7 +4,7 @@ import { User } from '../src/API';
 import { userSchema, locationSchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
 
-const TABLE_NAME = 'Users';
+const TABLE_NAME = process.env.TABLE_USER;
 
 const UserService = {
   createUser: async (userData: Partial<User>) => {

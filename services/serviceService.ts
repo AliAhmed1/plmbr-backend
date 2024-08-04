@@ -5,8 +5,9 @@ import { serviceSchema, providerSchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
 import ProviderService from './providerService';
 import { QueryCommand } from '@aws-sdk/lib-dynamodb';
+const SubCategoryService = require("./subCategoryService")
 
-const TABLE_NAME = 'Services';
+const TABLE_NAME = process.env.TABLE_SERVICE;
 
 const ServiceService = {
   createService: async (serviceData: Partial<Service>) => {
@@ -32,11 +33,23 @@ const ServiceService = {
       throw new Error(`Provider information is required`);
     }
 
+        // Validate subCategoryId
+    if (service.subCategoryServicesId) {
+      const subCategoryExists = await SubCategoryService.getBySubCategoryId(service.subCategoryServicesId);
+
+      if (!subCategoryExists) {
+        throw new Error(`SubCategory information is incorrect: SubCategory not found`);
+      }
+    } else {
+      throw new Error(`SubCategory information is required`);
+    }
+
     const params = {
       TableName: TABLE_NAME,
       Item: service,
     };
 
+    service.subCategoryServicesId
     await dynamoDB.send(new PutCommand(params));
     return service;
   },

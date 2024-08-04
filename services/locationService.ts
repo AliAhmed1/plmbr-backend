@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { Location, User } from '../src/API';
 const dynamoDB = require('../config/dbConfig');
 
-const LOCATION_TABLE_NAME = 'Locations';
-const PROVIDER_TABLE_NAME = 'Providers';
-const USER_TABLE_NAME = 'Users';
+const LOCATION_TABLE_NAME = process.env.TABLE_LOCATION;
+const PROVIDER_TABLE_NAME = process.env.TABLE_PROVIDER;
+const USER_TABLE_NAME = process.env.TABLE_USER;
 
 const LocationService = {
   setLocation: async (userId: string | null, providerId: string | null, locationData: Location) => {

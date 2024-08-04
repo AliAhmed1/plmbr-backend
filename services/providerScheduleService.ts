@@ -2,7 +2,7 @@ import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 const dynamoDB = require('../config/dbConfig');
 
-const PROVIDER_SCHEDULE_TABLE_NAME = 'ProviderSchedules';
+const PROVIDER_SCHEDULE_TABLE_NAME = process.env.TABLE_PROVIDER_SCHEDULE;
 
 const ProviderScheduleService = {
   getAllSchedulesByProviderId: async (providerId: string) => {
@@ -25,4 +25,4 @@ const ProviderScheduleService = {
   },
 };
 
-export default ProviderScheduleService;
+export = ProviderScheduleService;

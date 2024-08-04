@@ -10,8 +10,8 @@ import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const TABLE_NAME = 'Bookings';
-const PROVIDER_SCHEDULE_TABLE_NAME= 'ProviderSchedules';
+const TABLE_NAME = process.env.TABLE_BOOKING;
+const PROVIDER_SCHEDULE_TABLE_NAME= process.env.TABLE_PROVIDER_SCHEDULE;
 
 const BookingService = {
   createBooking: async (bookingData: Partial<Booking>) => {

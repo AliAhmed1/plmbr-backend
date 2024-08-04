@@ -8,10 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const dynamoDB = require('../config/dbConfig');
-const PROVIDER_SCHEDULE_TABLE_NAME = 'ProviderSchedules';
+const PROVIDER_SCHEDULE_TABLE_NAME = process.env.TABLE_PROVIDER_SCHEDULE;
 const ProviderScheduleService = {
     getAllSchedulesByProviderId: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
@@ -29,4 +28,4 @@ const ProviderScheduleService = {
         return result.Items;
     }),
 };
-exports.default = ProviderScheduleService;
+module.exports = ProviderScheduleService;
