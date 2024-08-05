@@ -129,7 +129,7 @@ const BookingService = {
         if (updatedBooking.providerProviderBookingsId && (updatedBooking.status === API_1.BookingStatus.CONFIRMED || updatedBooking.status === API_1.BookingStatus.CANCELLED || updatedBooking.status === API_1.BookingStatus.COMPLETED)) {
             yield BookingService.updateProviderSchedule(updatedBooking, updatedBooking.status);
         }
-        return Object.assign(Object.assign({}, booking), { status });
+        return updatedBooking;
     }),
     updateProviderSchedule: (booking, status) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;
@@ -142,7 +142,7 @@ const BookingService = {
             isScheduled,
         };
         const extendedProviderScheduleData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.providerScheduleSchema, providerSchedule, "ProviderSchedule");
-        const validationResult = generatedZodSchema_1.bookingSchema.safeParse(extendedProviderScheduleData);
+        const validationResult = generatedZodSchema_1.providerScheduleSchema.safeParse(extendedProviderScheduleData);
         if (!validationResult.success) {
             const errors = validationResult.error.errors.map(e => e.message).join(', ');
             throw new Error(`Provider Schedule data is invalid: ${errors}`);

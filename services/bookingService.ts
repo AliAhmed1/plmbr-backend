@@ -131,7 +131,7 @@ const BookingService = {
       await BookingService.updateProviderSchedule(updatedBooking, updatedBooking.status);
     }
 
-    return { ...booking, status };
+    return updatedBooking;
   },
   updateProviderSchedule: async (booking: Booking, status: BookingStatus) => {
     const isScheduled = status === (BookingStatus.CONFIRMED || BookingStatus.IN_PROGRESS);
@@ -146,7 +146,7 @@ const BookingService = {
 
     const extendedProviderScheduleData = processSchemaAndData(providerScheduleSchema, providerSchedule, "ProviderSchedule");
 
-    const validationResult = bookingSchema.safeParse(extendedProviderScheduleData);
+    const validationResult = providerScheduleSchema.safeParse(extendedProviderScheduleData);
 
     if (!validationResult.success) {
       const errors = validationResult.error.errors.map(e => e.message).join(', ');
