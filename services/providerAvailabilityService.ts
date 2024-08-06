@@ -23,6 +23,23 @@ const ProviderAvailabilityService = {
 
     return result.Items;
   },
+  getAllAvailabilityByProviderIdWithoutFilter: async (providerId: string) => {
+    const params = {
+      TableName: PROVIDER_AVAILIBILITY_TABLE_NAME,
+      FilterExpression: 'providerProviderAvailabilityId = :providerProviderAvailabilityId',
+      ExpressionAttributeValues: {
+        ':providerProviderAvailabilityId': providerId,
+      },
+    };
+
+    const result = await dynamoDB.send(new ScanCommand(params));
+
+    if (!result.Items) {
+      throw new Error('No schedules found');
+    }
+
+    return result.Items;
+  },
 };
 
 export = ProviderAvailabilityService;

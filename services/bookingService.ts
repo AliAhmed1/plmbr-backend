@@ -51,6 +51,9 @@ const BookingService = {
       if (!providerExists) {
         throw new Error(`Provider not found: ${booking.providerProviderBookingsId}`);
       }
+      if(providerExists.isInstantBookingAvailable !== undefined || providerExists.isInstantBookingAvailable !== null || booking.isInstantBooking === undefined){
+        booking.isInstantBooking = providerExists.isInstantBookingAvailable;
+      }
     } else {
       throw new Error('Provider ID is required');
     }

@@ -27,5 +27,19 @@ const ProviderAvailabilityService = {
         }
         return result.Items;
     }),
+    getAllAvailabilityByProviderIdWithoutFilter: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: PROVIDER_AVAILIBILITY_TABLE_NAME,
+            FilterExpression: 'providerProviderAvailabilityId = :providerProviderAvailabilityId',
+            ExpressionAttributeValues: {
+                ':providerProviderAvailabilityId': providerId,
+            },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.ScanCommand(params));
+        if (!result.Items) {
+            throw new Error('No schedules found');
+        }
+        return result.Items;
+    }),
 };
 module.exports = ProviderAvailabilityService;

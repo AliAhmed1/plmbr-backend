@@ -5,4 +5,8 @@ const router = express.Router();
 
 router.get('/providers/:providerId/availabilities', ProviderAvailabilityController.getAllAvailabilityByProviderId);
 
+router.get('/providers/:providerId/getallavailabilities', ProviderAvailabilityController.getAllAvailabilityByProviderIdWithoutFilter);
+
+
+
 module.exports = router;
