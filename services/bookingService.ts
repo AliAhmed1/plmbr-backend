@@ -1,17 +1,19 @@
 const { PutCommand, GetCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
-import { Booking, BookingStatus } from '../src/API';
-import { bookingSchema, serviceSchema, providerSchema, userSchema, providerScheduleSchema } from '../schema/generatedZodSchema';
+import { Booking, BookingStatus, ProviderAvailability } from '../src/API';
+import { bookingSchema, serviceSchema, providerSchema, userSchema, providerAvailabilitySchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
 import ServiceService from './serviceService';
 import ProviderService from './providerService';
 import UserService from './userService';
-import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { v4 as uuidv4 } from 'uuid';
+import { QueryCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
+import { validateDate } from '../utils/validationUtil';
+import { validateTime } from '../utils/validationUtil';
+import { validateDateTime } from '../utils/validationUtil';
 
 
 const TABLE_NAME = process.env.TABLE_BOOKING;
-const PROVIDER_SCHEDULE_TABLE_NAME= process.env.TABLE_PROVIDER_SCHEDULE;
+const PROVIDER_AVAILIBILITY_TABLE_NAME= process.env.TABLE_PROVIDER_AVAILIBILITY;
 
 const BookingService = {
   createBooking: async (bookingData: Partial<Booking>) => {
@@ -26,6 +28,14 @@ const BookingService = {
 
     const booking: Booking = {...validationResult.data, status: BookingStatus.PENDING};
 
+     // Validate date, time, and dateTime
+     try {
+      validateDate(booking.date);
+      validateTime(booking.startTime);
+    } catch (error: any) {
+      throw new Error(`Invalid date or time: ${error.message}`);
+    }
+    
     // Validate service, provider, and user
     if (booking.serviceBookingsId) {
       const serviceExists = await ServiceService.getServiceById(booking.serviceBookingsId);
@@ -128,37 +138,87 @@ const BookingService = {
     const updatedBooking = updateResult.Attributes as Booking;
 
     if (updatedBooking.providerProviderBookingsId && (updatedBooking.status === BookingStatus.CONFIRMED || updatedBooking.status === BookingStatus.CANCELLED || updatedBooking.status === BookingStatus.COMPLETED)) {
-      await BookingService.updateProviderSchedule(updatedBooking, updatedBooking.status);
+      await BookingService.updateProviderAvailabiliy(updatedBooking);
     }
 
     return updatedBooking;
   },
-  updateProviderSchedule: async (booking: Booking, status: BookingStatus) => {
-    const isScheduled = status === (BookingStatus.CONFIRMED || BookingStatus.IN_PROGRESS);
+  updateProviderAvailabiliy: async (booking: Booking) => {
+    const startDate =  new Date(`${booking.date}T${booking.startTime}Z`).toISOString();
+    const endDate = new Date(`${booking.date}T${booking.endTime}Z`).toISOString();
+    const isScheduled = booking.status === (BookingStatus.CONFIRMED || BookingStatus.IN_PROGRESS);
 
-    const providerSchedule = {
-      providerID: booking.providerProviderBookingsId ?? "",
-      startTime: booking.startTime,
-      endTime: booking.endTime,
-      date: booking.date,
-      isScheduled,
+    try {
+      validateDateTime(startDate);
+      validateDateTime(endDate);
+    } catch (error: any) {
+      throw new Error(`Invalid date or time: ${error.message}`);
+    }
+    
+    const providerAvailablity = {
+      providerProviderAvailabilityId: booking.providerProviderBookingsId ?? "",
+      serviceProviderAvailabilitiesId: booking.serviceBookingsId ?? "",
+      startDate: startDate,
+      endDate: endDate,
+      isScheduled
     };
 
-    const extendedProviderScheduleData = processSchemaAndData(providerScheduleSchema, providerSchedule, "ProviderSchedule");
+    const extendedProviderAvailabilityData: ProviderAvailability = processSchemaAndData(providerAvailabilitySchema, providerAvailablity, "ProviderAvailability");
 
-    const validationResult = providerScheduleSchema.safeParse(extendedProviderScheduleData);
+    const validationResult = providerAvailabilitySchema.safeParse(extendedProviderAvailabilityData);
 
     if (!validationResult.success) {
-      const errors = validationResult.error.errors.map(e => e.message).join(', ');
+      const errors = validationResult.error.errors.map((e: { message: any; }) => e.message).join(', ');
       throw new Error(`Provider Schedule data is invalid: ${errors}`);
     }
 
     const params = {
-      TableName: PROVIDER_SCHEDULE_TABLE_NAME,
+      TableName: PROVIDER_AVAILIBILITY_TABLE_NAME,
       Item: validationResult.data,
     };
 
     await dynamoDB.send(new PutCommand(params));
+  },
+  getAllBookingsByProviderId: async (providerId: string) => {
+    const params = {
+      TableName: TABLE_NAME,
+      IndexName: 'providerProviderBookingsId-index',
+      KeyConditionExpression: 'providerProviderBookingsId = :providerId',
+      ExpressionAttributeValues: {
+        ':providerId': providerId,
+      },
+    };
+
+    const result = await dynamoDB.send(new QueryCommand(params));
+    return result.Items;
+  },
+
+  getAllBookingsByServiceId: async (serviceId: string) => {
+    const params = {
+      TableName: TABLE_NAME,
+      IndexName: 'serviceBookingsId-index',
+      KeyConditionExpression: 'serviceBookingsId = :serviceId',
+      ExpressionAttributeValues: {
+        ':serviceId': serviceId,
+      },
+    };
+
+    const result = await dynamoDB.send(new QueryCommand(params));
+    return result.Items;
+  },
+
+  getAllBookingsByUserId: async (userId: string) => {
+    const params = {
+      TableName: TABLE_NAME,
+      IndexName: 'userBookingsId-index',
+      KeyConditionExpression: 'userBookingsId = :userId',
+      ExpressionAttributeValues: {
+        ':userId': userId,
+      },
+    };
+
+    const result = await dynamoDB.send(new QueryCommand(params));
+    return result.Items;
   },
 };
 

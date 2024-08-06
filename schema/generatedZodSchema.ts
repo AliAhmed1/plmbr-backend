@@ -83,8 +83,6 @@ import {
   ModelSpecializationConditionInput,
   ModelProviderHistoryConditionInput,
   ModelUserConditionInput,
-  ModelProviderScheduleFilterInput,
-  ModelSortDirection,
   ModelServicePromotionFilterInput,
   ModelProviderReportFilterInput,
   ModelUserReportFilterInput,
@@ -154,7 +152,6 @@ import {
   ModelSpecializationFilterInput,
   ModelProviderHistoryFilterInput,
   ModelUserFilterInput,
-  ModelSubscriptionProviderScheduleFilterInput,
   ModelSubscriptionServicePromotionFilterInput,
   ModelSubscriptionProviderReportFilterInput,
   ModelSubscriptionUserReportFilterInput,
@@ -224,7 +221,6 @@ import {
   ModelSubscriptionSpecializationFilterInput,
   ModelSubscriptionProviderHistoryFilterInput,
   ModelSubscriptionUserFilterInput,
-  ModelProviderScheduleConditionInput,
   ModelServicePromotionConditionInput,
   ServicePromotion,
   Service,
@@ -332,13 +328,14 @@ import {
   ModelUserConnection,
 } from "./../src/API";
 
-export const createProviderScheduleInputSchema = z.object({
+export const createServicePromotionInputSchema = z.object({
   id: z.string().optional().nullable(),
-  providerID: z.string(),
-  startTime: z.string(),
-  endTime: z.string(),
-  date: z.string().optional().nullable(),
+  description: z.string(),
+  startDate: z.string(),
+  endDate: z.string(),
+  discountPercentage: z.number(),
   _version: z.number().optional().nullable(),
+  serviceServicePromotionsId: z.string().optional().nullable(),
 });
 
 export const modelAttributeTypesSchema = z.nativeEnum(ModelAttributeTypes);
@@ -353,68 +350,6 @@ export const modelSizeInputSchema = z.object({
   between: z.array(z.number().nullable()).optional().nullable(),
 });
 
-export const modelStringInputSchema = z.object({
-  ne: z.string().optional().nullable(),
-  eq: z.string().optional().nullable(),
-  le: z.string().optional().nullable(),
-  lt: z.string().optional().nullable(),
-  ge: z.string().optional().nullable(),
-  gt: z.string().optional().nullable(),
-  contains: z.string().optional().nullable(),
-  notContains: z.string().optional().nullable(),
-  between: z.array(z.string().nullable()).optional().nullable(),
-  beginsWith: z.string().optional().nullable(),
-  attributeExists: z.boolean().optional().nullable(),
-  attributeType: modelAttributeTypesSchema.optional().nullable(),
-  size: modelSizeInputSchema.optional().nullable(),
-});
-
-export const modelBooleanInputSchema = z.object({
-  ne: z.boolean().optional().nullable(),
-  eq: z.boolean().optional().nullable(),
-  attributeExists: z.boolean().optional().nullable(),
-  attributeType: modelAttributeTypesSchema.optional().nullable(),
-});
-
-export const providerScheduleSchema = z.object({
-  __typename: z.literal("ProviderSchedule"),
-  id: z.string(),
-  providerID: z.string(),
-  startTime: z.string(),
-  endTime: z.string(),
-  date: z.string().optional().nullable(),
-  isScheduled: z.boolean(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  _version: z.number(),
-  _deleted: z.boolean().optional().nullable(),
-  _lastChangedAt: z.number(),
-});
-
-export const updateProviderScheduleInputSchema = z.object({
-  id: z.string(),
-  providerID: z.string().optional().nullable(),
-  startTime: z.string().optional().nullable(),
-  endTime: z.string().optional().nullable(),
-  date: z.string().optional().nullable(),
-  _version: z.number().optional().nullable(),
-});
-
-export const deleteProviderScheduleInputSchema = z.object({
-  id: z.string(),
-  _version: z.number().optional().nullable(),
-});
-
-export const createServicePromotionInputSchema = z.object({
-  id: z.string().optional().nullable(),
-  description: z.string(),
-  startDate: z.string(),
-  endDate: z.string(),
-  discountPercentage: z.number(),
-  _version: z.number().optional().nullable(),
-  serviceServicePromotionsId: z.string().optional().nullable(),
-});
-
 export const modelFloatInputSchema = z.object({
   ne: z.number().optional().nullable(),
   eq: z.number().optional().nullable(),
@@ -423,6 +358,13 @@ export const modelFloatInputSchema = z.object({
   ge: z.number().optional().nullable(),
   gt: z.number().optional().nullable(),
   between: z.array(z.number().nullable()).optional().nullable(),
+  attributeExists: z.boolean().optional().nullable(),
+  attributeType: modelAttributeTypesSchema.optional().nullable(),
+});
+
+export const modelBooleanInputSchema = z.object({
+  ne: z.boolean().optional().nullable(),
+  eq: z.boolean().optional().nullable(),
   attributeExists: z.boolean().optional().nullable(),
   attributeType: modelAttributeTypesSchema.optional().nullable(),
 });
@@ -462,13 +404,6 @@ export const locationSchema = z.object({
   _version: z.number(),
   _deleted: z.boolean().optional().nullable(),
   _lastChangedAt: z.number(),
-});
-
-export const modelProviderScheduleConnectionSchema = z.object({
-  __typename: z.literal("ModelProviderScheduleConnection"),
-  items: z.array(providerScheduleSchema.nullable()),
-  nextToken: z.string().optional().nullable(),
-  startedAt: z.number().optional().nullable(),
 });
 
 export const messageSchema = z.object({
@@ -560,6 +495,22 @@ export const createProviderReportInputSchema = z.object({
   _version: z.number().optional().nullable(),
   serviceProviderReportsId: z.string().optional().nullable(),
   providerProviderReportsId: z.string().optional().nullable(),
+});
+
+export const modelStringInputSchema = z.object({
+  ne: z.string().optional().nullable(),
+  eq: z.string().optional().nullable(),
+  le: z.string().optional().nullable(),
+  lt: z.string().optional().nullable(),
+  ge: z.string().optional().nullable(),
+  gt: z.string().optional().nullable(),
+  contains: z.string().optional().nullable(),
+  notContains: z.string().optional().nullable(),
+  between: z.array(z.string().nullable()).optional().nullable(),
+  beginsWith: z.string().optional().nullable(),
+  attributeExists: z.boolean().optional().nullable(),
+  attributeType: modelAttributeTypesSchema.optional().nullable(),
+  size: modelSizeInputSchema.optional().nullable(),
 });
 
 export const modelProviderReportConditionInputSchema: z.ZodSchema<ModelProviderReportConditionInput> =
@@ -936,6 +887,7 @@ export const createProviderAvailabilityInputSchema = z.object({
   id: z.string().optional().nullable(),
   startDate: z.string(),
   endDate: z.string(),
+  isScheduled: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   serviceProviderAvailabilitiesId: z.string().optional().nullable(),
   providerProviderAvailabilityId: z.string().optional().nullable(),
@@ -946,6 +898,7 @@ export const modelProviderAvailabilityConditionInputSchema: z.ZodSchema<ModelPro
     z.object({
       startDate: modelStringInputSchema.optional().nullable(),
       endDate: modelStringInputSchema.optional().nullable(),
+      isScheduled: modelBooleanInputSchema.optional().nullable(),
       and: z
         .array(modelProviderAvailabilityConditionInputSchema.nullable())
         .optional()
@@ -967,6 +920,7 @@ export const updateProviderAvailabilityInputSchema = z.object({
   id: z.string(),
   startDate: z.string().optional().nullable(),
   endDate: z.string().optional().nullable(),
+  isScheduled: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   serviceProviderAvailabilitiesId: z.string().optional().nullable(),
   providerProviderAvailabilityId: z.string().optional().nullable(),
@@ -3358,11 +3312,12 @@ export const createServiceInputSchema = z.object({
   id: z.string().optional().nullable(),
   name: z.string(),
   description: z.string().optional().nullable(),
-  price: z.number(),
+  price_min: z.number(),
   duration: z.string().optional().nullable(),
   Materials: z.string().optional().nullable(),
   MaterialCosts: z.number().optional().nullable(),
   BookingRequirements: z.string().optional().nullable(),
+  price_max: z.number(),
   _version: z.number().optional().nullable(),
   invoiceServicesId: z.string().optional().nullable(),
   servicePackageServicesId: z.string().optional().nullable(),
@@ -3375,11 +3330,12 @@ export const modelServiceConditionInputSchema: z.ZodSchema<ModelServiceCondition
     z.object({
       name: modelStringInputSchema.optional().nullable(),
       description: modelStringInputSchema.optional().nullable(),
-      price: modelFloatInputSchema.optional().nullable(),
+      price_min: modelFloatInputSchema.optional().nullable(),
       duration: modelStringInputSchema.optional().nullable(),
       Materials: modelStringInputSchema.optional().nullable(),
       MaterialCosts: modelFloatInputSchema.optional().nullable(),
       BookingRequirements: modelStringInputSchema.optional().nullable(),
+      price_max: modelFloatInputSchema.optional().nullable(),
       and: z
         .array(modelServiceConditionInputSchema.nullable())
         .optional()
@@ -3403,11 +3359,12 @@ export const updateServiceInputSchema = z.object({
   id: z.string(),
   name: z.string().optional().nullable(),
   description: z.string().optional().nullable(),
-  price: z.number().optional().nullable(),
+  price_min: z.number().optional().nullable(),
   duration: z.string().optional().nullable(),
   Materials: z.string().optional().nullable(),
   MaterialCosts: z.number().optional().nullable(),
   BookingRequirements: z.string().optional().nullable(),
+  price_max: z.number().optional().nullable(),
   _version: z.number().optional().nullable(),
   invoiceServicesId: z.string().optional().nullable(),
   servicePackageServicesId: z.string().optional().nullable(),
@@ -3945,31 +3902,6 @@ export const deleteUserInputSchema = z.object({
   _version: z.number().optional().nullable(),
 });
 
-export const modelProviderScheduleFilterInputSchema: z.ZodSchema<ModelProviderScheduleFilterInput> =
-  z.lazy(() =>
-    z.object({
-      id: modelIDInputSchema.optional().nullable(),
-      providerID: modelIDInputSchema.optional().nullable(),
-      startTime: modelStringInputSchema.optional().nullable(),
-      endTime: modelStringInputSchema.optional().nullable(),
-      date: modelStringInputSchema.optional().nullable(),
-      createdAt: modelStringInputSchema.optional().nullable(),
-      updatedAt: modelStringInputSchema.optional().nullable(),
-      and: z
-        .array(modelProviderScheduleFilterInputSchema.nullable())
-        .optional()
-        .nullable(),
-      or: z
-        .array(modelProviderScheduleFilterInputSchema.nullable())
-        .optional()
-        .nullable(),
-      not: modelProviderScheduleFilterInputSchema.optional().nullable(),
-      _deleted: modelBooleanInputSchema.optional().nullable(),
-    }),
-  );
-
-export const modelSortDirectionSchema = z.nativeEnum(ModelSortDirection);
-
 export const modelServicePromotionFilterInputSchema: z.ZodSchema<ModelServicePromotionFilterInput> =
   z.lazy(() =>
     z.object({
@@ -4187,6 +4119,7 @@ export const modelProviderAvailabilityFilterInputSchema: z.ZodSchema<ModelProvid
       id: modelIDInputSchema.optional().nullable(),
       startDate: modelStringInputSchema.optional().nullable(),
       endDate: modelStringInputSchema.optional().nullable(),
+      isScheduled: modelBooleanInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
       and: z
@@ -5415,11 +5348,12 @@ export const modelServiceFilterInputSchema: z.ZodSchema<ModelServiceFilterInput>
       id: modelIDInputSchema.optional().nullable(),
       name: modelStringInputSchema.optional().nullable(),
       description: modelStringInputSchema.optional().nullable(),
-      price: modelFloatInputSchema.optional().nullable(),
+      price_min: modelFloatInputSchema.optional().nullable(),
       duration: modelStringInputSchema.optional().nullable(),
       Materials: modelStringInputSchema.optional().nullable(),
       MaterialCosts: modelFloatInputSchema.optional().nullable(),
       BookingRequirements: modelStringInputSchema.optional().nullable(),
+      price_max: modelFloatInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
       and: z
@@ -5702,28 +5636,6 @@ export const modelSubscriptionStringInputSchema = z.object({
   notIn: z.array(z.string().nullable()).optional().nullable(),
 });
 
-export const modelSubscriptionProviderScheduleFilterInputSchema: z.ZodSchema<ModelSubscriptionProviderScheduleFilterInput> =
-  z.lazy(() =>
-    z.object({
-      id: modelSubscriptionIDInputSchema.optional().nullable(),
-      providerID: modelSubscriptionIDInputSchema.optional().nullable(),
-      startTime: modelSubscriptionStringInputSchema.optional().nullable(),
-      endTime: modelSubscriptionStringInputSchema.optional().nullable(),
-      date: modelSubscriptionStringInputSchema.optional().nullable(),
-      createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
-      updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
-      and: z
-        .array(modelSubscriptionProviderScheduleFilterInputSchema.nullable())
-        .optional()
-        .nullable(),
-      or: z
-        .array(modelSubscriptionProviderScheduleFilterInputSchema.nullable())
-        .optional()
-        .nullable(),
-      _deleted: modelBooleanInputSchema.optional().nullable(),
-    }),
-  );
-
 export const modelSubscriptionFloatInputSchema = z.object({
   ne: z.number().optional().nullable(),
   eq: z.number().optional().nullable(),
@@ -5929,12 +5841,18 @@ export const modelSubscriptionServiceDiscountFilterInputSchema: z.ZodSchema<Mode
     }),
   );
 
+export const modelSubscriptionBooleanInputSchema = z.object({
+  ne: z.boolean().optional().nullable(),
+  eq: z.boolean().optional().nullable(),
+});
+
 export const modelSubscriptionProviderAvailabilityFilterInputSchema: z.ZodSchema<ModelSubscriptionProviderAvailabilityFilterInput> =
   z.lazy(() =>
     z.object({
       id: modelSubscriptionIDInputSchema.optional().nullable(),
       startDate: modelSubscriptionStringInputSchema.optional().nullable(),
       endDate: modelSubscriptionStringInputSchema.optional().nullable(),
+      isScheduled: modelSubscriptionBooleanInputSchema.optional().nullable(),
       createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
       updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
       and: z
@@ -6922,11 +6840,6 @@ export const modelSubscriptionMessageContentFilterInputSchema: z.ZodSchema<Model
     }),
   );
 
-export const modelSubscriptionBooleanInputSchema = z.object({
-  ne: z.boolean().optional().nullable(),
-  eq: z.boolean().optional().nullable(),
-});
-
 export const modelSubscriptionBookingFilterInputSchema: z.ZodSchema<ModelSubscriptionBookingFilterInput> =
   z.lazy(() =>
     z.object({
@@ -7057,13 +6970,14 @@ export const modelSubscriptionServiceFilterInputSchema: z.ZodSchema<ModelSubscri
       id: modelSubscriptionIDInputSchema.optional().nullable(),
       name: modelSubscriptionStringInputSchema.optional().nullable(),
       description: modelSubscriptionStringInputSchema.optional().nullable(),
-      price: modelSubscriptionFloatInputSchema.optional().nullable(),
+      price_min: modelSubscriptionFloatInputSchema.optional().nullable(),
       duration: modelSubscriptionStringInputSchema.optional().nullable(),
       Materials: modelSubscriptionStringInputSchema.optional().nullable(),
       MaterialCosts: modelSubscriptionFloatInputSchema.optional().nullable(),
       BookingRequirements: modelSubscriptionStringInputSchema
         .optional()
         .nullable(),
+      price_max: modelSubscriptionFloatInputSchema.optional().nullable(),
       createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
       updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
       and: z
@@ -7498,95 +7412,6 @@ export const modelSubscriptionUserFilterInputSchema: z.ZodSchema<ModelSubscripti
     }),
   );
 
-export const modelProviderScheduleConditionInputSchema: z.ZodSchema<ModelProviderScheduleConditionInput> =
-  z.lazy(() =>
-    z.object({
-      providerID: modelIDInputSchema.optional().nullable(),
-      startTime: modelStringInputSchema.optional().nullable(),
-      endTime: modelStringInputSchema.optional().nullable(),
-      date: modelStringInputSchema.optional().nullable(),
-      and: z
-        .array(modelProviderScheduleConditionInputSchema.nullable())
-        .optional()
-        .nullable(),
-      or: z
-        .array(modelProviderScheduleConditionInputSchema.nullable())
-        .optional()
-        .nullable(),
-      not: modelProviderScheduleConditionInputSchema.optional().nullable(),
-      _deleted: modelBooleanInputSchema.optional().nullable(),
-      createdAt: modelStringInputSchema.optional().nullable(),
-      updatedAt: modelStringInputSchema.optional().nullable(),
-    }),
-  );
-
-export const createProviderScheduleMutationSchema = z.object({
-  createProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const updateProviderScheduleMutationVariablesSchema = z.object({
-  input: updateProviderScheduleInputSchema,
-  condition: modelProviderScheduleConditionInputSchema.optional().nullable(),
-});
-
-export const updateProviderScheduleMutationSchema = z.object({
-  updateProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const deleteProviderScheduleMutationVariablesSchema = z.object({
-  input: deleteProviderScheduleInputSchema,
-  condition: modelProviderScheduleConditionInputSchema.optional().nullable(),
-});
-
-export const deleteProviderScheduleMutationSchema = z.object({
-  deleteProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
 export const modelServicePromotionConditionInputSchema: z.ZodSchema<ModelServicePromotionConditionInput> =
   z.lazy(() =>
     z.object({
@@ -7621,11 +7446,12 @@ export const createServicePromotionMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7669,11 +7495,12 @@ export const updateServicePromotionMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7717,11 +7544,12 @@ export const deleteServicePromotionMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8693,11 +8521,12 @@ export const createUserBookmarkMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8779,11 +8608,12 @@ export const updateUserBookmarkMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8865,11 +8695,12 @@ export const deleteUserBookmarkMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9304,11 +9135,12 @@ export const createServiceDiscountMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9351,11 +9183,12 @@ export const updateServiceDiscountMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9398,11 +9231,12 @@ export const deleteServiceDiscountMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9482,6 +9316,7 @@ export const createProviderAvailabilityMutationSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -9547,6 +9382,7 @@ export const updateProviderAvailabilityMutationSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -9612,6 +9448,7 @@ export const deleteProviderAvailabilityMutationSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -10033,11 +9870,12 @@ export const createServiceVideoMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10079,11 +9917,12 @@ export const updateServiceVideoMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10125,11 +9964,12 @@ export const deleteServiceVideoMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10171,11 +10011,12 @@ export const createServiceImageMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10217,11 +10058,12 @@ export const updateServiceImageMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10263,11 +10105,12 @@ export const deleteServiceImageMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10309,11 +10152,12 @@ export const createServiceReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10397,11 +10241,12 @@ export const updateServiceReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10485,11 +10330,12 @@ export const deleteServiceReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13055,11 +12901,12 @@ export const createContractMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13183,11 +13030,12 @@ export const updateContractMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13311,11 +13159,12 @@ export const deleteContractMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14456,11 +14305,12 @@ export const createJobTrackingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14584,11 +14434,12 @@ export const updateJobTrackingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14712,11 +14563,12 @@ export const deleteJobTrackingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16288,11 +16140,12 @@ export const createReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16432,11 +16285,12 @@ export const updateReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16576,11 +16430,12 @@ export const deleteReviewMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17230,11 +17085,12 @@ export const createBookingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17363,11 +17219,12 @@ export const updateBookingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17496,11 +17353,12 @@ export const deleteBookingMutationSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -18128,7 +17986,7 @@ export const createServiceMutationSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -18395,6 +18253,7 @@ export const createServiceMutationSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -18421,7 +18280,7 @@ export const updateServiceMutationSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -18688,6 +18547,7 @@ export const updateServiceMutationSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -18714,7 +18574,7 @@ export const deleteServiceMutationSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -18981,6 +18841,7 @@ export const deleteServiceMutationSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19229,14 +19090,6 @@ export const createProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19483,14 +19336,6 @@ export const updateProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19737,14 +19582,6 @@ export const deleteProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -21593,134 +21430,6 @@ export const deleteUserMutationSchema = z.object({
     .nullable(),
 });
 
-export const getProviderScheduleQueryVariablesSchema = z.object({
-  id: z.string(),
-});
-
-export const getProviderScheduleQuerySchema = z.object({
-  getProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const listProviderSchedulesQueryVariablesSchema = z.object({
-  filter: modelProviderScheduleFilterInputSchema.optional().nullable(),
-  limit: z.number().optional().nullable(),
-  nextToken: z.string().optional().nullable(),
-});
-
-export const listProviderSchedulesQuerySchema = z.object({
-  listProviderSchedules: z
-    .object({
-      __typename: z.literal("ModelProviderScheduleConnection"),
-      items: z.array(
-        z
-          .object({
-            __typename: z.literal("ProviderSchedule"),
-            id: z.string(),
-            providerID: z.string(),
-            startTime: z.string(),
-            endTime: z.string(),
-            date: z.string().optional().nullable(),
-            createdAt: z.string(),
-            updatedAt: z.string(),
-            _version: z.number(),
-            _deleted: z.boolean().optional().nullable(),
-            _lastChangedAt: z.number(),
-          })
-          .nullable(),
-      ),
-      nextToken: z.string().optional().nullable(),
-      startedAt: z.number().optional().nullable(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const syncProviderSchedulesQueryVariablesSchema = z.object({
-  filter: modelProviderScheduleFilterInputSchema.optional().nullable(),
-  limit: z.number().optional().nullable(),
-  nextToken: z.string().optional().nullable(),
-  lastSync: z.number().optional().nullable(),
-});
-
-export const syncProviderSchedulesQuerySchema = z.object({
-  syncProviderSchedules: z
-    .object({
-      __typename: z.literal("ModelProviderScheduleConnection"),
-      items: z.array(
-        z
-          .object({
-            __typename: z.literal("ProviderSchedule"),
-            id: z.string(),
-            providerID: z.string(),
-            startTime: z.string(),
-            endTime: z.string(),
-            date: z.string().optional().nullable(),
-            createdAt: z.string(),
-            updatedAt: z.string(),
-            _version: z.number(),
-            _deleted: z.boolean().optional().nullable(),
-            _lastChangedAt: z.number(),
-          })
-          .nullable(),
-      ),
-      nextToken: z.string().optional().nullable(),
-      startedAt: z.number().optional().nullable(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const providerSchedulesByProviderIDQueryVariablesSchema = z.object({
-  providerID: z.string(),
-  sortDirection: modelSortDirectionSchema.optional().nullable(),
-  filter: modelProviderScheduleFilterInputSchema.optional().nullable(),
-  limit: z.number().optional().nullable(),
-  nextToken: z.string().optional().nullable(),
-});
-
-export const providerSchedulesByProviderIDQuerySchema = z.object({
-  providerSchedulesByProviderID: z
-    .object({
-      __typename: z.literal("ModelProviderScheduleConnection"),
-      items: z.array(
-        z
-          .object({
-            __typename: z.literal("ProviderSchedule"),
-            id: z.string(),
-            providerID: z.string(),
-            startTime: z.string(),
-            endTime: z.string(),
-            date: z.string().optional().nullable(),
-            createdAt: z.string(),
-            updatedAt: z.string(),
-            _version: z.number(),
-            _deleted: z.boolean().optional().nullable(),
-            _lastChangedAt: z.number(),
-          })
-          .nullable(),
-      ),
-      nextToken: z.string().optional().nullable(),
-      startedAt: z.number().optional().nullable(),
-    })
-    .optional()
-    .nullable(),
-});
-
 export const getServicePromotionQueryVariablesSchema = z.object({
   id: z.string(),
 });
@@ -21736,11 +21445,12 @@ export const getServicePromotionQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22466,11 +22176,12 @@ export const getUserBookmarkQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22847,11 +22558,12 @@ export const getServiceDiscountQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22997,6 +22709,7 @@ export const getProviderAvailabilityQuerySchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -23026,6 +22739,7 @@ export const listProviderAvailabilitiesQuerySchema = z.object({
             id: z.string(),
             startDate: z.string(),
             endDate: z.string(),
+            isScheduled: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -23061,6 +22775,7 @@ export const syncProviderAvailabilitiesQuerySchema = z.object({
             id: z.string(),
             startDate: z.string(),
             endDate: z.string(),
+            isScheduled: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -23362,11 +23077,12 @@ export const getServiceVideoQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23474,11 +23190,12 @@ export const getServiceImageQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23586,11 +23303,12 @@ export const getServiceReviewQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -25316,11 +25034,12 @@ export const getContractQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -26389,11 +26108,12 @@ export const getJobTrackingQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28099,11 +27819,12 @@ export const getReviewQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28641,11 +28362,12 @@ export const getBookingQuerySchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -29295,7 +29017,7 @@ export const getServiceQuerySchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -29562,6 +29284,7 @@ export const getServiceQuerySchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -29593,11 +29316,12 @@ export const listServicesQuerySchema = z.object({
             id: z.string(),
             name: z.string(),
             description: z.string().optional().nullable(),
-            price: z.number(),
+            price_min: z.number(),
             duration: z.string().optional().nullable(),
             Materials: z.string().optional().nullable(),
             MaterialCosts: z.number().optional().nullable(),
             BookingRequirements: z.string().optional().nullable(),
+            price_max: z.number(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -29635,11 +29359,12 @@ export const syncServicesQuerySchema = z.object({
             id: z.string(),
             name: z.string(),
             description: z.string().optional().nullable(),
-            price: z.number(),
+            price_min: z.number(),
             duration: z.string().optional().nullable(),
             Materials: z.string().optional().nullable(),
             MaterialCosts: z.number().optional().nullable(),
             BookingRequirements: z.string().optional().nullable(),
+            price_max: z.number(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -29892,14 +29617,6 @@ export const getProviderQuerySchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -31165,81 +30882,6 @@ export const syncUsersQuerySchema = z.object({
     .nullable(),
 });
 
-export const onCreateProviderScheduleSubscriptionVariablesSchema = z.object({
-  filter: modelSubscriptionProviderScheduleFilterInputSchema
-    .optional()
-    .nullable(),
-});
-
-export const onCreateProviderScheduleSubscriptionSchema = z.object({
-  onCreateProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const onUpdateProviderScheduleSubscriptionVariablesSchema = z.object({
-  filter: modelSubscriptionProviderScheduleFilterInputSchema
-    .optional()
-    .nullable(),
-});
-
-export const onUpdateProviderScheduleSubscriptionSchema = z.object({
-  onUpdateProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
-export const onDeleteProviderScheduleSubscriptionVariablesSchema = z.object({
-  filter: modelSubscriptionProviderScheduleFilterInputSchema
-    .optional()
-    .nullable(),
-});
-
-export const onDeleteProviderScheduleSubscriptionSchema = z.object({
-  onDeleteProviderSchedule: z
-    .object({
-      __typename: z.literal("ProviderSchedule"),
-      id: z.string(),
-      providerID: z.string(),
-      startTime: z.string(),
-      endTime: z.string(),
-      date: z.string().optional().nullable(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-    })
-    .optional()
-    .nullable(),
-});
-
 export const onCreateServicePromotionSubscriptionVariablesSchema = z.object({
   filter: modelSubscriptionServicePromotionFilterInputSchema
     .optional()
@@ -31257,11 +30899,12 @@ export const onCreateServicePromotionSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31306,11 +30949,12 @@ export const onUpdateServicePromotionSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31355,11 +30999,12 @@ export const onDeleteServicePromotionSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32330,11 +31975,12 @@ export const onCreateUserBookmarkSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32415,11 +32061,12 @@ export const onUpdateUserBookmarkSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32500,11 +32147,12 @@ export const onDeleteUserBookmarkSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32946,11 +32594,12 @@ export const onCreateServiceDiscountSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32994,11 +32643,12 @@ export const onUpdateServiceDiscountSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33042,11 +32692,12 @@ export const onDeleteServiceDiscountSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33127,6 +32778,7 @@ export const onCreateProviderAvailabilitySubscriptionSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -33193,6 +32845,7 @@ export const onUpdateProviderAvailabilitySubscriptionSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -33259,6 +32912,7 @@ export const onDeleteProviderAvailabilitySubscriptionSchema = z.object({
         .nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -33682,11 +33336,12 @@ export const onCreateServiceVideoSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33727,11 +33382,12 @@ export const onUpdateServiceVideoSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33772,11 +33428,12 @@ export const onDeleteServiceVideoSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33817,11 +33474,12 @@ export const onCreateServiceImageSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33862,11 +33520,12 @@ export const onUpdateServiceImageSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33907,11 +33566,12 @@ export const onDeleteServiceImageSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33952,11 +33612,12 @@ export const onCreateServiceReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34039,11 +33700,12 @@ export const onUpdateServiceReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34126,11 +33788,12 @@ export const onDeleteServiceReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36671,11 +36334,12 @@ export const onCreateContractSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36798,11 +36462,12 @@ export const onUpdateContractSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36925,11 +36590,12 @@ export const onDeleteContractSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -38057,11 +37723,12 @@ export const onCreateJobTrackingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -38184,11 +37851,12 @@ export const onUpdateJobTrackingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -38311,11 +37979,12 @@ export const onDeleteJobTrackingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39854,11 +39523,12 @@ export const onCreateReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39997,11 +39667,12 @@ export const onUpdateReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40140,11 +39811,12 @@ export const onDeleteReviewSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40796,11 +40468,12 @@ export const onCreateBookingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40928,11 +40601,12 @@ export const onUpdateBookingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41060,11 +40734,12 @@ export const onDeleteBookingSubscriptionSchema = z.object({
           id: z.string(),
           name: z.string(),
           description: z.string().optional().nullable(),
-          price: z.number(),
+          price_min: z.number(),
           duration: z.string().optional().nullable(),
           Materials: z.string().optional().nullable(),
           MaterialCosts: z.number().optional().nullable(),
           BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41679,7 +41354,7 @@ export const onCreateServiceSubscriptionSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -41946,6 +41621,7 @@ export const onCreateServiceSubscriptionSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -41971,7 +41647,7 @@ export const onUpdateServiceSubscriptionSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -42238,6 +41914,7 @@ export const onUpdateServiceSubscriptionSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42263,7 +41940,7 @@ export const onDeleteServiceSubscriptionSchema = z.object({
       id: z.string(),
       name: z.string(),
       description: z.string().optional().nullable(),
-      price: z.number(),
+      price_min: z.number(),
       Provider: z
         .object({
           __typename: z.literal("Provider"),
@@ -42530,6 +42207,7 @@ export const onDeleteServiceSubscriptionSchema = z.object({
       Materials: z.string().optional().nullable(),
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
+      price_max: z.number(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42777,14 +42455,6 @@ export const onCreateProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -43030,14 +42700,6 @@ export const onUpdateProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -43283,14 +42945,6 @@ export const onDeleteProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
-      ProviderSchedules: z
-        .object({
-          __typename: z.literal("ModelProviderScheduleConnection"),
-          nextToken: z.string().optional().nullable(),
-          startedAt: z.number().optional().nullable(),
-        })
-        .optional()
-        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -45180,11 +44834,6 @@ export const modelPLMBRSubscriptionConnectionSchema = z.object({
   startedAt: z.number().optional().nullable(),
 });
 
-export const createProviderScheduleMutationVariablesSchema = z.object({
-  input: createProviderScheduleInputSchema,
-  condition: modelProviderScheduleConditionInputSchema.optional().nullable(),
-});
-
 export const createServicePromotionMutationVariablesSchema = z.object({
   input: createServicePromotionInputSchema,
   condition: modelServicePromotionConditionInputSchema.optional().nullable(),
@@ -45227,7 +44876,7 @@ export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
     id: z.string(),
     name: z.string(),
     description: z.string().optional().nullable(),
-    price: z.number(),
+    price_min: z.number(),
     Provider: providerSchema.optional().nullable(),
     reviews: modelReviewConnectionSchema.optional().nullable(),
     bookings: modelBookingConnectionSchema.optional().nullable(),
@@ -45276,6 +44925,7 @@ export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
     Materials: z.string().optional().nullable(),
     MaterialCosts: z.number().optional().nullable(),
     BookingRequirements: z.string().optional().nullable(),
+    price_max: z.number(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -45351,9 +45001,6 @@ export const providerSchema: z.ZodSchema<Provider> = z.lazy(() =>
     expenses: modelExpenseConnectionSchema.optional().nullable(),
     currentLocation: locationSchema.optional().nullable(),
     isInstantBookingAvailable: z.boolean().optional().nullable(),
-    ProviderSchedules: modelProviderScheduleConnectionSchema
-      .optional()
-      .nullable(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -46606,6 +46253,7 @@ export const providerAvailabilitySchema: z.ZodSchema<ProviderAvailability> =
       provider: providerSchema.optional().nullable(),
       startDate: z.string(),
       endDate: z.string(),
+      isScheduled: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),

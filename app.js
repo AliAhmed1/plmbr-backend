@@ -7,7 +7,8 @@ const userRoutes = require('./routes/userRoutes');
 const locationRoutes = require('./routes/locationRoutes');
 const providerScheduleRoutes = require('./routes/providerScheduleRoutes');
 const subCategoryRoutes = require('./routes/subCategoryRoutes');
-
+const providerAvailabilityRoutes = require('./routes/providerAvailabilityRoutes');
+const mainCategoryRoutes = require('./routes/mainCategoryRoutes')
 const app = express();
 
 app.use(express.json());
@@ -19,10 +20,11 @@ app.use('/api', userRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', providerScheduleRoutes);
 app.use('/api', subCategoryRoutes);
-
+app.use('/api', mainCategoryRoutes);
+app.use('/api', providerAvailabilityRoutes);
 
 app.use('/', (req, res) => {
-    res.status(200).json('hello world');
+    res.status(400).json('request is not allowed');
 })
 
 const PORT = process.env.PORT || 3000;

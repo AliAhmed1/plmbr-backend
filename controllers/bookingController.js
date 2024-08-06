@@ -28,8 +28,39 @@ const BookingController = {
 
     try {
       const newStatus = BookingStatus[status];
-      console.log(newStatus, status);
       const result = await BookingService.updateBookingStatus(bookingId, newStatus, userId, providerId);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+  getAllBookingsByProviderId: async (req, res) => {
+    const { providerId } = req.params;
+
+    try {
+      const result = await BookingService.getAllBookingsByProviderId(providerId);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  getAllBookingsByServiceId: async (req, res) => {
+    const { serviceId } = req.params;
+
+    try {
+      const result = await BookingService.getAllBookingsByServiceId(serviceId);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  getAllBookingsByUserId: async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+      const result = await BookingService.getAllBookingsByUserId(userId);
       res.status(200).json(result);
     } catch (error) {
       res.status(400).json({ message: error.message });

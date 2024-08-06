@@ -9,5 +9,8 @@ router.get('/subcategories/:subCategoryId', SubCategoryController.getBySubCatego
 // Route to get all subcategories by main category ID
 router.get('/maincategories/:mainCategoryId/subcategories', SubCategoryController.getAllSubCategoriesByMainCategoryId);
 
+// create subcategory
+router.post('/createsubcategory', SubCategoryController.createSubCategory);
+
 
 module.exports = router;

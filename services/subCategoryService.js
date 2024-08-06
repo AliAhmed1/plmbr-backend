@@ -9,9 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
-const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
-const dynamoDB = lib_dynamodb_1.DynamoDBDocumentClient.from(new client_dynamodb_1.DynamoDBClient({}));
+const generatedZodSchema_1 = require("../schema/generatedZodSchema");
+const addCommonFields_1 = require("../utils/addCommonFields");
+const { uuidv4 } = require('uuid');
+const dynamoDB = require('../config/dbConfig');
 const SUB_CATEGORY_TABLE_NAME = process.env.TABLE_SUB_CATEGORY;
+const MAIN_CATEGORY_TABLE_NAME = process.env.TABLE_MAIN_CATEGORY;
 const SubCategoryService = {
     getBySubCategoryId: (subCategoryId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
@@ -39,6 +42,35 @@ const SubCategoryService = {
             throw new Error('No SubCategories found for the given MainCategory');
         }
         return result.Items;
+    }),
+    createSubCategory: (subCategoryData) => __awaiter(void 0, void 0, void 0, function* () {
+        const extendedSubCategoryData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.subCategorySchema, subCategoryData, "SubCategory");
+        const validationResult = generatedZodSchema_1.subCategorySchema.safeParse(extendedSubCategoryData);
+        if (!validationResult.success) {
+            const errors = validationResult.error.errors.map(e => e.message).join(', ');
+            throw new Error(`SubCategory data is invalid: ${errors}`);
+        }
+        const subCategory = validationResult.data;
+        // Validate mainCategorySubCategoriesId
+        if (subCategory.mainCategorySubCategoriesId) {
+            const mainCategoryParams = {
+                TableName: MAIN_CATEGORY_TABLE_NAME,
+                Key: { id: subCategory.mainCategorySubCategoriesId },
+            };
+            const mainCategoryResult = yield dynamoDB.send(new lib_dynamodb_1.GetCommand(mainCategoryParams));
+            if (!mainCategoryResult.Item) {
+                throw new Error(`MainCategory not found: ${subCategory.mainCategorySubCategoriesId}`);
+            }
+        }
+        else {
+            throw new Error('MainCategory ID is required');
+        }
+        const params = {
+            TableName: SUB_CATEGORY_TABLE_NAME,
+            Item: Object.assign({}, subCategory),
+        };
+        yield dynamoDB.send(new lib_dynamodb_1.PutCommand(params));
+        return subCategory;
     }),
 };
 module.exports = SubCategoryService;

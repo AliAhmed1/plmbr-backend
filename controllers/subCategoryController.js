@@ -22,6 +22,16 @@ const SubCategoryController = {
       res.status(400).json({ message: error.message });
     }
   },
+  createSubCategory: async (req, res) => {
+    const subCategoryData = req.body;
+
+    try {
+      const result = await SubCategoryService.createSubCategory(subCategoryData);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = SubCategoryController;

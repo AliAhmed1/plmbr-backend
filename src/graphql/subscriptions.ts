@@ -8,69 +8,6 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateProviderSchedule = /* GraphQL */ `subscription OnCreateProviderSchedule(
-  $filter: ModelSubscriptionProviderScheduleFilterInput
-) {
-  onCreateProviderSchedule(filter: $filter) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnCreateProviderScheduleSubscriptionVariables,
-  APITypes.OnCreateProviderScheduleSubscription
->;
-export const onUpdateProviderSchedule = /* GraphQL */ `subscription OnUpdateProviderSchedule(
-  $filter: ModelSubscriptionProviderScheduleFilterInput
-) {
-  onUpdateProviderSchedule(filter: $filter) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnUpdateProviderScheduleSubscriptionVariables,
-  APITypes.OnUpdateProviderScheduleSubscription
->;
-export const onDeleteProviderSchedule = /* GraphQL */ `subscription OnDeleteProviderSchedule(
-  $filter: ModelSubscriptionProviderScheduleFilterInput
-) {
-  onDeleteProviderSchedule(filter: $filter) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnDeleteProviderScheduleSubscriptionVariables,
-  APITypes.OnDeleteProviderScheduleSubscription
->;
 export const onCreateServicePromotion = /* GraphQL */ `subscription OnCreateServicePromotion(
   $filter: ModelSubscriptionServicePromotionFilterInput
 ) {
@@ -80,11 +17,12 @@ export const onCreateServicePromotion = /* GraphQL */ `subscription OnCreateServ
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -122,11 +60,12 @@ export const onUpdateServicePromotion = /* GraphQL */ `subscription OnUpdateServ
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -164,11 +103,12 @@ export const onDeleteServicePromotion = /* GraphQL */ `subscription OnDeleteServ
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1018,11 +958,12 @@ export const onCreateUserBookmark = /* GraphQL */ `subscription OnCreateUserBook
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1093,11 +1034,12 @@ export const onUpdateUserBookmark = /* GraphQL */ `subscription OnUpdateUserBook
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1168,11 +1110,12 @@ export const onDeleteUserBookmark = /* GraphQL */ `subscription OnDeleteUserBook
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1547,11 +1490,12 @@ export const onCreateServiceDiscount = /* GraphQL */ `subscription OnCreateServi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1588,11 +1532,12 @@ export const onUpdateServiceDiscount = /* GraphQL */ `subscription OnUpdateServi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1629,11 +1574,12 @@ export const onDeleteServiceDiscount = /* GraphQL */ `subscription OnDeleteServi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1702,6 +1648,7 @@ export const onCreateProviderAvailability = /* GraphQL */ `subscription OnCreate
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1757,6 +1704,7 @@ export const onUpdateProviderAvailability = /* GraphQL */ `subscription OnUpdate
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1812,6 +1760,7 @@ export const onDeleteProviderAvailability = /* GraphQL */ `subscription OnDelete
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -2174,11 +2123,12 @@ export const onCreateServiceVideo = /* GraphQL */ `subscription OnCreateServiceV
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2214,11 +2164,12 @@ export const onUpdateServiceVideo = /* GraphQL */ `subscription OnUpdateServiceV
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2254,11 +2205,12 @@ export const onDeleteServiceVideo = /* GraphQL */ `subscription OnDeleteServiceV
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2294,11 +2246,12 @@ export const onCreateServiceImage = /* GraphQL */ `subscription OnCreateServiceI
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2334,11 +2287,12 @@ export const onUpdateServiceImage = /* GraphQL */ `subscription OnUpdateServiceI
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2374,11 +2328,12 @@ export const onDeleteServiceImage = /* GraphQL */ `subscription OnDeleteServiceI
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2414,11 +2369,12 @@ export const onCreateServiceReview = /* GraphQL */ `subscription OnCreateService
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2491,11 +2447,12 @@ export const onUpdateServiceReview = /* GraphQL */ `subscription OnUpdateService
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2568,11 +2525,12 @@ export const onDeleteServiceReview = /* GraphQL */ `subscription OnDeleteService
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4779,11 +4737,12 @@ export const onCreateContract = /* GraphQL */ `subscription OnCreateContract($fi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4889,11 +4848,12 @@ export const onUpdateContract = /* GraphQL */ `subscription OnUpdateContract($fi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4999,11 +4959,12 @@ export const onDeleteContract = /* GraphQL */ `subscription OnDeleteContract($fi
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -5951,11 +5912,12 @@ export const onCreateJobTracking = /* GraphQL */ `subscription OnCreateJobTracki
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6063,11 +6025,12 @@ export const onUpdateJobTracking = /* GraphQL */ `subscription OnUpdateJobTracki
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6175,11 +6138,12 @@ export const onDeleteJobTracking = /* GraphQL */ `subscription OnDeleteJobTracki
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7452,11 +7416,12 @@ export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7575,11 +7540,12 @@ export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7698,11 +7664,12 @@ export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8257,11 +8224,12 @@ export const onCreateBooking = /* GraphQL */ `subscription OnCreateBooking($filt
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8372,11 +8340,12 @@ export const onUpdateBooking = /* GraphQL */ `subscription OnUpdateBooking($filt
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8487,11 +8456,12 @@ export const onDeleteBooking = /* GraphQL */ `subscription OnDeleteBooking($filt
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -9007,7 +8977,7 @@ export const onCreateService = /* GraphQL */ `subscription OnCreateService($filt
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9188,6 +9158,7 @@ export const onCreateService = /* GraphQL */ `subscription OnCreateService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -9209,7 +9180,7 @@ export const onUpdateService = /* GraphQL */ `subscription OnUpdateService($filt
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9390,6 +9361,7 @@ export const onUpdateService = /* GraphQL */ `subscription OnUpdateService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -9411,7 +9383,7 @@ export const onDeleteService = /* GraphQL */ `subscription OnDeleteService($filt
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9592,6 +9564,7 @@ export const onDeleteService = /* GraphQL */ `subscription OnDeleteService($filt
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -9761,11 +9734,6 @@ export const onCreateProvider = /* GraphQL */ `subscription OnCreateProvider($fi
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version
@@ -9933,11 +9901,6 @@ export const onUpdateProvider = /* GraphQL */ `subscription OnUpdateProvider($fi
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version
@@ -10105,11 +10068,6 @@ export const onDeleteProvider = /* GraphQL */ `subscription OnDeleteProvider($fi
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version

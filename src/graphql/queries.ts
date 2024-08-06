@@ -8,123 +8,6 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getProviderSchedule = /* GraphQL */ `query GetProviderSchedule($id: ID!) {
-  getProviderSchedule(id: $id) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.GetProviderScheduleQueryVariables,
-  APITypes.GetProviderScheduleQuery
->;
-export const listProviderSchedules = /* GraphQL */ `query ListProviderSchedules(
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listProviderSchedules(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.ListProviderSchedulesQueryVariables,
-  APITypes.ListProviderSchedulesQuery
->;
-export const syncProviderSchedules = /* GraphQL */ `query SyncProviderSchedules(
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncProviderSchedules(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.SyncProviderSchedulesQueryVariables,
-  APITypes.SyncProviderSchedulesQuery
->;
-export const providerSchedulesByProviderID = /* GraphQL */ `query ProviderSchedulesByProviderID(
-  $providerID: ID!
-  $sortDirection: ModelSortDirection
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  providerSchedulesByProviderID(
-    providerID: $providerID
-    sortDirection: $sortDirection
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.ProviderSchedulesByProviderIDQueryVariables,
-  APITypes.ProviderSchedulesByProviderIDQuery
->;
 export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id: ID!) {
   getServicePromotion(id: $id) {
     id
@@ -132,11 +15,12 @@ export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id:
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -774,11 +658,12 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1113,11 +998,12 @@ export const getServiceDiscount = /* GraphQL */ `query GetServiceDiscount($id: I
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1246,6 +1132,7 @@ export const getProviderAvailability = /* GraphQL */ `query GetProviderAvailabil
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1274,6 +1161,7 @@ export const listProviderAvailabilities = /* GraphQL */ `query ListProviderAvail
       id
       startDate
       endDate
+      isScheduled
       createdAt
       updatedAt
       _version
@@ -1308,6 +1196,7 @@ export const syncProviderAvailabilities = /* GraphQL */ `query SyncProviderAvail
       id
       startDate
       endDate
+      isScheduled
       createdAt
       updatedAt
       _version
@@ -1574,11 +1463,12 @@ export const getServiceVideo = /* GraphQL */ `query GetServiceVideo($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1672,11 +1562,12 @@ export const getServiceImage = /* GraphQL */ `query GetServiceImage($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1770,11 +1661,12 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -3274,11 +3166,12 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4202,11 +4095,12 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -5678,11 +5572,12 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6148,11 +6043,12 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6709,7 +6605,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -6890,6 +6786,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -6916,11 +6813,12 @@ export const listServices = /* GraphQL */ `query ListServices(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6957,11 +6855,12 @@ export const syncServices = /* GraphQL */ `query SyncServices(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7135,11 +7034,6 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version

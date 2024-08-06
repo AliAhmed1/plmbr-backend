@@ -2,15 +2,15 @@ import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 const dynamoDB = require('../config/dbConfig');
 
-const PROVIDER_SCHEDULE_TABLE_NAME = process.env.TABLE_PROVIDER_SCHEDULE;
+const PROVIDER_AVAILIBILITY_TABLE_NAME = process.env.TABLE_PROVIDER_AVAILIBILITY;
 
-const ProviderScheduleService = {
-  getAllSchedulesByProviderId: async (providerId: string) => {
+const ProviderAvailabilityService = {
+  getAllAvailabilityByProviderId: async (providerId: string) => {
     const params = {
-      TableName: PROVIDER_SCHEDULE_TABLE_NAME,
-      FilterExpression: 'providerID = :providerID and isScheduled = :isScheduled',
+      TableName: PROVIDER_AVAILIBILITY_TABLE_NAME,
+      FilterExpression: 'providerProviderAvailabilityId = :providerProviderAvailabilityId and isScheduled = :isScheduled',
       ExpressionAttributeValues: {
-        ':providerID': providerId,
+        ':providerProviderAvailabilityId': providerId,
         ':isScheduled': true,
       },
     };
@@ -25,4 +25,4 @@ const ProviderScheduleService = {
   },
 };
 
-export = ProviderScheduleService;
+export = ProviderAvailabilityService;

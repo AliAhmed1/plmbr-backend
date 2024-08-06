@@ -20,8 +20,11 @@ const serviceService_1 = __importDefault(require("./serviceService"));
 const providerService_1 = __importDefault(require("./providerService"));
 const userService_1 = __importDefault(require("./userService"));
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
+const validationUtil_1 = require("../utils/validationUtil");
+const validationUtil_2 = require("../utils/validationUtil");
+const validationUtil_3 = require("../utils/validationUtil");
 const TABLE_NAME = process.env.TABLE_BOOKING;
-const PROVIDER_SCHEDULE_TABLE_NAME = process.env.TABLE_PROVIDER_SCHEDULE;
+const PROVIDER_AVAILIBILITY_TABLE_NAME = process.env.TABLE_PROVIDER_AVAILIBILITY;
 const BookingService = {
     createBooking: (bookingData) => __awaiter(void 0, void 0, void 0, function* () {
         const extendedBookingData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.bookingSchema, bookingData, "Booking");
@@ -31,6 +34,14 @@ const BookingService = {
             throw new Error(`Booking data is invalid: ${errors}`);
         }
         const booking = Object.assign(Object.assign({}, validationResult.data), { status: API_1.BookingStatus.PENDING });
+        // Validate date, time, and dateTime
+        try {
+            (0, validationUtil_1.validateDate)(booking.date);
+            (0, validationUtil_2.validateTime)(booking.startTime);
+        }
+        catch (error) {
+            throw new Error(`Invalid date or time: ${error.message}`);
+        }
         // Validate service, provider, and user
         if (booking.serviceBookingsId) {
             const serviceExists = yield serviceService_1.default.getServiceById(booking.serviceBookingsId);
@@ -127,31 +138,76 @@ const BookingService = {
         const updateResult = yield dynamoDB.send(new lib_dynamodb_1.UpdateCommand(updateParams));
         const updatedBooking = updateResult.Attributes;
         if (updatedBooking.providerProviderBookingsId && (updatedBooking.status === API_1.BookingStatus.CONFIRMED || updatedBooking.status === API_1.BookingStatus.CANCELLED || updatedBooking.status === API_1.BookingStatus.COMPLETED)) {
-            yield BookingService.updateProviderSchedule(updatedBooking, updatedBooking.status);
+            yield BookingService.updateProviderAvailabiliy(updatedBooking);
         }
         return updatedBooking;
     }),
-    updateProviderSchedule: (booking, status) => __awaiter(void 0, void 0, void 0, function* () {
-        var _a;
-        const isScheduled = status === (API_1.BookingStatus.CONFIRMED || API_1.BookingStatus.IN_PROGRESS);
-        const providerSchedule = {
-            providerID: (_a = booking.providerProviderBookingsId) !== null && _a !== void 0 ? _a : "",
-            startTime: booking.startTime,
-            endTime: booking.endTime,
-            date: booking.date,
-            isScheduled,
+    updateProviderAvailabiliy: (booking) => __awaiter(void 0, void 0, void 0, function* () {
+        var _a, _b;
+        const startDate = new Date(`${booking.date}T${booking.startTime}Z`).toISOString();
+        const endDate = new Date(`${booking.date}T${booking.endTime}Z`).toISOString();
+        const isScheduled = booking.status === (API_1.BookingStatus.CONFIRMED || API_1.BookingStatus.IN_PROGRESS);
+        try {
+            (0, validationUtil_3.validateDateTime)(startDate);
+            (0, validationUtil_3.validateDateTime)(endDate);
+        }
+        catch (error) {
+            throw new Error(`Invalid date or time: ${error.message}`);
+        }
+        const providerAvailablity = {
+            providerProviderAvailabilityId: (_a = booking.providerProviderBookingsId) !== null && _a !== void 0 ? _a : "",
+            serviceProviderAvailabilitiesId: (_b = booking.serviceBookingsId) !== null && _b !== void 0 ? _b : "",
+            startDate: startDate,
+            endDate: endDate,
+            isScheduled
         };
-        const extendedProviderScheduleData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.providerScheduleSchema, providerSchedule, "ProviderSchedule");
-        const validationResult = generatedZodSchema_1.providerScheduleSchema.safeParse(extendedProviderScheduleData);
+        const extendedProviderAvailabilityData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.providerAvailabilitySchema, providerAvailablity, "ProviderAvailability");
+        const validationResult = generatedZodSchema_1.providerAvailabilitySchema.safeParse(extendedProviderAvailabilityData);
         if (!validationResult.success) {
-            const errors = validationResult.error.errors.map(e => e.message).join(', ');
+            const errors = validationResult.error.errors.map((e) => e.message).join(', ');
             throw new Error(`Provider Schedule data is invalid: ${errors}`);
         }
         const params = {
-            TableName: PROVIDER_SCHEDULE_TABLE_NAME,
+            TableName: PROVIDER_AVAILIBILITY_TABLE_NAME,
             Item: validationResult.data,
         };
         yield dynamoDB.send(new PutCommand(params));
+    }),
+    getAllBookingsByProviderId: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+            IndexName: 'providerProviderBookingsId-index',
+            KeyConditionExpression: 'providerProviderBookingsId = :providerId',
+            ExpressionAttributeValues: {
+                ':providerId': providerId,
+            },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+        return result.Items;
+    }),
+    getAllBookingsByServiceId: (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+            IndexName: 'serviceBookingsId-index',
+            KeyConditionExpression: 'serviceBookingsId = :serviceId',
+            ExpressionAttributeValues: {
+                ':serviceId': serviceId,
+            },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+        return result.Items;
+    }),
+    getAllBookingsByUserId: (userId) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+            IndexName: 'userBookingsId-index',
+            KeyConditionExpression: 'userBookingsId = :userId',
+            ExpressionAttributeValues: {
+                ':userId': userId,
+            },
+        };
+        const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+        return result.Items;
     }),
 };
 module.exports = BookingService;

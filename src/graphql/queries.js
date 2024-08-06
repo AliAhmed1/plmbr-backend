@@ -3,116 +3,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAIDiagnostics = exports.syncServiceReviews = exports.listServiceReviews = exports.getServiceReview = exports.syncServiceImages = exports.listServiceImages = exports.getServiceImage = exports.syncServiceVideos = exports.listServiceVideos = exports.getServiceVideo = exports.syncProviderCertifications = exports.listProviderCertifications = exports.getProviderCertification = exports.syncUserPreferences = exports.listUserPreferences = exports.getUserPreference = exports.syncProviderAvailabilities = exports.listProviderAvailabilities = exports.getProviderAvailability = exports.syncServiceDiscounts = exports.listServiceDiscounts = exports.getServiceDiscount = exports.syncUserNotifications = exports.listUserNotifications = exports.getUserNotification = exports.syncProviderNotifications = exports.listProviderNotifications = exports.getProviderNotification = exports.syncUserBookmarks = exports.listUserBookmarks = exports.getUserBookmark = exports.syncProviderBookmarks = exports.listProviderBookmarks = exports.getProviderBookmark = exports.syncUserInvoices = exports.listUserInvoices = exports.getUserInvoice = exports.syncUserReports = exports.listUserReports = exports.getUserReport = exports.syncProviderReports = exports.listProviderReports = exports.getProviderReport = exports.syncServicePromotions = exports.listServicePromotions = exports.getServicePromotion = exports.providerSchedulesByProviderID = exports.syncProviderSchedules = exports.listProviderSchedules = exports.getProviderSchedule = void 0;
-exports.syncAnalytics = exports.listAnalytics = exports.getAnalytics = exports.syncVerifications = exports.listVerifications = exports.getVerification = exports.syncLoyaltyPrograms = exports.listLoyaltyPrograms = exports.getLoyaltyProgram = exports.syncRewards = exports.listRewards = exports.getReward = exports.syncServicePackages = exports.listServicePackages = exports.getServicePackage = exports.syncNicheServices = exports.listNicheServices = exports.getNicheService = exports.syncContracts = exports.listContracts = exports.getContract = exports.syncInvoices = exports.listInvoices = exports.getInvoice = exports.syncPaymentMethods = exports.listPaymentMethods = exports.getPaymentMethod = exports.syncTips = exports.listTips = exports.getTip = exports.syncReferrals = exports.listReferrals = exports.getReferral = exports.syncProviderAwards = exports.listProviderAwards = exports.getProviderAward = exports.syncUserHistories = exports.listUserHistories = exports.getUserHistory = exports.syncFavoriteProviders = exports.listFavoriteProviders = exports.getFavoriteProvider = exports.syncExpenses = exports.listExpenses = exports.getExpense = exports.syncCustomizations = exports.listCustomizations = exports.getCustomization = exports.syncAIDiagnostics = exports.listAIDiagnostics = void 0;
-exports.listEquipment = exports.getEquipment = exports.syncFeedbacks = exports.listFeedbacks = exports.getFeedback = exports.syncServiceFAQS = exports.listServiceFAQS = exports.getServiceFAQ = exports.syncServiceTags = exports.listServiceTags = exports.getServiceTag = exports.syncServiceHighlights = exports.listServiceHighlights = exports.getServiceHighlight = exports.syncServiceVariants = exports.listServiceVariants = exports.getServiceVariant = exports.syncPortfolios = exports.listPortfolios = exports.getPortfolio = exports.syncProviderSettings = exports.listProviderSettings = exports.getProviderSettings = exports.syncUserSettings = exports.listUserSettings = exports.getUserSettings = exports.syncPLMBRSubscriptions = exports.listPLMBRSubscriptions = exports.getPLMBRSubscription = exports.syncSubCategories = exports.listSubCategories = exports.getSubCategory = exports.syncMainCategories = exports.listMainCategories = exports.getMainCategory = exports.syncAIChatBots = exports.listAIChatBots = exports.getAIChatBot = exports.syncAIChatLogs = exports.listAIChatLogs = exports.getAIChatLog = exports.syncJobTrackings = exports.listJobTrackings = exports.getJobTracking = exports.syncReports = exports.listReports = exports.getReport = exports.syncPromoCodes = exports.listPromoCodes = exports.getPromoCode = void 0;
-exports.getQualification = exports.syncCertifications = exports.listCertifications = exports.getCertification = exports.syncProviderReviews = exports.listProviderReviews = exports.getProviderReview = exports.syncAvailabilities = exports.listAvailabilities = exports.getAvailability = exports.syncProviders = exports.listProviders = exports.getProvider = exports.syncServices = exports.listServices = exports.getService = exports.syncJobs = exports.listJobs = exports.getJob = exports.syncMessages = exports.listMessages = exports.getMessage = exports.syncLocations = exports.listLocations = exports.getLocation = exports.syncTeamMembers = exports.listTeamMembers = exports.getTeamMember = exports.syncBookings = exports.listBookings = exports.getBooking = exports.syncMessageContents = exports.listMessageContents = exports.getMessageContent = exports.syncMessageThreads = exports.listMessageThreads = exports.getMessageThread = exports.syncReviewResponses = exports.listReviewResponses = exports.getReviewResponse = exports.syncReviews = exports.listReviews = exports.getReview = exports.syncTransactions = exports.listTransactions = exports.getTransaction = exports.syncWallets = exports.listWallets = exports.getWallet = exports.syncEquipment = void 0;
-exports.syncUsers = exports.listUsers = exports.getUser = exports.syncProviderHistories = exports.listProviderHistories = exports.getProviderHistory = exports.syncSpecializations = exports.listSpecializations = exports.getSpecialization = exports.syncQualifications = exports.listQualifications = void 0;
-exports.getProviderSchedule = `query GetProviderSchedule($id: ID!) {
-  getProviderSchedule(id: $id) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-`;
-exports.listProviderSchedules = `query ListProviderSchedules(
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listProviderSchedules(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-`;
-exports.syncProviderSchedules = `query SyncProviderSchedules(
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncProviderSchedules(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-`;
-exports.providerSchedulesByProviderID = `query ProviderSchedulesByProviderID(
-  $providerID: ID!
-  $sortDirection: ModelSortDirection
-  $filter: ModelProviderScheduleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  providerSchedulesByProviderID(
-    providerID: $providerID
-    sortDirection: $sortDirection
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      providerID
-      startTime
-      endTime
-      date
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-`;
+exports.listCustomizations = exports.getCustomization = exports.syncAIDiagnostics = exports.listAIDiagnostics = exports.getAIDiagnostics = exports.syncServiceReviews = exports.listServiceReviews = exports.getServiceReview = exports.syncServiceImages = exports.listServiceImages = exports.getServiceImage = exports.syncServiceVideos = exports.listServiceVideos = exports.getServiceVideo = exports.syncProviderCertifications = exports.listProviderCertifications = exports.getProviderCertification = exports.syncUserPreferences = exports.listUserPreferences = exports.getUserPreference = exports.syncProviderAvailabilities = exports.listProviderAvailabilities = exports.getProviderAvailability = exports.syncServiceDiscounts = exports.listServiceDiscounts = exports.getServiceDiscount = exports.syncUserNotifications = exports.listUserNotifications = exports.getUserNotification = exports.syncProviderNotifications = exports.listProviderNotifications = exports.getProviderNotification = exports.syncUserBookmarks = exports.listUserBookmarks = exports.getUserBookmark = exports.syncProviderBookmarks = exports.listProviderBookmarks = exports.getProviderBookmark = exports.syncUserInvoices = exports.listUserInvoices = exports.getUserInvoice = exports.syncUserReports = exports.listUserReports = exports.getUserReport = exports.syncProviderReports = exports.listProviderReports = exports.getProviderReport = exports.syncServicePromotions = exports.listServicePromotions = exports.getServicePromotion = void 0;
+exports.getReport = exports.syncPromoCodes = exports.listPromoCodes = exports.getPromoCode = exports.syncAnalytics = exports.listAnalytics = exports.getAnalytics = exports.syncVerifications = exports.listVerifications = exports.getVerification = exports.syncLoyaltyPrograms = exports.listLoyaltyPrograms = exports.getLoyaltyProgram = exports.syncRewards = exports.listRewards = exports.getReward = exports.syncServicePackages = exports.listServicePackages = exports.getServicePackage = exports.syncNicheServices = exports.listNicheServices = exports.getNicheService = exports.syncContracts = exports.listContracts = exports.getContract = exports.syncInvoices = exports.listInvoices = exports.getInvoice = exports.syncPaymentMethods = exports.listPaymentMethods = exports.getPaymentMethod = exports.syncTips = exports.listTips = exports.getTip = exports.syncReferrals = exports.listReferrals = exports.getReferral = exports.syncProviderAwards = exports.listProviderAwards = exports.getProviderAward = exports.syncUserHistories = exports.listUserHistories = exports.getUserHistory = exports.syncFavoriteProviders = exports.listFavoriteProviders = exports.getFavoriteProvider = exports.syncExpenses = exports.listExpenses = exports.getExpense = exports.syncCustomizations = void 0;
+exports.syncWallets = exports.listWallets = exports.getWallet = exports.syncEquipment = exports.listEquipment = exports.getEquipment = exports.syncFeedbacks = exports.listFeedbacks = exports.getFeedback = exports.syncServiceFAQS = exports.listServiceFAQS = exports.getServiceFAQ = exports.syncServiceTags = exports.listServiceTags = exports.getServiceTag = exports.syncServiceHighlights = exports.listServiceHighlights = exports.getServiceHighlight = exports.syncServiceVariants = exports.listServiceVariants = exports.getServiceVariant = exports.syncPortfolios = exports.listPortfolios = exports.getPortfolio = exports.syncProviderSettings = exports.listProviderSettings = exports.getProviderSettings = exports.syncUserSettings = exports.listUserSettings = exports.getUserSettings = exports.syncPLMBRSubscriptions = exports.listPLMBRSubscriptions = exports.getPLMBRSubscription = exports.syncSubCategories = exports.listSubCategories = exports.getSubCategory = exports.syncMainCategories = exports.listMainCategories = exports.getMainCategory = exports.syncAIChatBots = exports.listAIChatBots = exports.getAIChatBot = exports.syncAIChatLogs = exports.listAIChatLogs = exports.getAIChatLog = exports.syncJobTrackings = exports.listJobTrackings = exports.getJobTracking = exports.syncReports = exports.listReports = void 0;
+exports.listSpecializations = exports.getSpecialization = exports.syncQualifications = exports.listQualifications = exports.getQualification = exports.syncCertifications = exports.listCertifications = exports.getCertification = exports.syncProviderReviews = exports.listProviderReviews = exports.getProviderReview = exports.syncAvailabilities = exports.listAvailabilities = exports.getAvailability = exports.syncProviders = exports.listProviders = exports.getProvider = exports.syncServices = exports.listServices = exports.getService = exports.syncJobs = exports.listJobs = exports.getJob = exports.syncMessages = exports.listMessages = exports.getMessage = exports.syncLocations = exports.listLocations = exports.getLocation = exports.syncTeamMembers = exports.listTeamMembers = exports.getTeamMember = exports.syncBookings = exports.listBookings = exports.getBooking = exports.syncMessageContents = exports.listMessageContents = exports.getMessageContent = exports.syncMessageThreads = exports.listMessageThreads = exports.getMessageThread = exports.syncReviewResponses = exports.listReviewResponses = exports.getReviewResponse = exports.syncReviews = exports.listReviews = exports.getReview = exports.syncTransactions = exports.listTransactions = exports.getTransaction = void 0;
+exports.syncUsers = exports.listUsers = exports.getUser = exports.syncProviderHistories = exports.listProviderHistories = exports.getProviderHistory = exports.syncSpecializations = void 0;
 exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
   getServicePromotion(id: $id) {
     id
@@ -120,11 +15,12 @@ exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -717,11 +613,12 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1029,11 +926,12 @@ exports.getServiceDiscount = `query GetServiceDiscount($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1153,6 +1051,7 @@ exports.getProviderAvailability = `query GetProviderAvailability($id: ID!) {
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1178,6 +1077,7 @@ exports.listProviderAvailabilities = `query ListProviderAvailabilities(
       id
       startDate
       endDate
+      isScheduled
       createdAt
       updatedAt
       _version
@@ -1209,6 +1109,7 @@ exports.syncProviderAvailabilities = `query SyncProviderAvailabilities(
       id
       startDate
       endDate
+      isScheduled
       createdAt
       updatedAt
       _version
@@ -1454,11 +1355,12 @@ exports.getServiceVideo = `query GetServiceVideo($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1543,11 +1445,12 @@ exports.getServiceImage = `query GetServiceImage($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1632,11 +1535,12 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -3046,11 +2950,12 @@ exports.getContract = `query GetContract($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -3899,11 +3804,12 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -5225,11 +5131,12 @@ exports.getReview = `query GetReview($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -5662,11 +5569,12 @@ exports.getBooking = `query GetBooking($id: ID!) {
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6187,7 +6095,7 @@ exports.getService = `query GetService($id: ID!) {
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -6368,6 +6276,7 @@ exports.getService = `query GetService($id: ID!) {
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -6391,11 +6300,12 @@ exports.listServices = `query ListServices(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6429,11 +6339,12 @@ exports.syncServices = `query SyncServices(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6604,11 +6515,6 @@ exports.getProvider = `query GetProvider($id: ID!) {
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version

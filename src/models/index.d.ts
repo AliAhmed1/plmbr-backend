@@ -88,40 +88,6 @@ export enum NotificationPreference {
 
 
 
-type EagerProviderSchedule = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<ProviderSchedule, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly providerID: string;
-  readonly startTime: string;
-  readonly endTime: string;
-  readonly date?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyProviderSchedule = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<ProviderSchedule, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly providerID: string;
-  readonly startTime: string;
-  readonly endTime: string;
-  readonly date?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type ProviderSchedule = LazyLoading extends LazyLoadingDisabled ? EagerProviderSchedule : LazyProviderSchedule
-
-export declare const ProviderSchedule: (new (init: ModelInit<ProviderSchedule>) => ProviderSchedule) & {
-  copyOf(source: ProviderSchedule, mutator: (draft: MutableModel<ProviderSchedule>) => MutableModel<ProviderSchedule> | void): ProviderSchedule;
-}
-
 type EagerServicePromotion = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<ServicePromotion, 'id'>;
@@ -467,6 +433,7 @@ type EagerProviderAvailability = {
   readonly provider?: Provider | null;
   readonly startDate: string;
   readonly endDate: string;
+  readonly isScheduled?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly providerProviderAvailabilityId?: string | null;
@@ -482,6 +449,7 @@ type LazyProviderAvailability = {
   readonly provider: AsyncItem<Provider | undefined>;
   readonly startDate: string;
   readonly endDate: string;
+  readonly isScheduled?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly providerProviderAvailabilityId?: string | null;
@@ -2298,7 +2266,7 @@ type EagerService = {
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
-  readonly price: number;
+  readonly price_min: number;
   readonly Provider?: Provider | null;
   readonly reviews?: (Review | null)[] | null;
   readonly bookings?: (Booking | null)[] | null;
@@ -2331,6 +2299,7 @@ type EagerService = {
   readonly Materials?: string | null;
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
+  readonly price_max: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
@@ -2347,7 +2316,7 @@ type LazyService = {
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
-  readonly price: number;
+  readonly price_min: number;
   readonly Provider: AsyncItem<Provider | undefined>;
   readonly reviews: AsyncCollection<Review>;
   readonly bookings: AsyncCollection<Booking>;
@@ -2380,6 +2349,7 @@ type LazyService = {
   readonly Materials?: string | null;
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
+  readonly price_max: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
@@ -2447,7 +2417,6 @@ type EagerProvider = {
   readonly expenses?: (Expense | null)[] | null;
   readonly currentLocation?: Location | null;
   readonly isInstantBookingAvailable?: boolean | null;
-  readonly ProviderSchedules?: (ProviderSchedule | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;
@@ -2507,7 +2476,6 @@ type LazyProvider = {
   readonly expenses: AsyncCollection<Expense>;
   readonly currentLocation: AsyncItem<Location | undefined>;
   readonly isInstantBookingAvailable?: boolean | null;
-  readonly ProviderSchedules: AsyncCollection<ProviderSchedule>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;

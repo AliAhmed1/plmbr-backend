@@ -8,72 +8,6 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createProviderSchedule = /* GraphQL */ `mutation CreateProviderSchedule(
-  $input: CreateProviderScheduleInput!
-  $condition: ModelProviderScheduleConditionInput
-) {
-  createProviderSchedule(input: $input, condition: $condition) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.CreateProviderScheduleMutationVariables,
-  APITypes.CreateProviderScheduleMutation
->;
-export const updateProviderSchedule = /* GraphQL */ `mutation UpdateProviderSchedule(
-  $input: UpdateProviderScheduleInput!
-  $condition: ModelProviderScheduleConditionInput
-) {
-  updateProviderSchedule(input: $input, condition: $condition) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.UpdateProviderScheduleMutationVariables,
-  APITypes.UpdateProviderScheduleMutation
->;
-export const deleteProviderSchedule = /* GraphQL */ `mutation DeleteProviderSchedule(
-  $input: DeleteProviderScheduleInput!
-  $condition: ModelProviderScheduleConditionInput
-) {
-  deleteProviderSchedule(input: $input, condition: $condition) {
-    id
-    providerID
-    startTime
-    endTime
-    date
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.DeleteProviderScheduleMutationVariables,
-  APITypes.DeleteProviderScheduleMutation
->;
 export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromotion(
   $input: CreateServicePromotionInput!
   $condition: ModelServicePromotionConditionInput
@@ -84,11 +18,12 @@ export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromo
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -127,11 +62,12 @@ export const updateServicePromotion = /* GraphQL */ `mutation UpdateServicePromo
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -170,11 +106,12 @@ export const deleteServicePromotion = /* GraphQL */ `mutation DeleteServicePromo
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1037,11 +974,12 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1113,11 +1051,12 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1189,11 +1128,12 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1575,11 +1515,12 @@ export const createServiceDiscount = /* GraphQL */ `mutation CreateServiceDiscou
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1617,11 +1558,12 @@ export const updateServiceDiscount = /* GraphQL */ `mutation UpdateServiceDiscou
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1659,11 +1601,12 @@ export const deleteServiceDiscount = /* GraphQL */ `mutation DeleteServiceDiscou
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -1733,6 +1676,7 @@ export const createProviderAvailability = /* GraphQL */ `mutation CreateProvider
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1789,6 +1733,7 @@ export const updateProviderAvailability = /* GraphQL */ `mutation UpdateProvider
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -1845,6 +1790,7 @@ export const deleteProviderAvailability = /* GraphQL */ `mutation DeleteProvider
     }
     startDate
     endDate
+    isScheduled
     createdAt
     updatedAt
     _version
@@ -2214,11 +2160,12 @@ export const createServiceVideo = /* GraphQL */ `mutation CreateServiceVideo(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2255,11 +2202,12 @@ export const updateServiceVideo = /* GraphQL */ `mutation UpdateServiceVideo(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2296,11 +2244,12 @@ export const deleteServiceVideo = /* GraphQL */ `mutation DeleteServiceVideo(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2337,11 +2286,12 @@ export const createServiceImage = /* GraphQL */ `mutation CreateServiceImage(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2378,11 +2328,12 @@ export const updateServiceImage = /* GraphQL */ `mutation UpdateServiceImage(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2419,11 +2370,12 @@ export const deleteServiceImage = /* GraphQL */ `mutation DeleteServiceImage(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2460,11 +2412,12 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2538,11 +2491,12 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -2616,11 +2570,12 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4884,11 +4839,12 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -4997,11 +4953,12 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -5110,11 +5067,12 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6111,11 +6069,12 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6224,11 +6183,12 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -6337,11 +6297,12 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7701,11 +7662,12 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7827,11 +7789,12 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -7953,11 +7916,12 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8524,11 +8488,12 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8642,11 +8607,12 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -8760,11 +8726,12 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       id
       name
       description
-      price
+      price_min
       duration
       Materials
       MaterialCosts
       BookingRequirements
+      price_max
       createdAt
       updatedAt
       _version
@@ -9313,7 +9280,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9494,6 +9461,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -9518,7 +9486,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9699,6 +9667,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -9723,7 +9692,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     id
     name
     description
-    price
+    price_min
     Provider {
       id
       email
@@ -9904,6 +9873,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     Materials
     MaterialCosts
     BookingRequirements
+    price_max
     createdAt
     updatedAt
     _version
@@ -10076,11 +10046,6 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version
@@ -10251,11 +10216,6 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version
@@ -10426,11 +10386,6 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
       __typename
     }
     isInstantBookingAvailable
-    ProviderSchedules {
-      nextToken
-      startedAt
-      __typename
-    }
     createdAt
     updatedAt
     _version
