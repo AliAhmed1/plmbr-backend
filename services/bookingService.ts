@@ -185,7 +185,7 @@ const BookingService = {
   getAllBookingsByProviderId: async (providerId: string) => {
     const params = {
       TableName: TABLE_NAME,
-      IndexName: 'providerProviderBookingsId-index',
+      IndexName: 'gsi-Provider.providerBookings',
       KeyConditionExpression: 'providerProviderBookingsId = :providerId',
       ExpressionAttributeValues: {
         ':providerId': providerId,
@@ -199,7 +199,7 @@ const BookingService = {
   getAllBookingsByServiceId: async (serviceId: string) => {
     const params = {
       TableName: TABLE_NAME,
-      IndexName: 'serviceBookingsId-index',
+      IndexName: 'gsi-Service.bookings',
       KeyConditionExpression: 'serviceBookingsId = :serviceId',
       ExpressionAttributeValues: {
         ':serviceId': serviceId,
@@ -213,7 +213,7 @@ const BookingService = {
   getAllBookingsByUserId: async (userId: string) => {
     const params = {
       TableName: TABLE_NAME,
-      IndexName: 'userBookingsId-index',
+      IndexName: 'gsi-User.bookings',
       KeyConditionExpression: 'userBookingsId = :userId',
       ExpressionAttributeValues: {
         ':userId': userId,

@@ -9,6 +9,17 @@ const MainCategoryController = {
       res.status(400).json({ message: error.message });
     }
   },
+  getTopMainCategories: async (req, res) => {
+    const { top } = req.params;
+    const topNumber = parseInt(top, 10);
+
+    try {
+      const categories = await MainCategoryService.getTopMainCategories(topNumber);
+      res.status(200).json(categories);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = MainCategoryController;

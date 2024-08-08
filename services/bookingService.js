@@ -179,7 +179,7 @@ const BookingService = {
     getAllBookingsByProviderId: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
             TableName: TABLE_NAME,
-            IndexName: 'providerProviderBookingsId-index',
+            IndexName: 'gsi-Provider.providerBookings',
             KeyConditionExpression: 'providerProviderBookingsId = :providerId',
             ExpressionAttributeValues: {
                 ':providerId': providerId,
@@ -191,7 +191,7 @@ const BookingService = {
     getAllBookingsByServiceId: (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
             TableName: TABLE_NAME,
-            IndexName: 'serviceBookingsId-index',
+            IndexName: 'gsi-Service.bookings',
             KeyConditionExpression: 'serviceBookingsId = :serviceId',
             ExpressionAttributeValues: {
                 ':serviceId': serviceId,
@@ -203,7 +203,7 @@ const BookingService = {
     getAllBookingsByUserId: (userId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
             TableName: TABLE_NAME,
-            IndexName: 'userBookingsId-index',
+            IndexName: 'gsi-User.bookings',
             KeyConditionExpression: 'userBookingsId = :userId',
             ExpressionAttributeValues: {
                 ':userId': userId,
