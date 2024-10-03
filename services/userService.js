@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
@@ -41,6 +41,16 @@ const UserService = {
             throw new Error('User not found');
         }
         return result.Item;
+    }),
+    getUserByEmail: (email) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME,
+            IndexName: 'gsi-Email.users',
+            KeyConditionExpression: 'email = :email',
+            ExpressionAttributeValues: { ':email': email },
+        };
+        const result = yield dynamoDB.send(new QueryCommand(params));
+        return result.Items && result.Items.length > 0 ? result.Items[0] : null;
     }),
     getAllUsers: () => __awaiter(void 0, void 0, void 0, function* () {
         const params = {

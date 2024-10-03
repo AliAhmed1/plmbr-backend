@@ -1,3 +1,4 @@
+import { CardType } from '../src/API';
 import { z } from 'zod';
 
 // Date validation (YYYY-MM-DD format)
@@ -30,8 +31,39 @@ const validateDateTime = (dateTime: string) => {
   }
 };
 
+const validateCardNumber = (cardType: CardType, cardNumber: string): boolean => {
+  // Remove spaces and non-numeric characters
+  const sanitizedCardNumber = cardNumber.replace(/\D/g, '');
+
+  switch (cardType) {
+    case CardType.VISA:
+      // VISA cards start with a 4 and are 13 or 16 digits long
+      const visaPattern = /^4(?:\d{12}|\d{15})$/;
+      return visaPattern.test(sanitizedCardNumber);
+      
+    case CardType.MASTERCARD:
+      // MasterCard cards start with 51-55 and are 16 digits long
+      const mastercardPattern = /^5[1-5]\d{14}$/;
+      return mastercardPattern.test(sanitizedCardNumber);
+      
+    case CardType.AMEX:
+      // American Express cards start with 34 or 37 and are 15 digits long
+      const amexPattern = /^3[47]\d{13}$/;
+      return amexPattern.test(sanitizedCardNumber);
+      
+    case CardType.DISCOVER:
+      // Discover cards start with 6011, 65, 644-649 or 622126-622925 and are 16 digits long
+      const discoverPattern = /^(6011\d{12}|65\d{14}|64[4-9]\d{13}|6221[2-9]\d{12}|622[2-8]\d{13}|6229[0-5]\d{12})$/;
+      return discoverPattern.test(sanitizedCardNumber);
+      
+    default:
+      return false;
+  }
+}
+
 export {
   validateDate,
   validateTime,
   validateDateTime,
+  validateCardNumber
 };

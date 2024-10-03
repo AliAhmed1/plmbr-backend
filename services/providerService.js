@@ -8,24 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
 const generatedZodSchema_1 = require("../schema/generatedZodSchema");
 const addCommonFields_1 = require("../utils/addCommonFields");
 const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
+const serviceService_1 = require("./serviceService");
 const haversineDistance = require('../utils/distance');
 const TABLE_NAME_PROVIDERS = process.env.TABLE_PROVIDER;
 const TABLE_NAME_LOCATIONS = process.env.TABLE_LOCATION;
 const ProviderService = {
     createProvider: (providerData) => __awaiter(void 0, void 0, void 0, function* () {
         // Use the processSchemaAndData utility to add common fields and handle optional fields
-        const extendedProviderData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.providerSchema, providerData, "Provider");
+        const { service } = providerData, restProviderData = __rest(providerData, ["service"]);
+        const extendedProviderData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.providerSchema, restProviderData, "Provider");
         const validationResult = generatedZodSchema_1.providerSchema.safeParse(extendedProviderData);
         if (!validationResult.success) {
             const errors = validationResult.error.errors.map(e => e.message).join(', ');
             throw new Error(`Provider data is invalid: ${errors}`);
         }
         const provider = validationResult.data;
+        if (service) {
+            yield (0, serviceService_1.createService)(Object.assign({ providerServicesOfferedId: provider.id }, service), true);
+        }
         const params = {
             TableName: TABLE_NAME_PROVIDERS,
             Item: provider,
@@ -45,6 +61,16 @@ const ProviderService = {
             throw new Error('Provider not found');
         }
         return result.Item;
+    }),
+    getProviderByEmail: (email) => __awaiter(void 0, void 0, void 0, function* () {
+        const params = {
+            TableName: TABLE_NAME_PROVIDERS,
+            IndexName: 'gsi-Email.providers',
+            KeyConditionExpression: 'email = :email',
+            ExpressionAttributeValues: { ':email': email },
+        };
+        const result = yield dynamoDB.send(new QueryCommand(params));
+        return result.Items && result.Items.length > 0 ? result.Items[0] : null;
     }),
     getAllProviders: () => __awaiter(void 0, void 0, void 0, function* () {
         const params = {

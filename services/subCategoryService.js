@@ -72,5 +72,27 @@ const SubCategoryService = {
         yield dynamoDB.send(new lib_dynamodb_1.PutCommand(params));
         return subCategory;
     }),
+    getAllSubCategories: (...args_1) => __awaiter(void 0, [...args_1], void 0, function* (top = 10) {
+        const params = {
+            TableName: SUB_CATEGORY_TABLE_NAME, // Replace with your actual subcategory table name
+            Limit: top,
+        };
+        try {
+            const data = yield dynamoDB.send(new lib_dynamodb_1.ScanCommand(params));
+            const subCategories = data.Items;
+            // Validate each subCategory against the schema
+            const validatedSubCategories = subCategories.map((subCategory) => {
+                const validationResult = generatedZodSchema_1.subCategorySchema.safeParse(subCategory);
+                if (!validationResult.success) {
+                    throw new Error(`Invalid subcategory data: ${validationResult.error.message}`);
+                }
+                return validationResult.data;
+            });
+            return validatedSubCategories;
+        }
+        catch (error) {
+            throw new Error(`Error retrieving subcategories: ${error.message}`);
+        }
+    }),
 };
 module.exports = SubCategoryService;

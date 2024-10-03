@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -19,9 +30,11 @@ const providerService_1 = __importDefault(require("./providerService"));
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const SubCategoryService = require("./subCategoryService");
 const TABLE_NAME = process.env.TABLE_SERVICE;
+const TASKS_TABLE_NAME = process.env.TABLE_TASKS;
 const ServiceService = {
-    createService: (serviceData) => __awaiter(void 0, void 0, void 0, function* () {
-        const extendedServiceData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.serviceSchema, serviceData, "Service");
+    createService: (serviceData, skipProviderCheck) => __awaiter(void 0, void 0, void 0, function* () {
+        const { Tasks } = serviceData, restOfServiceData = __rest(serviceData, ["Tasks"]);
+        const extendedServiceData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.serviceSchema, restOfServiceData, "Service");
         const validationResult = generatedZodSchema_1.serviceSchema.safeParse(extendedServiceData);
         if (!validationResult.success) {
             const errors = validationResult.error.errors.map(e => e.message).join(', ');
@@ -29,14 +42,16 @@ const ServiceService = {
         }
         const service = validationResult.data;
         // Validate providerId
-        if (service.providerServicesOfferedId) {
-            const providerExists = yield providerService_1.default.getProviderById(service.providerServicesOfferedId);
-            if (!providerExists) {
-                throw new Error(`Provider information is incorrect: Provider not found`);
+        if (!skipProviderCheck) {
+            if (service.providerServicesOfferedId) {
+                const providerExists = yield providerService_1.default.getProviderById(service.providerServicesOfferedId);
+                if (!providerExists) {
+                    throw new Error(`Provider information is incorrect: Provider not found`);
+                }
             }
-        }
-        else {
-            throw new Error(`Provider information is required`);
+            else {
+                throw new Error(`Provider information is required`);
+            }
         }
         // Validate subCategoryId
         if (service.subCategoryServicesId) {
@@ -48,11 +63,32 @@ const ServiceService = {
         else {
             throw new Error(`SubCategory information is required`);
         }
+        const taskArray = Tasks;
+        // Handle Tasks
+        if (taskArray && taskArray.length > 0) {
+            for (const taskData of taskArray) {
+                const extendedTaskData = (0, addCommonFields_1.processSchemaAndData)(generatedZodSchema_1.tasksSchema, taskData, "Tasks");
+                const taskValidationResult = generatedZodSchema_1.tasksSchema.safeParse(extendedTaskData);
+                if (!taskValidationResult.success) {
+                    const errors = taskValidationResult.error.errors.map(e => e.message).join(', ');
+                    throw new Error(`Task data is invalid: ${errors}`);
+                }
+                const task = Object.assign(Object.assign({}, taskValidationResult.data), { tasksServiceId: service.id });
+                // Save task to DynamoDB
+                const taskParams = {
+                    TableName: TASKS_TABLE_NAME,
+                    Item: task,
+                };
+                yield dynamoDB.send(new PutCommand(taskParams));
+            }
+        }
+        else {
+            throw new Error(`Service must have at least one task`);
+        }
         const params = {
             TableName: TABLE_NAME,
             Item: service,
         };
-        service.subCategoryServicesId;
         yield dynamoDB.send(new PutCommand(params));
         return service;
     }),
@@ -111,10 +147,10 @@ const ServiceService = {
     getAllServicesByProviderId: (providerId) => __awaiter(void 0, void 0, void 0, function* () {
         const params = {
             TableName: TABLE_NAME,
-            IndexName: 'ProviderIdIndex', // Ensure you have a GSI on providerId
-            KeyConditionExpression: 'providerId = :providerId',
+            IndexName: 'gsi-Provider.servicesOffered', // Ensure you have a GSI on providerId
+            KeyConditionExpression: 'providerServicesOfferedId = :providerServicesOfferedId',
             ExpressionAttributeValues: {
-                ':providerId': providerId,
+                ':providerServicesOfferedId': providerId,
             },
         };
         const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
@@ -122,6 +158,33 @@ const ServiceService = {
             throw new Error('No services found for the provided provider ID');
         }
         return result.Items;
+    }),
+    getServicesBySubCategoryId: (subCategoryId) => __awaiter(void 0, void 0, void 0, function* () {
+        // Define the query parameters to filter services by subCategoryServicesId
+        const params = {
+            TableName: TABLE_NAME, // Replace with your actual service table name
+            IndexName: "gsi-SubCategory.Services", // Ensure you have this GSI set up
+            KeyConditionExpression: "subCategoryServicesId = :subCategoryId",
+            ExpressionAttributeValues: {
+                ":subCategoryId": subCategoryId,
+            },
+        };
+        try {
+            const data = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+            const services = data.Items;
+            // Validate each service against the schema
+            const validatedServices = services.map((service) => {
+                const validationResult = generatedZodSchema_1.serviceSchema.safeParse(service);
+                if (!validationResult.success) {
+                    throw new Error(`Invalid service data: ${validationResult.error.message}`);
+                }
+                return validationResult.data;
+            });
+            return validatedServices;
+        }
+        catch (error) {
+            throw new Error(`Error retrieving services by subCategoryId: ${error.message}`);
+        }
     }),
 };
 module.exports = ServiceService;

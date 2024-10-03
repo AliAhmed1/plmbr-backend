@@ -75,6 +75,30 @@ const SubCategoryService = {
     await dynamoDB.send(new PutCommand(params));
     return subCategory;
   },
+  getAllSubCategories: async (top = 10) => {
+    const params = {
+      TableName: SUB_CATEGORY_TABLE_NAME, // Replace with your actual subcategory table name
+      Limit: top,
+    };
+
+    try {
+      const data = await dynamoDB.send(new ScanCommand(params));
+      const subCategories = data.Items;
+
+      // Validate each subCategory against the schema
+      const validatedSubCategories = subCategories.map((subCategory: SubCategory) => {
+        const validationResult = subCategorySchema.safeParse(subCategory);
+        if (!validationResult.success) {
+          throw new Error(`Invalid subcategory data: ${validationResult.error.message}`);
+        }
+        return validationResult.data;
+      });
+
+      return validatedSubCategories;
+    } catch (error: any) {
+      throw new Error(`Error retrieving subcategories: ${error.message}`);
+    }
+  },
 };
 
 export = SubCategoryService;

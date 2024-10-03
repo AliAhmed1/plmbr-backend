@@ -13,6 +13,7 @@ import {
   CardType,
   NotificationStatus,
   VerificationStatus,
+  ModelServicePromotionConditionInput,
   ModelProviderReportConditionInput,
   ModelUserReportConditionInput,
   ModelUserInvoiceConditionInput,
@@ -83,6 +84,7 @@ import {
   ModelSpecializationConditionInput,
   ModelProviderHistoryConditionInput,
   ModelUserConditionInput,
+  ModelTasksFilterInput,
   ModelServicePromotionFilterInput,
   ModelProviderReportFilterInput,
   ModelUserReportFilterInput,
@@ -152,6 +154,7 @@ import {
   ModelSpecializationFilterInput,
   ModelProviderHistoryFilterInput,
   ModelUserFilterInput,
+  ModelSubscriptionTasksFilterInput,
   ModelSubscriptionServicePromotionFilterInput,
   ModelSubscriptionProviderReportFilterInput,
   ModelSubscriptionUserReportFilterInput,
@@ -221,8 +224,8 @@ import {
   ModelSubscriptionSpecializationFilterInput,
   ModelSubscriptionProviderHistoryFilterInput,
   ModelSubscriptionUserFilterInput,
-  ModelServicePromotionConditionInput,
-  ServicePromotion,
+  ModelTasksConditionInput,
+  Tasks,
   Service,
   Provider,
   ModelReviewConnection,
@@ -314,12 +317,14 @@ import {
   ProviderAward,
   MainCategory,
   ModelSubCategoryConnection,
+  ServicePromotion,
   ServiceDiscount,
   ServiceVideo,
   ServiceImage,
   NicheService,
   ModelProviderConnection,
   ServicePackage,
+  ModelTasksConnection,
   ModelNicheServiceConnection,
   ModelServicePackageConnection,
   ModelMainCategoryConnection,
@@ -328,14 +333,12 @@ import {
   ModelUserConnection,
 } from "./../src/API";
 
-export const createServicePromotionInputSchema = z.object({
+export const createTasksInputSchema = z.object({
   id: z.string().optional().nullable(),
-  description: z.string(),
-  startDate: z.string(),
-  endDate: z.string(),
-  discountPercentage: z.number(),
+  taskName: z.string(),
+  taskTime: z.number(),
   _version: z.number().optional().nullable(),
-  serviceServicePromotionsId: z.string().optional().nullable(),
+  tasksServiceId: z.string().optional().nullable(),
 });
 
 export const modelAttributeTypesSchema = z.nativeEnum(ModelAttributeTypes);
@@ -350,7 +353,7 @@ export const modelSizeInputSchema = z.object({
   between: z.array(z.number().nullable()).optional().nullable(),
 });
 
-export const modelFloatInputSchema = z.object({
+export const modelIntInputSchema = z.object({
   ne: z.number().optional().nullable(),
   eq: z.number().optional().nullable(),
   le: z.number().optional().nullable(),
@@ -473,6 +476,80 @@ export const providerHistorySchema = z.object({
   providerProviderHistoriesId: z.string().optional().nullable(),
 });
 
+export const updateTasksInputSchema = z.object({
+  id: z.string(),
+  taskName: z.string().optional().nullable(),
+  taskTime: z.number().optional().nullable(),
+  _version: z.number().optional().nullable(),
+  tasksServiceId: z.string().optional().nullable(),
+});
+
+export const deleteTasksInputSchema = z.object({
+  id: z.string(),
+  _version: z.number().optional().nullable(),
+});
+
+export const createServicePromotionInputSchema = z.object({
+  id: z.string().optional().nullable(),
+  description: z.string(),
+  startDate: z.string(),
+  endDate: z.string(),
+  discountPercentage: z.number(),
+  _version: z.number().optional().nullable(),
+  serviceServicePromotionsId: z.string().optional().nullable(),
+});
+
+export const modelStringInputSchema = z.object({
+  ne: z.string().optional().nullable(),
+  eq: z.string().optional().nullable(),
+  le: z.string().optional().nullable(),
+  lt: z.string().optional().nullable(),
+  ge: z.string().optional().nullable(),
+  gt: z.string().optional().nullable(),
+  contains: z.string().optional().nullable(),
+  notContains: z.string().optional().nullable(),
+  between: z.array(z.string().nullable()).optional().nullable(),
+  beginsWith: z.string().optional().nullable(),
+  attributeExists: z.boolean().optional().nullable(),
+  attributeType: modelAttributeTypesSchema.optional().nullable(),
+  size: modelSizeInputSchema.optional().nullable(),
+});
+
+export const modelFloatInputSchema = z.object({
+  ne: z.number().optional().nullable(),
+  eq: z.number().optional().nullable(),
+  le: z.number().optional().nullable(),
+  lt: z.number().optional().nullable(),
+  ge: z.number().optional().nullable(),
+  gt: z.number().optional().nullable(),
+  between: z.array(z.number().nullable()).optional().nullable(),
+  attributeExists: z.boolean().optional().nullable(),
+  attributeType: modelAttributeTypesSchema.optional().nullable(),
+});
+
+export const modelServicePromotionConditionInputSchema: z.ZodSchema<ModelServicePromotionConditionInput> =
+  z.lazy(() =>
+    z.object({
+      description: modelStringInputSchema.optional().nullable(),
+      startDate: modelStringInputSchema.optional().nullable(),
+      endDate: modelStringInputSchema.optional().nullable(),
+      discountPercentage: modelFloatInputSchema.optional().nullable(),
+      and: z
+        .array(modelServicePromotionConditionInputSchema.nullable())
+        .optional()
+        .nullable(),
+      or: z
+        .array(modelServicePromotionConditionInputSchema.nullable())
+        .optional()
+        .nullable(),
+      not: modelServicePromotionConditionInputSchema.optional().nullable(),
+      _deleted: modelBooleanInputSchema.optional().nullable(),
+      createdAt: modelStringInputSchema.optional().nullable(),
+      updatedAt: modelStringInputSchema.optional().nullable(),
+      serviceServicePromotionsId: modelIDInputSchema.optional().nullable(),
+    }),
+  );
+
 export const updateServicePromotionInputSchema = z.object({
   id: z.string(),
   description: z.string().optional().nullable(),
@@ -495,22 +572,6 @@ export const createProviderReportInputSchema = z.object({
   _version: z.number().optional().nullable(),
   serviceProviderReportsId: z.string().optional().nullable(),
   providerProviderReportsId: z.string().optional().nullable(),
-});
-
-export const modelStringInputSchema = z.object({
-  ne: z.string().optional().nullable(),
-  eq: z.string().optional().nullable(),
-  le: z.string().optional().nullable(),
-  lt: z.string().optional().nullable(),
-  ge: z.string().optional().nullable(),
-  gt: z.string().optional().nullable(),
-  contains: z.string().optional().nullable(),
-  notContains: z.string().optional().nullable(),
-  between: z.array(z.string().nullable()).optional().nullable(),
-  beginsWith: z.string().optional().nullable(),
-  attributeExists: z.boolean().optional().nullable(),
-  attributeType: modelAttributeTypesSchema.optional().nullable(),
-  size: modelSizeInputSchema.optional().nullable(),
 });
 
 export const modelProviderReportConditionInputSchema: z.ZodSchema<ModelProviderReportConditionInput> =
@@ -1121,18 +1182,6 @@ export const createServiceReviewInputSchema = z.object({
   userServiceReviewsId: z.string().optional().nullable(),
 });
 
-export const modelIntInputSchema = z.object({
-  ne: z.number().optional().nullable(),
-  eq: z.number().optional().nullable(),
-  le: z.number().optional().nullable(),
-  lt: z.number().optional().nullable(),
-  ge: z.number().optional().nullable(),
-  gt: z.number().optional().nullable(),
-  between: z.array(z.number().nullable()).optional().nullable(),
-  attributeExists: z.boolean().optional().nullable(),
-  attributeType: modelAttributeTypesSchema.optional().nullable(),
-});
-
 export const modelServiceReviewConditionInputSchema: z.ZodSchema<ModelServiceReviewConditionInput> =
   z.lazy(() =>
     z.object({
@@ -1548,6 +1597,8 @@ export const createPaymentMethodInputSchema = z.object({
   cardNumber: z.string(),
   expiryDate: z.string(),
   cardType: cardTypeSchema.optional().nullable(),
+  stripeCustomerId: z.string().optional().nullable(),
+  stripeCardId: z.string().optional().nullable(),
   _version: z.number().optional().nullable(),
   userPaymentMethodsId: z.string().optional().nullable(),
 });
@@ -1563,6 +1614,8 @@ export const modelPaymentMethodConditionInputSchema: z.ZodSchema<ModelPaymentMet
       cardNumber: modelStringInputSchema.optional().nullable(),
       expiryDate: modelStringInputSchema.optional().nullable(),
       cardType: modelCardTypeInputSchema.optional().nullable(),
+      stripeCustomerId: modelStringInputSchema.optional().nullable(),
+      stripeCardId: modelStringInputSchema.optional().nullable(),
       and: z
         .array(modelPaymentMethodConditionInputSchema.nullable())
         .optional()
@@ -1584,6 +1637,8 @@ export const updatePaymentMethodInputSchema = z.object({
   cardNumber: z.string().optional().nullable(),
   expiryDate: z.string().optional().nullable(),
   cardType: cardTypeSchema.optional().nullable(),
+  stripeCustomerId: z.string().optional().nullable(),
+  stripeCardId: z.string().optional().nullable(),
   _version: z.number().optional().nullable(),
   userPaymentMethodsId: z.string().optional().nullable(),
 });
@@ -3323,6 +3378,7 @@ export const createServiceInputSchema = z.object({
   servicePackageServicesId: z.string().optional().nullable(),
   subCategoryServicesId: z.string().optional().nullable(),
   providerServicesOfferedId: z.string().optional().nullable(),
+  serviceTasksId: z.string().optional().nullable(),
 });
 
 export const modelServiceConditionInputSchema: z.ZodSchema<ModelServiceConditionInput> =
@@ -3352,6 +3408,7 @@ export const modelServiceConditionInputSchema: z.ZodSchema<ModelServiceCondition
       servicePackageServicesId: modelIDInputSchema.optional().nullable(),
       subCategoryServicesId: modelIDInputSchema.optional().nullable(),
       providerServicesOfferedId: modelIDInputSchema.optional().nullable(),
+      serviceTasksId: modelIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -3370,6 +3427,7 @@ export const updateServiceInputSchema = z.object({
   servicePackageServicesId: z.string().optional().nullable(),
   subCategoryServicesId: z.string().optional().nullable(),
   providerServicesOfferedId: z.string().optional().nullable(),
+  serviceTasksId: z.string().optional().nullable(),
 });
 
 export const deleteServiceInputSchema = z.object({
@@ -3402,9 +3460,11 @@ export const createProviderInputSchema = z.object({
   timezone: z.string().optional().nullable(),
   chatbotRequests: z.number().optional().nullable(),
   isInstantBookingAvailable: z.boolean().optional().nullable(),
+  isEmailVerified: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   nicheServiceProvidersId: z.string().optional().nullable(),
   providerCurrentLocationId: z.string().optional().nullable(),
+  providerTasksId: z.string().optional().nullable(),
 });
 
 export const modelGenderInputSchema = z.object({
@@ -3450,6 +3510,7 @@ export const modelProviderConditionInputSchema: z.ZodSchema<ModelProviderConditi
       timezone: modelStringInputSchema.optional().nullable(),
       chatbotRequests: modelIntInputSchema.optional().nullable(),
       isInstantBookingAvailable: modelBooleanInputSchema.optional().nullable(),
+      isEmailVerified: modelBooleanInputSchema.optional().nullable(),
       and: z
         .array(modelProviderConditionInputSchema.nullable())
         .optional()
@@ -3464,6 +3525,7 @@ export const modelProviderConditionInputSchema: z.ZodSchema<ModelProviderConditi
       updatedAt: modelStringInputSchema.optional().nullable(),
       nicheServiceProvidersId: modelIDInputSchema.optional().nullable(),
       providerCurrentLocationId: modelIDInputSchema.optional().nullable(),
+      providerTasksId: modelIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -3492,9 +3554,11 @@ export const updateProviderInputSchema = z.object({
   timezone: z.string().optional().nullable(),
   chatbotRequests: z.number().optional().nullable(),
   isInstantBookingAvailable: z.boolean().optional().nullable(),
+  isEmailVerified: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   nicheServiceProvidersId: z.string().optional().nullable(),
   providerCurrentLocationId: z.string().optional().nullable(),
+  providerTasksId: z.string().optional().nullable(),
 });
 
 export const deleteProviderInputSchema = z.object({
@@ -3815,6 +3879,7 @@ export const createUserInputSchema = z.object({
   chatbotRequests: z.number().optional().nullable(),
   preferredContactTime: z.string().optional().nullable(),
   serviceInterestedIn: z.string().optional().nullable(),
+  isEmailVerified: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   userWalletId: z.string().optional().nullable(),
   userCurentLocationId: z.string().optional().nullable(),
@@ -3849,6 +3914,7 @@ export const modelUserConditionInputSchema: z.ZodSchema<ModelUserConditionInput>
       chatbotRequests: modelIntInputSchema.optional().nullable(),
       preferredContactTime: modelStringInputSchema.optional().nullable(),
       serviceInterestedIn: modelStringInputSchema.optional().nullable(),
+      isEmailVerified: modelBooleanInputSchema.optional().nullable(),
       and: z
         .array(modelUserConditionInputSchema.nullable())
         .optional()
@@ -3892,6 +3958,7 @@ export const updateUserInputSchema = z.object({
   chatbotRequests: z.number().optional().nullable(),
   preferredContactTime: z.string().optional().nullable(),
   serviceInterestedIn: z.string().optional().nullable(),
+  isEmailVerified: z.boolean().optional().nullable(),
   _version: z.number().optional().nullable(),
   userWalletId: z.string().optional().nullable(),
   userCurentLocationId: z.string().optional().nullable(),
@@ -3901,6 +3968,25 @@ export const deleteUserInputSchema = z.object({
   id: z.string(),
   _version: z.number().optional().nullable(),
 });
+
+export const modelTasksFilterInputSchema: z.ZodSchema<ModelTasksFilterInput> =
+  z.lazy(() =>
+    z.object({
+      id: modelIDInputSchema.optional().nullable(),
+      taskName: modelStringInputSchema.optional().nullable(),
+      taskTime: modelIntInputSchema.optional().nullable(),
+      createdAt: modelStringInputSchema.optional().nullable(),
+      updatedAt: modelStringInputSchema.optional().nullable(),
+      and: z
+        .array(modelTasksFilterInputSchema.nullable())
+        .optional()
+        .nullable(),
+      or: z.array(modelTasksFilterInputSchema.nullable()).optional().nullable(),
+      not: modelTasksFilterInputSchema.optional().nullable(),
+      _deleted: modelBooleanInputSchema.optional().nullable(),
+      tasksServiceId: modelIDInputSchema.optional().nullable(),
+    }),
+  );
 
 export const modelServicePromotionFilterInputSchema: z.ZodSchema<ModelServicePromotionFilterInput> =
   z.lazy(() =>
@@ -4442,6 +4528,8 @@ export const modelPaymentMethodFilterInputSchema: z.ZodSchema<ModelPaymentMethod
       cardNumber: modelStringInputSchema.optional().nullable(),
       expiryDate: modelStringInputSchema.optional().nullable(),
       cardType: modelCardTypeInputSchema.optional().nullable(),
+      stripeCustomerId: modelStringInputSchema.optional().nullable(),
+      stripeCardId: modelStringInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
       and: z
@@ -5370,6 +5458,7 @@ export const modelServiceFilterInputSchema: z.ZodSchema<ModelServiceFilterInput>
       servicePackageServicesId: modelIDInputSchema.optional().nullable(),
       subCategoryServicesId: modelIDInputSchema.optional().nullable(),
       providerServicesOfferedId: modelIDInputSchema.optional().nullable(),
+      serviceTasksId: modelIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -5402,6 +5491,7 @@ export const modelProviderFilterInputSchema: z.ZodSchema<ModelProviderFilterInpu
       timezone: modelStringInputSchema.optional().nullable(),
       chatbotRequests: modelIntInputSchema.optional().nullable(),
       isInstantBookingAvailable: modelBooleanInputSchema.optional().nullable(),
+      isEmailVerified: modelBooleanInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
       and: z
@@ -5416,6 +5506,7 @@ export const modelProviderFilterInputSchema: z.ZodSchema<ModelProviderFilterInpu
       _deleted: modelBooleanInputSchema.optional().nullable(),
       nicheServiceProvidersId: modelIDInputSchema.optional().nullable(),
       providerCurrentLocationId: modelIDInputSchema.optional().nullable(),
+      providerTasksId: modelIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -5595,6 +5686,7 @@ export const modelUserFilterInputSchema: z.ZodSchema<ModelUserFilterInput> =
       chatbotRequests: modelIntInputSchema.optional().nullable(),
       preferredContactTime: modelStringInputSchema.optional().nullable(),
       serviceInterestedIn: modelStringInputSchema.optional().nullable(),
+      isEmailVerified: modelBooleanInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
       and: z.array(modelUserFilterInputSchema.nullable()).optional().nullable(),
@@ -5635,6 +5727,39 @@ export const modelSubscriptionStringInputSchema = z.object({
   in: z.array(z.string().nullable()).optional().nullable(),
   notIn: z.array(z.string().nullable()).optional().nullable(),
 });
+
+export const modelSubscriptionIntInputSchema = z.object({
+  ne: z.number().optional().nullable(),
+  eq: z.number().optional().nullable(),
+  le: z.number().optional().nullable(),
+  lt: z.number().optional().nullable(),
+  ge: z.number().optional().nullable(),
+  gt: z.number().optional().nullable(),
+  between: z.array(z.number().nullable()).optional().nullable(),
+  in: z.array(z.number().nullable()).optional().nullable(),
+  notIn: z.array(z.number().nullable()).optional().nullable(),
+});
+
+export const modelSubscriptionTasksFilterInputSchema: z.ZodSchema<ModelSubscriptionTasksFilterInput> =
+  z.lazy(() =>
+    z.object({
+      id: modelSubscriptionIDInputSchema.optional().nullable(),
+      taskName: modelSubscriptionStringInputSchema.optional().nullable(),
+      taskTime: modelSubscriptionIntInputSchema.optional().nullable(),
+      createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
+      updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
+      and: z
+        .array(modelSubscriptionTasksFilterInputSchema.nullable())
+        .optional()
+        .nullable(),
+      or: z
+        .array(modelSubscriptionTasksFilterInputSchema.nullable())
+        .optional()
+        .nullable(),
+      _deleted: modelBooleanInputSchema.optional().nullable(),
+      tasksServiceId: modelSubscriptionIDInputSchema.optional().nullable(),
+    }),
+  );
 
 export const modelSubscriptionFloatInputSchema = z.object({
   ne: z.number().optional().nullable(),
@@ -5959,18 +6084,6 @@ export const modelSubscriptionServiceImageFilterInputSchema: z.ZodSchema<ModelSu
     }),
   );
 
-export const modelSubscriptionIntInputSchema = z.object({
-  ne: z.number().optional().nullable(),
-  eq: z.number().optional().nullable(),
-  le: z.number().optional().nullable(),
-  lt: z.number().optional().nullable(),
-  ge: z.number().optional().nullable(),
-  gt: z.number().optional().nullable(),
-  between: z.array(z.number().nullable()).optional().nullable(),
-  in: z.array(z.number().nullable()).optional().nullable(),
-  notIn: z.array(z.number().nullable()).optional().nullable(),
-});
-
 export const modelSubscriptionServiceReviewFilterInputSchema: z.ZodSchema<ModelSubscriptionServiceReviewFilterInput> =
   z.lazy(() =>
     z.object({
@@ -6163,6 +6276,10 @@ export const modelSubscriptionPaymentMethodFilterInputSchema: z.ZodSchema<ModelS
       cardNumber: modelSubscriptionStringInputSchema.optional().nullable(),
       expiryDate: modelSubscriptionStringInputSchema.optional().nullable(),
       cardType: modelSubscriptionStringInputSchema.optional().nullable(),
+      stripeCustomerId: modelSubscriptionStringInputSchema
+        .optional()
+        .nullable(),
+      stripeCardId: modelSubscriptionStringInputSchema.optional().nullable(),
       createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
       updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
       and: z
@@ -7057,6 +7174,7 @@ export const modelSubscriptionServiceFilterInputSchema: z.ZodSchema<ModelSubscri
       serviceJobTrackingsId: modelSubscriptionIDInputSchema
         .optional()
         .nullable(),
+      serviceTasksId: modelSubscriptionIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -7093,6 +7211,9 @@ export const modelSubscriptionProviderFilterInputSchema: z.ZodSchema<ModelSubscr
       timezone: modelSubscriptionStringInputSchema.optional().nullable(),
       chatbotRequests: modelSubscriptionIntInputSchema.optional().nullable(),
       isInstantBookingAvailable: modelSubscriptionBooleanInputSchema
+        .optional()
+        .nullable(),
+      isEmailVerified: modelSubscriptionBooleanInputSchema
         .optional()
         .nullable(),
       createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
@@ -7174,6 +7295,7 @@ export const modelSubscriptionProviderFilterInputSchema: z.ZodSchema<ModelSubscr
       providerCurrentLocationId: modelSubscriptionIDInputSchema
         .optional()
         .nullable(),
+      providerTasksId: modelSubscriptionIDInputSchema.optional().nullable(),
     }),
   );
 
@@ -7349,6 +7471,9 @@ export const modelSubscriptionUserFilterInputSchema: z.ZodSchema<ModelSubscripti
       serviceInterestedIn: modelSubscriptionStringInputSchema
         .optional()
         .nullable(),
+      isEmailVerified: modelSubscriptionBooleanInputSchema
+        .optional()
+        .nullable(),
       createdAt: modelSubscriptionStringInputSchema.optional().nullable(),
       updatedAt: modelSubscriptionStringInputSchema.optional().nullable(),
       and: z
@@ -7412,28 +7537,170 @@ export const modelSubscriptionUserFilterInputSchema: z.ZodSchema<ModelSubscripti
     }),
   );
 
-export const modelServicePromotionConditionInputSchema: z.ZodSchema<ModelServicePromotionConditionInput> =
+export const modelTasksConditionInputSchema: z.ZodSchema<ModelTasksConditionInput> =
   z.lazy(() =>
     z.object({
-      description: modelStringInputSchema.optional().nullable(),
-      startDate: modelStringInputSchema.optional().nullable(),
-      endDate: modelStringInputSchema.optional().nullable(),
-      discountPercentage: modelFloatInputSchema.optional().nullable(),
+      taskName: modelStringInputSchema.optional().nullable(),
+      taskTime: modelIntInputSchema.optional().nullable(),
       and: z
-        .array(modelServicePromotionConditionInputSchema.nullable())
+        .array(modelTasksConditionInputSchema.nullable())
         .optional()
         .nullable(),
       or: z
-        .array(modelServicePromotionConditionInputSchema.nullable())
+        .array(modelTasksConditionInputSchema.nullable())
         .optional()
         .nullable(),
-      not: modelServicePromotionConditionInputSchema.optional().nullable(),
+      not: modelTasksConditionInputSchema.optional().nullable(),
       _deleted: modelBooleanInputSchema.optional().nullable(),
       createdAt: modelStringInputSchema.optional().nullable(),
       updatedAt: modelStringInputSchema.optional().nullable(),
-      serviceServicePromotionsId: modelIDInputSchema.optional().nullable(),
+      tasksServiceId: modelIDInputSchema.optional().nullable(),
     }),
   );
+
+export const createTasksMutationSchema = z.object({
+  createTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const updateTasksMutationVariablesSchema = z.object({
+  input: updateTasksInputSchema,
+  condition: modelTasksConditionInputSchema.optional().nullable(),
+});
+
+export const updateTasksMutationSchema = z.object({
+  updateTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const deleteTasksMutationVariablesSchema = z.object({
+  input: deleteTasksInputSchema,
+  condition: modelTasksConditionInputSchema.optional().nullable(),
+});
+
+export const deleteTasksMutationSchema = z.object({
+  deleteTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const createServicePromotionMutationVariablesSchema = z.object({
+  input: createServicePromotionInputSchema,
+  condition: modelServicePromotionConditionInputSchema.optional().nullable(),
+});
 
 export const createServicePromotionMutationSchema = z.object({
   createServicePromotion: z
@@ -7461,6 +7728,7 @@ export const createServicePromotionMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7510,6 +7778,7 @@ export const updateServicePromotionMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7559,6 +7828,7 @@ export const deleteServicePromotionMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7616,6 +7886,7 @@ export const createProviderReportMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7623,6 +7894,7 @@ export const createProviderReportMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7679,6 +7951,7 @@ export const updateProviderReportMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7686,6 +7959,7 @@ export const updateProviderReportMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7742,6 +8016,7 @@ export const deleteProviderReportMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7749,6 +8024,7 @@ export const deleteProviderReportMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -7806,6 +8082,7 @@ export const createUserReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7870,6 +8147,7 @@ export const updateUserReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7934,6 +8212,7 @@ export const deleteUserReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -7998,6 +8277,7 @@ export const createUserInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8064,6 +8344,7 @@ export const updateUserInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8130,6 +8411,7 @@ export const deleteUserInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8195,6 +8477,7 @@ export const createProviderBookmarkMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8202,6 +8485,7 @@ export const createProviderBookmarkMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8235,6 +8519,7 @@ export const createProviderBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8298,6 +8583,7 @@ export const updateProviderBookmarkMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8305,6 +8591,7 @@ export const updateProviderBookmarkMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8338,6 +8625,7 @@ export const updateProviderBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8401,6 +8689,7 @@ export const deleteProviderBookmarkMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8408,6 +8697,7 @@ export const deleteProviderBookmarkMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8441,6 +8731,7 @@ export const deleteProviderBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8505,6 +8796,7 @@ export const createUserBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8536,6 +8828,7 @@ export const createUserBookmarkMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8592,6 +8885,7 @@ export const updateUserBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8623,6 +8917,7 @@ export const updateUserBookmarkMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8679,6 +8974,7 @@ export const deleteUserBookmarkMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8710,6 +9006,7 @@ export const deleteUserBookmarkMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8767,6 +9064,7 @@ export const createProviderNotificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8774,6 +9072,7 @@ export const createProviderNotificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8833,6 +9132,7 @@ export const updateProviderNotificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8840,6 +9140,7 @@ export const updateProviderNotificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8899,6 +9200,7 @@ export const deleteProviderNotificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -8906,6 +9208,7 @@ export const deleteProviderNotificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -8964,6 +9267,7 @@ export const createUserNotificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9029,6 +9333,7 @@ export const updateUserNotificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9094,6 +9399,7 @@ export const deleteUserNotificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9150,6 +9456,7 @@ export const createServiceDiscountMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9198,6 +9505,7 @@ export const updateServiceDiscountMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9246,6 +9554,7 @@ export const deleteServiceDiscountMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9304,6 +9613,7 @@ export const createProviderAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9311,6 +9621,7 @@ export const createProviderAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9370,6 +9681,7 @@ export const updateProviderAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9377,6 +9689,7 @@ export const updateProviderAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9436,6 +9749,7 @@ export const deleteProviderAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9443,6 +9757,7 @@ export const deleteProviderAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9501,6 +9816,7 @@ export const createUserPreferenceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9565,6 +9881,7 @@ export const updateUserPreferenceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9629,6 +9946,7 @@ export const deleteUserPreferenceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9694,6 +10012,7 @@ export const createProviderCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9701,6 +10020,7 @@ export const createProviderCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9761,6 +10081,7 @@ export const updateProviderCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9768,6 +10089,7 @@ export const updateProviderCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9828,6 +10150,7 @@ export const deleteProviderCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -9835,6 +10158,7 @@ export const deleteProviderCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9885,6 +10209,7 @@ export const createServiceVideoMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9932,6 +10257,7 @@ export const updateServiceVideoMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -9979,6 +10305,7 @@ export const deleteServiceVideoMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10026,6 +10353,7 @@ export const createServiceImageMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10073,6 +10401,7 @@ export const updateServiceImageMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10120,6 +10449,7 @@ export const deleteServiceImageMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10167,6 +10497,7 @@ export const createServiceReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10200,6 +10531,7 @@ export const createServiceReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10256,6 +10588,7 @@ export const updateServiceReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10289,6 +10622,7 @@ export const updateServiceReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10345,6 +10679,7 @@ export const deleteServiceReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10378,6 +10713,7 @@ export const deleteServiceReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10560,6 +10896,7 @@ export const createCustomizationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10624,6 +10961,7 @@ export const updateCustomizationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10688,6 +11026,7 @@ export const deleteCustomizationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10751,6 +11090,7 @@ export const createExpenseMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10758,6 +11098,7 @@ export const createExpenseMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10816,6 +11157,7 @@ export const updateExpenseMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10823,6 +11165,7 @@ export const updateExpenseMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10881,6 +11224,7 @@ export const deleteExpenseMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10888,6 +11232,7 @@ export const deleteExpenseMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -10947,6 +11292,7 @@ export const createFavoriteProviderMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10986,6 +11332,7 @@ export const createFavoriteProviderMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -10993,6 +11340,7 @@ export const createFavoriteProviderMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11050,6 +11398,7 @@ export const updateFavoriteProviderMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11089,6 +11438,7 @@ export const updateFavoriteProviderMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11096,6 +11446,7 @@ export const updateFavoriteProviderMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11153,6 +11504,7 @@ export const deleteFavoriteProviderMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11192,6 +11544,7 @@ export const deleteFavoriteProviderMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11199,6 +11552,7 @@ export const deleteFavoriteProviderMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11256,6 +11610,7 @@ export const createUserHistoryMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11320,6 +11675,7 @@ export const updateUserHistoryMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11384,6 +11740,7 @@ export const deleteUserHistoryMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11447,6 +11804,7 @@ export const createProviderAwardMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11454,6 +11812,7 @@ export const createProviderAwardMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11511,6 +11870,7 @@ export const updateProviderAwardMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11518,6 +11878,7 @@ export const updateProviderAwardMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11575,6 +11936,7 @@ export const deleteProviderAwardMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11582,6 +11944,7 @@ export const deleteProviderAwardMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -11640,6 +12003,7 @@ export const createReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11680,6 +12044,7 @@ export const createReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11762,6 +12127,7 @@ export const updateReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11802,6 +12168,7 @@ export const updateReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11884,6 +12251,7 @@ export const deleteReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -11924,6 +12292,7 @@ export const deleteReferralMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12006,6 +12375,7 @@ export const createTipMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12045,6 +12415,7 @@ export const createTipMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12052,6 +12423,7 @@ export const createTipMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12109,6 +12481,7 @@ export const updateTipMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12148,6 +12521,7 @@ export const updateTipMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12155,6 +12529,7 @@ export const updateTipMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12212,6 +12587,7 @@ export const deleteTipMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12251,6 +12627,7 @@ export const deleteTipMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12258,6 +12635,7 @@ export const deleteTipMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12315,6 +12693,7 @@ export const createPaymentMethodMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12328,6 +12707,8 @@ export const createPaymentMethodMutationSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -12379,6 +12760,7 @@ export const updatePaymentMethodMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12392,6 +12774,8 @@ export const updatePaymentMethodMutationSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -12443,6 +12827,7 @@ export const deletePaymentMethodMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12456,6 +12841,8 @@ export const deletePaymentMethodMutationSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -12507,6 +12894,7 @@ export const createInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12546,6 +12934,7 @@ export const createInvoiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12553,6 +12942,7 @@ export const createInvoiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12620,6 +13010,7 @@ export const updateInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12659,6 +13050,7 @@ export const updateInvoiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12666,6 +13058,7 @@ export const updateInvoiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12733,6 +13126,7 @@ export const deleteInvoiceMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12772,6 +13166,7 @@ export const deleteInvoiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12779,6 +13174,7 @@ export const deleteInvoiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12846,6 +13242,7 @@ export const createContractMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12885,6 +13282,7 @@ export const createContractMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -12892,6 +13290,7 @@ export const createContractMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12916,6 +13315,7 @@ export const createContractMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -12975,6 +13375,7 @@ export const updateContractMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13014,6 +13415,7 @@ export const updateContractMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13021,6 +13423,7 @@ export const updateContractMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -13045,6 +13448,7 @@ export const updateContractMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -13104,6 +13508,7 @@ export const deleteContractMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13143,6 +13548,7 @@ export const deleteContractMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13150,6 +13556,7 @@ export const deleteContractMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -13174,6 +13581,7 @@ export const deleteContractMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -13512,6 +13920,7 @@ export const createLoyaltyProgramMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13582,6 +13991,7 @@ export const updateLoyaltyProgramMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13652,6 +14062,7 @@ export const deleteLoyaltyProgramMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13722,6 +14133,7 @@ export const createVerificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13786,6 +14198,7 @@ export const updateVerificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -13850,6 +14263,7 @@ export const deleteVerificationMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14058,6 +14472,7 @@ export const createReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14122,6 +14537,7 @@ export const updateReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14186,6 +14602,7 @@ export const deleteReportMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14250,6 +14667,7 @@ export const createJobTrackingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14289,6 +14707,7 @@ export const createJobTrackingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14296,6 +14715,7 @@ export const createJobTrackingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14320,6 +14740,7 @@ export const createJobTrackingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14379,6 +14800,7 @@ export const updateJobTrackingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14418,6 +14840,7 @@ export const updateJobTrackingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14425,6 +14848,7 @@ export const updateJobTrackingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14449,6 +14873,7 @@ export const updateJobTrackingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14508,6 +14933,7 @@ export const deleteJobTrackingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14547,6 +14973,7 @@ export const deleteJobTrackingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14554,6 +14981,7 @@ export const deleteJobTrackingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14578,6 +15006,7 @@ export const deleteJobTrackingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -14637,6 +15066,7 @@ export const createAIChatLogMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14717,6 +15147,7 @@ export const updateAIChatLogMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -14797,6 +15228,7 @@ export const deleteAIChatLogMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16084,6 +16516,7 @@ export const createReviewMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16091,6 +16524,7 @@ export const createReviewMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16124,6 +16558,7 @@ export const createReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16155,6 +16590,7 @@ export const createReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16229,6 +16665,7 @@ export const updateReviewMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16236,6 +16673,7 @@ export const updateReviewMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16269,6 +16707,7 @@ export const updateReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16300,6 +16739,7 @@ export const updateReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16374,6 +16814,7 @@ export const deleteReviewMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16381,6 +16822,7 @@ export const deleteReviewMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16414,6 +16856,7 @@ export const deleteReviewMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16445,6 +16888,7 @@ export const deleteReviewMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16645,6 +17089,7 @@ export const createMessageThreadMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16652,6 +17097,7 @@ export const createMessageThreadMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16685,6 +17131,7 @@ export const createMessageThreadMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16757,6 +17204,7 @@ export const updateMessageThreadMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16764,6 +17212,7 @@ export const updateMessageThreadMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16797,6 +17246,7 @@ export const updateMessageThreadMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16869,6 +17319,7 @@ export const deleteMessageThreadMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -16876,6 +17327,7 @@ export const deleteMessageThreadMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -16909,6 +17361,7 @@ export const deleteMessageThreadMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17100,6 +17553,7 @@ export const createBookingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17132,6 +17586,7 @@ export const createBookingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17139,6 +17594,7 @@ export const createBookingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17172,6 +17628,7 @@ export const createBookingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17234,6 +17691,7 @@ export const updateBookingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17266,6 +17724,7 @@ export const updateBookingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17273,6 +17732,7 @@ export const updateBookingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17306,6 +17766,7 @@ export const updateBookingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17368,6 +17829,7 @@ export const deleteBookingMutationSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17400,6 +17862,7 @@ export const deleteBookingMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17407,6 +17870,7 @@ export const deleteBookingMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17440,6 +17904,7 @@ export const deleteBookingMutationSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17541,6 +18006,7 @@ export const createTeamMemberMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17548,6 +18014,7 @@ export const createTeamMemberMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17637,6 +18104,7 @@ export const updateTeamMemberMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17644,6 +18112,7 @@ export const updateTeamMemberMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -17733,6 +18202,7 @@ export const deleteTeamMemberMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -17740,6 +18210,7 @@ export const deleteTeamMemberMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -18016,6 +18487,7 @@ export const createServiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -18023,6 +18495,7 @@ export const createServiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -18254,6 +18727,21 @@ export const createServiceMutationSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -18263,6 +18751,7 @@ export const createServiceMutationSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -18310,6 +18799,7 @@ export const updateServiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -18317,6 +18807,7 @@ export const updateServiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -18548,6 +19039,21 @@ export const updateServiceMutationSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -18557,6 +19063,7 @@ export const updateServiceMutationSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -18604,6 +19111,7 @@ export const deleteServiceMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -18611,6 +19119,7 @@ export const deleteServiceMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -18842,6 +19351,21 @@ export const deleteServiceMutationSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -18851,6 +19375,7 @@ export const deleteServiceMutationSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -19090,6 +19615,22 @@ export const createProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19097,6 +19638,7 @@ export const createProviderMutationSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -19336,6 +19878,22 @@ export const updateProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19343,6 +19901,7 @@ export const updateProviderMutationSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -19582,6 +20141,22 @@ export const deleteProviderMutationSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -19589,6 +20164,7 @@ export const deleteProviderMutationSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -19635,6 +20211,7 @@ export const createAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -19642,6 +20219,7 @@ export const createAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -19698,6 +20276,7 @@ export const updateAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -19705,6 +20284,7 @@ export const updateAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -19761,6 +20341,7 @@ export const deleteAvailabilityMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -19768,6 +20349,7 @@ export const deleteAvailabilityMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -19898,6 +20480,7 @@ export const createCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -19905,6 +20488,7 @@ export const createCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -19962,6 +20546,7 @@ export const updateCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -19969,6 +20554,7 @@ export const updateCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20026,6 +20612,7 @@ export const deleteCertificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20033,6 +20620,7 @@ export const deleteCertificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20089,6 +20677,7 @@ export const createQualificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20096,6 +20685,7 @@ export const createQualificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20152,6 +20742,7 @@ export const updateQualificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20159,6 +20750,7 @@ export const updateQualificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20215,6 +20807,7 @@ export const deleteQualificationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20222,6 +20815,7 @@ export const deleteQualificationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20277,6 +20871,7 @@ export const createSpecializationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20284,6 +20879,7 @@ export const createSpecializationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20339,6 +20935,7 @@ export const updateSpecializationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20346,6 +20943,7 @@ export const updateSpecializationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20401,6 +20999,7 @@ export const deleteSpecializationMutationSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -20408,6 +21007,7 @@ export const deleteSpecializationMutationSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -20796,6 +21396,7 @@ export const createUserMutationSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -21107,6 +21708,7 @@ export const updateUserMutationSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -21418,6 +22020,7 @@ export const deleteUserMutationSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -21425,6 +22028,120 @@ export const deleteUserMutationSchema = z.object({
       _lastChangedAt: z.number(),
       userWalletId: z.string().optional().nullable(),
       userCurentLocationId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const getTasksQueryVariablesSchema = z.object({
+  id: z.string(),
+});
+
+export const getTasksQuerySchema = z.object({
+  getTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const listTasksQueryVariablesSchema = z.object({
+  filter: modelTasksFilterInputSchema.optional().nullable(),
+  limit: z.number().optional().nullable(),
+  nextToken: z.string().optional().nullable(),
+});
+
+export const listTasksQuerySchema = z.object({
+  listTasks: z
+    .object({
+      __typename: z.literal("ModelTasksConnection"),
+      items: z.array(
+        z
+          .object({
+            __typename: z.literal("Tasks"),
+            id: z.string(),
+            taskName: z.string(),
+            taskTime: z.number(),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+            _version: z.number(),
+            _deleted: z.boolean().optional().nullable(),
+            _lastChangedAt: z.number(),
+            tasksServiceId: z.string().optional().nullable(),
+          })
+          .nullable(),
+      ),
+      nextToken: z.string().optional().nullable(),
+      startedAt: z.number().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const syncTasksQueryVariablesSchema = z.object({
+  filter: modelTasksFilterInputSchema.optional().nullable(),
+  limit: z.number().optional().nullable(),
+  nextToken: z.string().optional().nullable(),
+  lastSync: z.number().optional().nullable(),
+});
+
+export const syncTasksQuerySchema = z.object({
+  syncTasks: z
+    .object({
+      __typename: z.literal("ModelTasksConnection"),
+      items: z.array(
+        z
+          .object({
+            __typename: z.literal("Tasks"),
+            id: z.string(),
+            taskName: z.string(),
+            taskTime: z.number(),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+            _version: z.number(),
+            _deleted: z.boolean().optional().nullable(),
+            _lastChangedAt: z.number(),
+            tasksServiceId: z.string().optional().nullable(),
+          })
+          .nullable(),
+      ),
+      nextToken: z.string().optional().nullable(),
+      startedAt: z.number().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -21460,6 +22177,7 @@ export const getServicePromotionQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -21587,6 +22305,7 @@ export const getProviderReportQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -21594,6 +22313,7 @@ export const getProviderReportQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -21719,6 +22439,7 @@ export const getUserReportQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -21851,6 +22572,7 @@ export const getUserInvoiceQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -21988,6 +22710,7 @@ export const getProviderBookmarkQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -21995,6 +22718,7 @@ export const getProviderBookmarkQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -22028,6 +22752,7 @@ export const getProviderBookmarkQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22160,6 +22885,7 @@ export const getUserBookmarkQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22191,6 +22917,7 @@ export const getUserBookmarkQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -22312,6 +23039,7 @@ export const getProviderNotificationQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22319,6 +23047,7 @@ export const getProviderNotificationQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -22447,6 +23176,7 @@ export const getUserNotificationQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22573,6 +23303,7 @@ export const getServiceDiscountQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -22697,6 +23428,7 @@ export const getProviderAvailabilityQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22704,6 +23436,7 @@ export const getProviderAvailabilityQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -22832,6 +23565,7 @@ export const getUserPreferenceQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22963,6 +23697,7 @@ export const getProviderCertificationQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -22970,6 +23705,7 @@ export const getProviderCertificationQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -23092,6 +23828,7 @@ export const getServiceVideoQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -23205,6 +23942,7 @@ export const getServiceImageQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -23318,6 +24056,7 @@ export const getServiceReviewQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -23351,6 +24090,7 @@ export const getServiceReviewQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23593,6 +24333,7 @@ export const getCustomizationQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23724,6 +24465,7 @@ export const getExpenseQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23731,6 +24473,7 @@ export const getExpenseQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -23862,6 +24605,7 @@ export const getFavoriteProviderQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23901,6 +24645,7 @@ export const getFavoriteProviderQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -23908,6 +24653,7 @@ export const getFavoriteProviderQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -24033,6 +24779,7 @@ export const getUserHistoryQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24164,6 +24911,7 @@ export const getProviderAwardQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24171,6 +24919,7 @@ export const getProviderAwardQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -24299,6 +25048,7 @@ export const getReferralQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24339,6 +25089,7 @@ export const getReferralQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24491,6 +25242,7 @@ export const getTipQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24530,6 +25282,7 @@ export const getTipQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24537,6 +25290,7 @@ export const getTipQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -24662,6 +25416,7 @@ export const getPaymentMethodQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24675,6 +25430,8 @@ export const getPaymentMethodQuerySchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -24704,6 +25461,8 @@ export const listPaymentMethodsQuerySchema = z.object({
             cardNumber: z.string(),
             expiryDate: z.string(),
             cardType: cardTypeSchema.optional().nullable(),
+            stripeCustomerId: z.string().optional().nullable(),
+            stripeCardId: z.string().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -24739,6 +25498,8 @@ export const syncPaymentMethodsQuerySchema = z.object({
             cardNumber: z.string(),
             expiryDate: z.string(),
             cardType: cardTypeSchema.optional().nullable(),
+            stripeCustomerId: z.string().optional().nullable(),
+            stripeCardId: z.string().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -24794,6 +25555,7 @@ export const getInvoiceQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24833,6 +25595,7 @@ export const getInvoiceQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -24840,6 +25603,7 @@ export const getInvoiceQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -24979,6 +25743,7 @@ export const getContractQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -25018,6 +25783,7 @@ export const getContractQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -25025,6 +25791,7 @@ export const getContractQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -25049,6 +25816,7 @@ export const getContractQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -25471,6 +26239,7 @@ export const getLoyaltyProgramQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -25605,6 +26374,7 @@ export const getVerificationQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -25921,6 +26691,7 @@ export const getReportQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -26053,6 +26824,7 @@ export const getJobTrackingQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -26092,6 +26864,7 @@ export const getJobTrackingQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -26099,6 +26872,7 @@ export const getJobTrackingQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -26123,6 +26897,7 @@ export const getJobTrackingQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -26254,6 +27029,7 @@ export const getAIChatLogQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -27763,6 +28539,7 @@ export const getReviewQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -27770,6 +28547,7 @@ export const getReviewQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -27803,6 +28581,7 @@ export const getReviewQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -27834,6 +28613,7 @@ export const getReviewQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -28090,6 +28870,7 @@ export const getMessageThreadQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28097,6 +28878,7 @@ export const getMessageThreadQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -28130,6 +28912,7 @@ export const getMessageThreadQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28377,6 +29160,7 @@ export const getBookingQuerySchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -28409,6 +29193,7 @@ export const getBookingQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28416,6 +29201,7 @@ export const getBookingQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -28449,6 +29235,7 @@ export const getBookingQuerySchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28632,6 +29419,7 @@ export const getTeamMemberQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -28639,6 +29427,7 @@ export const getTeamMemberQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -29047,6 +29836,7 @@ export const getServiceQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -29054,6 +29844,7 @@ export const getServiceQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -29285,6 +30076,21 @@ export const getServiceQuerySchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -29294,6 +30100,7 @@ export const getServiceQuerySchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -29331,6 +30138,7 @@ export const listServicesQuerySchema = z.object({
             servicePackageServicesId: z.string().optional().nullable(),
             subCategoryServicesId: z.string().optional().nullable(),
             providerServicesOfferedId: z.string().optional().nullable(),
+            serviceTasksId: z.string().optional().nullable(),
           })
           .nullable(),
       ),
@@ -29374,6 +30182,7 @@ export const syncServicesQuerySchema = z.object({
             servicePackageServicesId: z.string().optional().nullable(),
             subCategoryServicesId: z.string().optional().nullable(),
             providerServicesOfferedId: z.string().optional().nullable(),
+            serviceTasksId: z.string().optional().nullable(),
           })
           .nullable(),
       ),
@@ -29617,6 +30426,22 @@ export const getProviderQuerySchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -29624,6 +30449,7 @@ export const getProviderQuerySchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -29669,6 +30495,7 @@ export const listProvidersQuerySchema = z.object({
             timezone: z.string().optional().nullable(),
             chatbotRequests: z.number().optional().nullable(),
             isInstantBookingAvailable: z.boolean().optional().nullable(),
+            isEmailVerified: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -29676,6 +30503,7 @@ export const listProvidersQuerySchema = z.object({
             _lastChangedAt: z.number(),
             nicheServiceProvidersId: z.string().optional().nullable(),
             providerCurrentLocationId: z.string().optional().nullable(),
+            providerTasksId: z.string().optional().nullable(),
           })
           .nullable(),
       ),
@@ -29727,6 +30555,7 @@ export const syncProvidersQuerySchema = z.object({
             timezone: z.string().optional().nullable(),
             chatbotRequests: z.number().optional().nullable(),
             isInstantBookingAvailable: z.boolean().optional().nullable(),
+            isEmailVerified: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -29734,6 +30563,7 @@ export const syncProvidersQuerySchema = z.object({
             _lastChangedAt: z.number(),
             nicheServiceProvidersId: z.string().optional().nullable(),
             providerCurrentLocationId: z.string().optional().nullable(),
+            providerTasksId: z.string().optional().nullable(),
           })
           .nullable(),
       ),
@@ -29784,6 +30614,7 @@ export const getAvailabilityQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -29791,6 +30622,7 @@ export const getAvailabilityQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -30009,6 +30841,7 @@ export const getCertificationQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -30016,6 +30849,7 @@ export const getCertificationQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -30142,6 +30976,7 @@ export const getQualificationQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -30149,6 +30984,7 @@ export const getQualificationQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -30272,6 +31108,7 @@ export const getSpecializationQuerySchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -30279,6 +31116,7 @@ export const getSpecializationQuerySchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -30753,6 +31591,7 @@ export const getUserQuerySchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -30806,6 +31645,7 @@ export const listUsersQuerySchema = z.object({
             chatbotRequests: z.number().optional().nullable(),
             preferredContactTime: z.string().optional().nullable(),
             serviceInterestedIn: z.string().optional().nullable(),
+            isEmailVerified: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -30865,6 +31705,7 @@ export const syncUsersQuerySchema = z.object({
             chatbotRequests: z.number().optional().nullable(),
             preferredContactTime: z.string().optional().nullable(),
             serviceInterestedIn: z.string().optional().nullable(),
+            isEmailVerified: z.boolean().optional().nullable(),
             createdAt: z.string(),
             updatedAt: z.string(),
             _version: z.number(),
@@ -30877,6 +31718,147 @@ export const syncUsersQuerySchema = z.object({
       ),
       nextToken: z.string().optional().nullable(),
       startedAt: z.number().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const onCreateTasksSubscriptionVariablesSchema = z.object({
+  filter: modelSubscriptionTasksFilterInputSchema.optional().nullable(),
+});
+
+export const onCreateTasksSubscriptionSchema = z.object({
+  onCreateTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const onUpdateTasksSubscriptionVariablesSchema = z.object({
+  filter: modelSubscriptionTasksFilterInputSchema.optional().nullable(),
+});
+
+export const onUpdateTasksSubscriptionSchema = z.object({
+  onUpdateTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const onDeleteTasksSubscriptionVariablesSchema = z.object({
+  filter: modelSubscriptionTasksFilterInputSchema.optional().nullable(),
+});
+
+export const onDeleteTasksSubscriptionSchema = z.object({
+  onDeleteTasks: z
+    .object({
+      __typename: z.literal("Tasks"),
+      id: z.string(),
+      taskName: z.string(),
+      taskTime: z.number(),
+      Service: z
+        .object({
+          __typename: z.literal("Service"),
+          id: z.string(),
+          name: z.string(),
+          description: z.string().optional().nullable(),
+          price_min: z.number(),
+          duration: z.string().optional().nullable(),
+          Materials: z.string().optional().nullable(),
+          MaterialCosts: z.number().optional().nullable(),
+          BookingRequirements: z.string().optional().nullable(),
+          price_max: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          invoiceServicesId: z.string().optional().nullable(),
+          servicePackageServicesId: z.string().optional().nullable(),
+          subCategoryServicesId: z.string().optional().nullable(),
+          providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      tasksServiceId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -30914,6 +31896,7 @@ export const onCreateServicePromotionSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -30964,6 +31947,7 @@ export const onUpdateServicePromotionSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31014,6 +31998,7 @@ export const onDeleteServicePromotionSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31072,6 +32057,7 @@ export const onCreateProviderReportSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31079,6 +32065,7 @@ export const onCreateProviderReportSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31136,6 +32123,7 @@ export const onUpdateProviderReportSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31143,6 +32131,7 @@ export const onUpdateProviderReportSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31200,6 +32189,7 @@ export const onDeleteProviderReportSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31207,6 +32197,7 @@ export const onDeleteProviderReportSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31263,6 +32254,7 @@ export const onCreateUserReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31326,6 +32318,7 @@ export const onUpdateUserReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31389,6 +32382,7 @@ export const onDeleteUserReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31452,6 +32446,7 @@ export const onCreateUserInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31517,6 +32512,7 @@ export const onUpdateUserInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31582,6 +32578,7 @@ export const onDeleteUserInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31648,6 +32645,7 @@ export const onCreateProviderBookmarkSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31655,6 +32653,7 @@ export const onCreateProviderBookmarkSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31688,6 +32687,7 @@ export const onCreateProviderBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31752,6 +32752,7 @@ export const onUpdateProviderBookmarkSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31759,6 +32760,7 @@ export const onUpdateProviderBookmarkSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31792,6 +32794,7 @@ export const onUpdateProviderBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31856,6 +32859,7 @@ export const onDeleteProviderBookmarkSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31863,6 +32867,7 @@ export const onDeleteProviderBookmarkSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -31896,6 +32901,7 @@ export const onDeleteProviderBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31959,6 +32965,7 @@ export const onCreateUserBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -31990,6 +32997,7 @@ export const onCreateUserBookmarkSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32045,6 +33053,7 @@ export const onUpdateUserBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32076,6 +33085,7 @@ export const onUpdateUserBookmarkSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32131,6 +33141,7 @@ export const onDeleteUserBookmarkSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32162,6 +33173,7 @@ export const onDeleteUserBookmarkSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32220,6 +33232,7 @@ export const onCreateProviderNotificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32227,6 +33240,7 @@ export const onCreateProviderNotificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32287,6 +33301,7 @@ export const onUpdateProviderNotificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32294,6 +33309,7 @@ export const onUpdateProviderNotificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32354,6 +33370,7 @@ export const onDeleteProviderNotificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32361,6 +33378,7 @@ export const onDeleteProviderNotificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32420,6 +33438,7 @@ export const onCreateUserNotificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32486,6 +33505,7 @@ export const onUpdateUserNotificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32552,6 +33572,7 @@ export const onDeleteUserNotificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32609,6 +33630,7 @@ export const onCreateServiceDiscountSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32658,6 +33680,7 @@ export const onUpdateServiceDiscountSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32707,6 +33730,7 @@ export const onDeleteServiceDiscountSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32766,6 +33790,7 @@ export const onCreateProviderAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32773,6 +33798,7 @@ export const onCreateProviderAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32833,6 +33859,7 @@ export const onUpdateProviderAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32840,6 +33867,7 @@ export const onUpdateProviderAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32900,6 +33928,7 @@ export const onDeleteProviderAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -32907,6 +33936,7 @@ export const onDeleteProviderAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -32966,6 +33996,7 @@ export const onCreateUserPreferenceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33031,6 +34062,7 @@ export const onUpdateUserPreferenceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33096,6 +34128,7 @@ export const onDeleteUserPreferenceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33161,6 +34194,7 @@ export const onCreateProviderCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33168,6 +34202,7 @@ export const onCreateProviderCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33228,6 +34263,7 @@ export const onUpdateProviderCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33235,6 +34271,7 @@ export const onUpdateProviderCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33295,6 +34332,7 @@ export const onDeleteProviderCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33302,6 +34340,7 @@ export const onDeleteProviderCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33351,6 +34390,7 @@ export const onCreateServiceVideoSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33397,6 +34437,7 @@ export const onUpdateServiceVideoSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33443,6 +34484,7 @@ export const onDeleteServiceVideoSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33489,6 +34531,7 @@ export const onCreateServiceImageSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33535,6 +34578,7 @@ export const onUpdateServiceImageSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33581,6 +34625,7 @@ export const onDeleteServiceImageSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33627,6 +34672,7 @@ export const onCreateServiceReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33660,6 +34706,7 @@ export const onCreateServiceReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33715,6 +34762,7 @@ export const onUpdateServiceReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33748,6 +34796,7 @@ export const onUpdateServiceReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -33803,6 +34852,7 @@ export const onDeleteServiceReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -33836,6 +34886,7 @@ export const onDeleteServiceReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34014,6 +35065,7 @@ export const onCreateCustomizationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34077,6 +35129,7 @@ export const onUpdateCustomizationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34140,6 +35193,7 @@ export const onDeleteCustomizationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34202,6 +35256,7 @@ export const onCreateExpenseSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34209,6 +35264,7 @@ export const onCreateExpenseSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34266,6 +35322,7 @@ export const onUpdateExpenseSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34273,6 +35330,7 @@ export const onUpdateExpenseSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34330,6 +35388,7 @@ export const onDeleteExpenseSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34337,6 +35396,7 @@ export const onDeleteExpenseSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34397,6 +35457,7 @@ export const onCreateFavoriteProviderSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34436,6 +35497,7 @@ export const onCreateFavoriteProviderSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34443,6 +35505,7 @@ export const onCreateFavoriteProviderSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34501,6 +35564,7 @@ export const onUpdateFavoriteProviderSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34540,6 +35604,7 @@ export const onUpdateFavoriteProviderSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34547,6 +35612,7 @@ export const onUpdateFavoriteProviderSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34605,6 +35671,7 @@ export const onDeleteFavoriteProviderSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34644,6 +35711,7 @@ export const onDeleteFavoriteProviderSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34651,6 +35719,7 @@ export const onDeleteFavoriteProviderSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34707,6 +35776,7 @@ export const onCreateUserHistorySubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34770,6 +35840,7 @@ export const onUpdateUserHistorySubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34833,6 +35904,7 @@ export const onDeleteUserHistorySubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34895,6 +35967,7 @@ export const onCreateProviderAwardSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34902,6 +35975,7 @@ export const onCreateProviderAwardSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -34958,6 +36032,7 @@ export const onUpdateProviderAwardSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -34965,6 +36040,7 @@ export const onUpdateProviderAwardSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -35021,6 +36097,7 @@ export const onDeleteProviderAwardSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35028,6 +36105,7 @@ export const onDeleteProviderAwardSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -35085,6 +36163,7 @@ export const onCreateReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35125,6 +36204,7 @@ export const onCreateReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35206,6 +36286,7 @@ export const onUpdateReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35246,6 +36327,7 @@ export const onUpdateReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35327,6 +36409,7 @@ export const onDeleteReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35367,6 +36450,7 @@ export const onDeleteReferralSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35448,6 +36532,7 @@ export const onCreateTipSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35487,6 +36572,7 @@ export const onCreateTipSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35494,6 +36580,7 @@ export const onCreateTipSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -35550,6 +36637,7 @@ export const onUpdateTipSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35589,6 +36677,7 @@ export const onUpdateTipSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35596,6 +36685,7 @@ export const onUpdateTipSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -35652,6 +36742,7 @@ export const onDeleteTipSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35691,6 +36782,7 @@ export const onDeleteTipSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35698,6 +36790,7 @@ export const onDeleteTipSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -35754,6 +36847,7 @@ export const onCreatePaymentMethodSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35767,6 +36861,8 @@ export const onCreatePaymentMethodSubscriptionSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -35817,6 +36913,7 @@ export const onUpdatePaymentMethodSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35830,6 +36927,8 @@ export const onUpdatePaymentMethodSubscriptionSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -35880,6 +36979,7 @@ export const onDeletePaymentMethodSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35893,6 +36993,8 @@ export const onDeletePaymentMethodSubscriptionSchema = z.object({
       cardNumber: z.string(),
       expiryDate: z.string(),
       cardType: cardTypeSchema.optional().nullable(),
+      stripeCustomerId: z.string().optional().nullable(),
+      stripeCardId: z.string().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -35943,6 +37045,7 @@ export const onCreateInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35982,6 +37085,7 @@ export const onCreateInvoiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -35989,6 +37093,7 @@ export const onCreateInvoiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36055,6 +37160,7 @@ export const onUpdateInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36094,6 +37200,7 @@ export const onUpdateInvoiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36101,6 +37208,7 @@ export const onUpdateInvoiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36167,6 +37275,7 @@ export const onDeleteInvoiceSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36206,6 +37315,7 @@ export const onDeleteInvoiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36213,6 +37323,7 @@ export const onDeleteInvoiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36279,6 +37390,7 @@ export const onCreateContractSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36318,6 +37430,7 @@ export const onCreateContractSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36325,6 +37438,7 @@ export const onCreateContractSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36349,6 +37463,7 @@ export const onCreateContractSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36407,6 +37522,7 @@ export const onUpdateContractSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36446,6 +37562,7 @@ export const onUpdateContractSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36453,6 +37570,7 @@ export const onUpdateContractSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36477,6 +37595,7 @@ export const onUpdateContractSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36535,6 +37654,7 @@ export const onDeleteContractSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36574,6 +37694,7 @@ export const onDeleteContractSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -36581,6 +37702,7 @@ export const onDeleteContractSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36605,6 +37727,7 @@ export const onDeleteContractSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -36941,6 +38064,7 @@ export const onCreateLoyaltyProgramSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37012,6 +38136,7 @@ export const onUpdateLoyaltyProgramSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37083,6 +38208,7 @@ export const onDeleteLoyaltyProgramSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37152,6 +38278,7 @@ export const onCreateVerificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37215,6 +38342,7 @@ export const onUpdateVerificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37278,6 +38406,7 @@ export const onDeleteVerificationSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37479,6 +38608,7 @@ export const onCreateReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37542,6 +38672,7 @@ export const onUpdateReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37605,6 +38736,7 @@ export const onDeleteReportSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37668,6 +38800,7 @@ export const onCreateJobTrackingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37707,6 +38840,7 @@ export const onCreateJobTrackingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37714,6 +38848,7 @@ export const onCreateJobTrackingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -37738,6 +38873,7 @@ export const onCreateJobTrackingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -37796,6 +38932,7 @@ export const onUpdateJobTrackingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37835,6 +38972,7 @@ export const onUpdateJobTrackingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37842,6 +38980,7 @@ export const onUpdateJobTrackingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -37866,6 +39005,7 @@ export const onUpdateJobTrackingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -37924,6 +39064,7 @@ export const onDeleteJobTrackingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37963,6 +39104,7 @@ export const onDeleteJobTrackingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -37970,6 +39112,7 @@ export const onDeleteJobTrackingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -37994,6 +39137,7 @@ export const onDeleteJobTrackingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -38052,6 +39196,7 @@ export const onCreateAIChatLogSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -38131,6 +39276,7 @@ export const onUpdateAIChatLogSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -38210,6 +39356,7 @@ export const onDeleteAIChatLogSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39467,6 +40614,7 @@ export const onCreateReviewSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39474,6 +40622,7 @@ export const onCreateReviewSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -39507,6 +40656,7 @@ export const onCreateReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39538,6 +40688,7 @@ export const onCreateReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -39611,6 +40762,7 @@ export const onUpdateReviewSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39618,6 +40770,7 @@ export const onUpdateReviewSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -39651,6 +40804,7 @@ export const onUpdateReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39682,6 +40836,7 @@ export const onUpdateReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -39755,6 +40910,7 @@ export const onDeleteReviewSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39762,6 +40918,7 @@ export const onDeleteReviewSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -39795,6 +40952,7 @@ export const onDeleteReviewSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -39826,6 +40984,7 @@ export const onDeleteReviewSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40028,6 +41187,7 @@ export const onCreateMessageThreadSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40035,6 +41195,7 @@ export const onCreateMessageThreadSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40068,6 +41229,7 @@ export const onCreateMessageThreadSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40139,6 +41301,7 @@ export const onUpdateMessageThreadSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40146,6 +41309,7 @@ export const onUpdateMessageThreadSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40179,6 +41343,7 @@ export const onUpdateMessageThreadSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40250,6 +41415,7 @@ export const onDeleteMessageThreadSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40257,6 +41423,7 @@ export const onDeleteMessageThreadSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40290,6 +41457,7 @@ export const onDeleteMessageThreadSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40483,6 +41651,7 @@ export const onCreateBookingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40515,6 +41684,7 @@ export const onCreateBookingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40522,6 +41692,7 @@ export const onCreateBookingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40555,6 +41726,7 @@ export const onCreateBookingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40616,6 +41788,7 @@ export const onUpdateBookingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40648,6 +41821,7 @@ export const onUpdateBookingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40655,6 +41829,7 @@ export const onUpdateBookingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40688,6 +41863,7 @@ export const onUpdateBookingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40749,6 +41925,7 @@ export const onDeleteBookingSubscriptionSchema = z.object({
           servicePackageServicesId: z.string().optional().nullable(),
           subCategoryServicesId: z.string().optional().nullable(),
           providerServicesOfferedId: z.string().optional().nullable(),
+          serviceTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40781,6 +41958,7 @@ export const onDeleteBookingSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40788,6 +41966,7 @@ export const onDeleteBookingSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -40821,6 +42000,7 @@ export const onDeleteBookingSubscriptionSchema = z.object({
           chatbotRequests: z.number().optional().nullable(),
           preferredContactTime: z.string().optional().nullable(),
           serviceInterestedIn: z.string().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40921,6 +42101,7 @@ export const onCreateTeamMemberSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -40928,6 +42109,7 @@ export const onCreateTeamMemberSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -41016,6 +42198,7 @@ export const onUpdateTeamMemberSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41023,6 +42206,7 @@ export const onUpdateTeamMemberSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -41111,6 +42295,7 @@ export const onDeleteTeamMemberSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41118,6 +42303,7 @@ export const onDeleteTeamMemberSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -41384,6 +42570,7 @@ export const onCreateServiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41391,6 +42578,7 @@ export const onCreateServiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -41622,6 +42810,21 @@ export const onCreateServiceSubscriptionSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -41631,6 +42834,7 @@ export const onCreateServiceSubscriptionSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -41677,6 +42881,7 @@ export const onUpdateServiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41684,6 +42889,7 @@ export const onUpdateServiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -41915,6 +43121,21 @@ export const onUpdateServiceSubscriptionSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -41924,6 +43145,7 @@ export const onUpdateServiceSubscriptionSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -41970,6 +43192,7 @@ export const onDeleteServiceSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -41977,6 +43200,7 @@ export const onDeleteServiceSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -42208,6 +43432,21 @@ export const onDeleteServiceSubscriptionSchema = z.object({
       MaterialCosts: z.number().optional().nullable(),
       BookingRequirements: z.string().optional().nullable(),
       price_max: z.number(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42217,6 +43456,7 @@ export const onDeleteServiceSubscriptionSchema = z.object({
       servicePackageServicesId: z.string().optional().nullable(),
       subCategoryServicesId: z.string().optional().nullable(),
       providerServicesOfferedId: z.string().optional().nullable(),
+      serviceTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -42455,6 +43695,22 @@ export const onCreateProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42462,6 +43718,7 @@ export const onCreateProviderSubscriptionSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -42700,6 +43957,22 @@ export const onUpdateProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42707,6 +43980,7 @@ export const onUpdateProviderSubscriptionSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -42945,6 +44219,22 @@ export const onDeleteProviderSubscriptionSchema = z.object({
         .optional()
         .nullable(),
       isInstantBookingAvailable: z.boolean().optional().nullable(),
+      Tasks: z
+        .object({
+          __typename: z.literal("Tasks"),
+          id: z.string(),
+          taskName: z.string(),
+          taskTime: z.number(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          _version: z.number(),
+          _deleted: z.boolean().optional().nullable(),
+          _lastChangedAt: z.number(),
+          tasksServiceId: z.string().optional().nullable(),
+        })
+        .optional()
+        .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -42952,6 +44242,7 @@ export const onDeleteProviderSubscriptionSchema = z.object({
       _lastChangedAt: z.number(),
       nicheServiceProvidersId: z.string().optional().nullable(),
       providerCurrentLocationId: z.string().optional().nullable(),
+      providerTasksId: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -42997,6 +44288,7 @@ export const onCreateAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43004,6 +44296,7 @@ export const onCreateAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43059,6 +44352,7 @@ export const onUpdateAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43066,6 +44360,7 @@ export const onUpdateAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43121,6 +44416,7 @@ export const onDeleteAvailabilitySubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43128,6 +44424,7 @@ export const onDeleteAvailabilitySubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43260,6 +44557,7 @@ export const onCreateCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43267,6 +44565,7 @@ export const onCreateCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43323,6 +44622,7 @@ export const onUpdateCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43330,6 +44630,7 @@ export const onUpdateCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43386,6 +44687,7 @@ export const onDeleteCertificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43393,6 +44695,7 @@ export const onDeleteCertificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43448,6 +44751,7 @@ export const onCreateQualificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43455,6 +44759,7 @@ export const onCreateQualificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43510,6 +44815,7 @@ export const onUpdateQualificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43517,6 +44823,7 @@ export const onUpdateQualificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43572,6 +44879,7 @@ export const onDeleteQualificationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43579,6 +44887,7 @@ export const onDeleteQualificationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43635,6 +44944,7 @@ export const onCreateSpecializationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43642,6 +44952,7 @@ export const onCreateSpecializationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43698,6 +45009,7 @@ export const onUpdateSpecializationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43705,6 +45017,7 @@ export const onUpdateSpecializationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -43761,6 +45074,7 @@ export const onDeleteSpecializationSubscriptionSchema = z.object({
           timezone: z.string().optional().nullable(),
           chatbotRequests: z.number().optional().nullable(),
           isInstantBookingAvailable: z.boolean().optional().nullable(),
+          isEmailVerified: z.boolean().optional().nullable(),
           createdAt: z.string(),
           updatedAt: z.string(),
           _version: z.number(),
@@ -43768,6 +45082,7 @@ export const onDeleteSpecializationSubscriptionSchema = z.object({
           _lastChangedAt: z.number(),
           nicheServiceProvidersId: z.string().optional().nullable(),
           providerCurrentLocationId: z.string().optional().nullable(),
+          providerTasksId: z.string().optional().nullable(),
         })
         .optional()
         .nullable(),
@@ -44158,6 +45473,7 @@ export const onCreateUserSubscriptionSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -44468,6 +45784,7 @@ export const onUpdateUserSubscriptionSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -44778,6 +46095,7 @@ export const onDeleteUserSubscriptionSchema = z.object({
         })
         .optional()
         .nullable(),
+      isEmailVerified: z.boolean().optional().nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),
       _version: z.number(),
@@ -44834,9 +46152,9 @@ export const modelPLMBRSubscriptionConnectionSchema = z.object({
   startedAt: z.number().optional().nullable(),
 });
 
-export const createServicePromotionMutationVariablesSchema = z.object({
-  input: createServicePromotionInputSchema,
-  condition: modelServicePromotionConditionInputSchema.optional().nullable(),
+export const createTasksMutationVariablesSchema = z.object({
+  input: createTasksInputSchema,
+  condition: modelTasksConditionInputSchema.optional().nullable(),
 });
 
 export const createEquipmentMutationVariablesSchema = z.object({
@@ -44851,23 +46169,20 @@ export const modelJobConnectionSchema = z.object({
   startedAt: z.number().optional().nullable(),
 });
 
-export const servicePromotionSchema: z.ZodSchema<ServicePromotion> = z.lazy(
-  () =>
-    z.object({
-      __typename: z.literal("ServicePromotion"),
-      id: z.string(),
-      service: serviceSchema.optional().nullable(),
-      description: z.string(),
-      startDate: z.string(),
-      endDate: z.string(),
-      discountPercentage: z.number(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      _version: z.number(),
-      _deleted: z.boolean().optional().nullable(),
-      _lastChangedAt: z.number(),
-      serviceServicePromotionsId: z.string().optional().nullable(),
-    }),
+export const tasksSchema: z.ZodSchema<Tasks> = z.lazy(() =>
+  z.object({
+    __typename: z.literal("Tasks"),
+    id: z.string(),
+    taskName: z.string(),
+    taskTime: z.number(),
+    Service: serviceSchema.optional().nullable(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    _version: z.number(),
+    _deleted: z.boolean().optional().nullable(),
+    _lastChangedAt: z.number(),
+    tasksServiceId: z.string().optional().nullable(),
+  }),
 );
 
 export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
@@ -44926,6 +46241,7 @@ export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
     MaterialCosts: z.number().optional().nullable(),
     BookingRequirements: z.string().optional().nullable(),
     price_max: z.number(),
+    Tasks: tasksSchema.optional().nullable(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -44935,6 +46251,7 @@ export const serviceSchema: z.ZodSchema<Service> = z.lazy(() =>
     servicePackageServicesId: z.string().optional().nullable(),
     subCategoryServicesId: z.string().optional().nullable(),
     providerServicesOfferedId: z.string().optional().nullable(),
+    serviceTasksId: z.string().optional().nullable(),
   }),
 );
 
@@ -45001,6 +46318,8 @@ export const providerSchema: z.ZodSchema<Provider> = z.lazy(() =>
     expenses: modelExpenseConnectionSchema.optional().nullable(),
     currentLocation: locationSchema.optional().nullable(),
     isInstantBookingAvailable: z.boolean().optional().nullable(),
+    Tasks: tasksSchema.optional().nullable(),
+    isEmailVerified: z.boolean().optional().nullable(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -45008,6 +46327,7 @@ export const providerSchema: z.ZodSchema<Provider> = z.lazy(() =>
     _lastChangedAt: z.number(),
     nicheServiceProvidersId: z.string().optional().nullable(),
     providerCurrentLocationId: z.string().optional().nullable(),
+    providerTasksId: z.string().optional().nullable(),
   }),
 );
 
@@ -45505,6 +46825,7 @@ export const userSchema: z.ZodSchema<User> = z.lazy(() =>
     preferredContactTime: z.string().optional().nullable(),
     serviceInterestedIn: z.string().optional().nullable(),
     curentLocation: locationSchema.optional().nullable(),
+    isEmailVerified: z.boolean().optional().nullable(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -45915,6 +47236,8 @@ export const paymentMethodSchema: z.ZodSchema<PaymentMethod> = z.lazy(() =>
     cardNumber: z.string(),
     expiryDate: z.string(),
     cardType: cardTypeSchema.optional().nullable(),
+    stripeCustomerId: z.string().optional().nullable(),
+    stripeCardId: z.string().optional().nullable(),
     createdAt: z.string(),
     updatedAt: z.string(),
     _version: z.number(),
@@ -46327,6 +47650,25 @@ export const modelSubCategoryConnectionSchema: z.ZodSchema<ModelSubCategoryConne
     }),
   );
 
+export const servicePromotionSchema: z.ZodSchema<ServicePromotion> = z.lazy(
+  () =>
+    z.object({
+      __typename: z.literal("ServicePromotion"),
+      id: z.string(),
+      service: serviceSchema.optional().nullable(),
+      description: z.string(),
+      startDate: z.string(),
+      endDate: z.string(),
+      discountPercentage: z.number(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      _version: z.number(),
+      _deleted: z.boolean().optional().nullable(),
+      _lastChangedAt: z.number(),
+      serviceServicePromotionsId: z.string().optional().nullable(),
+    }),
+);
+
 export const serviceDiscountSchema: z.ZodSchema<ServiceDiscount> = z.lazy(() =>
   z.object({
     __typename: z.literal("ServiceDiscount"),
@@ -46415,6 +47757,16 @@ export const servicePackageSchema: z.ZodSchema<ServicePackage> = z.lazy(() =>
     _lastChangedAt: z.number(),
   }),
 );
+
+export const modelTasksConnectionSchema: z.ZodSchema<ModelTasksConnection> =
+  z.lazy(() =>
+    z.object({
+      __typename: z.literal("ModelTasksConnection"),
+      items: z.array(tasksSchema.nullable()),
+      nextToken: z.string().optional().nullable(),
+      startedAt: z.number().optional().nullable(),
+    }),
+  );
 
 export const modelNicheServiceConnectionSchema: z.ZodSchema<ModelNicheServiceConnection> =
   z.lazy(() =>

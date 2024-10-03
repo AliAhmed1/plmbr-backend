@@ -8,6 +8,97 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const getTasks = /* GraphQL */ `query GetTasks($id: ID!) {
+  getTasks(id: $id) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetTasksQueryVariables, APITypes.GetTasksQuery>;
+export const listTasks = /* GraphQL */ `query ListTasks(
+  $filter: ModelTasksFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.ListTasksQueryVariables, APITypes.ListTasksQuery>;
+export const syncTasks = /* GraphQL */ `query SyncTasks(
+  $filter: ModelTasksFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTasks(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.SyncTasksQueryVariables, APITypes.SyncTasksQuery>;
 export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id: ID!) {
   getServicePromotion(id: $id) {
     id
@@ -30,6 +121,7 @@ export const getServicePromotion = /* GraphQL */ `query GetServicePromotion($id:
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -141,6 +233,7 @@ export const getProviderReport = /* GraphQL */ `query GetProviderReport($id: ID!
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -148,6 +241,7 @@ export const getProviderReport = /* GraphQL */ `query GetProviderReport($id: ID!
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -257,6 +351,7 @@ export const getUserReport = /* GraphQL */ `query GetUserReport($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -373,6 +468,7 @@ export const getUserInvoice = /* GraphQL */ `query GetUserInvoice($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -494,6 +590,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -501,6 +598,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -529,6 +627,7 @@ export const getProviderBookmark = /* GraphQL */ `query GetProviderBookmark($id:
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -645,6 +744,7 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -673,6 +773,7 @@ export const getUserBookmark = /* GraphQL */ `query GetUserBookmark($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -778,6 +879,7 @@ export const getProviderNotification = /* GraphQL */ `query GetProviderNotificat
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -785,6 +887,7 @@ export const getProviderNotification = /* GraphQL */ `query GetProviderNotificat
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -901,6 +1004,7 @@ export const getUserNotification = /* GraphQL */ `query GetUserNotification($id:
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1013,6 +1117,7 @@ export const getServiceDiscount = /* GraphQL */ `query GetServiceDiscount($id: I
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1121,6 +1226,7 @@ export const getProviderAvailability = /* GraphQL */ `query GetProviderAvailabil
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1128,6 +1234,7 @@ export const getProviderAvailability = /* GraphQL */ `query GetProviderAvailabil
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1244,6 +1351,7 @@ export const getUserPreference = /* GraphQL */ `query GetUserPreference($id: ID!
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1359,6 +1467,7 @@ export const getProviderCertification = /* GraphQL */ `query GetProviderCertific
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1366,6 +1475,7 @@ export const getProviderCertification = /* GraphQL */ `query GetProviderCertific
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -1478,6 +1588,7 @@ export const getServiceVideo = /* GraphQL */ `query GetServiceVideo($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -1577,6 +1688,7 @@ export const getServiceImage = /* GraphQL */ `query GetServiceImage($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -1676,6 +1788,7 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -1704,6 +1817,7 @@ export const getServiceReview = /* GraphQL */ `query GetServiceReview($id: ID!) 
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1916,6 +2030,7 @@ export const getCustomization = /* GraphQL */ `query GetCustomization($id: ID!) 
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2031,6 +2146,7 @@ export const getExpense = /* GraphQL */ `query GetExpense($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2038,6 +2154,7 @@ export const getExpense = /* GraphQL */ `query GetExpense($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2153,6 +2270,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2187,6 +2305,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2194,6 +2313,7 @@ export const getFavoriteProvider = /* GraphQL */ `query GetFavoriteProvider($id:
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -2303,6 +2423,7 @@ export const getUserHistory = /* GraphQL */ `query GetUserHistory($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2418,6 +2539,7 @@ export const getProviderAward = /* GraphQL */ `query GetProviderAward($id: ID!) 
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2425,6 +2547,7 @@ export const getProviderAward = /* GraphQL */ `query GetProviderAward($id: ID!) 
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -2537,6 +2660,7 @@ export const getReferral = /* GraphQL */ `query GetReferral($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2572,6 +2696,7 @@ export const getReferral = /* GraphQL */ `query GetReferral($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2705,6 +2830,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2739,6 +2865,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2746,6 +2873,7 @@ export const getTip = /* GraphQL */ `query GetTip($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2842,6 +2970,7 @@ export const getPaymentMethod = /* GraphQL */ `query GetPaymentMethod($id: ID!) 
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2854,6 +2983,8 @@ export const getPaymentMethod = /* GraphQL */ `query GetPaymentMethod($id: ID!) 
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -2878,6 +3009,8 @@ export const listPaymentMethods = /* GraphQL */ `query ListPaymentMethods(
       cardNumber
       expiryDate
       cardType
+      stripeCustomerId
+      stripeCardId
       createdAt
       updatedAt
       _version
@@ -2912,6 +3045,8 @@ export const syncPaymentMethods = /* GraphQL */ `query SyncPaymentMethods(
       cardNumber
       expiryDate
       cardType
+      stripeCustomerId
+      stripeCardId
       createdAt
       updatedAt
       _version
@@ -2958,6 +3093,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2992,6 +3128,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2999,6 +3136,7 @@ export const getInvoice = /* GraphQL */ `query GetInvoice($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3119,6 +3257,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3153,6 +3292,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3160,6 +3300,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -3181,6 +3322,7 @@ export const getContract = /* GraphQL */ `query GetContract($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -3542,6 +3684,7 @@ export const getLoyaltyProgram = /* GraphQL */ `query GetLoyaltyProgram($id: ID!
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3657,6 +3800,7 @@ export const getVerification = /* GraphQL */ `query GetVerification($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3935,6 +4079,7 @@ export const getReport = /* GraphQL */ `query GetReport($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4048,6 +4193,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4082,6 +4228,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4089,6 +4236,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4110,6 +4258,7 @@ export const getJobTracking = /* GraphQL */ `query GetJobTracking($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -4225,6 +4374,7 @@ export const getAIChatLog = /* GraphQL */ `query GetAIChatLog($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5524,6 +5674,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5531,6 +5682,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -5559,6 +5711,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5587,6 +5740,7 @@ export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -5807,6 +5961,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5814,6 +5969,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -5842,6 +5998,7 @@ export const getMessageThread = /* GraphQL */ `query GetMessageThread($id: ID!) 
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6058,6 +6215,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -6085,6 +6243,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6092,6 +6251,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -6120,6 +6280,7 @@ export const getBooking = /* GraphQL */ `query GetBooking($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6278,6 +6439,7 @@ export const getTeamMember = /* GraphQL */ `query GetTeamMember($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6285,6 +6447,7 @@ export const getTeamMember = /* GraphQL */ `query GetTeamMember($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -6631,6 +6794,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6638,6 +6802,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -6787,6 +6952,18 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -6796,6 +6973,7 @@ export const getService = /* GraphQL */ `query GetService($id: ID!) {
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -6828,6 +7006,7 @@ export const listServices = /* GraphQL */ `query ListServices(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     nextToken
@@ -6870,6 +7049,7 @@ export const syncServices = /* GraphQL */ `query SyncServices(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     nextToken
@@ -7034,6 +7214,19 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -7041,6 +7234,7 @@ export const getProvider = /* GraphQL */ `query GetProvider($id: ID!) {
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -7079,6 +7273,7 @@ export const listProviders = /* GraphQL */ `query ListProviders(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7086,6 +7281,7 @@ export const listProviders = /* GraphQL */ `query ListProviders(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     nextToken
@@ -7134,6 +7330,7 @@ export const syncProviders = /* GraphQL */ `query SyncProviders(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7141,6 +7338,7 @@ export const syncProviders = /* GraphQL */ `query SyncProviders(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     nextToken
@@ -7182,6 +7380,7 @@ export const getAvailability = /* GraphQL */ `query GetAvailability($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7189,6 +7388,7 @@ export const getAvailability = /* GraphQL */ `query GetAvailability($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -7380,6 +7580,7 @@ export const getCertification = /* GraphQL */ `query GetCertification($id: ID!) 
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7387,6 +7588,7 @@ export const getCertification = /* GraphQL */ `query GetCertification($id: ID!) 
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -7497,6 +7699,7 @@ export const getQualification = /* GraphQL */ `query GetQualification($id: ID!) 
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7504,6 +7707,7 @@ export const getQualification = /* GraphQL */ `query GetQualification($id: ID!) 
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -7611,6 +7815,7 @@ export const getSpecialization = /* GraphQL */ `query GetSpecialization($id: ID!
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7618,6 +7823,7 @@ export const getSpecialization = /* GraphQL */ `query GetSpecialization($id: ID!
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -7974,6 +8180,7 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -8017,6 +8224,7 @@ export const listUsers = /* GraphQL */ `query ListUsers(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8070,6 +8278,7 @@ export const syncUsers = /* GraphQL */ `query SyncUsers(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version

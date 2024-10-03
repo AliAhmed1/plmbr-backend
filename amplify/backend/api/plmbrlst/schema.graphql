@@ -1,3 +1,10 @@
+type Tasks @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  taskName: String!
+  taskTime: Int!
+  Service: Service @belongsTo
+}
+
 type ServicePromotion @model @auth(rules: [{allow: public}]) {
   id: ID!
   service: Service @belongsTo
@@ -192,6 +199,8 @@ type PaymentMethod @model @auth(rules: [{allow: public}]) {
   cardNumber: String!
   expiryDate: AWSDate!
   cardType: CardType
+  stripeCustomerId: String
+  stripeCardId: String
 }
 
 enum CardType {
@@ -563,6 +572,7 @@ type Service @model @auth(rules: [{allow: public}]) {
   MaterialCosts: Float
   BookingRequirements: String
   price_max: Float!
+  Tasks: Tasks @hasOne
 }
 
 type Provider @model @auth(rules: [{allow: public}]) {
@@ -614,6 +624,8 @@ type Provider @model @auth(rules: [{allow: public}]) {
   expenses: [Expense] @hasMany
   currentLocation: Location @hasOne
   isInstantBookingAvailable: Boolean
+  Tasks: Tasks @hasOne
+  isEmailVerified: Boolean
 }
 
 type Availability @model @auth(rules: [{allow: public}]) {
@@ -721,6 +733,7 @@ type User @model @auth(rules: [{allow: public}]) {
   preferredContactTime: AWSTime
   serviceInterestedIn: String
   curentLocation: Location @hasOne
+  isEmailVerified: Boolean
 }
 
 enum Gender {

@@ -20,4 +20,5 @@ amplifytools.xcconfig
 **.sample
 package-lock.json
 yarn-lock.json
+.env
 #amplify-do-not-edit-end

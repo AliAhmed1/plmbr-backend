@@ -3,11 +3,122 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onUpdateCustomization = exports.onCreateCustomization = exports.onDeleteAIDiagnostics = exports.onUpdateAIDiagnostics = exports.onCreateAIDiagnostics = exports.onDeleteServiceReview = exports.onUpdateServiceReview = exports.onCreateServiceReview = exports.onDeleteServiceImage = exports.onUpdateServiceImage = exports.onCreateServiceImage = exports.onDeleteServiceVideo = exports.onUpdateServiceVideo = exports.onCreateServiceVideo = exports.onDeleteProviderCertification = exports.onUpdateProviderCertification = exports.onCreateProviderCertification = exports.onDeleteUserPreference = exports.onUpdateUserPreference = exports.onCreateUserPreference = exports.onDeleteProviderAvailability = exports.onUpdateProviderAvailability = exports.onCreateProviderAvailability = exports.onDeleteServiceDiscount = exports.onUpdateServiceDiscount = exports.onCreateServiceDiscount = exports.onDeleteUserNotification = exports.onUpdateUserNotification = exports.onCreateUserNotification = exports.onDeleteProviderNotification = exports.onUpdateProviderNotification = exports.onCreateProviderNotification = exports.onDeleteUserBookmark = exports.onUpdateUserBookmark = exports.onCreateUserBookmark = exports.onDeleteProviderBookmark = exports.onUpdateProviderBookmark = exports.onCreateProviderBookmark = exports.onDeleteUserInvoice = exports.onUpdateUserInvoice = exports.onCreateUserInvoice = exports.onDeleteUserReport = exports.onUpdateUserReport = exports.onCreateUserReport = exports.onDeleteProviderReport = exports.onUpdateProviderReport = exports.onCreateProviderReport = exports.onDeleteServicePromotion = exports.onUpdateServicePromotion = exports.onCreateServicePromotion = void 0;
-exports.onCreateReport = exports.onDeletePromoCode = exports.onUpdatePromoCode = exports.onCreatePromoCode = exports.onDeleteAnalytics = exports.onUpdateAnalytics = exports.onCreateAnalytics = exports.onDeleteVerification = exports.onUpdateVerification = exports.onCreateVerification = exports.onDeleteLoyaltyProgram = exports.onUpdateLoyaltyProgram = exports.onCreateLoyaltyProgram = exports.onDeleteReward = exports.onUpdateReward = exports.onCreateReward = exports.onDeleteServicePackage = exports.onUpdateServicePackage = exports.onCreateServicePackage = exports.onDeleteNicheService = exports.onUpdateNicheService = exports.onCreateNicheService = exports.onDeleteContract = exports.onUpdateContract = exports.onCreateContract = exports.onDeleteInvoice = exports.onUpdateInvoice = exports.onCreateInvoice = exports.onDeletePaymentMethod = exports.onUpdatePaymentMethod = exports.onCreatePaymentMethod = exports.onDeleteTip = exports.onUpdateTip = exports.onCreateTip = exports.onDeleteReferral = exports.onUpdateReferral = exports.onCreateReferral = exports.onDeleteProviderAward = exports.onUpdateProviderAward = exports.onCreateProviderAward = exports.onDeleteUserHistory = exports.onUpdateUserHistory = exports.onCreateUserHistory = exports.onDeleteFavoriteProvider = exports.onUpdateFavoriteProvider = exports.onCreateFavoriteProvider = exports.onDeleteExpense = exports.onUpdateExpense = exports.onCreateExpense = exports.onDeleteCustomization = void 0;
-exports.onDeleteWallet = exports.onUpdateWallet = exports.onCreateWallet = exports.onDeleteEquipment = exports.onUpdateEquipment = exports.onCreateEquipment = exports.onDeleteFeedback = exports.onUpdateFeedback = exports.onCreateFeedback = exports.onDeleteServiceFAQ = exports.onUpdateServiceFAQ = exports.onCreateServiceFAQ = exports.onDeleteServiceTag = exports.onUpdateServiceTag = exports.onCreateServiceTag = exports.onDeleteServiceHighlight = exports.onUpdateServiceHighlight = exports.onCreateServiceHighlight = exports.onDeleteServiceVariant = exports.onUpdateServiceVariant = exports.onCreateServiceVariant = exports.onDeletePortfolio = exports.onUpdatePortfolio = exports.onCreatePortfolio = exports.onDeleteProviderSettings = exports.onUpdateProviderSettings = exports.onCreateProviderSettings = exports.onDeleteUserSettings = exports.onUpdateUserSettings = exports.onCreateUserSettings = exports.onDeletePLMBRSubscription = exports.onUpdatePLMBRSubscription = exports.onCreatePLMBRSubscription = exports.onDeleteSubCategory = exports.onUpdateSubCategory = exports.onCreateSubCategory = exports.onDeleteMainCategory = exports.onUpdateMainCategory = exports.onCreateMainCategory = exports.onDeleteAIChatBot = exports.onUpdateAIChatBot = exports.onCreateAIChatBot = exports.onDeleteAIChatLog = exports.onUpdateAIChatLog = exports.onCreateAIChatLog = exports.onDeleteJobTracking = exports.onUpdateJobTracking = exports.onCreateJobTracking = exports.onDeleteReport = exports.onUpdateReport = void 0;
-exports.onUpdateSpecialization = exports.onCreateSpecialization = exports.onDeleteQualification = exports.onUpdateQualification = exports.onCreateQualification = exports.onDeleteCertification = exports.onUpdateCertification = exports.onCreateCertification = exports.onDeleteProviderReview = exports.onUpdateProviderReview = exports.onCreateProviderReview = exports.onDeleteAvailability = exports.onUpdateAvailability = exports.onCreateAvailability = exports.onDeleteProvider = exports.onUpdateProvider = exports.onCreateProvider = exports.onDeleteService = exports.onUpdateService = exports.onCreateService = exports.onDeleteJob = exports.onUpdateJob = exports.onCreateJob = exports.onDeleteMessage = exports.onUpdateMessage = exports.onCreateMessage = exports.onDeleteLocation = exports.onUpdateLocation = exports.onCreateLocation = exports.onDeleteTeamMember = exports.onUpdateTeamMember = exports.onCreateTeamMember = exports.onDeleteBooking = exports.onUpdateBooking = exports.onCreateBooking = exports.onDeleteMessageContent = exports.onUpdateMessageContent = exports.onCreateMessageContent = exports.onDeleteMessageThread = exports.onUpdateMessageThread = exports.onCreateMessageThread = exports.onDeleteReviewResponse = exports.onUpdateReviewResponse = exports.onCreateReviewResponse = exports.onDeleteReview = exports.onUpdateReview = exports.onCreateReview = exports.onDeleteTransaction = exports.onUpdateTransaction = exports.onCreateTransaction = void 0;
-exports.onDeleteUser = exports.onUpdateUser = exports.onCreateUser = exports.onDeleteProviderHistory = exports.onUpdateProviderHistory = exports.onCreateProviderHistory = exports.onDeleteSpecialization = void 0;
+exports.onUpdateAIDiagnostics = exports.onCreateAIDiagnostics = exports.onDeleteServiceReview = exports.onUpdateServiceReview = exports.onCreateServiceReview = exports.onDeleteServiceImage = exports.onUpdateServiceImage = exports.onCreateServiceImage = exports.onDeleteServiceVideo = exports.onUpdateServiceVideo = exports.onCreateServiceVideo = exports.onDeleteProviderCertification = exports.onUpdateProviderCertification = exports.onCreateProviderCertification = exports.onDeleteUserPreference = exports.onUpdateUserPreference = exports.onCreateUserPreference = exports.onDeleteProviderAvailability = exports.onUpdateProviderAvailability = exports.onCreateProviderAvailability = exports.onDeleteServiceDiscount = exports.onUpdateServiceDiscount = exports.onCreateServiceDiscount = exports.onDeleteUserNotification = exports.onUpdateUserNotification = exports.onCreateUserNotification = exports.onDeleteProviderNotification = exports.onUpdateProviderNotification = exports.onCreateProviderNotification = exports.onDeleteUserBookmark = exports.onUpdateUserBookmark = exports.onCreateUserBookmark = exports.onDeleteProviderBookmark = exports.onUpdateProviderBookmark = exports.onCreateProviderBookmark = exports.onDeleteUserInvoice = exports.onUpdateUserInvoice = exports.onCreateUserInvoice = exports.onDeleteUserReport = exports.onUpdateUserReport = exports.onCreateUserReport = exports.onDeleteProviderReport = exports.onUpdateProviderReport = exports.onCreateProviderReport = exports.onDeleteServicePromotion = exports.onUpdateServicePromotion = exports.onCreateServicePromotion = exports.onDeleteTasks = exports.onUpdateTasks = exports.onCreateTasks = void 0;
+exports.onCreatePromoCode = exports.onDeleteAnalytics = exports.onUpdateAnalytics = exports.onCreateAnalytics = exports.onDeleteVerification = exports.onUpdateVerification = exports.onCreateVerification = exports.onDeleteLoyaltyProgram = exports.onUpdateLoyaltyProgram = exports.onCreateLoyaltyProgram = exports.onDeleteReward = exports.onUpdateReward = exports.onCreateReward = exports.onDeleteServicePackage = exports.onUpdateServicePackage = exports.onCreateServicePackage = exports.onDeleteNicheService = exports.onUpdateNicheService = exports.onCreateNicheService = exports.onDeleteContract = exports.onUpdateContract = exports.onCreateContract = exports.onDeleteInvoice = exports.onUpdateInvoice = exports.onCreateInvoice = exports.onDeletePaymentMethod = exports.onUpdatePaymentMethod = exports.onCreatePaymentMethod = exports.onDeleteTip = exports.onUpdateTip = exports.onCreateTip = exports.onDeleteReferral = exports.onUpdateReferral = exports.onCreateReferral = exports.onDeleteProviderAward = exports.onUpdateProviderAward = exports.onCreateProviderAward = exports.onDeleteUserHistory = exports.onUpdateUserHistory = exports.onCreateUserHistory = exports.onDeleteFavoriteProvider = exports.onUpdateFavoriteProvider = exports.onCreateFavoriteProvider = exports.onDeleteExpense = exports.onUpdateExpense = exports.onCreateExpense = exports.onDeleteCustomization = exports.onUpdateCustomization = exports.onCreateCustomization = exports.onDeleteAIDiagnostics = void 0;
+exports.onDeleteEquipment = exports.onUpdateEquipment = exports.onCreateEquipment = exports.onDeleteFeedback = exports.onUpdateFeedback = exports.onCreateFeedback = exports.onDeleteServiceFAQ = exports.onUpdateServiceFAQ = exports.onCreateServiceFAQ = exports.onDeleteServiceTag = exports.onUpdateServiceTag = exports.onCreateServiceTag = exports.onDeleteServiceHighlight = exports.onUpdateServiceHighlight = exports.onCreateServiceHighlight = exports.onDeleteServiceVariant = exports.onUpdateServiceVariant = exports.onCreateServiceVariant = exports.onDeletePortfolio = exports.onUpdatePortfolio = exports.onCreatePortfolio = exports.onDeleteProviderSettings = exports.onUpdateProviderSettings = exports.onCreateProviderSettings = exports.onDeleteUserSettings = exports.onUpdateUserSettings = exports.onCreateUserSettings = exports.onDeletePLMBRSubscription = exports.onUpdatePLMBRSubscription = exports.onCreatePLMBRSubscription = exports.onDeleteSubCategory = exports.onUpdateSubCategory = exports.onCreateSubCategory = exports.onDeleteMainCategory = exports.onUpdateMainCategory = exports.onCreateMainCategory = exports.onDeleteAIChatBot = exports.onUpdateAIChatBot = exports.onCreateAIChatBot = exports.onDeleteAIChatLog = exports.onUpdateAIChatLog = exports.onCreateAIChatLog = exports.onDeleteJobTracking = exports.onUpdateJobTracking = exports.onCreateJobTracking = exports.onDeleteReport = exports.onUpdateReport = exports.onCreateReport = exports.onDeletePromoCode = exports.onUpdatePromoCode = void 0;
+exports.onUpdateQualification = exports.onCreateQualification = exports.onDeleteCertification = exports.onUpdateCertification = exports.onCreateCertification = exports.onDeleteProviderReview = exports.onUpdateProviderReview = exports.onCreateProviderReview = exports.onDeleteAvailability = exports.onUpdateAvailability = exports.onCreateAvailability = exports.onDeleteProvider = exports.onUpdateProvider = exports.onCreateProvider = exports.onDeleteService = exports.onUpdateService = exports.onCreateService = exports.onDeleteJob = exports.onUpdateJob = exports.onCreateJob = exports.onDeleteMessage = exports.onUpdateMessage = exports.onCreateMessage = exports.onDeleteLocation = exports.onUpdateLocation = exports.onCreateLocation = exports.onDeleteTeamMember = exports.onUpdateTeamMember = exports.onCreateTeamMember = exports.onDeleteBooking = exports.onUpdateBooking = exports.onCreateBooking = exports.onDeleteMessageContent = exports.onUpdateMessageContent = exports.onCreateMessageContent = exports.onDeleteMessageThread = exports.onUpdateMessageThread = exports.onCreateMessageThread = exports.onDeleteReviewResponse = exports.onUpdateReviewResponse = exports.onCreateReviewResponse = exports.onDeleteReview = exports.onUpdateReview = exports.onCreateReview = exports.onDeleteTransaction = exports.onUpdateTransaction = exports.onCreateTransaction = exports.onDeleteWallet = exports.onUpdateWallet = exports.onCreateWallet = void 0;
+exports.onDeleteUser = exports.onUpdateUser = exports.onCreateUser = exports.onDeleteProviderHistory = exports.onUpdateProviderHistory = exports.onCreateProviderHistory = exports.onDeleteSpecialization = exports.onUpdateSpecialization = exports.onCreateSpecialization = exports.onDeleteQualification = void 0;
+exports.onCreateTasks = `subscription OnCreateTasks($filter: ModelSubscriptionTasksFilterInput) {
+  onCreateTasks(filter: $filter) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
+exports.onUpdateTasks = `subscription OnUpdateTasks($filter: ModelSubscriptionTasksFilterInput) {
+  onUpdateTasks(filter: $filter) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
+exports.onDeleteTasks = `subscription OnDeleteTasks($filter: ModelSubscriptionTasksFilterInput) {
+  onDeleteTasks(filter: $filter) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
 exports.onCreateServicePromotion = `subscription OnCreateServicePromotion(
   $filter: ModelSubscriptionServicePromotionFilterInput
 ) {
@@ -32,6 +143,7 @@ exports.onCreateServicePromotion = `subscription OnCreateServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -72,6 +184,7 @@ exports.onUpdateServicePromotion = `subscription OnUpdateServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -112,6 +225,7 @@ exports.onDeleteServicePromotion = `subscription OnDeleteServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -158,6 +272,7 @@ exports.onCreateProviderReport = `subscription OnCreateProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -165,6 +280,7 @@ exports.onCreateProviderReport = `subscription OnCreateProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -210,6 +326,7 @@ exports.onUpdateProviderReport = `subscription OnUpdateProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -217,6 +334,7 @@ exports.onUpdateProviderReport = `subscription OnUpdateProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -262,6 +380,7 @@ exports.onDeleteProviderReport = `subscription OnDeleteProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -269,6 +388,7 @@ exports.onDeleteProviderReport = `subscription OnDeleteProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -315,6 +435,7 @@ exports.onCreateUserReport = `subscription OnCreateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -368,6 +489,7 @@ exports.onUpdateUserReport = `subscription OnUpdateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -421,6 +543,7 @@ exports.onDeleteUserReport = `subscription OnDeleteUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -474,6 +597,7 @@ exports.onCreateUserInvoice = `subscription OnCreateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -529,6 +653,7 @@ exports.onUpdateUserInvoice = `subscription OnUpdateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -584,6 +709,7 @@ exports.onDeleteUserInvoice = `subscription OnDeleteUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -638,6 +764,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -645,6 +772,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -673,6 +801,7 @@ exports.onCreateProviderBookmark = `subscription OnCreateProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -725,6 +854,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -732,6 +862,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -760,6 +891,7 @@ exports.onUpdateProviderBookmark = `subscription OnUpdateProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -812,6 +944,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -819,6 +952,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -847,6 +981,7 @@ exports.onDeleteProviderBookmark = `subscription OnDeleteProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -900,6 +1035,7 @@ exports.onCreateUserBookmark = `subscription OnCreateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -928,6 +1064,7 @@ exports.onCreateUserBookmark = `subscription OnCreateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -973,6 +1110,7 @@ exports.onUpdateUserBookmark = `subscription OnUpdateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1001,6 +1139,7 @@ exports.onUpdateUserBookmark = `subscription OnUpdateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1046,6 +1185,7 @@ exports.onDeleteUserBookmark = `subscription OnDeleteUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1074,6 +1214,7 @@ exports.onDeleteUserBookmark = `subscription OnDeleteUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1118,6 +1259,7 @@ exports.onCreateProviderNotification = `subscription OnCreateProviderNotificatio
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1125,6 +1267,7 @@ exports.onCreateProviderNotification = `subscription OnCreateProviderNotificatio
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1171,6 +1314,7 @@ exports.onUpdateProviderNotification = `subscription OnUpdateProviderNotificatio
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1178,6 +1322,7 @@ exports.onUpdateProviderNotification = `subscription OnUpdateProviderNotificatio
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1224,6 +1369,7 @@ exports.onDeleteProviderNotification = `subscription OnDeleteProviderNotificatio
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1231,6 +1377,7 @@ exports.onDeleteProviderNotification = `subscription OnDeleteProviderNotificatio
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1278,6 +1425,7 @@ exports.onCreateUserNotification = `subscription OnCreateUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1332,6 +1480,7 @@ exports.onUpdateUserNotification = `subscription OnUpdateUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1386,6 +1535,7 @@ exports.onDeleteUserNotification = `subscription OnDeleteUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1433,6 +1583,7 @@ exports.onCreateServiceDiscount = `subscription OnCreateServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1472,6 +1623,7 @@ exports.onUpdateServiceDiscount = `subscription OnUpdateServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1511,6 +1663,7 @@ exports.onDeleteServiceDiscount = `subscription OnDeleteServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1556,6 +1709,7 @@ exports.onCreateProviderAvailability = `subscription OnCreateProviderAvailabilit
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1563,6 +1717,7 @@ exports.onCreateProviderAvailability = `subscription OnCreateProviderAvailabilit
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1609,6 +1764,7 @@ exports.onUpdateProviderAvailability = `subscription OnUpdateProviderAvailabilit
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1616,6 +1772,7 @@ exports.onUpdateProviderAvailability = `subscription OnUpdateProviderAvailabilit
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1662,6 +1819,7 @@ exports.onDeleteProviderAvailability = `subscription OnDeleteProviderAvailabilit
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1669,6 +1827,7 @@ exports.onDeleteProviderAvailability = `subscription OnDeleteProviderAvailabilit
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1716,6 +1875,7 @@ exports.onCreateUserPreference = `subscription OnCreateUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1769,6 +1929,7 @@ exports.onUpdateUserPreference = `subscription OnUpdateUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1822,6 +1983,7 @@ exports.onDeleteUserPreference = `subscription OnDeleteUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1874,6 +2036,7 @@ exports.onCreateProviderCertification = `subscription OnCreateProviderCertificat
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1881,6 +2044,7 @@ exports.onCreateProviderCertification = `subscription OnCreateProviderCertificat
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -1928,6 +2092,7 @@ exports.onUpdateProviderCertification = `subscription OnUpdateProviderCertificat
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1935,6 +2100,7 @@ exports.onUpdateProviderCertification = `subscription OnUpdateProviderCertificat
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -1982,6 +2148,7 @@ exports.onDeleteProviderCertification = `subscription OnDeleteProviderCertificat
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1989,6 +2156,7 @@ exports.onDeleteProviderCertification = `subscription OnDeleteProviderCertificat
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2030,6 +2198,7 @@ exports.onCreateServiceVideo = `subscription OnCreateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2068,6 +2237,7 @@ exports.onUpdateServiceVideo = `subscription OnUpdateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2106,6 +2276,7 @@ exports.onDeleteServiceVideo = `subscription OnDeleteServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2144,6 +2315,7 @@ exports.onCreateServiceImage = `subscription OnCreateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2182,6 +2354,7 @@ exports.onUpdateServiceImage = `subscription OnUpdateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2220,6 +2393,7 @@ exports.onDeleteServiceImage = `subscription OnDeleteServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2258,6 +2432,7 @@ exports.onCreateServiceReview = `subscription OnCreateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2286,6 +2461,7 @@ exports.onCreateServiceReview = `subscription OnCreateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2333,6 +2509,7 @@ exports.onUpdateServiceReview = `subscription OnUpdateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2361,6 +2538,7 @@ exports.onUpdateServiceReview = `subscription OnUpdateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2408,6 +2586,7 @@ exports.onDeleteServiceReview = `subscription OnDeleteServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2436,6 +2615,7 @@ exports.onDeleteServiceReview = `subscription OnDeleteServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2580,6 +2760,7 @@ exports.onCreateCustomization = `subscription OnCreateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2633,6 +2814,7 @@ exports.onUpdateCustomization = `subscription OnUpdateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2686,6 +2868,7 @@ exports.onDeleteCustomization = `subscription OnDeleteCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2736,6 +2919,7 @@ exports.onCreateExpense = `subscription OnCreateExpense($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2743,6 +2927,7 @@ exports.onCreateExpense = `subscription OnCreateExpense($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2788,6 +2973,7 @@ exports.onUpdateExpense = `subscription OnUpdateExpense($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2795,6 +2981,7 @@ exports.onUpdateExpense = `subscription OnUpdateExpense($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2840,6 +3027,7 @@ exports.onDeleteExpense = `subscription OnDeleteExpense($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2847,6 +3035,7 @@ exports.onDeleteExpense = `subscription OnDeleteExpense($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2895,6 +3084,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2929,6 +3119,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2936,6 +3127,7 @@ exports.onCreateFavoriteProvider = `subscription OnCreateFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -2982,6 +3174,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3016,6 +3209,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3023,6 +3217,7 @@ exports.onUpdateFavoriteProvider = `subscription OnUpdateFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3069,6 +3264,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3103,6 +3299,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3110,6 +3307,7 @@ exports.onDeleteFavoriteProvider = `subscription OnDeleteFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3156,6 +3354,7 @@ exports.onCreateUserHistory = `subscription OnCreateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3209,6 +3408,7 @@ exports.onUpdateUserHistory = `subscription OnUpdateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3262,6 +3462,7 @@ exports.onDeleteUserHistory = `subscription OnDeleteUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3314,6 +3515,7 @@ exports.onCreateProviderAward = `subscription OnCreateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3321,6 +3523,7 @@ exports.onCreateProviderAward = `subscription OnCreateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3367,6 +3570,7 @@ exports.onUpdateProviderAward = `subscription OnUpdateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3374,6 +3578,7 @@ exports.onUpdateProviderAward = `subscription OnUpdateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3420,6 +3625,7 @@ exports.onDeleteProviderAward = `subscription OnDeleteProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3427,6 +3633,7 @@ exports.onDeleteProviderAward = `subscription OnDeleteProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3472,6 +3679,7 @@ exports.onCreateReferral = `subscription OnCreateReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3507,6 +3715,7 @@ exports.onCreateReferral = `subscription OnCreateReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3573,6 +3782,7 @@ exports.onUpdateReferral = `subscription OnUpdateReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3608,6 +3818,7 @@ exports.onUpdateReferral = `subscription OnUpdateReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3674,6 +3885,7 @@ exports.onDeleteReferral = `subscription OnDeleteReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3709,6 +3921,7 @@ exports.onDeleteReferral = `subscription OnDeleteReferral($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3775,6 +3988,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3809,6 +4023,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3816,6 +4031,7 @@ exports.onCreateTip = `subscription OnCreateTip($filter: ModelSubscriptionTipFil
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3860,6 +4076,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3894,6 +4111,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3901,6 +4119,7 @@ exports.onUpdateTip = `subscription OnUpdateTip($filter: ModelSubscriptionTipFil
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3945,6 +4164,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3979,6 +4199,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3986,6 +4207,7 @@ exports.onDeleteTip = `subscription OnDeleteTip($filter: ModelSubscriptionTipFil
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4032,6 +4254,7 @@ exports.onCreatePaymentMethod = `subscription OnCreatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4044,6 +4267,8 @@ exports.onCreatePaymentMethod = `subscription OnCreatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4085,6 +4310,7 @@ exports.onUpdatePaymentMethod = `subscription OnUpdatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4097,6 +4323,8 @@ exports.onUpdatePaymentMethod = `subscription OnUpdatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4138,6 +4366,7 @@ exports.onDeletePaymentMethod = `subscription OnDeletePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4150,6 +4379,8 @@ exports.onDeletePaymentMethod = `subscription OnDeletePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4189,6 +4420,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4223,6 +4455,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4230,6 +4463,7 @@ exports.onCreateInvoice = `subscription OnCreateInvoice($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4281,6 +4515,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4315,6 +4550,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4322,6 +4558,7 @@ exports.onUpdateInvoice = `subscription OnUpdateInvoice($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4373,6 +4610,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4407,6 +4645,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4414,6 +4653,7 @@ exports.onDeleteInvoice = `subscription OnDeleteInvoice($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4465,6 +4705,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4499,6 +4740,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4506,6 +4748,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4527,6 +4770,7 @@ exports.onCreateContract = `subscription OnCreateContract($filter: ModelSubscrip
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4573,6 +4817,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4607,6 +4852,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4614,6 +4860,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4635,6 +4882,7 @@ exports.onUpdateContract = `subscription OnUpdateContract($filter: ModelSubscrip
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4681,6 +4929,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4715,6 +4964,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4722,6 +4972,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4743,6 +4994,7 @@ exports.onDeleteContract = `subscription OnDeleteContract($filter: ModelSubscrip
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4983,6 +5235,7 @@ exports.onCreateLoyaltyProgram = `subscription OnCreateLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5039,6 +5292,7 @@ exports.onUpdateLoyaltyProgram = `subscription OnUpdateLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5095,6 +5349,7 @@ exports.onDeleteLoyaltyProgram = `subscription OnDeleteLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5151,6 +5406,7 @@ exports.onCreateVerification = `subscription OnCreateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5204,6 +5460,7 @@ exports.onUpdateVerification = `subscription OnUpdateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5257,6 +5514,7 @@ exports.onDeleteVerification = `subscription OnDeleteVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5404,6 +5662,7 @@ exports.onCreateReport = `subscription OnCreateReport($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5455,6 +5714,7 @@ exports.onUpdateReport = `subscription OnUpdateReport($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5506,6 +5766,7 @@ exports.onDeleteReport = `subscription OnDeleteReport($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5559,6 +5820,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5593,6 +5855,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5600,6 +5863,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5621,6 +5885,7 @@ exports.onCreateJobTracking = `subscription OnCreateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -5669,6 +5934,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5703,6 +5969,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5710,6 +5977,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5731,6 +5999,7 @@ exports.onUpdateJobTracking = `subscription OnUpdateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -5779,6 +6048,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5813,6 +6083,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5820,6 +6091,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5841,6 +6113,7 @@ exports.onDeleteJobTracking = `subscription OnDeleteJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -5887,6 +6160,7 @@ exports.onCreateAIChatLog = `subscription OnCreateAIChatLog($filter: ModelSubscr
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5951,6 +6225,7 @@ exports.onUpdateAIChatLog = `subscription OnUpdateAIChatLog($filter: ModelSubscr
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6015,6 +6290,7 @@ exports.onDeleteAIChatLog = `subscription OnDeleteAIChatLog($filter: ModelSubscr
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6909,6 +7185,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6916,6 +7193,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -6944,6 +7222,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6972,6 +7251,7 @@ exports.onCreateReview = `subscription OnCreateReview($filter: ModelSubscription
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7030,6 +7310,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7037,6 +7318,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7065,6 +7347,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7093,6 +7376,7 @@ exports.onUpdateReview = `subscription OnUpdateReview($filter: ModelSubscription
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7151,6 +7435,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7158,6 +7443,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7186,6 +7472,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7214,6 +7501,7 @@ exports.onDeleteReview = `subscription OnDeleteReview($filter: ModelSubscription
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7373,6 +7661,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7380,6 +7669,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7408,6 +7698,7 @@ exports.onCreateMessageThread = `subscription OnCreateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7466,6 +7757,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7473,6 +7765,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7501,6 +7794,7 @@ exports.onUpdateMessageThread = `subscription OnUpdateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7559,6 +7853,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7566,6 +7861,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7594,6 +7890,7 @@ exports.onDeleteMessageThread = `subscription OnDeleteMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7744,6 +8041,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -7771,6 +8069,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7778,6 +8077,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7806,6 +8106,7 @@ exports.onCreateBooking = `subscription OnCreateBooking($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7857,6 +8158,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -7884,6 +8186,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7891,6 +8194,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7919,6 +8223,7 @@ exports.onUpdateBooking = `subscription OnUpdateBooking($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7970,6 +8275,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -7997,6 +8303,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8004,6 +8311,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8032,6 +8340,7 @@ exports.onDeleteBooking = `subscription OnDeleteBooking($filter: ModelSubscripti
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8113,6 +8422,7 @@ exports.onCreateTeamMember = `subscription OnCreateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8120,6 +8430,7 @@ exports.onCreateTeamMember = `subscription OnCreateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8189,6 +8500,7 @@ exports.onUpdateTeamMember = `subscription OnUpdateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8196,6 +8508,7 @@ exports.onUpdateTeamMember = `subscription OnUpdateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8265,6 +8578,7 @@ exports.onDeleteTeamMember = `subscription OnDeleteTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8272,6 +8586,7 @@ exports.onDeleteTeamMember = `subscription OnDeleteTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8463,6 +8778,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8470,6 +8786,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -8619,6 +8936,18 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -8628,6 +8957,7 @@ exports.onCreateService = `subscription OnCreateService($filter: ModelSubscripti
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -8663,6 +8993,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8670,6 +9001,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -8819,6 +9151,18 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -8828,6 +9172,7 @@ exports.onUpdateService = `subscription OnUpdateService($filter: ModelSubscripti
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -8863,6 +9208,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8870,6 +9216,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9019,6 +9366,18 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9028,6 +9387,7 @@ exports.onDeleteService = `subscription OnDeleteService($filter: ModelSubscripti
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -9185,6 +9545,19 @@ exports.onCreateProvider = `subscription OnCreateProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9192,6 +9565,7 @@ exports.onCreateProvider = `subscription OnCreateProvider($filter: ModelSubscrip
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9349,6 +9723,19 @@ exports.onUpdateProvider = `subscription OnUpdateProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9356,6 +9743,7 @@ exports.onUpdateProvider = `subscription OnUpdateProvider($filter: ModelSubscrip
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9513,6 +9901,19 @@ exports.onDeleteProvider = `subscription OnDeleteProvider($filter: ModelSubscrip
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9520,6 +9921,7 @@ exports.onDeleteProvider = `subscription OnDeleteProvider($filter: ModelSubscrip
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9556,6 +9958,7 @@ exports.onCreateAvailability = `subscription OnCreateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9563,6 +9966,7 @@ exports.onCreateAvailability = `subscription OnCreateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -9608,6 +10012,7 @@ exports.onUpdateAvailability = `subscription OnUpdateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9615,6 +10020,7 @@ exports.onUpdateAvailability = `subscription OnUpdateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -9660,6 +10066,7 @@ exports.onDeleteAvailability = `subscription OnDeleteAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9667,6 +10074,7 @@ exports.onDeleteAvailability = `subscription OnDeleteAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -9768,6 +10176,7 @@ exports.onCreateCertification = `subscription OnCreateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9775,6 +10184,7 @@ exports.onCreateCertification = `subscription OnCreateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9821,6 +10231,7 @@ exports.onUpdateCertification = `subscription OnUpdateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9828,6 +10239,7 @@ exports.onUpdateCertification = `subscription OnUpdateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9874,6 +10286,7 @@ exports.onDeleteCertification = `subscription OnDeleteCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9881,6 +10294,7 @@ exports.onDeleteCertification = `subscription OnDeleteCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9926,6 +10340,7 @@ exports.onCreateQualification = `subscription OnCreateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9933,6 +10348,7 @@ exports.onCreateQualification = `subscription OnCreateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9978,6 +10394,7 @@ exports.onUpdateQualification = `subscription OnUpdateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9985,6 +10402,7 @@ exports.onUpdateQualification = `subscription OnUpdateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10030,6 +10448,7 @@ exports.onDeleteQualification = `subscription OnDeleteQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10037,6 +10456,7 @@ exports.onDeleteQualification = `subscription OnDeleteQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10081,6 +10501,7 @@ exports.onCreateSpecialization = `subscription OnCreateSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10088,6 +10509,7 @@ exports.onCreateSpecialization = `subscription OnCreateSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10132,6 +10554,7 @@ exports.onUpdateSpecialization = `subscription OnUpdateSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10139,6 +10562,7 @@ exports.onUpdateSpecialization = `subscription OnUpdateSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10183,6 +10607,7 @@ exports.onDeleteSpecialization = `subscription OnDeleteSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10190,6 +10615,7 @@ exports.onDeleteSpecialization = `subscription OnDeleteSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10456,6 +10882,7 @@ exports.onCreateUser = `subscription OnCreateUser($filter: ModelSubscriptionUser
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -10664,6 +11091,7 @@ exports.onUpdateUser = `subscription OnUpdateUser($filter: ModelSubscriptionUser
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -10872,6 +11300,7 @@ exports.onDeleteUser = `subscription OnDeleteUser($filter: ModelSubscriptionUser
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version

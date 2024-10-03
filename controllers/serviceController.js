@@ -42,10 +42,19 @@ const ServiceController = {
   },
   getAllServicesByProviderId: async (req, res) => {
     const { providerId } = req.params;
-
     try {
       const result = await ServiceService.getAllServicesByProviderId(providerId);
       res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  getServicesBySubCategoryId: async (req, res) => {
+    const { subCategoryId } = req.params;
+    try {
+      const services = await ServiceService.getServicesBySubCategoryId(subCategoryId);
+      res.status(200).json(services);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }

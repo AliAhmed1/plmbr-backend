@@ -1,4 +1,4 @@
-const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
 import { User } from '../src/API';
 import { userSchema, locationSchema } from '../schema/generatedZodSchema';
@@ -42,7 +42,16 @@ const UserService = {
     }
     return result.Item as User;
   },
-
+  getUserByEmail: async (email: string) => {
+    const params = {
+      TableName: TABLE_NAME,
+      IndexName: 'gsi-Email.users',
+      KeyConditionExpression: 'email = :email',
+      ExpressionAttributeValues: { ':email': email },
+    };
+    const result = await dynamoDB.send(new QueryCommand(params));
+    return result.Items && result.Items.length > 0 ? (result.Items[0] as User) : null;
+  },
   getAllUsers: async () => {
     const params = {
       TableName: TABLE_NAME,

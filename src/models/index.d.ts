@@ -88,6 +88,40 @@ export enum NotificationPreference {
 
 
 
+type EagerTasks = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Tasks, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly taskName: string;
+  readonly taskTime: number;
+  readonly Service?: Service | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly tasksServiceId?: string | null;
+}
+
+type LazyTasks = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Tasks, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly taskName: string;
+  readonly taskTime: number;
+  readonly Service: AsyncItem<Service | undefined>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly tasksServiceId?: string | null;
+}
+
+export declare type Tasks = LazyLoading extends LazyLoadingDisabled ? EagerTasks : LazyTasks
+
+export declare const Tasks: (new (init: ModelInit<Tasks>) => Tasks) & {
+  copyOf(source: Tasks, mutator: (draft: MutableModel<Tasks>) => MutableModel<Tasks> | void): Tasks;
+}
+
 type EagerServicePromotion = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<ServicePromotion, 'id'>;
@@ -960,6 +994,8 @@ type EagerPaymentMethod = {
   readonly cardNumber: string;
   readonly expiryDate: string;
   readonly cardType?: CardType | keyof typeof CardType | null;
+  readonly stripeCustomerId?: string | null;
+  readonly stripeCardId?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userPaymentMethodsId?: string | null;
@@ -975,6 +1011,8 @@ type LazyPaymentMethod = {
   readonly cardNumber: string;
   readonly expiryDate: string;
   readonly cardType?: CardType | keyof typeof CardType | null;
+  readonly stripeCustomerId?: string | null;
+  readonly stripeCardId?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userPaymentMethodsId?: string | null;
@@ -2300,12 +2338,14 @@ type EagerService = {
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
   readonly price_max: number;
+  readonly Tasks?: Tasks | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
   readonly servicePackageServicesId?: string | null;
   readonly subCategoryServicesId?: string | null;
   readonly providerServicesOfferedId?: string | null;
+  readonly serviceTasksId?: string | null;
 }
 
 type LazyService = {
@@ -2350,12 +2390,14 @@ type LazyService = {
   readonly MaterialCosts?: number | null;
   readonly BookingRequirements?: string | null;
   readonly price_max: number;
+  readonly Tasks: AsyncItem<Tasks | undefined>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly invoiceServicesId?: string | null;
   readonly servicePackageServicesId?: string | null;
   readonly subCategoryServicesId?: string | null;
   readonly providerServicesOfferedId?: string | null;
+  readonly serviceTasksId?: string | null;
 }
 
 export declare type Service = LazyLoading extends LazyLoadingDisabled ? EagerService : LazyService
@@ -2417,10 +2459,13 @@ type EagerProvider = {
   readonly expenses?: (Expense | null)[] | null;
   readonly currentLocation?: Location | null;
   readonly isInstantBookingAvailable?: boolean | null;
+  readonly Tasks?: Tasks | null;
+  readonly isEmailVerified?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;
   readonly providerCurrentLocationId?: string | null;
+  readonly providerTasksId?: string | null;
 }
 
 type LazyProvider = {
@@ -2476,10 +2521,13 @@ type LazyProvider = {
   readonly expenses: AsyncCollection<Expense>;
   readonly currentLocation: AsyncItem<Location | undefined>;
   readonly isInstantBookingAvailable?: boolean | null;
+  readonly Tasks: AsyncItem<Tasks | undefined>;
+  readonly isEmailVerified?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly nicheServiceProvidersId?: string | null;
   readonly providerCurrentLocationId?: string | null;
+  readonly providerTasksId?: string | null;
 }
 
 export declare type Provider = LazyLoading extends LazyLoadingDisabled ? EagerProvider : LazyProvider
@@ -2763,6 +2811,7 @@ type EagerUser = {
   readonly preferredContactTime?: string | null;
   readonly serviceInterestedIn?: string | null;
   readonly curentLocation?: Location | null;
+  readonly isEmailVerified?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userWalletId?: string | null;
@@ -2830,6 +2879,7 @@ type LazyUser = {
   readonly preferredContactTime?: string | null;
   readonly serviceInterestedIn?: string | null;
   readonly curentLocation: AsyncItem<Location | undefined>;
+  readonly isEmailVerified?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userWalletId?: string | null;

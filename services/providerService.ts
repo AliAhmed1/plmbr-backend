@@ -1,17 +1,23 @@
-const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+const { PutCommand, GetCommand, ScanCommand, UpdateCommand, DeleteCommand, QueryCommand } = require('@aws-sdk/lib-dynamodb');
 const dynamoDB = require('../config/dbConfig');
-import { Provider } from '../src/API';
+import { Provider, Service } from '../src/API';
 import { providerSchema, locationSchema } from '../schema/generatedZodSchema';
 import { processSchemaAndData } from '../utils/addCommonFields';
 import { GetItemCommand } from '@aws-sdk/client-dynamodb';
+import { createService } from './serviceService';
 const haversineDistance = require('../utils/distance')
 
 const TABLE_NAME_PROVIDERS = process.env.TABLE_PROVIDER;
 const TABLE_NAME_LOCATIONS = process.env.TABLE_LOCATION;
-const ProviderService = {
-  createProvider: async (providerData: Partial<Provider>) => {
+interface ExtendedProviderData extends Provider{
+    service?: Service
+}
+const ProviderService = { 
+  createProvider: async (providerData: Partial<ExtendedProviderData>) => {
     // Use the processSchemaAndData utility to add common fields and handle optional fields
-    const extendedProviderData = processSchemaAndData(providerSchema, providerData, "Provider");
+
+    const { service, ...restProviderData } = providerData;
+    const extendedProviderData = processSchemaAndData(providerSchema, restProviderData, "Provider");
 
     const validationResult = providerSchema.safeParse(extendedProviderData);
 
@@ -19,8 +25,13 @@ const ProviderService = {
       const errors = validationResult.error.errors.map(e => e.message).join(', ');
       throw new Error(`Provider data is invalid: ${errors}`);
     }
-
+    
     const provider: Provider = validationResult.data;
+
+    if (service) {
+        await createService({providerServicesOfferedId: provider.id , ...service}, true);
+    }
+
 
     const params = {
       TableName: TABLE_NAME_PROVIDERS,
@@ -44,6 +55,17 @@ const ProviderService = {
       throw new Error('Provider not found');
     }
     return result.Item as Provider;
+  },
+
+  getProviderByEmail: async (email: string) => {
+    const params = {
+      TableName: TABLE_NAME_PROVIDERS,
+      IndexName: 'gsi-Email.providers',
+      KeyConditionExpression: 'email = :email',
+      ExpressionAttributeValues: { ':email': email },
+    };
+    const result = await dynamoDB.send(new QueryCommand(params));
+    return result.Items && result.Items.length > 0 ? (result.Items[0] as Provider) : null;
   },
 
   getAllProviders: async () => {
@@ -153,13 +175,13 @@ const ProviderService = {
     const params = {
       TableName: TABLE_NAME_PROVIDERS,
     };
-  
+
     const result = await dynamoDB.send(new ScanCommand(params));
-  
+
     if (!result.Items) {
       throw new Error('No providers found');
     }
-  
+
     const providers = await Promise.all(result.Items.map(async (provider: Provider) => {
       if (provider.providerCurrentLocationId) {
         const locationParams = {
@@ -170,7 +192,7 @@ const ProviderService = {
         };
         const locationResult = await dynamoDB.send(new GetItemCommand(locationParams));
         const location = locationResult.Item;
-  
+
         if (location) {
           const distance = haversineDistance(
             lat,
@@ -188,11 +210,11 @@ const ProviderService = {
       }
       return null;
     }));
-  
+
     return providers.filter(provider => provider !== null);
   },
   toggleInstantBooking: async (providerId: string, isInstantBookingAvailable: boolean) => {
-    
+
     // Update the provider's isInstantBookingAvailable field
     const providerParams = {
       TableName: TABLE_NAME_PROVIDERS,

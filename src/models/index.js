@@ -86,9 +86,10 @@ const NotificationPreference = {
   "BOTH": "Both"
 };
 
-const { ServicePromotion, ProviderReport, UserReport, UserInvoice, ProviderBookmark, UserBookmark, ProviderNotification, UserNotification, ServiceDiscount, ProviderAvailability, UserPreference, ProviderCertification, ServiceVideo, ServiceImage, ServiceReview, AIDiagnostics, Customization, Expense, FavoriteProvider, UserHistory, ProviderAward, Referral, Tip, PaymentMethod, Invoice, Contract, NicheService, ServicePackage, Reward, LoyaltyProgram, Verification, Analytics, PromoCode, Report, JobTracking, AIChatLog, AIChatBot, MainCategory, SubCategory, PLMBRSubscription, UserSettings, ProviderSettings, Portfolio, ServiceVariant, ServiceHighlight, ServiceTag, ServiceFAQ, Feedback, Equipment, Wallet, Transaction, Review, ReviewResponse, MessageThread, MessageContent, Booking, TeamMember, Location, Message, Job, Service, Provider, Availability, ProviderReview, Certification, Qualification, Specialization, ProviderHistory, User } = initSchema(schema);
+const { Tasks, ServicePromotion, ProviderReport, UserReport, UserInvoice, ProviderBookmark, UserBookmark, ProviderNotification, UserNotification, ServiceDiscount, ProviderAvailability, UserPreference, ProviderCertification, ServiceVideo, ServiceImage, ServiceReview, AIDiagnostics, Customization, Expense, FavoriteProvider, UserHistory, ProviderAward, Referral, Tip, PaymentMethod, Invoice, Contract, NicheService, ServicePackage, Reward, LoyaltyProgram, Verification, Analytics, PromoCode, Report, JobTracking, AIChatLog, AIChatBot, MainCategory, SubCategory, PLMBRSubscription, UserSettings, ProviderSettings, Portfolio, ServiceVariant, ServiceHighlight, ServiceTag, ServiceFAQ, Feedback, Equipment, Wallet, Transaction, Review, ReviewResponse, MessageThread, MessageContent, Booking, TeamMember, Location, Message, Job, Service, Provider, Availability, ProviderReview, Certification, Qualification, Specialization, ProviderHistory, User } = initSchema(schema);
 
 export {
+  Tasks,
   ServicePromotion,
   ProviderReport,
   UserReport,

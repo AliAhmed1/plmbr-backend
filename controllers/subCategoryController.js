@@ -32,6 +32,17 @@ const SubCategoryController = {
       res.status(400).json({ message: error.message });
     }
   },
+  getAllSubCategories: async (req, res) => {
+    const { Top } = req.query;
+    const top = Top ? parseInt(Top, 10) : 10;
+
+    try {
+      const subCategories = await SubCategoryService.getAllSubCategories(top);
+      res.status(200).json(subCategories);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = SubCategoryController;

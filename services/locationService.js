@@ -91,5 +91,31 @@ const LocationService = {
         }
         return result.Item;
     }),
+    getLocationsByLocationIds: (locationIds) => __awaiter(void 0, void 0, void 0, function* () {
+        if (!Array.isArray(locationIds) || locationIds.length === 0) {
+            throw new Error('locationIds must be a non-empty array');
+        }
+        const locations = [];
+        for (const locationId of locationIds) {
+            const params = {
+                TableName: LOCATION_TABLE_NAME,
+                KeyConditionExpression: 'id = :locationId',
+                ExpressionAttributeValues: {
+                    ':locationId': locationId,
+                },
+            };
+            const result = yield dynamoDB.send(new lib_dynamodb_1.QueryCommand(params));
+            if (result.Items && result.Items.length > 0) {
+                const location = result.Items[0];
+                // Validate the location data against the schema
+                const validationResult = generatedZodSchema_1.locationSchema.safeParse(location);
+                if (!validationResult.success) {
+                    throw new Error(`Location data is invalid: ${validationResult.error.message}`);
+                }
+                locations.push(validationResult.data);
+            }
+        }
+        return locations;
+    }),
 };
 module.exports = LocationService;

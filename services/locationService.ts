@@ -1,4 +1,4 @@
-import { DynamoDBDocumentClient, PutCommand, UpdateCommand, GetCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, PutCommand, UpdateCommand, GetCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
 import { processSchemaAndData } from '../utils/addCommonFields';
 import { providerSchema, userSchema, locationSchema } from '../schema/generatedZodSchema';
 import { z } from 'zod';
@@ -99,6 +99,40 @@ const LocationService = {
     }
 
     return result.Item;
+  },
+
+  getLocationsByLocationIds: async (locationIds: string[]) => {
+    if (!Array.isArray(locationIds) || locationIds.length === 0) {
+      throw new Error('locationIds must be a non-empty array');
+    }
+
+    const locations = [];
+
+    for (const locationId of locationIds) {
+      const params = {
+        TableName: LOCATION_TABLE_NAME,
+        KeyConditionExpression: 'id = :locationId',
+        ExpressionAttributeValues: {
+          ':locationId': locationId,
+        },
+      };
+
+      const result = await dynamoDB.send(new QueryCommand(params));
+
+      if (result.Items && result.Items.length > 0) {
+        const location = result.Items[0];
+
+        // Validate the location data against the schema
+        const validationResult = locationSchema.safeParse(location);
+        if (!validationResult.success) {
+          throw new Error(`Location data is invalid: ${validationResult.error.message}`);
+        }
+
+        locations.push(validationResult.data);
+      }
+    }
+
+    return locations;
   },
 };
 

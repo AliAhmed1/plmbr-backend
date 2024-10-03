@@ -3,11 +3,131 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateCustomization = exports.createCustomization = exports.deleteAIDiagnostics = exports.updateAIDiagnostics = exports.createAIDiagnostics = exports.deleteServiceReview = exports.updateServiceReview = exports.createServiceReview = exports.deleteServiceImage = exports.updateServiceImage = exports.createServiceImage = exports.deleteServiceVideo = exports.updateServiceVideo = exports.createServiceVideo = exports.deleteProviderCertification = exports.updateProviderCertification = exports.createProviderCertification = exports.deleteUserPreference = exports.updateUserPreference = exports.createUserPreference = exports.deleteProviderAvailability = exports.updateProviderAvailability = exports.createProviderAvailability = exports.deleteServiceDiscount = exports.updateServiceDiscount = exports.createServiceDiscount = exports.deleteUserNotification = exports.updateUserNotification = exports.createUserNotification = exports.deleteProviderNotification = exports.updateProviderNotification = exports.createProviderNotification = exports.deleteUserBookmark = exports.updateUserBookmark = exports.createUserBookmark = exports.deleteProviderBookmark = exports.updateProviderBookmark = exports.createProviderBookmark = exports.deleteUserInvoice = exports.updateUserInvoice = exports.createUserInvoice = exports.deleteUserReport = exports.updateUserReport = exports.createUserReport = exports.deleteProviderReport = exports.updateProviderReport = exports.createProviderReport = exports.deleteServicePromotion = exports.updateServicePromotion = exports.createServicePromotion = void 0;
-exports.createReport = exports.deletePromoCode = exports.updatePromoCode = exports.createPromoCode = exports.deleteAnalytics = exports.updateAnalytics = exports.createAnalytics = exports.deleteVerification = exports.updateVerification = exports.createVerification = exports.deleteLoyaltyProgram = exports.updateLoyaltyProgram = exports.createLoyaltyProgram = exports.deleteReward = exports.updateReward = exports.createReward = exports.deleteServicePackage = exports.updateServicePackage = exports.createServicePackage = exports.deleteNicheService = exports.updateNicheService = exports.createNicheService = exports.deleteContract = exports.updateContract = exports.createContract = exports.deleteInvoice = exports.updateInvoice = exports.createInvoice = exports.deletePaymentMethod = exports.updatePaymentMethod = exports.createPaymentMethod = exports.deleteTip = exports.updateTip = exports.createTip = exports.deleteReferral = exports.updateReferral = exports.createReferral = exports.deleteProviderAward = exports.updateProviderAward = exports.createProviderAward = exports.deleteUserHistory = exports.updateUserHistory = exports.createUserHistory = exports.deleteFavoriteProvider = exports.updateFavoriteProvider = exports.createFavoriteProvider = exports.deleteExpense = exports.updateExpense = exports.createExpense = exports.deleteCustomization = void 0;
-exports.deleteWallet = exports.updateWallet = exports.createWallet = exports.deleteEquipment = exports.updateEquipment = exports.createEquipment = exports.deleteFeedback = exports.updateFeedback = exports.createFeedback = exports.deleteServiceFAQ = exports.updateServiceFAQ = exports.createServiceFAQ = exports.deleteServiceTag = exports.updateServiceTag = exports.createServiceTag = exports.deleteServiceHighlight = exports.updateServiceHighlight = exports.createServiceHighlight = exports.deleteServiceVariant = exports.updateServiceVariant = exports.createServiceVariant = exports.deletePortfolio = exports.updatePortfolio = exports.createPortfolio = exports.deleteProviderSettings = exports.updateProviderSettings = exports.createProviderSettings = exports.deleteUserSettings = exports.updateUserSettings = exports.createUserSettings = exports.deletePLMBRSubscription = exports.updatePLMBRSubscription = exports.createPLMBRSubscription = exports.deleteSubCategory = exports.updateSubCategory = exports.createSubCategory = exports.deleteMainCategory = exports.updateMainCategory = exports.createMainCategory = exports.deleteAIChatBot = exports.updateAIChatBot = exports.createAIChatBot = exports.deleteAIChatLog = exports.updateAIChatLog = exports.createAIChatLog = exports.deleteJobTracking = exports.updateJobTracking = exports.createJobTracking = exports.deleteReport = exports.updateReport = void 0;
-exports.updateSpecialization = exports.createSpecialization = exports.deleteQualification = exports.updateQualification = exports.createQualification = exports.deleteCertification = exports.updateCertification = exports.createCertification = exports.deleteProviderReview = exports.updateProviderReview = exports.createProviderReview = exports.deleteAvailability = exports.updateAvailability = exports.createAvailability = exports.deleteProvider = exports.updateProvider = exports.createProvider = exports.deleteService = exports.updateService = exports.createService = exports.deleteJob = exports.updateJob = exports.createJob = exports.deleteMessage = exports.updateMessage = exports.createMessage = exports.deleteLocation = exports.updateLocation = exports.createLocation = exports.deleteTeamMember = exports.updateTeamMember = exports.createTeamMember = exports.deleteBooking = exports.updateBooking = exports.createBooking = exports.deleteMessageContent = exports.updateMessageContent = exports.createMessageContent = exports.deleteMessageThread = exports.updateMessageThread = exports.createMessageThread = exports.deleteReviewResponse = exports.updateReviewResponse = exports.createReviewResponse = exports.deleteReview = exports.updateReview = exports.createReview = exports.deleteTransaction = exports.updateTransaction = exports.createTransaction = void 0;
-exports.deleteUser = exports.updateUser = exports.createUser = exports.deleteProviderHistory = exports.updateProviderHistory = exports.createProviderHistory = exports.deleteSpecialization = void 0;
+exports.updateAIDiagnostics = exports.createAIDiagnostics = exports.deleteServiceReview = exports.updateServiceReview = exports.createServiceReview = exports.deleteServiceImage = exports.updateServiceImage = exports.createServiceImage = exports.deleteServiceVideo = exports.updateServiceVideo = exports.createServiceVideo = exports.deleteProviderCertification = exports.updateProviderCertification = exports.createProviderCertification = exports.deleteUserPreference = exports.updateUserPreference = exports.createUserPreference = exports.deleteProviderAvailability = exports.updateProviderAvailability = exports.createProviderAvailability = exports.deleteServiceDiscount = exports.updateServiceDiscount = exports.createServiceDiscount = exports.deleteUserNotification = exports.updateUserNotification = exports.createUserNotification = exports.deleteProviderNotification = exports.updateProviderNotification = exports.createProviderNotification = exports.deleteUserBookmark = exports.updateUserBookmark = exports.createUserBookmark = exports.deleteProviderBookmark = exports.updateProviderBookmark = exports.createProviderBookmark = exports.deleteUserInvoice = exports.updateUserInvoice = exports.createUserInvoice = exports.deleteUserReport = exports.updateUserReport = exports.createUserReport = exports.deleteProviderReport = exports.updateProviderReport = exports.createProviderReport = exports.deleteServicePromotion = exports.updateServicePromotion = exports.createServicePromotion = exports.deleteTasks = exports.updateTasks = exports.createTasks = void 0;
+exports.createPromoCode = exports.deleteAnalytics = exports.updateAnalytics = exports.createAnalytics = exports.deleteVerification = exports.updateVerification = exports.createVerification = exports.deleteLoyaltyProgram = exports.updateLoyaltyProgram = exports.createLoyaltyProgram = exports.deleteReward = exports.updateReward = exports.createReward = exports.deleteServicePackage = exports.updateServicePackage = exports.createServicePackage = exports.deleteNicheService = exports.updateNicheService = exports.createNicheService = exports.deleteContract = exports.updateContract = exports.createContract = exports.deleteInvoice = exports.updateInvoice = exports.createInvoice = exports.deletePaymentMethod = exports.updatePaymentMethod = exports.createPaymentMethod = exports.deleteTip = exports.updateTip = exports.createTip = exports.deleteReferral = exports.updateReferral = exports.createReferral = exports.deleteProviderAward = exports.updateProviderAward = exports.createProviderAward = exports.deleteUserHistory = exports.updateUserHistory = exports.createUserHistory = exports.deleteFavoriteProvider = exports.updateFavoriteProvider = exports.createFavoriteProvider = exports.deleteExpense = exports.updateExpense = exports.createExpense = exports.deleteCustomization = exports.updateCustomization = exports.createCustomization = exports.deleteAIDiagnostics = void 0;
+exports.deleteEquipment = exports.updateEquipment = exports.createEquipment = exports.deleteFeedback = exports.updateFeedback = exports.createFeedback = exports.deleteServiceFAQ = exports.updateServiceFAQ = exports.createServiceFAQ = exports.deleteServiceTag = exports.updateServiceTag = exports.createServiceTag = exports.deleteServiceHighlight = exports.updateServiceHighlight = exports.createServiceHighlight = exports.deleteServiceVariant = exports.updateServiceVariant = exports.createServiceVariant = exports.deletePortfolio = exports.updatePortfolio = exports.createPortfolio = exports.deleteProviderSettings = exports.updateProviderSettings = exports.createProviderSettings = exports.deleteUserSettings = exports.updateUserSettings = exports.createUserSettings = exports.deletePLMBRSubscription = exports.updatePLMBRSubscription = exports.createPLMBRSubscription = exports.deleteSubCategory = exports.updateSubCategory = exports.createSubCategory = exports.deleteMainCategory = exports.updateMainCategory = exports.createMainCategory = exports.deleteAIChatBot = exports.updateAIChatBot = exports.createAIChatBot = exports.deleteAIChatLog = exports.updateAIChatLog = exports.createAIChatLog = exports.deleteJobTracking = exports.updateJobTracking = exports.createJobTracking = exports.deleteReport = exports.updateReport = exports.createReport = exports.deletePromoCode = exports.updatePromoCode = void 0;
+exports.updateQualification = exports.createQualification = exports.deleteCertification = exports.updateCertification = exports.createCertification = exports.deleteProviderReview = exports.updateProviderReview = exports.createProviderReview = exports.deleteAvailability = exports.updateAvailability = exports.createAvailability = exports.deleteProvider = exports.updateProvider = exports.createProvider = exports.deleteService = exports.updateService = exports.createService = exports.deleteJob = exports.updateJob = exports.createJob = exports.deleteMessage = exports.updateMessage = exports.createMessage = exports.deleteLocation = exports.updateLocation = exports.createLocation = exports.deleteTeamMember = exports.updateTeamMember = exports.createTeamMember = exports.deleteBooking = exports.updateBooking = exports.createBooking = exports.deleteMessageContent = exports.updateMessageContent = exports.createMessageContent = exports.deleteMessageThread = exports.updateMessageThread = exports.createMessageThread = exports.deleteReviewResponse = exports.updateReviewResponse = exports.createReviewResponse = exports.deleteReview = exports.updateReview = exports.createReview = exports.deleteTransaction = exports.updateTransaction = exports.createTransaction = exports.deleteWallet = exports.updateWallet = exports.createWallet = void 0;
+exports.deleteUser = exports.updateUser = exports.createUser = exports.deleteProviderHistory = exports.updateProviderHistory = exports.createProviderHistory = exports.deleteSpecialization = exports.updateSpecialization = exports.createSpecialization = exports.deleteQualification = void 0;
+exports.createTasks = `mutation CreateTasks(
+  $input: CreateTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  createTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
+exports.updateTasks = `mutation UpdateTasks(
+  $input: UpdateTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  updateTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
+exports.deleteTasks = `mutation DeleteTasks(
+  $input: DeleteTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  deleteTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
 exports.createServicePromotion = `mutation CreateServicePromotion(
   $input: CreateServicePromotionInput!
   $condition: ModelServicePromotionConditionInput
@@ -33,6 +153,7 @@ exports.createServicePromotion = `mutation CreateServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -74,6 +195,7 @@ exports.updateServicePromotion = `mutation UpdateServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -115,6 +237,7 @@ exports.deleteServicePromotion = `mutation DeleteServicePromotion(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -162,6 +285,7 @@ exports.createProviderReport = `mutation CreateProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -169,6 +293,7 @@ exports.createProviderReport = `mutation CreateProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -215,6 +340,7 @@ exports.updateProviderReport = `mutation UpdateProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -222,6 +348,7 @@ exports.updateProviderReport = `mutation UpdateProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -268,6 +395,7 @@ exports.deleteProviderReport = `mutation DeleteProviderReport(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -275,6 +403,7 @@ exports.deleteProviderReport = `mutation DeleteProviderReport(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -322,6 +451,7 @@ exports.createUserReport = `mutation CreateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -376,6 +506,7 @@ exports.updateUserReport = `mutation UpdateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -430,6 +561,7 @@ exports.deleteUserReport = `mutation DeleteUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -484,6 +616,7 @@ exports.createUserInvoice = `mutation CreateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -540,6 +673,7 @@ exports.updateUserInvoice = `mutation UpdateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -596,6 +730,7 @@ exports.deleteUserInvoice = `mutation DeleteUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -651,6 +786,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -658,6 +794,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -686,6 +823,7 @@ exports.createProviderBookmark = `mutation CreateProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -739,6 +877,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -746,6 +885,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -774,6 +914,7 @@ exports.updateProviderBookmark = `mutation UpdateProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -827,6 +968,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -834,6 +976,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -862,6 +1005,7 @@ exports.deleteProviderBookmark = `mutation DeleteProviderBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -916,6 +1060,7 @@ exports.createUserBookmark = `mutation CreateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -944,6 +1089,7 @@ exports.createUserBookmark = `mutation CreateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -990,6 +1136,7 @@ exports.updateUserBookmark = `mutation UpdateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1018,6 +1165,7 @@ exports.updateUserBookmark = `mutation UpdateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1064,6 +1212,7 @@ exports.deleteUserBookmark = `mutation DeleteUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1092,6 +1241,7 @@ exports.deleteUserBookmark = `mutation DeleteUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1137,6 +1287,7 @@ exports.createProviderNotification = `mutation CreateProviderNotification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1144,6 +1295,7 @@ exports.createProviderNotification = `mutation CreateProviderNotification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1191,6 +1343,7 @@ exports.updateProviderNotification = `mutation UpdateProviderNotification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1198,6 +1351,7 @@ exports.updateProviderNotification = `mutation UpdateProviderNotification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1245,6 +1399,7 @@ exports.deleteProviderNotification = `mutation DeleteProviderNotification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1252,6 +1407,7 @@ exports.deleteProviderNotification = `mutation DeleteProviderNotification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1300,6 +1456,7 @@ exports.createUserNotification = `mutation CreateUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1355,6 +1512,7 @@ exports.updateUserNotification = `mutation UpdateUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1410,6 +1568,7 @@ exports.deleteUserNotification = `mutation DeleteUserNotification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1458,6 +1617,7 @@ exports.createServiceDiscount = `mutation CreateServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1498,6 +1658,7 @@ exports.updateServiceDiscount = `mutation UpdateServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1538,6 +1699,7 @@ exports.deleteServiceDiscount = `mutation DeleteServiceDiscount(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1584,6 +1746,7 @@ exports.createProviderAvailability = `mutation CreateProviderAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1591,6 +1754,7 @@ exports.createProviderAvailability = `mutation CreateProviderAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1638,6 +1802,7 @@ exports.updateProviderAvailability = `mutation UpdateProviderAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1645,6 +1810,7 @@ exports.updateProviderAvailability = `mutation UpdateProviderAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1692,6 +1858,7 @@ exports.deleteProviderAvailability = `mutation DeleteProviderAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1699,6 +1866,7 @@ exports.deleteProviderAvailability = `mutation DeleteProviderAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1747,6 +1915,7 @@ exports.createUserPreference = `mutation CreateUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1801,6 +1970,7 @@ exports.updateUserPreference = `mutation UpdateUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1855,6 +2025,7 @@ exports.deleteUserPreference = `mutation DeleteUserPreference(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1908,6 +2079,7 @@ exports.createProviderCertification = `mutation CreateProviderCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1915,6 +2087,7 @@ exports.createProviderCertification = `mutation CreateProviderCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -1963,6 +2136,7 @@ exports.updateProviderCertification = `mutation UpdateProviderCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1970,6 +2144,7 @@ exports.updateProviderCertification = `mutation UpdateProviderCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2018,6 +2193,7 @@ exports.deleteProviderCertification = `mutation DeleteProviderCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2025,6 +2201,7 @@ exports.deleteProviderCertification = `mutation DeleteProviderCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2067,6 +2244,7 @@ exports.createServiceVideo = `mutation CreateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2106,6 +2284,7 @@ exports.updateServiceVideo = `mutation UpdateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2145,6 +2324,7 @@ exports.deleteServiceVideo = `mutation DeleteServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2184,6 +2364,7 @@ exports.createServiceImage = `mutation CreateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2223,6 +2404,7 @@ exports.updateServiceImage = `mutation UpdateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2262,6 +2444,7 @@ exports.deleteServiceImage = `mutation DeleteServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2301,6 +2484,7 @@ exports.createServiceReview = `mutation CreateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2329,6 +2513,7 @@ exports.createServiceReview = `mutation CreateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2377,6 +2562,7 @@ exports.updateServiceReview = `mutation UpdateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2405,6 +2591,7 @@ exports.updateServiceReview = `mutation UpdateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2453,6 +2640,7 @@ exports.deleteServiceReview = `mutation DeleteServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2481,6 +2669,7 @@ exports.deleteServiceReview = `mutation DeleteServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2629,6 +2818,7 @@ exports.createCustomization = `mutation CreateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2683,6 +2873,7 @@ exports.updateCustomization = `mutation UpdateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2737,6 +2928,7 @@ exports.deleteCustomization = `mutation DeleteCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2790,6 +2982,7 @@ exports.createExpense = `mutation CreateExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2797,6 +2990,7 @@ exports.createExpense = `mutation CreateExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2845,6 +3039,7 @@ exports.updateExpense = `mutation UpdateExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2852,6 +3047,7 @@ exports.updateExpense = `mutation UpdateExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2900,6 +3096,7 @@ exports.deleteExpense = `mutation DeleteExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2907,6 +3104,7 @@ exports.deleteExpense = `mutation DeleteExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2956,6 +3154,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2990,6 +3189,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2997,6 +3197,7 @@ exports.createFavoriteProvider = `mutation CreateFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3044,6 +3245,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3078,6 +3280,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3085,6 +3288,7 @@ exports.updateFavoriteProvider = `mutation UpdateFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3132,6 +3336,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3166,6 +3371,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3173,6 +3379,7 @@ exports.deleteFavoriteProvider = `mutation DeleteFavoriteProvider(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3220,6 +3427,7 @@ exports.createUserHistory = `mutation CreateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3274,6 +3482,7 @@ exports.updateUserHistory = `mutation UpdateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3328,6 +3537,7 @@ exports.deleteUserHistory = `mutation DeleteUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3381,6 +3591,7 @@ exports.createProviderAward = `mutation CreateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3388,6 +3599,7 @@ exports.createProviderAward = `mutation CreateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3435,6 +3647,7 @@ exports.updateProviderAward = `mutation UpdateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3442,6 +3655,7 @@ exports.updateProviderAward = `mutation UpdateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3489,6 +3703,7 @@ exports.deleteProviderAward = `mutation DeleteProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3496,6 +3711,7 @@ exports.deleteProviderAward = `mutation DeleteProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3544,6 +3760,7 @@ exports.createReferral = `mutation CreateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3579,6 +3796,7 @@ exports.createReferral = `mutation CreateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3648,6 +3866,7 @@ exports.updateReferral = `mutation UpdateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3683,6 +3902,7 @@ exports.updateReferral = `mutation UpdateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3752,6 +3972,7 @@ exports.deleteReferral = `mutation DeleteReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3787,6 +4008,7 @@ exports.deleteReferral = `mutation DeleteReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3856,6 +4078,7 @@ exports.createTip = `mutation CreateTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3890,6 +4113,7 @@ exports.createTip = `mutation CreateTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3897,6 +4121,7 @@ exports.createTip = `mutation CreateTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3944,6 +4169,7 @@ exports.updateTip = `mutation UpdateTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3978,6 +4204,7 @@ exports.updateTip = `mutation UpdateTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3985,6 +4212,7 @@ exports.updateTip = `mutation UpdateTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4032,6 +4260,7 @@ exports.deleteTip = `mutation DeleteTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4066,6 +4295,7 @@ exports.deleteTip = `mutation DeleteTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4073,6 +4303,7 @@ exports.deleteTip = `mutation DeleteTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4120,6 +4351,7 @@ exports.createPaymentMethod = `mutation CreatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4132,6 +4364,8 @@ exports.createPaymentMethod = `mutation CreatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4174,6 +4408,7 @@ exports.updatePaymentMethod = `mutation UpdatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4186,6 +4421,8 @@ exports.updatePaymentMethod = `mutation UpdatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4228,6 +4465,7 @@ exports.deletePaymentMethod = `mutation DeletePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4240,6 +4478,8 @@ exports.deletePaymentMethod = `mutation DeletePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4282,6 +4522,7 @@ exports.createInvoice = `mutation CreateInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4316,6 +4557,7 @@ exports.createInvoice = `mutation CreateInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4323,6 +4565,7 @@ exports.createInvoice = `mutation CreateInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4377,6 +4620,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4411,6 +4655,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4418,6 +4663,7 @@ exports.updateInvoice = `mutation UpdateInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4472,6 +4718,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4506,6 +4753,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4513,6 +4761,7 @@ exports.deleteInvoice = `mutation DeleteInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4567,6 +4816,7 @@ exports.createContract = `mutation CreateContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4601,6 +4851,7 @@ exports.createContract = `mutation CreateContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4608,6 +4859,7 @@ exports.createContract = `mutation CreateContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4629,6 +4881,7 @@ exports.createContract = `mutation CreateContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4678,6 +4931,7 @@ exports.updateContract = `mutation UpdateContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4712,6 +4966,7 @@ exports.updateContract = `mutation UpdateContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4719,6 +4974,7 @@ exports.updateContract = `mutation UpdateContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4740,6 +4996,7 @@ exports.updateContract = `mutation UpdateContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4789,6 +5046,7 @@ exports.deleteContract = `mutation DeleteContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4823,6 +5081,7 @@ exports.deleteContract = `mutation DeleteContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4830,6 +5089,7 @@ exports.deleteContract = `mutation DeleteContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4851,6 +5111,7 @@ exports.deleteContract = `mutation DeleteContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -5107,6 +5368,7 @@ exports.createLoyaltyProgram = `mutation CreateLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5164,6 +5426,7 @@ exports.updateLoyaltyProgram = `mutation UpdateLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5221,6 +5484,7 @@ exports.deleteLoyaltyProgram = `mutation DeleteLoyaltyProgram(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5278,6 +5542,7 @@ exports.createVerification = `mutation CreateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5332,6 +5597,7 @@ exports.updateVerification = `mutation UpdateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5386,6 +5652,7 @@ exports.deleteVerification = `mutation DeleteVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5554,6 +5821,7 @@ exports.createReport = `mutation CreateReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5608,6 +5876,7 @@ exports.updateReport = `mutation UpdateReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5662,6 +5931,7 @@ exports.deleteReport = `mutation DeleteReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5716,6 +5986,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5750,6 +6021,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5757,6 +6029,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5778,6 +6051,7 @@ exports.createJobTracking = `mutation CreateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -5827,6 +6101,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5861,6 +6136,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5868,6 +6144,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5889,6 +6166,7 @@ exports.updateJobTracking = `mutation UpdateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -5938,6 +6216,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5972,6 +6251,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5979,6 +6259,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -6000,6 +6281,7 @@ exports.deleteJobTracking = `mutation DeleteJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -6049,6 +6331,7 @@ exports.createAIChatLog = `mutation CreateAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6116,6 +6399,7 @@ exports.updateAIChatLog = `mutation UpdateAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6183,6 +6467,7 @@ exports.deleteAIChatLog = `mutation DeleteAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7155,6 +7440,7 @@ exports.createReview = `mutation CreateReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7162,6 +7448,7 @@ exports.createReview = `mutation CreateReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7190,6 +7477,7 @@ exports.createReview = `mutation CreateReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7218,6 +7506,7 @@ exports.createReview = `mutation CreateReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7279,6 +7568,7 @@ exports.updateReview = `mutation UpdateReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7286,6 +7576,7 @@ exports.updateReview = `mutation UpdateReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7314,6 +7605,7 @@ exports.updateReview = `mutation UpdateReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7342,6 +7634,7 @@ exports.updateReview = `mutation UpdateReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7403,6 +7696,7 @@ exports.deleteReview = `mutation DeleteReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7410,6 +7704,7 @@ exports.deleteReview = `mutation DeleteReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7438,6 +7733,7 @@ exports.deleteReview = `mutation DeleteReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7466,6 +7762,7 @@ exports.deleteReview = `mutation DeleteReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7629,6 +7926,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7636,6 +7934,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7664,6 +7963,7 @@ exports.createMessageThread = `mutation CreateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7723,6 +8023,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7730,6 +8031,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7758,6 +8060,7 @@ exports.updateMessageThread = `mutation UpdateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7817,6 +8120,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7824,6 +8128,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7852,6 +8157,7 @@ exports.deleteMessageThread = `mutation DeleteMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8008,6 +8314,7 @@ exports.createBooking = `mutation CreateBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8035,6 +8342,7 @@ exports.createBooking = `mutation CreateBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8042,6 +8350,7 @@ exports.createBooking = `mutation CreateBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8070,6 +8379,7 @@ exports.createBooking = `mutation CreateBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8124,6 +8434,7 @@ exports.updateBooking = `mutation UpdateBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8151,6 +8462,7 @@ exports.updateBooking = `mutation UpdateBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8158,6 +8470,7 @@ exports.updateBooking = `mutation UpdateBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8186,6 +8499,7 @@ exports.updateBooking = `mutation UpdateBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8240,6 +8554,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8267,6 +8582,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8274,6 +8590,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8302,6 +8619,7 @@ exports.deleteBooking = `mutation DeleteBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8384,6 +8702,7 @@ exports.createTeamMember = `mutation CreateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8391,6 +8710,7 @@ exports.createTeamMember = `mutation CreateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8461,6 +8781,7 @@ exports.updateTeamMember = `mutation UpdateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8468,6 +8789,7 @@ exports.updateTeamMember = `mutation UpdateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8538,6 +8860,7 @@ exports.deleteTeamMember = `mutation DeleteTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8545,6 +8868,7 @@ exports.deleteTeamMember = `mutation DeleteTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8766,6 +9090,7 @@ exports.createService = `mutation CreateService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8773,6 +9098,7 @@ exports.createService = `mutation CreateService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -8922,6 +9248,18 @@ exports.createService = `mutation CreateService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -8931,6 +9269,7 @@ exports.createService = `mutation CreateService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -8969,6 +9308,7 @@ exports.updateService = `mutation UpdateService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8976,6 +9316,7 @@ exports.updateService = `mutation UpdateService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9125,6 +9466,18 @@ exports.updateService = `mutation UpdateService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9134,6 +9487,7 @@ exports.updateService = `mutation UpdateService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -9172,6 +9526,7 @@ exports.deleteService = `mutation DeleteService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9179,6 +9534,7 @@ exports.deleteService = `mutation DeleteService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9328,6 +9684,18 @@ exports.deleteService = `mutation DeleteService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9337,6 +9705,7 @@ exports.deleteService = `mutation DeleteService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -9497,6 +9866,19 @@ exports.createProvider = `mutation CreateProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9504,6 +9886,7 @@ exports.createProvider = `mutation CreateProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9664,6 +10047,19 @@ exports.updateProvider = `mutation UpdateProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9671,6 +10067,7 @@ exports.updateProvider = `mutation UpdateProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9831,6 +10228,19 @@ exports.deleteProvider = `mutation DeleteProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -9838,6 +10248,7 @@ exports.deleteProvider = `mutation DeleteProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -9875,6 +10286,7 @@ exports.createAvailability = `mutation CreateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9882,6 +10294,7 @@ exports.createAvailability = `mutation CreateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -9928,6 +10341,7 @@ exports.updateAvailability = `mutation UpdateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9935,6 +10349,7 @@ exports.updateAvailability = `mutation UpdateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -9981,6 +10396,7 @@ exports.deleteAvailability = `mutation DeleteAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9988,6 +10404,7 @@ exports.deleteAvailability = `mutation DeleteAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -10093,6 +10510,7 @@ exports.createCertification = `mutation CreateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10100,6 +10518,7 @@ exports.createCertification = `mutation CreateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10147,6 +10566,7 @@ exports.updateCertification = `mutation UpdateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10154,6 +10574,7 @@ exports.updateCertification = `mutation UpdateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10201,6 +10622,7 @@ exports.deleteCertification = `mutation DeleteCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10208,6 +10630,7 @@ exports.deleteCertification = `mutation DeleteCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10254,6 +10677,7 @@ exports.createQualification = `mutation CreateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10261,6 +10685,7 @@ exports.createQualification = `mutation CreateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10307,6 +10732,7 @@ exports.updateQualification = `mutation UpdateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10314,6 +10740,7 @@ exports.updateQualification = `mutation UpdateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10360,6 +10787,7 @@ exports.deleteQualification = `mutation DeleteQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10367,6 +10795,7 @@ exports.deleteQualification = `mutation DeleteQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10412,6 +10841,7 @@ exports.createSpecialization = `mutation CreateSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10419,6 +10849,7 @@ exports.createSpecialization = `mutation CreateSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10464,6 +10895,7 @@ exports.updateSpecialization = `mutation UpdateSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10471,6 +10903,7 @@ exports.updateSpecialization = `mutation UpdateSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10516,6 +10949,7 @@ exports.deleteSpecialization = `mutation DeleteSpecialization(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10523,6 +10957,7 @@ exports.deleteSpecialization = `mutation DeleteSpecialization(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10795,6 +11230,7 @@ exports.createUser = `mutation CreateUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -11006,6 +11442,7 @@ exports.updateUser = `mutation UpdateUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -11217,6 +11654,7 @@ exports.deleteUser = `mutation DeleteUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version

@@ -10,11 +10,10 @@ const MainCategoryController = {
     }
   },
   getTopMainCategories: async (req, res) => {
-    const { top } = req.params;
-    const topNumber = parseInt(top, 10);
+    const top = parseInt(req.query.Top, 10) || 5;
 
     try {
-      const categories = await MainCategoryService.getTopMainCategories(topNumber);
+      const categories = await MainCategoryService.getTopMainCategories(top);
       res.status(200).json(categories);
     } catch (error) {
       res.status(400).json({ message: error.message });

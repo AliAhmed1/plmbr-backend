@@ -3,11 +3,102 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listCustomizations = exports.getCustomization = exports.syncAIDiagnostics = exports.listAIDiagnostics = exports.getAIDiagnostics = exports.syncServiceReviews = exports.listServiceReviews = exports.getServiceReview = exports.syncServiceImages = exports.listServiceImages = exports.getServiceImage = exports.syncServiceVideos = exports.listServiceVideos = exports.getServiceVideo = exports.syncProviderCertifications = exports.listProviderCertifications = exports.getProviderCertification = exports.syncUserPreferences = exports.listUserPreferences = exports.getUserPreference = exports.syncProviderAvailabilities = exports.listProviderAvailabilities = exports.getProviderAvailability = exports.syncServiceDiscounts = exports.listServiceDiscounts = exports.getServiceDiscount = exports.syncUserNotifications = exports.listUserNotifications = exports.getUserNotification = exports.syncProviderNotifications = exports.listProviderNotifications = exports.getProviderNotification = exports.syncUserBookmarks = exports.listUserBookmarks = exports.getUserBookmark = exports.syncProviderBookmarks = exports.listProviderBookmarks = exports.getProviderBookmark = exports.syncUserInvoices = exports.listUserInvoices = exports.getUserInvoice = exports.syncUserReports = exports.listUserReports = exports.getUserReport = exports.syncProviderReports = exports.listProviderReports = exports.getProviderReport = exports.syncServicePromotions = exports.listServicePromotions = exports.getServicePromotion = void 0;
-exports.getReport = exports.syncPromoCodes = exports.listPromoCodes = exports.getPromoCode = exports.syncAnalytics = exports.listAnalytics = exports.getAnalytics = exports.syncVerifications = exports.listVerifications = exports.getVerification = exports.syncLoyaltyPrograms = exports.listLoyaltyPrograms = exports.getLoyaltyProgram = exports.syncRewards = exports.listRewards = exports.getReward = exports.syncServicePackages = exports.listServicePackages = exports.getServicePackage = exports.syncNicheServices = exports.listNicheServices = exports.getNicheService = exports.syncContracts = exports.listContracts = exports.getContract = exports.syncInvoices = exports.listInvoices = exports.getInvoice = exports.syncPaymentMethods = exports.listPaymentMethods = exports.getPaymentMethod = exports.syncTips = exports.listTips = exports.getTip = exports.syncReferrals = exports.listReferrals = exports.getReferral = exports.syncProviderAwards = exports.listProviderAwards = exports.getProviderAward = exports.syncUserHistories = exports.listUserHistories = exports.getUserHistory = exports.syncFavoriteProviders = exports.listFavoriteProviders = exports.getFavoriteProvider = exports.syncExpenses = exports.listExpenses = exports.getExpense = exports.syncCustomizations = void 0;
-exports.syncWallets = exports.listWallets = exports.getWallet = exports.syncEquipment = exports.listEquipment = exports.getEquipment = exports.syncFeedbacks = exports.listFeedbacks = exports.getFeedback = exports.syncServiceFAQS = exports.listServiceFAQS = exports.getServiceFAQ = exports.syncServiceTags = exports.listServiceTags = exports.getServiceTag = exports.syncServiceHighlights = exports.listServiceHighlights = exports.getServiceHighlight = exports.syncServiceVariants = exports.listServiceVariants = exports.getServiceVariant = exports.syncPortfolios = exports.listPortfolios = exports.getPortfolio = exports.syncProviderSettings = exports.listProviderSettings = exports.getProviderSettings = exports.syncUserSettings = exports.listUserSettings = exports.getUserSettings = exports.syncPLMBRSubscriptions = exports.listPLMBRSubscriptions = exports.getPLMBRSubscription = exports.syncSubCategories = exports.listSubCategories = exports.getSubCategory = exports.syncMainCategories = exports.listMainCategories = exports.getMainCategory = exports.syncAIChatBots = exports.listAIChatBots = exports.getAIChatBot = exports.syncAIChatLogs = exports.listAIChatLogs = exports.getAIChatLog = exports.syncJobTrackings = exports.listJobTrackings = exports.getJobTracking = exports.syncReports = exports.listReports = void 0;
-exports.listSpecializations = exports.getSpecialization = exports.syncQualifications = exports.listQualifications = exports.getQualification = exports.syncCertifications = exports.listCertifications = exports.getCertification = exports.syncProviderReviews = exports.listProviderReviews = exports.getProviderReview = exports.syncAvailabilities = exports.listAvailabilities = exports.getAvailability = exports.syncProviders = exports.listProviders = exports.getProvider = exports.syncServices = exports.listServices = exports.getService = exports.syncJobs = exports.listJobs = exports.getJob = exports.syncMessages = exports.listMessages = exports.getMessage = exports.syncLocations = exports.listLocations = exports.getLocation = exports.syncTeamMembers = exports.listTeamMembers = exports.getTeamMember = exports.syncBookings = exports.listBookings = exports.getBooking = exports.syncMessageContents = exports.listMessageContents = exports.getMessageContent = exports.syncMessageThreads = exports.listMessageThreads = exports.getMessageThread = exports.syncReviewResponses = exports.listReviewResponses = exports.getReviewResponse = exports.syncReviews = exports.listReviews = exports.getReview = exports.syncTransactions = exports.listTransactions = exports.getTransaction = void 0;
-exports.syncUsers = exports.listUsers = exports.getUser = exports.syncProviderHistories = exports.listProviderHistories = exports.getProviderHistory = exports.syncSpecializations = void 0;
+exports.listAIDiagnostics = exports.getAIDiagnostics = exports.syncServiceReviews = exports.listServiceReviews = exports.getServiceReview = exports.syncServiceImages = exports.listServiceImages = exports.getServiceImage = exports.syncServiceVideos = exports.listServiceVideos = exports.getServiceVideo = exports.syncProviderCertifications = exports.listProviderCertifications = exports.getProviderCertification = exports.syncUserPreferences = exports.listUserPreferences = exports.getUserPreference = exports.syncProviderAvailabilities = exports.listProviderAvailabilities = exports.getProviderAvailability = exports.syncServiceDiscounts = exports.listServiceDiscounts = exports.getServiceDiscount = exports.syncUserNotifications = exports.listUserNotifications = exports.getUserNotification = exports.syncProviderNotifications = exports.listProviderNotifications = exports.getProviderNotification = exports.syncUserBookmarks = exports.listUserBookmarks = exports.getUserBookmark = exports.syncProviderBookmarks = exports.listProviderBookmarks = exports.getProviderBookmark = exports.syncUserInvoices = exports.listUserInvoices = exports.getUserInvoice = exports.syncUserReports = exports.listUserReports = exports.getUserReport = exports.syncProviderReports = exports.listProviderReports = exports.getProviderReport = exports.syncServicePromotions = exports.listServicePromotions = exports.getServicePromotion = exports.syncTasks = exports.listTasks = exports.getTasks = void 0;
+exports.getPromoCode = exports.syncAnalytics = exports.listAnalytics = exports.getAnalytics = exports.syncVerifications = exports.listVerifications = exports.getVerification = exports.syncLoyaltyPrograms = exports.listLoyaltyPrograms = exports.getLoyaltyProgram = exports.syncRewards = exports.listRewards = exports.getReward = exports.syncServicePackages = exports.listServicePackages = exports.getServicePackage = exports.syncNicheServices = exports.listNicheServices = exports.getNicheService = exports.syncContracts = exports.listContracts = exports.getContract = exports.syncInvoices = exports.listInvoices = exports.getInvoice = exports.syncPaymentMethods = exports.listPaymentMethods = exports.getPaymentMethod = exports.syncTips = exports.listTips = exports.getTip = exports.syncReferrals = exports.listReferrals = exports.getReferral = exports.syncProviderAwards = exports.listProviderAwards = exports.getProviderAward = exports.syncUserHistories = exports.listUserHistories = exports.getUserHistory = exports.syncFavoriteProviders = exports.listFavoriteProviders = exports.getFavoriteProvider = exports.syncExpenses = exports.listExpenses = exports.getExpense = exports.syncCustomizations = exports.listCustomizations = exports.getCustomization = exports.syncAIDiagnostics = void 0;
+exports.syncEquipment = exports.listEquipment = exports.getEquipment = exports.syncFeedbacks = exports.listFeedbacks = exports.getFeedback = exports.syncServiceFAQS = exports.listServiceFAQS = exports.getServiceFAQ = exports.syncServiceTags = exports.listServiceTags = exports.getServiceTag = exports.syncServiceHighlights = exports.listServiceHighlights = exports.getServiceHighlight = exports.syncServiceVariants = exports.listServiceVariants = exports.getServiceVariant = exports.syncPortfolios = exports.listPortfolios = exports.getPortfolio = exports.syncProviderSettings = exports.listProviderSettings = exports.getProviderSettings = exports.syncUserSettings = exports.listUserSettings = exports.getUserSettings = exports.syncPLMBRSubscriptions = exports.listPLMBRSubscriptions = exports.getPLMBRSubscription = exports.syncSubCategories = exports.listSubCategories = exports.getSubCategory = exports.syncMainCategories = exports.listMainCategories = exports.getMainCategory = exports.syncAIChatBots = exports.listAIChatBots = exports.getAIChatBot = exports.syncAIChatLogs = exports.listAIChatLogs = exports.getAIChatLog = exports.syncJobTrackings = exports.listJobTrackings = exports.getJobTracking = exports.syncReports = exports.listReports = exports.getReport = exports.syncPromoCodes = exports.listPromoCodes = void 0;
+exports.listQualifications = exports.getQualification = exports.syncCertifications = exports.listCertifications = exports.getCertification = exports.syncProviderReviews = exports.listProviderReviews = exports.getProviderReview = exports.syncAvailabilities = exports.listAvailabilities = exports.getAvailability = exports.syncProviders = exports.listProviders = exports.getProvider = exports.syncServices = exports.listServices = exports.getService = exports.syncJobs = exports.listJobs = exports.getJob = exports.syncMessages = exports.listMessages = exports.getMessage = exports.syncLocations = exports.listLocations = exports.getLocation = exports.syncTeamMembers = exports.listTeamMembers = exports.getTeamMember = exports.syncBookings = exports.listBookings = exports.getBooking = exports.syncMessageContents = exports.listMessageContents = exports.getMessageContent = exports.syncMessageThreads = exports.listMessageThreads = exports.getMessageThread = exports.syncReviewResponses = exports.listReviewResponses = exports.getReviewResponse = exports.syncReviews = exports.listReviews = exports.getReview = exports.syncTransactions = exports.listTransactions = exports.getTransaction = exports.syncWallets = exports.listWallets = exports.getWallet = void 0;
+exports.syncUsers = exports.listUsers = exports.getUser = exports.syncProviderHistories = exports.listProviderHistories = exports.getProviderHistory = exports.syncSpecializations = exports.listSpecializations = exports.getSpecialization = exports.syncQualifications = void 0;
+exports.getTasks = `query GetTasks($id: ID!) {
+  getTasks(id: $id) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+`;
+exports.listTasks = `query ListTasks(
+  $filter: ModelTasksFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+`;
+exports.syncTasks = `query SyncTasks(
+  $filter: ModelTasksFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTasks(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+`;
 exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
   getServicePromotion(id: $id) {
     id
@@ -30,6 +121,7 @@ exports.getServicePromotion = `query GetServicePromotion($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -132,6 +224,7 @@ exports.getProviderReport = `query GetProviderReport($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -139,6 +232,7 @@ exports.getProviderReport = `query GetProviderReport($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -239,6 +333,7 @@ exports.getUserReport = `query GetUserReport($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -346,6 +441,7 @@ exports.getUserInvoice = `query GetUserInvoice($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -458,6 +554,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -465,6 +562,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -493,6 +591,7 @@ exports.getProviderBookmark = `query GetProviderBookmark($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -600,6 +699,7 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -628,6 +728,7 @@ exports.getUserBookmark = `query GetUserBookmark($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -724,6 +825,7 @@ exports.getProviderNotification = `query GetProviderNotification($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -731,6 +833,7 @@ exports.getProviderNotification = `query GetProviderNotification($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -838,6 +941,7 @@ exports.getUserNotification = `query GetUserNotification($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -941,6 +1045,7 @@ exports.getServiceDiscount = `query GetServiceDiscount($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1040,6 +1145,7 @@ exports.getProviderAvailability = `query GetProviderAvailability($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1047,6 +1153,7 @@ exports.getProviderAvailability = `query GetProviderAvailability($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1154,6 +1261,7 @@ exports.getUserPreference = `query GetUserPreference($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1260,6 +1368,7 @@ exports.getProviderCertification = `query GetProviderCertification($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1267,6 +1376,7 @@ exports.getProviderCertification = `query GetProviderCertification($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -1370,6 +1480,7 @@ exports.getServiceVideo = `query GetServiceVideo($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -1460,6 +1571,7 @@ exports.getServiceImage = `query GetServiceImage($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -1550,6 +1662,7 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -1578,6 +1691,7 @@ exports.getServiceReview = `query GetServiceReview($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1772,6 +1886,7 @@ exports.getCustomization = `query GetCustomization($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1878,6 +1993,7 @@ exports.getExpense = `query GetExpense($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1885,6 +2001,7 @@ exports.getExpense = `query GetExpense($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -1991,6 +2108,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2025,6 +2143,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2032,6 +2151,7 @@ exports.getFavoriteProvider = `query GetFavoriteProvider($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -2132,6 +2252,7 @@ exports.getUserHistory = `query GetUserHistory($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2238,6 +2359,7 @@ exports.getProviderAward = `query GetProviderAward($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2245,6 +2367,7 @@ exports.getProviderAward = `query GetProviderAward($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -2348,6 +2471,7 @@ exports.getReferral = `query GetReferral($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2383,6 +2507,7 @@ exports.getReferral = `query GetReferral($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2507,6 +2632,7 @@ exports.getTip = `query GetTip($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2541,6 +2667,7 @@ exports.getTip = `query GetTip($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2548,6 +2675,7 @@ exports.getTip = `query GetTip($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2644,6 +2772,7 @@ exports.getPaymentMethod = `query GetPaymentMethod($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2656,6 +2785,8 @@ exports.getPaymentMethod = `query GetPaymentMethod($id: ID!) {
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -2677,6 +2808,8 @@ exports.listPaymentMethods = `query ListPaymentMethods(
       cardNumber
       expiryDate
       cardType
+      stripeCustomerId
+      stripeCardId
       createdAt
       updatedAt
       _version
@@ -2708,6 +2841,8 @@ exports.syncPaymentMethods = `query SyncPaymentMethods(
       cardNumber
       expiryDate
       cardType
+      stripeCustomerId
+      stripeCardId
       createdAt
       updatedAt
       _version
@@ -2751,6 +2886,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2785,6 +2921,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2792,6 +2929,7 @@ exports.getInvoice = `query GetInvoice($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -2903,6 +3041,7 @@ exports.getContract = `query GetContract($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2937,6 +3076,7 @@ exports.getContract = `query GetContract($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2944,6 +3084,7 @@ exports.getContract = `query GetContract($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -2965,6 +3106,7 @@ exports.getContract = `query GetContract($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -3293,6 +3435,7 @@ exports.getLoyaltyProgram = `query GetLoyaltyProgram($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3399,6 +3542,7 @@ exports.getVerification = `query GetVerification($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3650,6 +3794,7 @@ exports.getReport = `query GetReport($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3757,6 +3902,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3791,6 +3937,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3798,6 +3945,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -3819,6 +3967,7 @@ exports.getJobTracking = `query GetJobTracking($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -3925,6 +4074,7 @@ exports.getAIChatLog = `query GetAIChatLog($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5083,6 +5233,7 @@ exports.getReview = `query GetReview($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5090,6 +5241,7 @@ exports.getReview = `query GetReview($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -5118,6 +5270,7 @@ exports.getReview = `query GetReview($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5146,6 +5299,7 @@ exports.getReview = `query GetReview($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -5351,6 +5505,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5358,6 +5513,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -5386,6 +5542,7 @@ exports.getMessageThread = `query GetMessageThread($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5584,6 +5741,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -5611,6 +5769,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5618,6 +5777,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -5646,6 +5806,7 @@ exports.getBooking = `query GetBooking($id: ID!) {
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5795,6 +5956,7 @@ exports.getTeamMember = `query GetTeamMember($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5802,6 +5964,7 @@ exports.getTeamMember = `query GetTeamMember($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -6121,6 +6284,7 @@ exports.getService = `query GetService($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6128,6 +6292,7 @@ exports.getService = `query GetService($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -6277,6 +6442,18 @@ exports.getService = `query GetService($id: ID!) {
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -6286,6 +6463,7 @@ exports.getService = `query GetService($id: ID!) {
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -6315,6 +6493,7 @@ exports.listServices = `query ListServices(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     nextToken
@@ -6354,6 +6533,7 @@ exports.syncServices = `query SyncServices(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     nextToken
@@ -6515,6 +6695,19 @@ exports.getProvider = `query GetProvider($id: ID!) {
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -6522,6 +6715,7 @@ exports.getProvider = `query GetProvider($id: ID!) {
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -6557,6 +6751,7 @@ exports.listProviders = `query ListProviders(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6564,6 +6759,7 @@ exports.listProviders = `query ListProviders(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     nextToken
@@ -6609,6 +6805,7 @@ exports.syncProviders = `query SyncProviders(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6616,6 +6813,7 @@ exports.syncProviders = `query SyncProviders(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     nextToken
@@ -6654,6 +6852,7 @@ exports.getAvailability = `query GetAvailability($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6661,6 +6860,7 @@ exports.getAvailability = `query GetAvailability($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -6834,6 +7034,7 @@ exports.getCertification = `query GetCertification($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6841,6 +7042,7 @@ exports.getCertification = `query GetCertification($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -6942,6 +7144,7 @@ exports.getQualification = `query GetQualification($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6949,6 +7152,7 @@ exports.getQualification = `query GetQualification($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -7047,6 +7251,7 @@ exports.getSpecialization = `query GetSpecialization($id: ID!) {
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7054,6 +7259,7 @@ exports.getSpecialization = `query GetSpecialization($id: ID!) {
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -7392,6 +7598,7 @@ exports.getUser = `query GetUser($id: ID!) {
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -7435,6 +7642,7 @@ exports.listUsers = `query ListUsers(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7488,6 +7696,7 @@ exports.syncUsers = `query SyncUsers(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version

@@ -1,5 +1,93 @@
 export const schema = {
     "models": {
+        "Tasks": {
+            "name": "Tasks",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "taskName": {
+                    "name": "taskName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "taskTime": {
+                    "name": "taskTime",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "Service": {
+                    "name": "Service",
+                    "isArray": false,
+                    "type": {
+                        "model": "Service"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "tasksServiceId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "tasksServiceId": {
+                    "name": "tasksServiceId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "Tasks",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "ServicePromotion": {
             "name": "ServicePromotion",
             "fields": {
@@ -2573,6 +2661,20 @@ export const schema = {
                     "type": {
                         "enum": "CardType"
                     },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "stripeCustomerId": {
+                    "name": "stripeCustomerId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "stripeCardId": {
+                    "name": "stripeCardId",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -6622,6 +6724,24 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "Tasks": {
+                    "name": "Tasks",
+                    "isArray": false,
+                    "type": {
+                        "model": "Tasks"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": [
+                            "id"
+                        ],
+                        "targetNames": [
+                            "serviceTasksId"
+                        ]
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -6661,6 +6781,13 @@ export const schema = {
                 },
                 "providerServicesOfferedId": {
                     "name": "providerServicesOfferedId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "serviceTasksId": {
+                    "name": "serviceTasksId",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -7273,6 +7400,31 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "Tasks": {
+                    "name": "Tasks",
+                    "isArray": false,
+                    "type": {
+                        "model": "Tasks"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": [
+                            "id"
+                        ],
+                        "targetNames": [
+                            "providerTasksId"
+                        ]
+                    }
+                },
+                "isEmailVerified": {
+                    "name": "isEmailVerified",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -7298,6 +7450,13 @@ export const schema = {
                 },
                 "providerCurrentLocationId": {
                     "name": "providerCurrentLocationId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "providerTasksId": {
+                    "name": "providerTasksId",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -8578,6 +8737,13 @@ export const schema = {
                         ]
                     }
                 },
+                "isEmailVerified": {
+                    "name": "isEmailVerified",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -8749,5 +8915,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "cfcaa4b7123f0a85da5207e28a73e461"
+    "version": "182662dd002e48b1d46dcdb650bc4583"
 };

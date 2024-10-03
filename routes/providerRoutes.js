@@ -11,5 +11,6 @@ router.post('/instantProviders', ProviderController.getInstantProviders);
 router.post('/getallProviders', ProviderController.getAllProviders);
 router.get('/providers', ProviderController.getAllProvidersWithoutFilter);
 router.post('/setInstantProvider/:providerId', ProviderController.toggleInstantBooking);
+router.get('/provider', ProviderController.getProvider);
 
 module.exports = router;

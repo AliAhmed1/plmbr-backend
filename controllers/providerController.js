@@ -1,6 +1,26 @@
 const ProviderService = require('../services/providerService');
 
 const ProviderController = {
+  getProvider : async (req, res) => {
+    try {
+      const { id, email } = req.query;
+      // Check if the query contains 'id' or 'email'
+      let provider;
+      if (id) {
+        provider = await ProviderService.getProviderById(id); // Get provider by ID
+      } else if (email) {
+        provider = await ProviderService.getProviderByEmail(email); // Get provider by email
+      } else {
+        return res.status(400).json({ message: 'Please provide an id or email.' });
+      }
+      if (!provider) {
+        return res.status(404).json({ message: 'Provider not found.' });
+      }
+      return res.status(200).json(provider);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  },
   createProvider: async (req, res) => {
     try {
       const provider = await ProviderService.createProvider(req.body);

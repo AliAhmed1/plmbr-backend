@@ -8,6 +8,135 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
+export const createTasks = /* GraphQL */ `mutation CreateTasks(
+  $input: CreateTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  createTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTasksMutationVariables,
+  APITypes.CreateTasksMutation
+>;
+export const updateTasks = /* GraphQL */ `mutation UpdateTasks(
+  $input: UpdateTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  updateTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTasksMutationVariables,
+  APITypes.UpdateTasksMutation
+>;
+export const deleteTasks = /* GraphQL */ `mutation DeleteTasks(
+  $input: DeleteTasksInput!
+  $condition: ModelTasksConditionInput
+) {
+  deleteTasks(input: $input, condition: $condition) {
+    id
+    taskName
+    taskTime
+    Service {
+      id
+      name
+      description
+      price_min
+      duration
+      Materials
+      MaterialCosts
+      BookingRequirements
+      price_max
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      invoiceServicesId
+      servicePackageServicesId
+      subCategoryServicesId
+      providerServicesOfferedId
+      serviceTasksId
+      __typename
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    tasksServiceId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTasksMutationVariables,
+  APITypes.DeleteTasksMutation
+>;
 export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromotion(
   $input: CreateServicePromotionInput!
   $condition: ModelServicePromotionConditionInput
@@ -33,6 +162,7 @@ export const createServicePromotion = /* GraphQL */ `mutation CreateServicePromo
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -77,6 +207,7 @@ export const updateServicePromotion = /* GraphQL */ `mutation UpdateServicePromo
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -121,6 +252,7 @@ export const deleteServicePromotion = /* GraphQL */ `mutation DeleteServicePromo
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     description
@@ -171,6 +303,7 @@ export const createProviderReport = /* GraphQL */ `mutation CreateProviderReport
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -178,6 +311,7 @@ export const createProviderReport = /* GraphQL */ `mutation CreateProviderReport
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -227,6 +361,7 @@ export const updateProviderReport = /* GraphQL */ `mutation UpdateProviderReport
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -234,6 +369,7 @@ export const updateProviderReport = /* GraphQL */ `mutation UpdateProviderReport
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -283,6 +419,7 @@ export const deleteProviderReport = /* GraphQL */ `mutation DeleteProviderReport
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -290,6 +427,7 @@ export const deleteProviderReport = /* GraphQL */ `mutation DeleteProviderReport
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     description
@@ -340,6 +478,7 @@ export const createUserReport = /* GraphQL */ `mutation CreateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -397,6 +536,7 @@ export const updateUserReport = /* GraphQL */ `mutation UpdateUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -454,6 +594,7 @@ export const deleteUserReport = /* GraphQL */ `mutation DeleteUserReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -511,6 +652,7 @@ export const createUserInvoice = /* GraphQL */ `mutation CreateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -570,6 +712,7 @@ export const updateUserInvoice = /* GraphQL */ `mutation UpdateUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -629,6 +772,7 @@ export const deleteUserInvoice = /* GraphQL */ `mutation DeleteUserInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -687,6 +831,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -694,6 +839,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -722,6 +868,7 @@ export const createProviderBookmark = /* GraphQL */ `mutation CreateProviderBook
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -778,6 +925,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -785,6 +933,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -813,6 +962,7 @@ export const updateProviderBookmark = /* GraphQL */ `mutation UpdateProviderBook
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -869,6 +1019,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -876,6 +1027,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -904,6 +1056,7 @@ export const deleteProviderBookmark = /* GraphQL */ `mutation DeleteProviderBook
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -961,6 +1114,7 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -989,6 +1143,7 @@ export const createUserBookmark = /* GraphQL */ `mutation CreateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1038,6 +1193,7 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1066,6 +1222,7 @@ export const updateUserBookmark = /* GraphQL */ `mutation UpdateUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1115,6 +1272,7 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1143,6 +1301,7 @@ export const deleteUserBookmark = /* GraphQL */ `mutation DeleteUserBookmark(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     dateBookmarked
@@ -1191,6 +1350,7 @@ export const createProviderNotification = /* GraphQL */ `mutation CreateProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1198,6 +1358,7 @@ export const createProviderNotification = /* GraphQL */ `mutation CreateProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1248,6 +1409,7 @@ export const updateProviderNotification = /* GraphQL */ `mutation UpdateProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1255,6 +1417,7 @@ export const updateProviderNotification = /* GraphQL */ `mutation UpdateProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1305,6 +1468,7 @@ export const deleteProviderNotification = /* GraphQL */ `mutation DeleteProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1312,6 +1476,7 @@ export const deleteProviderNotification = /* GraphQL */ `mutation DeleteProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     content
@@ -1363,6 +1528,7 @@ export const createUserNotification = /* GraphQL */ `mutation CreateUserNotifica
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1421,6 +1587,7 @@ export const updateUserNotification = /* GraphQL */ `mutation UpdateUserNotifica
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1479,6 +1646,7 @@ export const deleteUserNotification = /* GraphQL */ `mutation DeleteUserNotifica
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1530,6 +1698,7 @@ export const createServiceDiscount = /* GraphQL */ `mutation CreateServiceDiscou
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1573,6 +1742,7 @@ export const updateServiceDiscount = /* GraphQL */ `mutation UpdateServiceDiscou
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1616,6 +1786,7 @@ export const deleteServiceDiscount = /* GraphQL */ `mutation DeleteServiceDiscou
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     discountPercentage
@@ -1665,6 +1836,7 @@ export const createProviderAvailability = /* GraphQL */ `mutation CreateProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1672,6 +1844,7 @@ export const createProviderAvailability = /* GraphQL */ `mutation CreateProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1722,6 +1895,7 @@ export const updateProviderAvailability = /* GraphQL */ `mutation UpdateProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1729,6 +1903,7 @@ export const updateProviderAvailability = /* GraphQL */ `mutation UpdateProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1779,6 +1954,7 @@ export const deleteProviderAvailability = /* GraphQL */ `mutation DeleteProvider
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1786,6 +1962,7 @@ export const deleteProviderAvailability = /* GraphQL */ `mutation DeleteProvider
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     startDate
@@ -1837,6 +2014,7 @@ export const createUserPreference = /* GraphQL */ `mutation CreateUserPreference
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1894,6 +2072,7 @@ export const updateUserPreference = /* GraphQL */ `mutation UpdateUserPreference
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -1951,6 +2130,7 @@ export const deleteUserPreference = /* GraphQL */ `mutation DeleteUserPreference
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2007,6 +2187,7 @@ export const createProviderCertification = /* GraphQL */ `mutation CreateProvide
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2014,6 +2195,7 @@ export const createProviderCertification = /* GraphQL */ `mutation CreateProvide
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2065,6 +2247,7 @@ export const updateProviderCertification = /* GraphQL */ `mutation UpdateProvide
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2072,6 +2255,7 @@ export const updateProviderCertification = /* GraphQL */ `mutation UpdateProvide
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2123,6 +2307,7 @@ export const deleteProviderCertification = /* GraphQL */ `mutation DeleteProvide
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2130,6 +2315,7 @@ export const deleteProviderCertification = /* GraphQL */ `mutation DeleteProvide
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     certificationName
@@ -2175,6 +2361,7 @@ export const createServiceVideo = /* GraphQL */ `mutation CreateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2217,6 +2404,7 @@ export const updateServiceVideo = /* GraphQL */ `mutation UpdateServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2259,6 +2447,7 @@ export const deleteServiceVideo = /* GraphQL */ `mutation DeleteServiceVideo(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     videoURL
@@ -2301,6 +2490,7 @@ export const createServiceImage = /* GraphQL */ `mutation CreateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2343,6 +2533,7 @@ export const updateServiceImage = /* GraphQL */ `mutation UpdateServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2385,6 +2576,7 @@ export const deleteServiceImage = /* GraphQL */ `mutation DeleteServiceImage(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     imageURL
@@ -2427,6 +2619,7 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2455,6 +2648,7 @@ export const createServiceReview = /* GraphQL */ `mutation CreateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2506,6 +2700,7 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2534,6 +2729,7 @@ export const updateServiceReview = /* GraphQL */ `mutation UpdateServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2585,6 +2781,7 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     user {
@@ -2613,6 +2810,7 @@ export const deleteServiceReview = /* GraphQL */ `mutation DeleteServiceReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2773,6 +2971,7 @@ export const createCustomization = /* GraphQL */ `mutation CreateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2830,6 +3029,7 @@ export const updateCustomization = /* GraphQL */ `mutation UpdateCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2887,6 +3087,7 @@ export const deleteCustomization = /* GraphQL */ `mutation DeleteCustomization(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2943,6 +3144,7 @@ export const createExpense = /* GraphQL */ `mutation CreateExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -2950,6 +3152,7 @@ export const createExpense = /* GraphQL */ `mutation CreateExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3001,6 +3204,7 @@ export const updateExpense = /* GraphQL */ `mutation UpdateExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3008,6 +3212,7 @@ export const updateExpense = /* GraphQL */ `mutation UpdateExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3059,6 +3264,7 @@ export const deleteExpense = /* GraphQL */ `mutation DeleteExpense(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3066,6 +3272,7 @@ export const deleteExpense = /* GraphQL */ `mutation DeleteExpense(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -3118,6 +3325,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3152,6 +3360,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3159,6 +3368,7 @@ export const createFavoriteProvider = /* GraphQL */ `mutation CreateFavoriteProv
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3209,6 +3419,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3243,6 +3454,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3250,6 +3462,7 @@ export const updateFavoriteProvider = /* GraphQL */ `mutation UpdateFavoriteProv
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3300,6 +3513,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3334,6 +3548,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3341,6 +3556,7 @@ export const deleteFavoriteProvider = /* GraphQL */ `mutation DeleteFavoriteProv
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     dateAdded
@@ -3391,6 +3607,7 @@ export const createUserHistory = /* GraphQL */ `mutation CreateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3448,6 +3665,7 @@ export const updateUserHistory = /* GraphQL */ `mutation UpdateUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3505,6 +3723,7 @@ export const deleteUserHistory = /* GraphQL */ `mutation DeleteUserHistory(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3561,6 +3780,7 @@ export const createProviderAward = /* GraphQL */ `mutation CreateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3568,6 +3788,7 @@ export const createProviderAward = /* GraphQL */ `mutation CreateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3618,6 +3839,7 @@ export const updateProviderAward = /* GraphQL */ `mutation UpdateProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3625,6 +3847,7 @@ export const updateProviderAward = /* GraphQL */ `mutation UpdateProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3675,6 +3898,7 @@ export const deleteProviderAward = /* GraphQL */ `mutation DeleteProviderAward(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3682,6 +3906,7 @@ export const deleteProviderAward = /* GraphQL */ `mutation DeleteProviderAward(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     awardName
@@ -3733,6 +3958,7 @@ export const createReferral = /* GraphQL */ `mutation CreateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3768,6 +3994,7 @@ export const createReferral = /* GraphQL */ `mutation CreateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3840,6 +4067,7 @@ export const updateReferral = /* GraphQL */ `mutation UpdateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3875,6 +4103,7 @@ export const updateReferral = /* GraphQL */ `mutation UpdateReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3947,6 +4176,7 @@ export const deleteReferral = /* GraphQL */ `mutation DeleteReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -3982,6 +4212,7 @@ export const deleteReferral = /* GraphQL */ `mutation DeleteReferral(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4054,6 +4285,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4088,6 +4320,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4095,6 +4328,7 @@ export const createTip = /* GraphQL */ `mutation CreateTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4145,6 +4379,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4179,6 +4414,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4186,6 +4422,7 @@ export const updateTip = /* GraphQL */ `mutation UpdateTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4236,6 +4473,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4270,6 +4508,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4277,6 +4516,7 @@ export const deleteTip = /* GraphQL */ `mutation DeleteTip(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4327,6 +4567,7 @@ export const createPaymentMethod = /* GraphQL */ `mutation CreatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4339,6 +4580,8 @@ export const createPaymentMethod = /* GraphQL */ `mutation CreatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4384,6 +4627,7 @@ export const updatePaymentMethod = /* GraphQL */ `mutation UpdatePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4396,6 +4640,8 @@ export const updatePaymentMethod = /* GraphQL */ `mutation UpdatePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4441,6 +4687,7 @@ export const deletePaymentMethod = /* GraphQL */ `mutation DeletePaymentMethod(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4453,6 +4700,8 @@ export const deletePaymentMethod = /* GraphQL */ `mutation DeletePaymentMethod(
     cardNumber
     expiryDate
     cardType
+    stripeCustomerId
+    stripeCardId
     createdAt
     updatedAt
     _version
@@ -4498,6 +4747,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4532,6 +4782,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4539,6 +4790,7 @@ export const createInvoice = /* GraphQL */ `mutation CreateInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4596,6 +4848,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4630,6 +4883,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4637,6 +4891,7 @@ export const updateInvoice = /* GraphQL */ `mutation UpdateInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4694,6 +4949,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4728,6 +4984,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4735,6 +4992,7 @@ export const deleteInvoice = /* GraphQL */ `mutation DeleteInvoice(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     amount
@@ -4792,6 +5050,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4826,6 +5085,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4833,6 +5093,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4854,6 +5115,7 @@ export const createContract = /* GraphQL */ `mutation CreateContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -4906,6 +5168,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4940,6 +5203,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -4947,6 +5211,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -4968,6 +5233,7 @@ export const updateContract = /* GraphQL */ `mutation UpdateContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -5020,6 +5286,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5054,6 +5321,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5061,6 +5329,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -5082,6 +5351,7 @@ export const deleteContract = /* GraphQL */ `mutation DeleteContract(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     startDate
@@ -5368,6 +5638,7 @@ export const createLoyaltyProgram = /* GraphQL */ `mutation CreateLoyaltyProgram
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5428,6 +5699,7 @@ export const updateLoyaltyProgram = /* GraphQL */ `mutation UpdateLoyaltyProgram
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5488,6 +5760,7 @@ export const deleteLoyaltyProgram = /* GraphQL */ `mutation DeleteLoyaltyProgram
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5548,6 +5821,7 @@ export const createVerification = /* GraphQL */ `mutation CreateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5605,6 +5879,7 @@ export const updateVerification = /* GraphQL */ `mutation UpdateVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5662,6 +5937,7 @@ export const deleteVerification = /* GraphQL */ `mutation DeleteVerification(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5851,6 +6127,7 @@ export const createReport = /* GraphQL */ `mutation CreateReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5908,6 +6185,7 @@ export const updateReport = /* GraphQL */ `mutation UpdateReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -5965,6 +6243,7 @@ export const deleteReport = /* GraphQL */ `mutation DeleteReport(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6022,6 +6301,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6056,6 +6336,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6063,6 +6344,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -6084,6 +6366,7 @@ export const createJobTracking = /* GraphQL */ `mutation CreateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -6136,6 +6419,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6170,6 +6454,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6177,6 +6462,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -6198,6 +6484,7 @@ export const updateJobTracking = /* GraphQL */ `mutation UpdateJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -6250,6 +6537,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6284,6 +6572,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6291,6 +6580,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     service {
@@ -6312,6 +6602,7 @@ export const deleteJobTracking = /* GraphQL */ `mutation DeleteJobTracking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     status
@@ -6364,6 +6655,7 @@ export const createAIChatLog = /* GraphQL */ `mutation CreateAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6434,6 +6726,7 @@ export const updateAIChatLog = /* GraphQL */ `mutation UpdateAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -6504,6 +6797,7 @@ export const deleteAIChatLog = /* GraphQL */ `mutation DeleteAIChatLog(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7614,6 +7908,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7621,6 +7916,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7649,6 +7945,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7677,6 +7974,7 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7741,6 +8039,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7748,6 +8047,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7776,6 +8076,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7804,6 +8105,7 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -7868,6 +8170,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7875,6 +8178,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -7903,6 +8207,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -7931,6 +8236,7 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     rating
@@ -8106,6 +8412,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8113,6 +8420,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8141,6 +8449,7 @@ export const createMessageThread = /* GraphQL */ `mutation CreateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8203,6 +8512,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8210,6 +8520,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8238,6 +8549,7 @@ export const updateMessageThread = /* GraphQL */ `mutation UpdateMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8300,6 +8612,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8307,6 +8620,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8335,6 +8649,7 @@ export const deleteMessageThread = /* GraphQL */ `mutation DeleteMessageThread(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8503,6 +8818,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8530,6 +8846,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8537,6 +8854,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8565,6 +8883,7 @@ export const createBooking = /* GraphQL */ `mutation CreateBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8622,6 +8941,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8649,6 +8969,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8656,6 +8977,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8684,6 +9006,7 @@ export const updateBooking = /* GraphQL */ `mutation UpdateBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8741,6 +9064,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       servicePackageServicesId
       subCategoryServicesId
       providerServicesOfferedId
+      serviceTasksId
       __typename
     }
     provider {
@@ -8768,6 +9092,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8775,6 +9100,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     user {
@@ -8803,6 +9129,7 @@ export const deleteBooking = /* GraphQL */ `mutation DeleteBooking(
       chatbotRequests
       preferredContactTime
       serviceInterestedIn
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8888,6 +9215,7 @@ export const createTeamMember = /* GraphQL */ `mutation CreateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8895,6 +9223,7 @@ export const createTeamMember = /* GraphQL */ `mutation CreateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -8968,6 +9297,7 @@ export const updateTeamMember = /* GraphQL */ `mutation UpdateTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -8975,6 +9305,7 @@ export const updateTeamMember = /* GraphQL */ `mutation UpdateTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9048,6 +9379,7 @@ export const deleteTeamMember = /* GraphQL */ `mutation DeleteTeamMember(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9055,6 +9387,7 @@ export const deleteTeamMember = /* GraphQL */ `mutation DeleteTeamMember(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -9306,6 +9639,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9313,6 +9647,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9462,6 +9797,18 @@ export const createService = /* GraphQL */ `mutation CreateService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9471,6 +9818,7 @@ export const createService = /* GraphQL */ `mutation CreateService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -9512,6 +9860,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9519,6 +9868,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9668,6 +10018,18 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9677,6 +10039,7 @@ export const updateService = /* GraphQL */ `mutation UpdateService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -9718,6 +10081,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -9725,6 +10089,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     reviews {
@@ -9874,6 +10239,18 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     MaterialCosts
     BookingRequirements
     price_max
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
     createdAt
     updatedAt
     _version
@@ -9883,6 +10260,7 @@ export const deleteService = /* GraphQL */ `mutation DeleteService(
     servicePackageServicesId
     subCategoryServicesId
     providerServicesOfferedId
+    serviceTasksId
     __typename
   }
 }
@@ -10046,6 +10424,19 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -10053,6 +10444,7 @@ export const createProvider = /* GraphQL */ `mutation CreateProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -10216,6 +10608,19 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -10223,6 +10628,7 @@ export const updateProvider = /* GraphQL */ `mutation UpdateProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -10386,6 +10792,19 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
       __typename
     }
     isInstantBookingAvailable
+    Tasks {
+      id
+      taskName
+      taskTime
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      tasksServiceId
+      __typename
+    }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -10393,6 +10812,7 @@ export const deleteProvider = /* GraphQL */ `mutation DeleteProvider(
     _lastChangedAt
     nicheServiceProvidersId
     providerCurrentLocationId
+    providerTasksId
     __typename
   }
 }
@@ -10433,6 +10853,7 @@ export const createAvailability = /* GraphQL */ `mutation CreateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10440,6 +10861,7 @@ export const createAvailability = /* GraphQL */ `mutation CreateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -10489,6 +10911,7 @@ export const updateAvailability = /* GraphQL */ `mutation UpdateAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10496,6 +10919,7 @@ export const updateAvailability = /* GraphQL */ `mutation UpdateAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -10545,6 +10969,7 @@ export const deleteAvailability = /* GraphQL */ `mutation DeleteAvailability(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10552,6 +10977,7 @@ export const deleteAvailability = /* GraphQL */ `mutation DeleteAvailability(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     avalabilityDate
@@ -10669,6 +11095,7 @@ export const createCertification = /* GraphQL */ `mutation CreateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10676,6 +11103,7 @@ export const createCertification = /* GraphQL */ `mutation CreateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10726,6 +11154,7 @@ export const updateCertification = /* GraphQL */ `mutation UpdateCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10733,6 +11162,7 @@ export const updateCertification = /* GraphQL */ `mutation UpdateCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10783,6 +11213,7 @@ export const deleteCertification = /* GraphQL */ `mutation DeleteCertification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10790,6 +11221,7 @@ export const deleteCertification = /* GraphQL */ `mutation DeleteCertification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10839,6 +11271,7 @@ export const createQualification = /* GraphQL */ `mutation CreateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10846,6 +11279,7 @@ export const createQualification = /* GraphQL */ `mutation CreateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10895,6 +11329,7 @@ export const updateQualification = /* GraphQL */ `mutation UpdateQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10902,6 +11337,7 @@ export const updateQualification = /* GraphQL */ `mutation UpdateQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -10951,6 +11387,7 @@ export const deleteQualification = /* GraphQL */ `mutation DeleteQualification(
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -10958,6 +11395,7 @@ export const deleteQualification = /* GraphQL */ `mutation DeleteQualification(
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -11006,6 +11444,7 @@ export const createSpecialization = /* GraphQL */ `mutation CreateSpecialization
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -11013,6 +11452,7 @@ export const createSpecialization = /* GraphQL */ `mutation CreateSpecialization
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -11061,6 +11501,7 @@ export const updateSpecialization = /* GraphQL */ `mutation UpdateSpecialization
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -11068,6 +11509,7 @@ export const updateSpecialization = /* GraphQL */ `mutation UpdateSpecialization
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -11116,6 +11558,7 @@ export const deleteSpecialization = /* GraphQL */ `mutation DeleteSpecialization
       timezone
       chatbotRequests
       isInstantBookingAvailable
+      isEmailVerified
       createdAt
       updatedAt
       _version
@@ -11123,6 +11566,7 @@ export const deleteSpecialization = /* GraphQL */ `mutation DeleteSpecialization
       _lastChangedAt
       nicheServiceProvidersId
       providerCurrentLocationId
+      providerTasksId
       __typename
     }
     createdAt
@@ -11407,6 +11851,7 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -11621,6 +12066,7 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version
@@ -11835,6 +12281,7 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
       _lastChangedAt
       __typename
     }
+    isEmailVerified
     createdAt
     updatedAt
     _version

@@ -1,6 +1,25 @@
 const UserService = require('../services/userService');
 
 const UserController = {
+  getUser: async (req, res) => {
+    try {
+      const { id, email } = req.query;
+      let user;
+      if (id) {
+        user = await UserService.getUserById(id); // Get user by ID
+      } else if (email) {
+        user = await UserService.getUserByEmail(email); // Get user by email
+      } else {
+        return res.status(400).json({ message: 'Please provide an id or email.' });
+      }
+      if (!user) {
+        return res.status(404).json({ message: 'User not found.' });
+      }
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  },
   createUser: async (req, res) => {
     try {
       const user = await UserService.createUser(req.body);
